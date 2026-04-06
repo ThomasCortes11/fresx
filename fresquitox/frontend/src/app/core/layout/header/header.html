@@ -1,0 +1,53 @@
+<header class="header" [class.header--scrolled]="scrolled">
+  <div class="header__container">
+
+    <!-- Logo -->
+    <a routerLink="/" class="header__logo" (click)="closeMenu()" aria-label="Fresquitox - Inicio">
+      <span class="header__logo-text">FRESQUITOX</span>
+    </a>
+
+    <!-- Nav -->
+    <nav class="header__nav" [class.header__nav--open]="menuOpen" aria-label="Navegación principal">
+      <!-- Botón cerrar dentro del panel móvil -->
+      <button class="header__nav-close" (click)="closeMenu()" aria-label="Cerrar menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Inicio</a>
+      <a routerLink="/servicios" routerLinkActive="active" (click)="closeMenu()">Servicios</a>
+      <a routerLink="/zonas" routerLinkActive="active" (click)="closeMenu()">Zonas</a>
+      <a routerLink="/nosotros" routerLinkActive="active" (click)="closeMenu()">Nosotros</a>
+      <a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">Blog</a>
+      <a routerLink="/preguntas-frecuentes" routerLinkActive="active" (click)="closeMenu()">FAQ</a>
+    </nav>
+
+    <!-- Right actions -->
+    <div class="header__actions">
+      <a [href]="'tel:' + contact.phoneFormatted" class="header__phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.46 16z"/>
+        </svg>
+        {{ contact.phoneDisplay }}
+      </a>
+      <a routerLink="/contacto" class="header__cta" (click)="closeMenu()" routerLinkActive="active">
+        Contacto
+      </a>
+      <!-- Hamburger -->
+      <button
+        class="header__toggle"
+        [class.header__toggle--open]="menuOpen"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen"
+        aria-label="Abrir menú de navegación">
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+        <span class="header__toggle-bar"></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile overlay nav -->
+  @if (menuOpen) {
+    <div class="header__overlay" (click)="closeMenu()" (keydown.escape)="closeMenu()" aria-hidden="true"></div>
+  }
+</header>

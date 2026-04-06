@@ -1,0 +1,413 @@
+// ══════════════════════════════════════════════════════════
+//  ZONA DETAIL – Rediseño Premium
+// ══════════════════════════════════════════════════════════
+
+$brand-dark:    #0a1628;
+$brand-navy:    #0f2440;
+$brand-blue:    #0066FF;
+$brand-blue-l:  #3d8bfd;
+$brand-accent:  #FF6B35;
+$brand-green:   #10B981;
+$brand-light:   #f0f4f8;
+$text-primary:  #111827;
+$text-secondary:#6b7280;
+$border-soft:   #e5e7eb;
+$radius-lg:     16px;
+$radius-md:     12px;
+$ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+
+// ── Hero Detail ────────────────────────────────
+.detail-hero {
+  position: relative;
+  background: linear-gradient(165deg, $brand-dark 0%, $brand-navy 50%, #003d99 100%);
+  padding: 5rem 1rem 3.5rem;
+  color: #fff;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba($brand-blue, 0.1) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba($brand-accent, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .container { position: relative; z-index: 1; }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+
+    a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+      &:hover { color: #fff; }
+    }
+    svg { color: rgba(255,255,255,0.35); }
+    span { color: rgba(255,255,255,0.75); }
+  }
+
+  &__content { max-width: 650px; }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba($brand-green, 0.15);
+    border: 1px solid rgba($brand-green, 0.3);
+    color: $brand-green;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+
+  &__pulse {
+    width: 8px;
+    height: 8px;
+    background: $brand-green;
+    border-radius: 50%;
+    animation: pulse-glow 2s infinite;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    svg { color: $brand-blue-l; }
+    strong { color: #fff; font-weight: 700; }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: $radius-md;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: transform 0.3s $ease-out, box-shadow 0.3s ease;
+
+    &:hover { transform: translateY(-2px); }
+
+    &--primary {
+      background: $brand-green;
+      color: #fff;
+      box-shadow: 0 4px 24px rgba($brand-green, 0.35);
+      &:hover { box-shadow: 0 8px 36px rgba($brand-green, 0.5); }
+    }
+
+    &--secondary {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      &:hover { background: rgba(255,255,255,0.14); }
+    }
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba($brand-green, 0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba($brand-green, 0); }
+}
+
+// ── Barrios strip ──────────────────────────────
+.detail-barrios {
+  background: #fff;
+  border-bottom: 1px solid $border-soft;
+  padding: 0.85rem 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    color: $text-secondary;
+
+    svg { color: $brand-blue; flex-shrink: 0; }
+  }
+
+  &__tag {
+    background: $brand-light;
+    color: $text-primary;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+}
+
+// ── Content layout ─────────────────────────────
+.zona-detail {
+  padding: 3.5rem 0 4.5rem;
+  background: $brand-light;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  &__main {
+    p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #4a5568;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: $text-primary;
+      margin: 2.5rem 0 1rem;
+      text-align: left;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__servicios {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  &__cta {
+    background: #fff;
+    padding: 2rem;
+    border-radius: $radius-lg;
+    border: 1px solid $border-soft;
+    margin-top: 2.5rem;
+    text-align: center;
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 0.75rem 0 0.5rem;
+    }
+
+    p {
+      font-size: 0.95rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+
+    &-icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba($brand-blue, 0.08);
+      color: $brand-blue;
+      border-radius: 14px;
+      margin: 0 auto;
+    }
+
+    &-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+    }
+  }
+}
+
+// ── Servicio mini card ─────────────────────────
+.servicio-mini {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: $radius-md;
+  text-decoration: none;
+  color: #2d3748;
+  background: #fff;
+  border: 1px solid $border-soft;
+  transition: border-color 0.25s ease, transform 0.3s $ease-out, box-shadow 0.3s ease;
+
+  &:hover {
+    border-color: rgba($brand-blue, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+
+    svg { color: $brand-blue; }
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: #d1d5db;
+    transition: color 0.2s ease;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    color: $text-primary;
+    margin-bottom: 0.2rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.82rem !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+  }
+}
+
+// ── Sidebar ────────────────────────────────────
+.sidebar-card {
+  background: #fff;
+  border: 1px solid $border-soft;
+  border-radius: $radius-lg;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 2px solid $brand-light;
+  }
+
+  p {
+    font-size: 0.88rem;
+    color: $text-secondary;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+
+  &--cta {
+    background: linear-gradient(145deg, $brand-dark, $brand-navy);
+    border-color: transparent;
+
+    h3 { color: #fff; border-bottom-color: rgba(255,255,255,0.1); }
+    p { color: rgba(255,255,255,0.65); }
+  }
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.75rem;
+  text-decoration: none;
+  color: $text-secondary;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.9rem;
+
+  svg { color: #d1d5db; flex-shrink: 0; transition: color 0.2s; }
+
+  &__time {
+    margin-left: auto;
+    font-size: 0.72rem;
+    color: #9ca3af;
+    font-weight: 600;
+  }
+
+  &:hover {
+    background: $brand-light;
+    color: $brand-blue;
+    svg { color: $brand-blue; }
+  }
+
+  &--all {
+    color: $brand-blue;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+}
+
+.btn--block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+// ── Responsive ─────────────────────────────────
+@media (max-width: 860px) {
+  .detail-hero {
+    padding: 3.5rem 1rem 2.5rem;
+  }
+
+  .zona-detail__content {
+    grid-template-columns: 1fr;
+  }
+
+  .zona-detail__sidebar {
+    order: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-hero {
+    padding: 3rem 1rem 2rem;
+
+    h1 { font-size: 1.6rem; }
+
+    &__actions {
+      flex-direction: column;
+    }
+
+    &__cta {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
+  .zona-detail__cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+
+    .btn {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

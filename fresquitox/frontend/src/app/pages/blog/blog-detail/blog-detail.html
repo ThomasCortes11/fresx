@@ -1,0 +1,99 @@
+<!-- Reading Progress Bar -->
+<div class="bd-progress">
+  <span [style.transform]="'scaleX(' + readProgress / 100 + ')'"></span>
+</div>
+
+<!-- Hero -->
+<header class="bd-hero">
+  <div class="bd-hero-inner" data-animate>
+    <nav aria-label="Breadcrumb">
+      <a routerLink="/">Inicio</a>
+      <span>›</span>
+      <a routerLink="/blog">Blog</a>
+      <span>›</span>
+      <span class="bd-crumb-current">{{ post.titulo }}</span>
+    </nav>
+    <div class="bd-badge">Plomería Bogotá</div>
+    <h1>{{ post.titulo }}</h1>
+    <div class="bd-meta">
+      <time>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        {{ formatDate(post.fecha) }}
+      </time>
+      <span class="bd-meta-dot">•</span>
+      <span>{{ readingTime }} min de lectura</span>
+    </div>
+  </div>
+</header>
+
+<!-- Article -->
+<section class="bd-article">
+  <div class="bd-wrap">
+    <div class="bd-layout">
+
+      <!-- Main Content -->
+      <div class="bd-body bd-anim">
+        @for (block of contentBlocks; track $index) {
+          @if (block.type === 'paragraph') {
+            <p [innerHTML]="block.html"></p>
+          } @else if (block.type === 'section') {
+            <div class="bd-section">
+              <h2>{{ block.heading }}</h2>
+              @if (block.body) {
+                <p [innerHTML]="block.body"></p>
+              }
+            </div>
+          } @else if (block.type === 'list') {
+            <ul class="bd-list">
+              @for (item of block.items; track $index) {
+                <li [innerHTML]="item"></li>
+              }
+            </ul>
+          }
+        }
+
+        <!-- CTA Box -->
+        <div class="bd-cta-box">
+          <h2>¿Necesita ayuda profesional?</h2>
+          <p>Si tiene problemas de plomería, no dude en contactarnos. Estamos disponibles las 24 horas.</p>
+          <div class="bd-cta-actions">
+            <a [href]="'tel:' + contact.phoneFormatted" class="bd-btn bd-btn--blue">📞 Llamar a SEP Soluciones</a>
+            <a [href]="contact.whatsapp" target="_blank" rel="noopener" class="bd-btn bd-btn--green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.764-6.328-2.06l-.44-.33-3.095 1.037 1.037-3.095-.33-.44A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+          <a [href]="'tel:' + contact.phoneFormatted" class="btn btn--primary">📞 Llamar a SEP Soluciones</a>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="bd-sidebar bd-anim">
+        <div class="bd-card">
+          <h3>Artículos Relacionados</h3>
+          <div class="bd-card-items">
+            @for (otro of otrosPosts; track otro.slug) {
+              <a [routerLink]="['/blog', otro.slug]" class="bd-side-link">
+                <time>{{ formatDate(otro.fecha) }}</time>
+                <h4>{{ otro.titulo }}</h4>
+              </a>
+            }
+          </div>
+        </div>
+
+        <div class="bd-card bd-card--cta">
+          <h3>¿Necesita un plomero?</h3>
+          <p>Servicio profesional 24/7 en Bogotá</p>
+          <a [href]="'tel:' + contact.phoneFormatted" class="bd-card-btn bd-card-btn--blue">📞 {{ contact.phoneDisplay }}</a>
+          <a [href]="contact.whatsapp" target="_blank" rel="noopener" class="bd-card-btn bd-card-btn--green">WhatsApp</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- Floating WhatsApp -->
+<a [href]="contact.whatsapp" target="_blank" rel="noopener" class="bd-float-wa" aria-label="Contactar por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.764-6.328-2.06l-.44-.33-3.095 1.037 1.037-3.095-.33-.44A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>

@@ -1,0 +1,80 @@
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/">Inicio</a> &gt; <span>Contacto</span>
+    </nav>
+    <h1>Contáctenos</h1>
+    <p>Estamos disponibles para atenderle. Solicite una cotización sin compromiso.</p>
+  </div>
+</section>
+
+<section class="contacto">
+  <div class="container">
+    <div class="contacto__grid">
+      <div class="contacto__info">
+        <h2>Información de Contacto</h2>
+
+        <div class="contacto__item">
+          <span class="contacto__icon">📞</span>
+          <div>
+            <h3>Teléfono</h3>
+            <a [href]="'tel:' + contact.phoneFormatted">{{ contact.phoneDisplay }}</a>
+          </div>
+        </div>
+
+        <div class="contacto__item">
+          <span class="contacto__icon">💬</span>
+          <div>
+            <h3>WhatsApp</h3>
+            <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer">{{ contact.phoneDisplay }}</a>
+          </div>
+        </div>
+
+        <div class="contacto__item">
+          <span class="contacto__icon">📧</span>
+          <div>
+            <h3>Correo Electrónico</h3>
+            <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+          </div>
+        </div>
+
+        <div class="contacto__item">
+          <span class="contacto__icon">📍</span>
+          <div>
+            <h3>Ubicación</h3>
+            <p>Bogotá, Colombia</p>
+          </div>
+        </div>
+
+        <div class="contacto__item">
+          <span class="contacto__icon">🕐</span>
+          <div>
+            <h3>Horario de Atención</h3>
+            <p>Lunes a Sábado: 7:00 AM - 7:00 PM</p>
+            <p>Emergencias: 24/7</p>
+          </div>
+        </div>
+
+        <div class="contacto__acciones">
+          <a [href]="'tel:' + contact.phoneFormatted" class="btn btn--primary btn--lg">📞 Llamar Ahora</a>
+          <a [href]="contact.whatsapp" class="btn btn--whatsapp btn--lg" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="contacto__mapa">
+        <h2>Nuestra Cobertura</h2>
+        <p>Brindamos servicio de plomería en todas las localidades de Bogotá. Contáctenos y un técnico estará en su ubicación en el menor tiempo posible.</p>
+        <div class="contacto__localidades">
+          <a routerLink="/zonas/usaquen">Usaquén</a>
+          <a routerLink="/zonas/chapinero">Chapinero</a>
+          <a routerLink="/zonas/suba">Suba</a>
+          <a routerLink="/zonas/kennedy">Kennedy</a>
+          <a routerLink="/zonas/engativa">Engativá</a>
+          <a routerLink="/zonas/fontibon">Fontibón</a>
+          <a routerLink="/zonas/teusaquillo">Teusaquillo</a>
+          <a routerLink="/zonas/barrios-unidos">Barrios Unidos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
