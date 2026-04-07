@@ -1,4 +1,4 @@
-export type CategoriaServicio = 'residencial' | 'empresarial' | 'especializado';
+﻿export type CategoriaProducto = 'clasicos' | 'naturales' | 'premium';
 
 export interface Servicio {
   slug: string;
@@ -9,332 +9,170 @@ export interface Servicio {
   icono: string;
   idealPara: string[];
   contenido: string[];
-  categoria: CategoriaServicio;
+  categoria: CategoriaProducto;
+  precio?: string;
+  emoji?: string;
 }
 
 export interface CategoriaInfo {
-  id: CategoriaServicio;
+  id: CategoriaProducto;
   titulo: string;
   subtitulo: string;
   icono: string;
 }
 
 export const CATEGORIAS: CategoriaInfo[] = [
-  { id: 'residencial', titulo: 'Servicios Residenciales', subtitulo: 'Soluciones de plomería para tu hogar en Bogotá', icono: '🏠' },
-  { id: 'empresarial', titulo: 'Servicios Empresariales', subtitulo: 'Mantenimiento y reparación para edificios y empresas', icono: '🏢' },
-  { id: 'especializado', titulo: 'Servicios Especializados', subtitulo: 'Plomería profesional para sectores específicos', icono: '⚙️' },
+  { id: 'clasicos', titulo: 'Clásicos Fresquitox', subtitulo: 'Los favoritos de siempre, preparados al instante', icono: '🍧' },
+  { id: 'naturales', titulo: 'Línea Natural', subtitulo: 'Frutas frescas, cero conservantes, sabor real', icono: '🍋' },
+  { id: 'premium', titulo: 'Línea Premium', subtitulo: 'Experiencias únicas para ocasiones especiales', icono: '✨' },
 ];
 
 export const SERVICIOS: Servicio[] = [
-  // ═══════════════════════════════════════════════
-  //  RESIDENCIALES
-  // ═══════════════════════════════════════════════
+  // ═══════════════════════════════════
+  //  CLÁSICOS
+  // ═══════════════════════════════════
   {
-    slug: 'destaqueos-y-desagues',
-    nombre: 'Destaqueos y Desagües',
-    descripcionCorta: 'Desobstrucción profesional de desagües y sifones con sonda eléctrica y equipos de alta presión.',
-    descripcionSeo: 'Destaqueos y desagües en Bogotá. Desobstrucción profesional de sifones, lavaplatos y cañerías con sonda eléctrica. Atención inmediata 24/7. SEP Soluciones.',
-    keywords: 'destaqueos bogota, destaqueo desagues bogota, destape desagues bogota, desobstruccion desagues bogota, plomero destaqueos bogota, destaqueo sifones bogota, destaqueo cañerias bogota, servicio destaqueos bogota 24 horas',
-    icono: '🔧',
-    idealPara: ['Casas', 'Apartamentos', 'Fincas'],
+    slug: 'granizados',
+    nombre: 'Granizados',
+    descripcionCorta: 'Hielo triturado con siropes artesanales de frutas naturales. El clásico Fresquitox que conquistó Chapinero.',
+    descripcionSeo: 'Granizados artesanales en Bogotá. Hielo triturado con siropes de frutas naturales. Pide a domicilio o visítanos en Chapinero. Fresquitox.',
+    keywords: 'granizados bogota, granizados artesanales, granizados chapinero, granizados a domicilio bogota, mejor granizado bogota',
+    icono: '🍧',
+    emoji: '🍧',
+    idealPara: ['Tardes calurosas', 'Reuniones con amigos', 'Antojo rápido'],
     contenido: [
-      'Desobstrucción profesional de desagües y sifones con sonda eléctrica y equipos de alta presión.',
-      'Eliminamos taponamientos por grasa, cabellos, residuos sólidos y raíces en cualquier tipo de tubería residencial.',
-      'Servicio rápido, limpio y con garantía. Atención inmediata en toda Bogotá.'
+      'Nuestros granizados son el alma de Fresquitox. Preparados al momento con hielo triturado fino y siropes artesanales hechos con frutas 100% naturales.',
+      'Tenemos más de 15 sabores disponibles: fresa, mango, maracuyá, lulo, mora, limón, cereza, uva, tamarindo, guanábana, y combinaciones exclusivas que solo encuentras aquí.',
+      'Cada granizado se prepara frente a ti para que veas la frescura en acción. Puedes personalizar el nivel de dulce y agregarle toppings como leche condensada, gomitas o frutas picadas.',
+      'Disponible en tres tamaños: Personal (12oz), Mediano (16oz) y Jumbo (24oz). Perfecto para una persona o para compartir.'
     ],
-    categoria: 'residencial'
+    categoria: 'clasicos',
+    precio: 'Desde $6.000'
   },
   {
-    slug: 'plomeria-sanitarios',
-    nombre: 'Sanitarios',
-    descripcionCorta: 'Instalación, reparación y destape de sanitarios. Solucionamos fugas, filtraciones y problemas de descarga.',
-    descripcionSeo: 'Reparación e instalación de sanitarios en Bogotá. Solucionamos fugas, filtraciones y taponamientos. Plomeros certificados con atención inmediata. SEP Soluciones.',
-    keywords: 'reparacion sanitarios bogota, instalacion sanitarios bogota, destape sanitarios bogota, plomero sanitarios bogota, arreglo sanitario bogota, sanitario tapado bogota, fuga sanitario bogota, cambio sanitario bogota',
-    icono: '🚽',
-    idealPara: ['Cambios de sanitario', 'Fugas en la base', 'Taponamientos'],
+    slug: 'raspados',
+    nombre: 'Raspados',
+    descripcionCorta: 'Hielo raspado suave con capas de sabor, frutas frescas y toppings irresistibles. Textura única.',
+    descripcionSeo: 'Raspados artesanales en Bogotá. Hielo raspado con frutas frescas y toppings. Pide a domicilio. Fresquitox.',
+    keywords: 'raspados bogota, raspados artesanales, raspados chapinero, raspados a domicilio bogota, mejor raspado bogota',
+    icono: '🧊',
+    emoji: '🧊',
+    idealPara: ['Experiencia refrescante', 'Compartir en pareja', 'Después del gym'],
     contenido: [
-      'Instalación, reparación y destape de sanitarios de todas las marcas y modelos.',
-      'Solucionamos fugas en la base, problemas de descarga, filtraciones y taponamientos de forma rápida y limpia.',
-      'Utilizamos repuestos originales y garantizamos cada trabajo realizado.'
+      'Los raspados Fresquitox tienen una textura única: hielo raspado finamente que se deshace en tu boca mientras absorbes capas de sabor.',
+      'A diferencia del granizado, el raspado es más suave y ligero. Ideal para quienes buscan algo menos intenso pero igual de refrescante.',
+      'Nuestros raspados vienen con frutas frescas picadas, sirope natural y la opción de agregar leche condensada, crema chantilly o salsa de chocolate.',
+      'Un clásico callejero elevado a nivel premium. La textura perfecta para un día cualquiera en Bogotá.'
     ],
-    categoria: 'residencial'
+    categoria: 'clasicos',
+    precio: 'Desde $7.000'
   },
   {
-    slug: 'plomeria-duchas',
-    nombre: 'Duchas',
-    descripcionCorta: 'Reparación e instalación de duchas, cabinas y grifería. Solucionamos goteos, baja presión y filtraciones.',
-    descripcionSeo: 'Reparación e instalación de duchas en Bogotá. Solucionamos goteos, baja presión y filtraciones. Plomeros profesionales con garantía. SEP Soluciones.',
-    keywords: 'reparacion duchas bogota, instalacion duchas bogota, plomero duchas bogota, goteo ducha bogota, baja presion ducha bogota, filtracion ducha bogota, cambio griferia ducha bogota, cabina ducha bogota',
-    icono: '🚿',
-    idealPara: ['Goteos persistentes', 'Baja presión', 'Cambio de grifería'],
+    slug: 'jugos-naturales',
+    nombre: 'Jugos Naturales',
+    descripcionCorta: 'Frutas frescas licuadas al instante. Sin azúcar añadida, sin conservantes. Pura fruta.',
+    descripcionSeo: 'Jugos naturales en Bogotá. Frutas frescas licuadas al instante sin conservantes. Domicilio en Bogotá. Fresquitox.',
+    keywords: 'jugos naturales bogota, jugos frescos bogota, jugo de naranja bogota, jugos sin azucar bogota, jugos a domicilio bogota',
+    icono: '🍊',
+    emoji: '🍊',
+    idealPara: ['Desayunos saludables', 'Post-entrenamiento', 'Cualquier hora del día'],
     contenido: [
-      'Reparación e instalación de duchas, cabinas y grifería de todas las marcas.',
-      'Solucionamos goteos persistentes, problemas de baja presión, filtraciones en paredes y pisos.',
-      'Instalamos duchas nuevas con acabado profesional y garantía completa.'
+      'Jugos 100% naturales preparados al instante con frutas frescas seleccionadas del día. Sin azúcar añadida, sin conservantes, sin colorantes.',
+      'Ofrecemos más de 20 opciones: naranja, mandarina, mango, fresa, mora, lulo, guanábana, maracuyá, piña, sandía, y combinaciones funcionales con jengibre, limón y menta.',
+      'Puedes elegir con agua o con leche, y ajustar el dulce a tu gusto. También tenemos opciones con endulzantes naturales como stevia o miel.',
+      'Nuestras frutas llegan cada mañana del mercado para garantizar máxima frescura. Eso es Fresquitox: fresco de verdad.'
     ],
-    categoria: 'residencial'
+    categoria: 'naturales',
+    precio: 'Desde $5.000'
   },
   {
-    slug: 'plomeria-lavamanos',
-    nombre: 'Lavamanos',
-    descripcionCorta: 'Instalación y reparación de lavamanos, griferías y sifones. Eliminamos goteos y taponamientos.',
-    descripcionSeo: 'Reparación e instalación de lavamanos en Bogotá. Eliminamos goteos, taponamientos y filtraciones. Servicio profesional con garantía. SEP Soluciones.',
-    keywords: 'reparacion lavamanos bogota, instalacion lavamanos bogota, plomero lavamanos bogota, goteo lavamanos bogota, destape lavamanos bogota, sifon lavamanos bogota, cambio griferia lavamanos bogota',
-    icono: '🪥',
-    idealPara: ['Goteos en grifería', 'Sifones tapados', 'Instalación nueva'],
+    slug: 'limonadas',
+    nombre: 'Limonadas',
+    descripcionCorta: 'Limonadas artesanales con hierbabuena, coco, cerezada y más. Frescura en cada sorbo.',
+    descripcionSeo: 'Limonadas artesanales en Bogotá. Limonada de coco, cerezada, hierbabuena y más. Frescas y naturales. Fresquitox.',
+    keywords: 'limonadas bogota, limonada artesanal, limonada de coco bogota, limonada cerezada bogota, limonadas naturales bogota',
+    icono: '🍋',
+    emoji: '🍋',
+    idealPara: ['Almuerzos', 'Eventos', 'Cualquier momento'],
     contenido: [
-      'Instalación y reparación de lavamanos, griferías y sifones de baño.',
-      'Eliminamos goteos, taponamientos y filtraciones con herramientas especializadas.',
-      'Trabajo limpio, rápido y con garantía en toda Bogotá.'
+      'Nuestras limonadas son un homenaje a la tradición colombiana. Preparadas con limones frescos exprimidos al momento y combinaciones únicas.',
+      'Limonada natural, de coco, cerezada, de hierbabuena, de maracuyá, frozen, y nuestra exclusiva limonada rosada con frutos rojos.',
+      'Cada limonada se prepara con agua purificada y hielo cristalino. El dulce lo ajustamos a tu gusto o puedes pedirla sin azúcar.',
+      'La opción perfecta para acompañar tu comida o simplemente para refrescarte en cualquier momento del día. Tamaños desde 12oz hasta 1 litro para compartir.'
     ],
-    categoria: 'residencial'
+    categoria: 'naturales',
+    precio: 'Desde $4.500'
   },
   {
-    slug: 'plomeria-cocinas',
-    nombre: 'Cocinas',
-    descripcionCorta: 'Plomería integral para cocinas: lavaplatos, grifos, conexiones de gas y desagües.',
-    descripcionSeo: 'Plomería para cocinas en Bogotá. Reparación de lavaplatos, grifos, conexiones y desagües. Atención inmediata con plomeros certificados. SEP Soluciones.',
-    keywords: 'plomeria cocinas bogota, reparacion lavaplatos bogota, destape lavaplatos bogota, plomero cocina bogota, grifo cocina bogota, desague cocina bogota, instalacion lavaplatos bogota, fuga cocina bogota',
-    icono: '🍳',
-    idealPara: ['Lavaplatos', 'Grifos de cocina', 'Desagües'],
+    slug: 'smoothies',
+    nombre: 'Smoothies',
+    descripcionCorta: 'Batidos cremosos de frutas con base de yogurt o leche vegetal. Energía natural en cada vaso.',
+    descripcionSeo: 'Smoothies naturales en Bogotá. Batidos de frutas con yogurt y superfoods. Saludables y deliciosos. Fresquitox.',
+    keywords: 'smoothies bogota, batidos frutas bogota, smoothie saludable bogota, smoothie proteina bogota, batidos naturales bogota',
+    icono: '🥤',
+    emoji: '🥤',
+    idealPara: ['Pre/post entreno', 'Snack saludable', 'Desayuno rápido'],
     contenido: [
-      'Plomería integral para cocinas: reparación e instalación de lavaplatos, grifos, conexiones y desagües.',
-      'Solucionamos fugas, taponamientos y problemas de presión en el área de cocina.',
-      'Servicio profesional con garantía para hogares en toda Bogotá.'
+      'Smoothies cremosos y nutritivos preparados con frutas frescas y bases saludables. La opción ideal para quienes buscan sabor y nutrición.',
+      'Bases disponibles: yogurt natural, leche de almendras, leche de coco o agua. Puedes agregar proteína, avena, chía, espinaca o mantequilla de maní.',
+      'Combinaciones estrella: Tropical Power (mango, piña, coco), Berry Blast (frutos rojos, banano), Green Machine (espinaca, manzana, jengibre), y Protein Punch (banano, avena, proteína, cacao).',
+      'Preparados al instante, sin polvos ni concentrados. Solo ingredientes reales que puedes ver y sentir en cada sorbo.'
     ],
-    categoria: 'residencial'
+    categoria: 'naturales',
+    precio: 'Desde $9.000'
   },
   {
-    slug: 'plomeria-zonas-de-lavado',
-    nombre: 'Zonas de Lavado',
-    descripcionCorta: 'Instalación y reparación de conexiones para lavadoras, lavaderos y desagües en zonas de lavado.',
-    descripcionSeo: 'Plomería para zonas de lavado en Bogotá. Instalación y reparación de conexiones para lavadoras, lavaderos y desagües. SEP Soluciones.',
-    keywords: 'plomeria zona lavado bogota, conexion lavadora bogota, plomero zona lavado bogota, desague lavadora bogota, instalacion lavadero bogota, reparacion zona de ropas bogota, fuga lavadora bogota',
-    icono: '👕',
-    idealPara: ['Conexión de lavadoras', 'Lavaderos', 'Desagües de zona de ropas'],
+    slug: 'cocteleria-sin-alcohol',
+    nombre: 'Coctelería Sin Alcohol',
+    descripcionCorta: 'Mocktails premium con frutas frescas, siropes artesanales y presentación de bar. Para brindar sin alcohol.',
+    descripcionSeo: 'Coctelería sin alcohol en Bogotá. Mocktails premium con frutas frescas para eventos y celebraciones. Fresquitox.',
+    keywords: 'mocktails bogota, cocteles sin alcohol bogota, bebidas premium bogota, cocteles frutas bogota, cocteleria eventos bogota',
+    icono: '🍹',
+    emoji: '🍹',
+    idealPara: ['Eventos corporativos', 'Fiestas', 'Cenas especiales'],
     contenido: [
-      'Instalación y reparación de conexiones para lavadoras, lavaderos y desagües en zonas de lavado.',
-      'Garantizamos conexiones seguras y funcionales que evitan fugas e inundaciones.',
-      'Servicio a domicilio para casas y apartamentos en Bogotá.'
+      'Nuestra línea de coctelería sin alcohol lleva la experiencia Fresquitox al siguiente nivel. Mocktails premium con presentación de bar profesional.',
+      'Mojito de fresa, Piña Colada tropical, Spritz de maracuyá, Sangría de frutas, Margarita de mango, y creaciones exclusivas del mes.',
+      'Servidas en cristalería premium con garnish fresco, hielo artesanal y decoración de frutas. Perfectas para eventos donde quieres algo especial sin alcohol.',
+      'Disponibles para eventos, fiestas y celebraciones. También puedes pedirlas en nuestro punto en Chapinero o a domicilio.'
     ],
-    categoria: 'residencial'
+    categoria: 'premium',
+    precio: 'Desde $12.000'
   },
   {
-    slug: 'plomeria-calentadores',
-    nombre: 'Calentadores',
-    descripcionCorta: 'Instalación, reparación y mantenimiento de calentadores de agua a gas y eléctricos.',
-    descripcionSeo: 'Instalación y reparación de calentadores de agua en Bogotá. Calentadores a gas y eléctricos. Técnicos certificados con garantía. SEP Soluciones.',
-    keywords: 'instalacion calentador bogota, reparacion calentador bogota, plomero calentadores bogota, calentador de agua bogota, mantenimiento calentador bogota, calentador gas bogota, calentador electrico bogota, cambio calentador bogota',
-    icono: '🔥',
-    idealPara: ['Calentadores a gas', 'Calentadores eléctricos', 'Mantenimiento preventivo'],
+    slug: 'estacion-de-refrescos',
+    nombre: 'Estación de Refrescos',
+    descripcionCorta: 'Servicio completo de barra de refrescos para eventos: cumpleaños, empresariales, bodas y más.',
+    descripcionSeo: 'Estación de refrescos para eventos en Bogotá. Barra de granizados, jugos y smoothies para fiestas y corporativos. Fresquitox.',
+    keywords: 'barra refrescos eventos bogota, estacion bebidas fiestas, catering refrescos bogota, granizados para eventos',
+    icono: '🎪',
+    emoji: '🎪',
+    idealPara: ['Cumpleaños', 'Eventos corporativos', 'Bodas', 'Ferias'],
     contenido: [
-      'Instalación, reparación y mantenimiento de calentadores de agua a gas y eléctricos de todas las marcas.',
-      'Diagnóstico profesional, cambio de repuestos originales y puesta a punto.',
-      'Técnicos certificados con garantía completa en toda Bogotá.'
+      'Llevamos la experiencia Fresquitox a tu evento con nuestra Estación de Refrescos. Una barra completa con todo el sabor y la actitud de nuestra marca.',
+      'Incluye: barra temática Fresquitox, personal capacitado, vasos y servilletas brandeadas, menú personalizado de bebidas, y montaje/desmontaje.',
+      'Paquetes desde 50 hasta 500+ personas. Ideal para cumpleaños, eventos corporativos, bodas, ferias, activaciones de marca y cualquier celebración.',
+      'Cotización personalizada según tus necesidades. Contáctanos por WhatsApp para armar el paquete perfecto para tu evento.'
     ],
-    categoria: 'residencial'
+    categoria: 'premium',
+    precio: 'Desde $350.000'
   },
   {
-    slug: 'deteccion-de-fugas',
-    nombre: 'Detección de Fugas',
-    descripcionCorta: 'Localizamos fugas ocultas con geófono digital y cámara industrial, sin demoler pisos ni paredes.',
-    descripcionSeo: 'Detección de fugas de agua sin romper en Bogotá. Localizamos fugas ocultas con geófono digital y cámara industrial. Diagnóstico rápido, limpio y preciso. SEP Soluciones.',
-    keywords: 'deteccion de fugas bogota, deteccion de fugas sin romper, deteccion de fugas agua bogota, deteccion de fugas bogota norte, deteccion de fugas chapinero, deteccion de fugas suba, plomero deteccion fugas bogota, empresa deteccion fugas bogota, servicio deteccion fugas bogota, geofono digital bogota, fugas ocultas bogota, filtraciones agua bogota',
-    icono: '🔍',
-    idealPara: ['Humedades', 'Filtraciones', 'Consumos anormales de agua'],
+    slug: 'fresquitox-con-licor',
+    nombre: 'Fresquitox con Licor',
+    descripcionCorta: 'Nuestros clásicos granizados y raspados con un shot de tu licor favorito. Solo para mayores de 18.',
+    descripcionSeo: 'Granizados y raspados con licor en Bogotá. Cocteles frozen artesanales. Solo mayores de 18. Fresquitox.',
+    keywords: 'granizados con licor bogota, cocteles frozen bogota, raspados con alcohol bogota, bebidas con licor bogota',
+    icono: '🥂',
+    emoji: '🥂',
+    idealPara: ['Noches de viernes', 'Celebraciones', 'After office'],
     contenido: [
-      'Localizamos fugas ocultas con geófono digital y cámara industrial, sin demoler pisos ni paredes.',
-      'Diagnóstico rápido, limpio y preciso que evita daños innecesarios y reduce significativamente los costos de reparación.',
-      'Ideal para detectar humedades, filtraciones y consumos anormales de agua en hogares.'
+      'La versión adulta de tus Fresquitox favoritos. Los mismos granizados y raspados que amas, ahora con un shot de licor premium.',
+      'Opciones: Granizado de fresa con vodka, Raspado de mango con ron, Limonada frozen con ginebra, Margarita frozen de maracuyá, y especiales del mes.',
+      'Preparados con las mismas frutas frescas y siropes artesanales, más licores de calidad. Nada de mezclas artificiales.',
+      'Disponibles únicamente para mayores de 18 años. Solo en nuestro punto físico de Chapinero y en eventos privados.'
     ],
-    categoria: 'residencial'
-  },
-  {
-    slug: 'tuberias-internas',
-    nombre: 'Tuberías Internas',
-    descripcionCorta: 'Reparación, cambio e instalación de tuberías internas de agua fría, caliente y desagüe.',
-    descripcionSeo: 'Reparación e instalación de tuberías internas en Bogotá. Tuberías de agua fría, caliente y desagüe. Plomeros profesionales con garantía. SEP Soluciones.',
-    keywords: 'reparacion tuberias internas bogota, cambio tuberias bogota, instalacion tuberias bogota, plomero tuberias bogota, tuberia agua fria bogota, tuberia agua caliente bogota, tuberia desague bogota, fuga tuberia bogota',
-    icono: '🔩',
-    idealPara: ['Tuberías rotas', 'Cambio de redes', 'Instalaciones nuevas'],
-    contenido: [
-      'Reparación, cambio e instalación de tuberías internas de agua fría, agua caliente y desagüe.',
-      'Trabajamos con tubería PVC, CPVC, cobre y PPR para garantizar durabilidad y calidad.',
-      'Diagnóstico preciso y trabajo limpio con garantía por escrito.'
-    ],
-    categoria: 'residencial'
-  },
-
-  // ═══════════════════════════════════════════════
-  //  EMPRESARIALES
-  // ═══════════════════════════════════════════════
-  {
-    slug: 'banos-y-zonas-comunes',
-    nombre: 'Baños y Zonas Comunes',
-    descripcionCorta: 'Mantenimiento y reparación de baños públicos, zonas comunes y áreas de servicio en edificios.',
-    descripcionSeo: 'Plomería para baños y zonas comunes en Bogotá. Mantenimiento y reparación de sanitarios, lavamanos y redes en edificios y conjuntos. SEP Soluciones.',
-    keywords: 'plomeria baños zonas comunes bogota, mantenimiento baños edificios bogota, reparacion baños conjuntos bogota, plomero baños empresas bogota, sanitarios zonas comunes bogota, plomeria edificios bogota',
-    icono: '🚻',
-    idealPara: ['Edificios de oficinas', 'Conjuntos residenciales', 'Centros empresariales'],
-    contenido: [
-      'Mantenimiento y reparación integral de baños públicos, zonas comunes y áreas de servicio en edificios.',
-      'Atendemos sanitarios, lavamanos, orinales, grifería y redes de desagüe con mínima interrupción.',
-      'Planes programados para garantizar el funcionamiento óptimo y la imagen de su edificio.'
-    ],
-    categoria: 'empresarial'
-  },
-  {
-    slug: 'redes-hidraulicas-y-sanitarias',
-    nombre: 'Redes Hidráulicas y Sanitarias',
-    descripcionCorta: 'Instalación, reparación y mantenimiento de redes hidráulicas y sanitarias para edificaciones.',
-    descripcionSeo: 'Redes hidráulicas y sanitarias en Bogotá. Instalación, reparación y mantenimiento para edificios y empresas. Ingenieros y plomeros certificados. SEP Soluciones.',
-    keywords: 'redes hidraulicas bogota, redes sanitarias bogota, instalacion redes hidraulicas bogota, mantenimiento redes sanitarias bogota, plomeria redes edificios bogota, reparacion redes hidraulicas bogota, plomero redes sanitarias bogota',
-    icono: '🏗️',
-    idealPara: ['Edificios nuevos', 'Remodelaciones', 'Ampliaciones'],
-    contenido: [
-      'Instalación, reparación y mantenimiento de redes hidráulicas y sanitarias para edificaciones de todo tipo.',
-      'Diseñamos y ejecutamos proyectos con materiales certificados y cumplimiento normativo.',
-      'Equipo técnico de ingenieros y plomeros certificados con amplia experiencia en Bogotá.'
-    ],
-    categoria: 'empresarial'
-  },
-  {
-    slug: 'areas-sociales-y-recreativas',
-    nombre: 'Áreas Sociales y Recreativas',
-    descripcionCorta: 'Plomería para piscinas, jacuzzis, zonas BBQ, salones sociales y áreas recreativas.',
-    descripcionSeo: 'Plomería para áreas sociales y recreativas en Bogotá. Piscinas, jacuzzis, zonas BBQ y salones sociales. Mantenimiento profesional. SEP Soluciones.',
-    keywords: 'plomeria areas sociales bogota, plomeria piscinas bogota, mantenimiento jacuzzi bogota, plomeria zonas bbq bogota, plomero salones sociales bogota, plomeria areas recreativas bogota, mantenimiento piscinas bogota',
-    icono: '🏊',
-    idealPara: ['Piscinas', 'Jacuzzis', 'Zonas BBQ', 'Salones sociales'],
-    contenido: [
-      'Plomería especializada para piscinas, jacuzzis, zonas BBQ, salones sociales y áreas recreativas.',
-      'Mantenimiento preventivo y correctivo de sistemas hidráulicos en zonas comunes de conjuntos y clubes.',
-      'Garantizamos funcionamiento óptimo y seguridad en todas las instalaciones.'
-    ],
-    categoria: 'empresarial'
-  },
-  {
-    slug: 'sistemas-agua-potable-y-presurizacion',
-    nombre: 'Sistemas de Agua Potable y Presurización',
-    descripcionCorta: 'Instalación y mantenimiento de tanques de agua, bombas y sistemas de presurización para edificios.',
-    descripcionSeo: 'Sistemas de agua potable y presurización en Bogotá. Instalación y mantenimiento de tanques, bombas y equipos de presión. SEP Soluciones.',
-    keywords: 'sistemas agua potable bogota, presurizacion agua bogota, tanques agua edificios bogota, bombas agua bogota, sistema presion agua bogota, mantenimiento tanques bogota, instalacion bombas agua bogota, plomero presurizacion bogota',
-    icono: '💧',
-    idealPara: ['Tanques de almacenamiento', 'Bombas de presión', 'Edificios de altura'],
-    contenido: [
-      'Instalación y mantenimiento de tanques de agua, bombas y sistemas de presurización para edificios.',
-      'Garantizamos presión constante y suministro continuo de agua potable en todas las plantas.',
-      'Cumplimiento normativo y asesoría técnica para optimizar el consumo de agua.'
-    ],
-    categoria: 'empresarial'
-  },
-  {
-    slug: 'parqueaderos-y-areas-tecnicas',
-    nombre: 'Parqueaderos y Áreas Técnicas',
-    descripcionCorta: 'Mantenimiento de drenajes, trampas de grasa, cuartos técnicos y redes de parqueaderos.',
-    descripcionSeo: 'Plomería para parqueaderos y áreas técnicas en Bogotá. Drenajes, trampas de grasa y cuartos técnicos. Mantenimiento profesional. SEP Soluciones.',
-    keywords: 'plomeria parqueaderos bogota, drenajes parqueaderos bogota, trampas de grasa bogota, cuartos tecnicos plomeria bogota, mantenimiento drenajes bogota, plomero areas tecnicas bogota, plomeria sotanos bogota',
-    icono: '🅿️',
-    idealPara: ['Parqueaderos subterráneos', 'Cuartos de máquinas', 'Trampas de grasa'],
-    contenido: [
-      'Mantenimiento especializado de drenajes, trampas de grasa, cuartos técnicos y redes de parqueaderos.',
-      'Prevención de inundaciones y malos olores con limpieza programada y equipos profesionales.',
-      'Servicio para conjuntos residenciales, edificios corporativos y centros comerciales.'
-    ],
-    categoria: 'empresarial'
-  },
-  {
-    slug: 'mantenimiento-preventivo',
-    nombre: 'Mantenimiento Preventivo',
-    descripcionCorta: 'Planes de mantenimiento programado para redes hidráulicas, sanitarias y equipos de presurización.',
-    descripcionSeo: 'Mantenimiento preventivo de plomería en Bogotá. Planes programados para redes hidráulicas, sanitarias y equipos. Contratos a medida. SEP Soluciones.',
-    keywords: 'mantenimiento preventivo plomeria bogota, planes mantenimiento plomeria bogota, contrato mantenimiento plomeria bogota, mantenimiento hidraulico preventivo bogota, mantenimiento programado plomeria bogota, plomeria preventiva empresas bogota',
-    icono: '📋',
-    idealPara: ['Contratos mensuales', 'Inspecciones periódicas', 'Reducción de emergencias'],
-    contenido: [
-      'Planes de mantenimiento programado para redes hidráulicas, sanitarias y equipos de presurización.',
-      'Inspecciones periódicas que detectan problemas antes de que se conviertan en emergencias costosas.',
-      'Contratos a medida con reportes técnicos y seguimiento continuo para su tranquilidad.'
-    ],
-    categoria: 'empresarial'
-  },
-
-  // ═══════════════════════════════════════════════
-  //  ESPECIALIZADOS
-  // ═══════════════════════════════════════════════
-  {
-    slug: 'plomeria-restaurantes',
-    nombre: 'Restaurantes',
-    descripcionCorta: 'Plomería especializada para restaurantes: trampas de grasa, redes de cocina industrial y desagües.',
-    descripcionSeo: 'Plomería para restaurantes en Bogotá. Trampas de grasa, redes de cocina industrial, desagües y cumplimiento normativo. SEP Soluciones.',
-    keywords: 'plomeria restaurantes bogota, trampa de grasa restaurantes bogota, plomero restaurante bogota, desague cocina industrial bogota, plomeria cocina industrial bogota, mantenimiento plomeria restaurantes bogota, limpieza trampas grasa bogota',
-    icono: '🍽️',
-    idealPara: ['Cocinas industriales', 'Trampas de grasa', 'Cumplimiento sanitario'],
-    contenido: [
-      'Plomería especializada para restaurantes: instalación y mantenimiento de trampas de grasa, redes de cocina industrial y desagües.',
-      'Garantizamos cumplimiento de la normativa sanitaria vigente y funcionamiento continuo.',
-      'Planes de mantenimiento programado para evitar cierres por emergencias hidráulicas.'
-    ],
-    categoria: 'especializado'
-  },
-  {
-    slug: 'plomeria-centros-comerciales',
-    nombre: 'Centros Comerciales',
-    descripcionCorta: 'Mantenimiento hidráulico integral para centros comerciales: baños públicos, fuentes y redes generales.',
-    descripcionSeo: 'Plomería para centros comerciales en Bogotá. Baños públicos, fuentes, redes generales y mantenimiento hidráulico integral. SEP Soluciones.',
-    keywords: 'plomeria centros comerciales bogota, mantenimiento hidraulico centro comercial bogota, plomero centro comercial bogota, baños publicos centro comercial bogota, redes hidraulicas centro comercial bogota',
-    icono: '🏬',
-    idealPara: ['Baños públicos', 'Fuentes decorativas', 'Redes generales de agua'],
-    contenido: [
-      'Mantenimiento hidráulico integral para centros comerciales: baños públicos, fuentes decorativas y redes generales.',
-      'Atención rápida con mínima interrupción para locales y visitantes.',
-      'Equipos especializados para atender grandes superficies y alta demanda de servicios.'
-    ],
-    categoria: 'especializado'
-  },
-  {
-    slug: 'plomeria-oficinas-y-empresas',
-    nombre: 'Oficinas y Empresas',
-    descripcionCorta: 'Plomería profesional para oficinas y empresas: baños, cocinas, redes y mantenimiento programado.',
-    descripcionSeo: 'Plomería para oficinas y empresas en Bogotá. Baños, cocinas, redes hidráulicas y mantenimiento programado. Contratos a medida. SEP Soluciones.',
-    keywords: 'plomeria oficinas bogota, plomero empresas bogota, mantenimiento plomeria oficinas bogota, plomeria corporativa bogota, plomeria edificios oficinas bogota, reparacion baños oficina bogota',
-    icono: '💼',
-    idealPara: ['Edificios corporativos', 'Oficinas', 'Coworkings'],
-    contenido: [
-      'Plomería profesional para oficinas y empresas: mantenimiento de baños, cocinas y redes hidráulicas.',
-      'Contratos a medida que garantizan respuesta inmediata y cero interrupciones operativas.',
-      'Atención discreta y profesional adaptada al horario de su empresa.'
-    ],
-    categoria: 'especializado'
-  },
-  {
-    slug: 'plomeria-colegios-y-universidades',
-    nombre: 'Colegios y Universidades',
-    descripcionCorta: 'Mantenimiento hidráulico para instituciones educativas: baños, laboratorios, cafeterías y zonas deportivas.',
-    descripcionSeo: 'Plomería para colegios y universidades en Bogotá. Mantenimiento de baños, laboratorios, cafeterías y zonas deportivas. SEP Soluciones.',
-    keywords: 'plomeria colegios bogota, plomeria universidades bogota, plomero instituciones educativas bogota, mantenimiento hidraulico colegios bogota, plomeria laboratorios bogota, plomeria cafeterias colegios bogota',
-    icono: '🎓',
-    idealPara: ['Baños estudiantiles', 'Laboratorios', 'Cafeterías', 'Zonas deportivas'],
-    contenido: [
-      'Mantenimiento hidráulico especializado para instituciones educativas: baños, laboratorios, cafeterías y zonas deportivas.',
-      'Trabajamos en horarios que no afectan las actividades académicas.',
-      'Planes preventivos que garantizan seguridad e higiene para estudiantes y personal.'
-    ],
-    categoria: 'especializado'
-  },
-  {
-    slug: 'plomeria-clinicas-y-hospitales',
-    nombre: 'Clínicas y Hospitales',
-    descripcionCorta: 'Plomería hospitalaria: redes de agua potable, desagües especiales y cumplimiento normativo sanitario.',
-    descripcionSeo: 'Plomería para clínicas y hospitales en Bogotá. Redes de agua potable, desagües especiales y cumplimiento normativo sanitario. SEP Soluciones.',
-    keywords: 'plomeria clinicas bogota, plomeria hospitales bogota, plomero hospital bogota, redes agua potable clinica bogota, desagues hospitalarios bogota, mantenimiento hidraulico hospital bogota, plomeria sanitaria hospital bogota',
-    icono: '🏥',
-    idealPara: ['Redes de agua potable', 'Desagües especiales', 'Cumplimiento normativo'],
-    contenido: [
-      'Plomería hospitalaria especializada: redes de agua potable, desagües especiales y sistemas de alta exigencia.',
-      'Cumplimos estrictamente la normativa sanitaria vigente para instituciones de salud.',
-      'Atención prioritaria con protocolos de bioseguridad y mínima interrupción operativa.'
-    ],
-    categoria: 'especializado'
+    categoria: 'premium',
+    precio: 'Desde $15.000'
   }
 ];

@@ -2,10 +2,11 @@ import { Component, OnInit, inject, afterNextRender, DestroyRef, ElementRef } fr
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
 import { CONTACT_INFO } from '../../shared/constants/contact-info';
+import { DeliveryOptions } from '../../shared/components/delivery-options/delivery-options';
 
 @Component({
   selector: 'app-nosotros',
-  imports: [RouterLink],
+  imports: [RouterLink, DeliveryOptions],
   templateUrl: './nosotros.html',
   styleUrl: './nosotros.scss'
 })
@@ -55,9 +56,9 @@ export default class Nosotros implements OnInit {
 
   ngOnInit(): void {
     this.seo.updateSeo({
-      title: 'Sobre Nosotros – Plomeros Profesionales en Bogotá | SEP Soluciones',
-      description: 'Conozca a SEP Soluciones: empresa de plomería profesional en Bogotá con más de 10 años de experiencia. Técnicos certificados, garantía escrita, atención 24/7 en servicios hidráulicos.',
-      keywords: 'plomería en bogotá, plomeros profesionales bogotá, servicios hidráulicos bogotá, reparaciones de agua bogotá, urgencias de plomería, empresa de plomería bogotá, sep soluciones, técnicos certificados plomería, plomero 24 horas bogotá',
+      title: 'Nosotros — Nuestra Historia | Fresquitox',
+      description: 'Conoce a Fresquitox: marca de refrescos naturales en Bogotá. Ingredientes 100% frescos, sabor de calle y actitud real. Granizados, jugos, raspados y más.',
+      keywords: 'fresquitox nosotros, refrescos naturales bogota, granizados bogota, jugos frescos bogota, historia fresquitox, bebidas naturales colombia',
       canonicalUrl: '/nosotros'
     });
 
@@ -65,32 +66,30 @@ export default class Nosotros implements OnInit {
       {
         '@context': 'https://schema.org',
         '@type': 'AboutPage',
-        'name': 'Sobre SEP Soluciones – Plomeros Profesionales en Bogotá',
-        'description': 'Empresa de plomería profesional en Bogotá con más de 10 años de experiencia en servicios hidráulicos, reparaciones de agua y urgencias de plomería.',
-        'url': 'https://www.sepsoluciones.com/nosotros'
+        'name': 'Sobre Fresquitox — Refrescos Naturales en Bogotá',
+        'description': 'Marca de refrescos naturales en Bogotá con ingredientes 100% frescos. Granizados, jugos, raspados y limonadas.',
+        'url': 'https://www.fresquitox.com/nosotros'
       },
       {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        'name': 'SEP Soluciones',
-        'url': 'https://www.sepsoluciones.com',
-        'telephone': '+573148153221',
-        'email': 'sepplomerosbogota@gmail.com',
+        'name': 'Fresquitox',
+        'url': 'https://www.fresquitox.com',
+        'telephone': CONTACT_INFO.phoneFormatted,
+        'email': CONTACT_INFO.email,
         'areaServed': {
           '@type': 'City',
           'name': 'Bogotá',
           'sameAs': 'https://es.wikipedia.org/wiki/Bogot%C3%A1'
         },
-        'serviceType': ['Plomería', 'Servicios hidráulicos', 'Reparaciones de agua', 'Urgencias de plomería'],
-        'foundingDate': '2014',
-        'slogan': 'Plomeros profesionales con garantía escrita en Bogotá'
+        'slogan': 'El sabor de la calle'
       },
       {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         'itemListElement': [
-          { '@type': 'ListItem', 'position': 1, 'name': 'Inicio', 'item': 'https://www.sepsoluciones.com/' },
-          { '@type': 'ListItem', 'position': 2, 'name': 'Nosotros', 'item': 'https://www.sepsoluciones.com/nosotros' }
+          { '@type': 'ListItem', 'position': 1, 'name': 'Inicio', 'item': 'https://www.fresquitox.com/' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Nosotros', 'item': 'https://www.fresquitox.com/nosotros' }
         ]
       }
     ]);

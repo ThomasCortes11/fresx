@@ -1,25 +1,84 @@
 ﻿<app-hero />
 
-<!-- PRODUCTOS -->
-<section class="productos-home">
-  <div class="productos-home__noise"></div>
+<!-- BENEFICIOS -->
+<section class="benefits">
+  <div class="benefits__divider" aria-hidden="true">
+    <div class="benefits__divider-line"></div>
+    <span class="benefits__divider-tag">¿POR QUÉ FRESQUITOX?</span>
+    <div class="benefits__divider-line"></div>
+  </div>
   <div class="container">
+    <div class="benefits__grid">
 
+      <div class="benefit-card benefit-card--natural" data-animate="fade-up">
+        <div class="benefit-card__accent" aria-hidden="true"></div>
+        <div class="benefit-card__top">
+          <span class="benefit-card__number">01</span>
+          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--green">
+            <span class="benefit-card__icon">🍃</span>
+          </div>
+        </div>
+        <h3 class="benefit-card__title">100% Natural</h3>
+        <p class="benefit-card__desc">Fruta fresca del día, cero conservantes, cero artificiales. Lo real no necesita trucos.</p>
+        <span class="benefit-card__tag">Sin conservantes</span>
+      </div>
+
+      <div class="benefit-card benefit-card--speed" data-animate="fade-up" data-animate-delay="120">
+        <div class="benefit-card__accent" aria-hidden="true"></div>
+        <div class="benefit-card__top">
+          <span class="benefit-card__number">02</span>
+          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--orange">
+            <span class="benefit-card__icon">⚡</span>
+          </div>
+        </div>
+        <h3 class="benefit-card__title">Entrega rápida</h3>
+        <p class="benefit-card__desc">En tu puerta en 30 minutos o menos. Fresquito, como debe ser.</p>
+        <span class="benefit-card__tag">30 min máximo</span>
+      </div>
+
+      <div class="benefit-card benefit-card--combos" data-animate="fade-up" data-animate-delay="240">
+        <div class="benefit-card__accent" aria-hidden="true"></div>
+        <div class="benefit-card__top">
+          <span class="benefit-card__number">03</span>
+          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--pink">
+            <span class="benefit-card__icon">🎨</span>
+          </div>
+        </div>
+        <h3 class="benefit-card__title">+50 Sabores</h3>
+        <p class="benefit-card__desc">La carta más extravagante de granizados en toda Bogotá. Siempre algo nuevo.</p>
+        <span class="benefit-card__tag">Carta infinita</span>
+      </div>
+
+      <div class="benefit-card benefit-card--alcohol" data-animate="fade-up" data-animate-delay="360">
+        <div class="benefit-card__accent" aria-hidden="true"></div>
+        <div class="benefit-card__top">
+          <span class="benefit-card__number">04</span>
+          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--purple">
+            <span class="benefit-card__icon">🍹</span>
+          </div>
+        </div>
+        <h3 class="benefit-card__title">Con y sin alcohol</h3>
+        <p class="benefit-card__desc">Pa' los que toman y los que no. Versiones para todos, sin excluir a nadie.</p>
+        <span class="benefit-card__tag">Para todos</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS DESTACADOS -->
+<section class="productos-home">
+  <div class="container">
     <div class="productos-home__header" data-animate="fade-up">
-      <span class="productos-home__label">// NUESTRO MENU</span>
-      <h2 class="productos-home__headline">
-        <span class="productos-home__headline-line productos-home__headline-line--1">SABORES</span>
-        <span class="productos-home__headline-line productos-home__headline-line--2">FRESCOS.</span>
-      </h2>
+      <span class="productos-home__tag">Nuestro menú</span>
+      <h2 class="productos-home__headline">Sabores que<br><span>rompen esquemas.</span></h2>
       <p class="productos-home__sub">Bebidas preparadas al instante con frutas frescas y todo el sabor</p>
     </div>
 
     <div class="productos-home__grid">
       @for (producto of productosDestacados; track producto.slug; let i = $index) {
-        <a [routerLink]="['/servicios', producto.slug]" class="pcard" [attr.data-index]="i" data-animate="fade-up" [attr.data-animate-delay]="i * 120">
-
-          <span class="pcard__index">0{{ i + 1 }}</span>
-
+        <a [routerLink]="['/productos']" class="pcard" data-animate="fade-up" [attr.data-animate-delay]="i * 120">
+          <div class="pcard__number">0{{ i + 1 }}</div>
           <div class="pcard__body">
             <h3 class="pcard__title">{{ producto.nombre }}</h3>
             <p class="pcard__desc">{{ producto.descripcionCorta }}</p>
@@ -29,91 +88,41 @@
               }
             </div>
           </div>
-
           <div class="pcard__footer">
-            <span>VER PRODUCTO</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span>Ver producto</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </div>
-
         </a>
       }
     </div>
 
-    <div class="productos-home__promo" data-animate="fade-up">
-      <div class="productos-home__promo-text">
-        <strong>PEDIDOS PARA EVENTOS Y FIESTAS</strong>
-        <span>Combos especiales para tu evento. Consultanos sin compromiso.</span>
-      </div>
-      <div class="productos-home__promo-actions">
-        <a [href]="'tel:' + contact.phoneFormatted" class="productos-home__promo-btn productos-home__promo-btn--call">LLAMAR</a>
-        <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="productos-home__promo-btn productos-home__promo-btn--wa">WHATSAPP</a>
-      </div>
+    <div class="productos-home__cta" data-animate="fade-up">
+      <a routerLink="/productos" class="productos-home__btn">
+        Ver todos los productos →
+      </a>
     </div>
-
   </div>
 </section>
 
-<!-- POR QUE ELEGIRNOS -->
-<section class="porque-elegirnos">
-  <div class="container">
-    <div class="porque-elegirnos__header" data-animate="fade-up">
-      <span class="porque-elegirnos__label">// VENTAJAS</span>
-      <h2 class="porque-elegirnos__title">POR QUE<br>FRESQUITOX?</h2>
-      <p class="porque-elegirnos__sub">Frescura, calidad y sabor en cada sorbo</p>
-    </div>
+<!-- MARCA EMOCIONAL -->
+<section class="brand-section">
+  <div class="brand-section__bg" aria-hidden="true">
+    <div class="brand-section__orb brand-section__orb--1"></div>
+    <div class="brand-section__orb brand-section__orb--2"></div>
   </div>
-
   <div class="container">
-    <div class="porque-elegirnos__grid">
-
-      <div class="ventaja-card" data-animate="fade-up">
-        <span class="ventaja-card__index">01</span>
-        <div class="ventaja-card__body">
-          <h3 class="ventaja-card__title">100% NATURAL</h3>
-          <p class="ventaja-card__description">Frutas frescas y naturales sin conservantes ni colorantes artificiales.</p>
-        </div>
-        <div class="ventaja-card__metric">
-          <span class="ventaja-card__metric-number">0%</span>
-          <span class="ventaja-card__metric-label">ARTIFICIALES</span>
-        </div>
+    <div class="brand-section__content" data-animate="scale-up">
+      <img src="images/logo.png" alt="" class="brand-section__mascot" width="80" height="80" aria-hidden="true">
+      <span class="brand-section__tag">Más que bebidas</span>
+      <h2 class="brand-section__headline">
+        No vendemos granizados.<br>
+        <span>Vendemos actitud.</span>
+      </h2>
+      <p class="brand-section__text">Fresquitox nació en la calle. En la música. En el arte. Somos la generación que no se conforma con lo básico. Cada sorbo es una declaración.</p>
+      <div class="brand-section__actions">
+        <a routerLink="/experiencia" class="brand-section__btn brand-section__btn--primary">Vivir la experiencia</a>
+        <a routerLink="/nosotros" class="brand-section__btn brand-section__btn--outline">Nuestra historia</a>
       </div>
-
-      <div class="ventaja-card" data-animate="fade-up" data-animate-delay="100">
-        <span class="ventaja-card__index">02</span>
-        <div class="ventaja-card__body">
-          <h3 class="ventaja-card__title">ENTREGA RAPIDA</h3>
-          <p class="ventaja-card__description">Tu pedido listo y fresco en el menor tiempo posible.</p>
-        </div>
-        <div class="ventaja-card__metric">
-          <span class="ventaja-card__metric-number">30min</span>
-          <span class="ventaja-card__metric-label">PROMEDIO</span>
-        </div>
-      </div>
-
-      <div class="ventaja-card" data-animate="fade-up" data-animate-delay="200">
-        <span class="ventaja-card__index">03</span>
-        <div class="ventaja-card__body">
-          <h3 class="ventaja-card__title">PRECIOS ACCESIBLES</h3>
-          <p class="ventaja-card__description">Refrescos para todos los bolsillos con la mejor relacion calidad-precio.</p>
-        </div>
-        <div class="ventaja-card__metric">
-          <span class="ventaja-card__metric-number">$</span>
-          <span class="ventaja-card__metric-label">MEJOR PRECIO</span>
-        </div>
-      </div>
-
-      <div class="ventaja-card" data-animate="fade-up" data-animate-delay="300">
-        <span class="ventaja-card__index">04</span>
-        <div class="ventaja-card__body">
-          <h3 class="ventaja-card__title">+50 SABORES UNICOS</h3>
-          <p class="ventaja-card__description">La carta mas variada de refrescos artesanales en toda Bogota.</p>
-        </div>
-        <div class="ventaja-card__metric">
-          <span class="ventaja-card__metric-number">+50</span>
-          <span class="ventaja-card__metric-label">SABORES</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -122,27 +131,24 @@
 <section class="zonas-home">
   <div class="container">
     <div class="zonas-home__header" data-animate="fade-up">
-      <span class="zonas-home__label">// COBERTURA</span>
-      <h2 class="zonas-home__title">ZONAS DE<br>ENTREGA.</h2>
-      <p class="zonas-home__sub">Llevamos frescura a las principales localidades de Bogota</p>
+      <span class="zonas-home__tag">Cobertura</span>
+      <h2 class="zonas-home__headline">Zonas de<br><span>entrega.</span></h2>
+      <p class="zonas-home__sub">Llevamos frescura a las principales localidades de Bogotá</p>
     </div>
 
     <div class="zonas-home__grid">
       @for (zona of zonas; track zona.slug; let i = $index) {
-        <a [routerLink]="['/zonas', zona.slug]" class="zona-card" data-animate="fade-up" [attr.data-animate-delay]="i * 80">
-          <span class="zona-card__index">0{{ i + 1 }}</span>
-          <span class="zona-card__name">{{ zona.nombre }}</span>
-          <span class="zona-card__arrow">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
+        <a [routerLink]="['/zonas', zona.slug]" class="zona-chip" data-animate="fade-up" [attr.data-animate-delay]="i * 80">
+          <span class="zona-chip__dot"></span>
+          {{ zona.nombre }}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       }
     </div>
 
     <div class="zonas-home__footer" data-animate="fade-up">
       <a routerLink="/zonas" class="zonas-home__view-all">
-        VER TODAS LAS ZONAS
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Ver todas las zonas →
       </a>
     </div>
   </div>
@@ -150,26 +156,19 @@
 
 <!-- CTA FINAL -->
 <section class="cta-final">
-  <div class="cta-final__noise"></div>
+  <div class="cta-final__bg" aria-hidden="true">
+    <div class="cta-final__orb"></div>
+  </div>
   <div class="container">
     <div class="cta-final__content" data-animate="scale-up">
-      <span class="cta-final__label">// ABIERTOS TODOS LOS DIAS</span>
-      <h2 class="cta-final__title">
-        <span class="cta-final__title-line cta-final__title-line--1">PEDI TU</span>
-        <span class="cta-final__title-line cta-final__title-line--2">REFRESCO.</span>
+      <h2 class="cta-final__headline">
+        <span class="cta-final__line cta-final__line--1">Pedí tu</span>
+        <span class="cta-final__line cta-final__line--2">granizado.</span>
       </h2>
-      <p class="cta-final__sub">Sabor garantizado en cada sorbo. A domicilio.</p>
+      <p class="cta-final__sub">Sabor garantizado en cada sorbo. En tu puerta o en nuestro punto.</p>
       <div class="cta-final__actions">
-        <a [href]="'tel:' + contact.phoneFormatted" class="cta-final__btn cta-final__btn--phone">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          LLAMAR — {{ contact.phoneDisplay }}
-        </a>
-        <a [href]="contact.whatsapp" class="cta-final__btn cta-final__btn--wa" target="_blank" rel="noopener noreferrer">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          PEDIR POR WHATSAPP
-        </a>
+        <app-delivery-options variant="compact" theme="dark" />
       </div>
-      <p class="cta-final__guarantee">100% NATURAL · +50 SABORES · ENTREGA A DOMICILIO</p>
     </div>
   </div>
 </section>

@@ -1,168 +1,79 @@
-<!-- ══ Hero ══ -->
-<section class="sd-hero">
-  <div class="sd-hero__bg" aria-hidden="true"></div>
-  <div class="sd-hero__container">
-    <nav class="sd-hero__breadcrumb" aria-label="Breadcrumb">
+﻿<!-- ══ Hero ══ -->
+<section class="pd-hero">
+  <div class="pd-hero__bg" aria-hidden="true">
+    <div class="pd-hero__orb pd-hero__orb--1"></div>
+    <div class="pd-hero__orb pd-hero__orb--2"></div>
+  </div>
+  <div class="container">
+    <nav class="pd-hero__breadcrumb" aria-label="Breadcrumb">
       <a routerLink="/">Inicio</a>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      <a routerLink="/servicios">Servicios</a>
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      <a routerLink="/productos">Productos</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
       <span>{{ servicio.nombre }}</span>
     </nav>
 
-    <div class="sd-hero__content">
-      <div class="sd-hero__badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        Servicio Profesional
-      </div>
-      <h1>{{ servicio.nombre }}<br><span class="sd-hero__accent">en Bogotá</span></h1>
-      <p class="sd-hero__desc">{{ servicio.descripcionCorta }}</p>
-      <div class="sd-hero__actions">
-        <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="sd-hero__btn sd-hero__btn--wa">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.764-6.328-2.06l-.44-.33-3.095 1.037 1.037-3.095-.33-.44A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Solicitar Servicio
-        </a>
-        <a [href]="'tel:' + contact.phoneFormatted" class="sd-hero__btn sd-hero__btn--call">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Llamar Ahora
-        </a>
-      </div>
-    </div>
-
-    <!-- Trust indicators -->
-    <div class="sd-hero__trust">
-      <div class="sd-hero__trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Garantía escrita
-      </div>
-      <div class="sd-hero__trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Respuesta inmediata
-      </div>
-      <div class="sd-hero__trust-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        Técnicos certificados
+    <div class="pd-hero__content">
+      <div class="pd-hero__emoji">{{ servicio.emoji || servicio.icono }}</div>
+      <h1>{{ servicio.nombre }}</h1>
+      <p class="pd-hero__desc">{{ servicio.descripcionCorta }}</p>
+      @if (servicio.precio) {
+        <span class="pd-hero__price">{{ servicio.precio }}</span>
+      }
+      <div class="pd-hero__actions">
+        <app-delivery-options variant="mini" theme="dark" />
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══ Contenido ══ -->
-<section class="sd-body">
-  <div class="sd-body__container">
-
-    <!-- Main content -->
-    <div class="sd-body__main">
-
-      <!-- Descripción -->
-      <div class="sd-body__section">
-        <div class="sd-body__section-header">
-          <div class="sd-body__section-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <h2>Descripción del Servicio</h2>
-        </div>
-        <div class="sd-body__text">
-          @for (parrafo of servicio.contenido; track $index) {
-            <p>{{ parrafo }}</p>
-          }
-        </div>
-      </div>
-
-      <!-- Ideal para -->
-      @if (servicio.idealPara.length > 0) {
-        <div class="sd-body__section">
-          <div class="sd-body__section-header">
-            <div class="sd-body__section-icon sd-body__section-icon--green">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-            <h2>Ideal Para</h2>
-          </div>
-          <div class="sd-body__tags">
-            @for (item of servicio.idealPara; track $index) {
-              <span class="sd-body__tag">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                {{ item }}
-              </span>
+<section class="pd-body">
+  <div class="container">
+    <div class="pd-body__grid">
+      <div class="pd-body__main">
+        <div class="pd-body__section" data-animate="fade-up">
+          <h2>Sobre este producto</h2>
+          <div class="pd-body__text">
+            @for (parrafo of servicio.contenido; track $index) {
+              <p>{{ parrafo }}</p>
             }
           </div>
         </div>
-      }
 
-      <!-- CTA -->
-      <div class="sd-body__cta">
-        <div class="sd-body__cta-glow" aria-hidden="true"></div>
-        <div class="sd-body__cta-content">
-          <h3>¿Necesita servicio de {{ servicio.nombre }}?</h3>
-          <p>Contáctenos ahora para una cotización <em>sin compromiso</em>. Atención inmediata en toda Bogotá.</p>
-          <div class="sd-body__cta-actions">
-            <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="sd-body__cta-btn sd-body__cta-btn--wa">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
-              Escribir por WhatsApp
-            </a>
-            <a [href]="'tel:' + contact.phoneFormatted" class="sd-body__cta-btn sd-body__cta-btn--call">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Llamar Ahora
-            </a>
-            <a routerLink="/contacto" class="sd-body__cta-btn sd-body__cta-btn--form">
-              Solicitar Cotización
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+        @if (servicio.idealPara.length > 0) {
+          <div class="pd-body__section" data-animate="fade-up">
+            <h2>Ideal para</h2>
+            <div class="pd-body__tags">
+              @for (item of servicio.idealPara; track $index) {
+                <span class="pd-body__tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  {{ item }}
+                </span>
+              }
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sidebar -->
-    <aside class="sd-body__sidebar">
-
-      <!-- Quick info card -->
-      <div class="sd-body__info-card">
-        <h4>Información Rápida</h4>
-        <div class="sd-body__info-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div>
-            <strong>Tiempo de respuesta</strong>
-            <span>Mismo día</span>
-          </div>
-        </div>
-        <div class="sd-body__info-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div>
-            <strong>Cobertura</strong>
-            <span>Toda Bogotá</span>
-          </div>
-        </div>
-        <div class="sd-body__info-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <div>
-            <strong>Garantía</strong>
-            <span>Escrita en cada trabajo</span>
-          </div>
-        </div>
-        <div class="sd-body__info-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          <div>
-            <strong>Cotización</strong>
-            <span>Gratuita y sin compromiso</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Otros servicios -->
-      <div class="sd-body__related">
-        <h4>Otros Servicios</h4>
-        @for (otro of otrosServicios; track otro.slug) {
-          <a [routerLink]="['/servicios', otro.slug]" class="sd-body__related-link">
-            <span>{{ otro.nombre }}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
         }
-        <a routerLink="/servicios" class="sd-body__related-all">
-          Ver todos los servicios
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </div>
-    </aside>
+
+      <aside class="pd-body__sidebar">
+        <div class="pd-body__card" data-animate="fade-up">
+          <h3>¿Quieres probar?</h3>
+          <p>Pide por delivery o visítanos en Chapinero.</p>
+          <app-delivery-options variant="mini" theme="dark" />
+        </div>
+
+        @if (otrosServicios.length > 0) {
+          <div class="pd-body__related" data-animate="fade-up">
+            <h3>Otros productos</h3>
+            <ul>
+              @for (otro of otrosServicios; track otro.slug) {
+                <li><a [routerLink]="['/productos', otro.slug]">{{ otro.emoji || otro.icono }} {{ otro.nombre }}</a></li>
+              }
+            </ul>
+          </div>
+        }
+      </aside>
+    </div>
   </div>
 </section>

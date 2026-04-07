@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
 import { ZONAS } from '../../shared/data/zonas.data';
 import { CONTACT_INFO } from '../../shared/constants/contact-info';
+import { DeliveryOptions } from '../../shared/components/delivery-options/delivery-options';
 import { Hero } from './hero/hero';
 
 interface Producto {
@@ -14,7 +15,7 @@ interface Producto {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, Hero],
+  imports: [RouterLink, Hero, DeliveryOptions],
   templateUrl: './home.html',
   styleUrl: './home.scss'
 })

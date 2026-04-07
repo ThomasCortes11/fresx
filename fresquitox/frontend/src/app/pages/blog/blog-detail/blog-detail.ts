@@ -4,6 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SeoService } from '../../../core/services/seo.service';
 import { BLOG_POSTS, BlogPost } from '../../../shared/data/blog.data';
 import { CONTACT_INFO } from '../../../shared/constants/contact-info';
+import { DeliveryOptions } from '../../../shared/components/delivery-options/delivery-options';
 
 
 interface ContentBlock {
@@ -16,7 +17,7 @@ interface ContentBlock {
 
 @Component({
   selector: 'app-blog-detail',
-  imports: [RouterLink],
+  imports: [RouterLink, DeliveryOptions],
   templateUrl: './blog-detail.html',
   styleUrl: './blog-detail.scss',
   encapsulation: ViewEncapsulation.None,
@@ -63,7 +64,7 @@ export default class BlogDetail implements OnInit {
     this.readProgress = 0;
 
     this.seo.updateSeo({
-      title: this.post.titulo + ' | SEP Soluciones',
+      title: this.post.titulo + ' | Fresquitox',
       description: this.post.descripcionSeo,
       keywords: this.post.keywords,
       canonicalUrl: `/blog/${slug}`,
@@ -77,16 +78,16 @@ export default class BlogDetail implements OnInit {
         'headline': this.post.titulo,
         'description': this.post.descripcionSeo,
         'datePublished': this.post.fecha,
-        'author': { '@type': 'Organization', 'name': 'SEP Soluciones' },
-        'publisher': { '@type': 'Organization', 'name': 'SEP Soluciones', 'url': 'https://www.sepsoluciones.com' }
+        'author': { '@type': 'Organization', 'name': 'Fresquitox' },
+        'publisher': { '@type': 'Organization', 'name': 'Fresquitox', 'url': 'https://www.fresquitox.com' }
       },
       {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         'itemListElement': [
-          { '@type': 'ListItem', 'position': 1, 'name': 'Inicio', 'item': 'https://www.sepsoluciones.com/' },
-          { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': 'https://www.sepsoluciones.com/blog' },
-          { '@type': 'ListItem', 'position': 3, 'name': this.post.titulo, 'item': `https://www.sepsoluciones.com/blog/${slug}` }
+          { '@type': 'ListItem', 'position': 1, 'name': 'Inicio', 'item': 'https://www.fresquitox.com/' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Blog', 'item': 'https://www.fresquitox.com/blog' },
+          { '@type': 'ListItem', 'position': 3, 'name': this.post.titulo, 'item': `https://www.fresquitox.com/blog/${slug}` }
         ]
       }
     ]);

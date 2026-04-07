@@ -23,22 +23,22 @@ export default class BlogList implements OnInit {
 
   ngOnInit(): void {
     this.seo.updateSeo({
-      title: 'Blog de Plomería en Bogotá – Consejos y Guías | SEP Soluciones',
-      description: 'Blog de plomería con consejos, guías y tips para el cuidado de las tuberías de su hogar en Bogotá. Información profesional de SEP Soluciones.',
-      keywords: 'blog plomeria, consejos plomeria, tips plomeria bogota, guias plomeria hogar, como destapar tuberias, como detectar fugas, mantenimiento plomeria, blog plomeria profesional bogota',
+      title: 'Blog | Fresquitox — Granizados, Jugos y Refrescos en Bogotá',
+      description: 'Blog de Fresquitox: artículos sobre granizados artesanales, jugos naturales, eventos en Chapinero y todo sobre refrescos en Bogotá.',
+      keywords: 'blog fresquitox, granizados bogota, jugos naturales bogota, eventos chapinero, refrescos artesanales bogota',
       canonicalUrl: '/blog'
     });
 
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
       '@type': 'ItemList',
-      'name': 'Blog de Plomería',
-      'description': 'Artículos sobre consejos, guías y tips para el cuidado de las tuberías',
+      'name': 'Blog Fresquitox',
+      'description': 'Artículos sobre granizados, jugos naturales, eventos y refrescos artesanales en Bogotá',
       'itemListElement': this.posts.map((post, index) => ({
         '@type': 'ListItem',
         'position': index + 1,
         'name': post.titulo,
-        'url': `https://www.sepsoluciones.com/blog/${post.slug}`,
+        'url': `https://www.fresquitox.com/blog/${post.slug}`,
         'datePublished': post.fecha,
         'description': post.extracto
       }))

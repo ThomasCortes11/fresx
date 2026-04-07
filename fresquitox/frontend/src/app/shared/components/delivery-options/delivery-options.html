@@ -1,0 +1,46 @@
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- DELIVERY OPTIONS — Didi Food · Rappi · Punto Físico     -->
+<!-- ══════════════════════════════════════════════════════════ -->
+
+<div class="dlv" [class.dlv--compact]="variant === 'compact'" [class.dlv--mini]="variant === 'mini'" [class.dlv--light]="theme === 'light'">
+
+  <!-- FULL / COMPACT -->
+  @if (variant !== 'mini') {
+    <p class="dlv__label">
+      <span class="dlv__dot"></span>
+      Pide como quieras
+    </p>
+  }
+
+  <div class="dlv__grid">
+    <!-- Didi Food -->
+    <a [href]="contact.didiFood" target="_blank" rel="noopener noreferrer" class="dlv__card dlv__card--didi">
+      <span class="dlv__card-icon">🟠</span>
+      <span class="dlv__card-name">Didi Food</span>
+      @if (variant === 'full') {
+        <span class="dlv__card-desc">Delivery rápido</span>
+      }
+      <svg class="dlv__card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+
+    <!-- Rappi -->
+    <a [href]="contact.rappi" target="_blank" rel="noopener noreferrer" class="dlv__card dlv__card--rappi">
+      <span class="dlv__card-icon">🧡</span>
+      <span class="dlv__card-name">Rappi</span>
+      @if (variant === 'full') {
+        <span class="dlv__card-desc">Pide y recibe</span>
+      }
+      <svg class="dlv__card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+
+    <!-- Punto Físico -->
+    <a [href]="contact.googleMaps" target="_blank" rel="noopener noreferrer" class="dlv__card dlv__card--store">
+      <span class="dlv__card-icon">📍</span>
+      <span class="dlv__card-name">Punto Físico</span>
+      @if (variant === 'full') {
+        <span class="dlv__card-desc">Chapinero, Bogotá</span>
+      }
+      <svg class="dlv__card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+  </div>
+</div>

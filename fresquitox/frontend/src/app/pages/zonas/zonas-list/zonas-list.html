@@ -1,250 +1,221 @@
-<!-- ═══ HERO – Conversión inmediata ═══ -->
-<section class="hero-zonas">
-  <div class="hero-zonas__bg"></div>
+﻿<!-- ══ Hero ══ -->
+<section class="zl-hero">
+  <div class="zl-hero__bg" aria-hidden="true">
+    <div class="zl-hero__orb zl-hero__orb--1"></div>
+    <div class="zl-hero__orb zl-hero__orb--2"></div>
+  </div>
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a routerLink="/">Inicio</a>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      <span>Zonas de Servicio</span>
+      <a routerLink="/">Inicio</a> &gt; <span>Zonas de Entrega</span>
     </nav>
-
-    <div class="hero-zonas__content">
-      <div class="hero-zonas__badge">
-        <span class="hero-zonas__pulse-dot"></span>
-        Disponibles ahora — Atención inmediata
-      </div>
-      <h1>Plomeros en Bogotá 24/7<br><span>Atención inmediata en tu zona</span></h1>
-      <p class="hero-zonas__sub">Cobertura profesional en las <strong>20 localidades</strong> de Bogotá. Llegamos en minutos con técnicos certificados y equipos especializados.</p>
-
-      <div class="hero-zonas__actions">
-        <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="hero-zonas__cta hero-zonas__cta--primary">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          Solicitar servicio ahora
-        </a>
-        <a [href]="'tel:' + contact.phoneFormatted" class="hero-zonas__cta hero-zonas__cta--secondary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Llamar ya — {{ contact.phoneDisplay }}
-        </a>
-      </div>
-    </div>
-
-    <!-- Trust metrics -->
-    <div class="hero-zonas__metrics">
-      <div class="hero-zonas__metric">
-        <div class="hero-zonas__metric-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div>
-          <strong>4.9 ★</strong>
-          <span>+200 reseñas</span>
-        </div>
-      </div>
-      <div class="hero-zonas__metric-divider"></div>
-      <div class="hero-zonas__metric">
-        <div class="hero-zonas__metric-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div>
-          <strong>20–55 min</strong>
-          <span>tiempo de llegada</span>
-        </div>
-      </div>
+    <div class="zl-hero__content">
+      <span class="zl-hero__badge">📍 Cobertura en Bogotá</span>
+      <h1>Punto físico en<br><span>Chapinero.</span><br>Domicilios en toda Bogotá.</h1>
+      <p>Visítanos en nuestro local o pide a domicilio. Llegamos frescos a tu puerta.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ Trust strip ═══ -->
-<section class="zonas-trust">
+<!-- ══ Mapa de Bogotá ══ -->
+<section class="zl-map">
   <div class="container">
-    <div class="zonas-trust__inner">
-      <div class="zonas-trust__item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span><strong>20</strong> localidades cubiertas</span>
-      </div>
-      <div class="zonas-trust__item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <span>Técnicos <strong>certificados</strong></span>
-      </div>
-      <div class="zonas-trust__item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span><strong>Garantía</strong> por escrito</span>
-      </div>
-      <div class="zonas-trust__item">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span>Emergencias <strong>24/7</strong></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ Map + Cards ═══ -->
-<section class="zonas-main">
-  <div class="container">
-    <div class="zonas-main__header" data-animate="fade-up">
-      <h2>Encuentra tu <span>plomero por zona</span></h2>
-      <p>Selecciona tu localidad en el mapa o busca en las tarjetas. Plomería urgente, destapadas 24 horas y más.</p>
-    </div>
-
-    <div class="zonas-main__layout">
-
-      <!-- Mapa interactivo de Bogota -->
-      <div class="zonas-main__map" data-animate="fade-up">
-        <div class="zonas-main__map-header">
-          <h3 class="zonas-main__map-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Cobertura en Bogotá, D.C.
-          </h3>
-          <span class="zonas-main__map-status">
-            <span class="zonas-main__map-live"></span>
-            En servicio
-          </span>
-        </div>
-        <div class="zonas-main__svg-wrap">
-          <div class="bogota-map__frame">
-            <img src="images/og/Mapa_Bogota.svg" alt="Mapa de localidades de Bogotá con cobertura de plomería" class="bogota-map__img">
-            <svg viewBox="0 0 1024 720" class="bogota-map__overlay" xmlns="http://www.w3.org/2000/svg" aria-label="Puntos de cobertura de plomería en Bogotá">
-              @for (zona of zonas; track zona.slug) {
-                <g class="bogota-map__zone"
-                   [class.is-active]="hoveredSlug === zona.slug"
-                   (mouseenter)="hoveredSlug = zona.slug"
-                   (mouseleave)="hoveredSlug = null"
-                   (click)="goToZona(zona.slug)"
-                   (keydown.enter)="goToZona(zona.slug)"
-                   tabindex="0"
-                   [attr.aria-label]="'Ver zona ' + zona.nombre"
-                   style="cursor:pointer">
-                  <circle class="bogota-map__pulse"
-                    [attr.cx]="mapDots[zona.slug].x"
-                    [attr.cy]="mapDots[zona.slug].y" r="26"/>
-                  <circle class="bogota-map__dot"
-                    [attr.cx]="mapDots[zona.slug].x"
-                    [attr.cy]="mapDots[zona.slug].y" r="8"/>
-                  <text class="bogota-map__label"
-                    [attr.x]="mapDots[zona.slug].x"
-                    [attr.y]="mapDots[zona.slug].y - 18"
-                    text-anchor="middle">{{ zona.nombre }}</text>
-                </g>
-              }
-            </svg>
+    <div class="zl-map__grid" data-animate="fade-up">
+      <div class="zl-map__visual">
+        <div class="zl-map__bogota">
+          <div class="zl-map__title-row">
+            <span class="zl-map__map-title">Bogotá D.C.</span>
+            <span class="zl-map__map-legend">
+              <span class="zl-map__legend-dot zl-map__legend-dot--fisico"></span> Punto físico
+              <span class="zl-map__legend-dot zl-map__legend-dot--delivery"></span> Domicilio
+            </span>
           </div>
+
+          <!-- Mapa SVG real de Bogotá por localidades -->
+          <svg viewBox="0 0 500 780" xmlns="http://www.w3.org/2000/svg" class="zl-map__svg">
+            <defs>
+              <filter id="chapGlow">
+                <feGaussianBlur stdDeviation="10" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <radialGradient id="chapGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F33283" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#F33283" stop-opacity="0.2"/>
+              </radialGradient>
+              <linearGradient id="deliveryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF6B9A" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#F33283" stop-opacity="0.08"/>
+              </linearGradient>
+            </defs>
+
+            <!-- ======= LOCALIDADES NO CUBIERTAS (muy tenues) ======= -->
+            <!-- Santa Fe -->
+            <path d="M275,350 L310,310 L350,350 L415,365 L435,395 L415,435 L365,445 L315,420 L280,390Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- La Candelaria -->
+            <path d="M265,410 L280,390 L315,420 L305,440 L275,435Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Los Mártires -->
+            <path d="M195,370 L230,370 L265,378 L270,410 L240,420 L200,415Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Puente Aranda -->
+            <path d="M130,360 L180,365 L195,390 L190,435 L145,445 L115,435 L120,385Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Antonio Nariño -->
+            <path d="M270,435 L305,440 L320,460 L300,480 L265,470 L255,450Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- San Cristóbal -->
+            <path d="M365,445 L415,435 L445,455 L460,510 L450,560 L410,575 L370,545 L340,495Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Rafael Uribe Uribe -->
+            <path d="M270,470 L300,480 L340,495 L370,545 L345,570 L295,565 L260,540 L250,500Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Tunjuelito -->
+            <path d="M190,450 L250,455 L260,490 L260,540 L215,545 L190,510 L185,470Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Bosa -->
+            <path d="M25,555 L60,555 L130,565 L150,590 L120,625 L70,630 L30,610 L15,575Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Ciudad Bolívar -->
+            <path d="M70,630 L120,625 L175,600 L240,575 L295,565 L345,575 L355,610 L345,660 L310,700 L255,720 L190,730 L130,710 L90,680Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+            <!-- Usme -->
+            <path d="M345,570 L370,545 L410,575 L450,560 L470,610 L475,670 L455,720 L415,745 L365,735 L325,700 L315,650 L335,610Z" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="0.7"/>
+
+            <!-- ======= ZONAS DE DELIVERY (activas, rosa translúcido) ======= -->
+            <!-- Suba — NW, muy grande -->
+            <path d="M95,30 L195,12 L265,35 L265,120 L265,190 L200,220 L110,230 L50,225 L30,170 L28,100 L55,55Z" fill="url(#deliveryGrad)" stroke="rgba(255,107,154,0.25)" stroke-width="1" class="zl-map__zona zl-map__zona--delivery"/>
+            <text x="155" y="130" class="zl-map__label">Suba</text>
+
+            <!-- Usaquén — NE, grande -->
+            <path d="M265,35 L340,12 L415,22 L448,75 L458,145 L455,210 L340,200 L305,190 L265,190 L265,120Z" fill="url(#deliveryGrad)" stroke="rgba(255,107,154,0.25)" stroke-width="1" class="zl-map__zona zl-map__zona--delivery"/>
+            <text x="360" y="120" class="zl-map__label">Usaquén</text>
+
+            <!-- Barrios Unidos — centro-norte, pequeña -->
+            <path d="M200,220 L265,200 L305,200 L290,265 L255,290 L200,285 L180,260Z" fill="url(#deliveryGrad)" stroke="rgba(255,107,154,0.25)" stroke-width="1" class="zl-map__zona zl-map__zona--delivery"/>
+            <text x="240" y="250" class="zl-map__label">B. Unidos</text>
+
+            <!-- Engativá — oeste -->
+            <path d="M28,235 L110,230 L200,225 L180,260 L175,325 L130,360 L85,370 L25,355 L18,290Z" fill="url(#deliveryGrad)" stroke="rgba(255,107,154,0.25)" stroke-width="1" class="zl-map__zona zl-map__zona--delivery"/>
+            <text x="100" y="300" class="zl-map__label">Engativá</text>
+
+            <!-- Teusaquillo — centro -->
+            <path d="M200,285 L255,290 L290,310 L275,350 L230,370 L180,365 L175,325 L180,300Z" fill="url(#deliveryGrad)" stroke="rgba(255,107,154,0.25)" stroke-width="1" class="zl-map__zona zl-map__zona--delivery"/>
+            <text x="230" y="335" class="zl-map__label">Teusaquillo</text>
+
+            <!-- Fontibón — suroeste -->
+            <path d="M18,360 L85,370 L120,385 L115,435 L80,460 L28,455 L12,415Z" fill="url(#deliveryGrad)" stroke="rgba(255,107,154,0.25)" stroke-width="1" class="zl-map__zona zl-map__zona--delivery"/>
+            <text x="65" y="418" class="zl-map__label">Fontibón</text>
+
+            <!-- Kennedy — sur-oeste, grande -->
+            <path d="M12,455 L80,460 L145,445 L190,450 L200,490 L185,545 L130,565 L60,555 L25,525 L10,480Z" fill="url(#deliveryGrad)" stroke="rgba(255,107,154,0.25)" stroke-width="1" class="zl-map__zona zl-map__zona--delivery"/>
+            <text x="110" y="510" class="zl-map__label">Kennedy</text>
+
+            <!-- ======= CHAPINERO — PUNTO FÍSICO (destacadísimo) ======= -->
+            <!-- Aura de fondo grande -->
+            <ellipse cx="370" cy="290" rx="90" ry="75" fill="rgba(243,50,131,0.06)" class="zl-map__chap-aura"/>
+
+            <!-- Localidad Chapinero — franja este entre Usaquén y Santa Fe -->
+            <path d="M305,200 L340,200 L455,210 L462,270 L462,345 L415,365 L350,350 L310,310 L290,265Z" fill="url(#chapGrad)" stroke="#F33283" stroke-width="2.5" stroke-linejoin="round" filter="url(#chapGlow)" class="zl-map__zona zl-map__zona--chapinero"/>
+
+            <!-- Anillos pulsantes -->
+            <ellipse cx="375" cy="280" rx="50" ry="45" fill="none" stroke="#F33283" stroke-width="1.2" opacity="0.35" class="zl-map__chap-ring zl-map__chap-ring--1"/>
+            <ellipse cx="375" cy="280" rx="70" ry="62" fill="none" stroke="#F33283" stroke-width="0.8" opacity="0.18" class="zl-map__chap-ring zl-map__chap-ring--2"/>
+            <ellipse cx="375" cy="280" rx="90" ry="80" fill="none" stroke="#F33283" stroke-width="0.5" opacity="0.08" class="zl-map__chap-ring zl-map__chap-ring--3"/>
+
+            <!-- Pin central Chapinero -->
+            <circle cx="375" cy="280" r="10" fill="#F33283" class="zl-map__chap-dot"/>
+            <circle cx="375" cy="280" r="5" fill="#fff"/>
+            <!-- Pin icon shape -->
+            <path d="M375,260 C365,260 358,268 358,277 C358,290 375,306 375,306 C375,306 392,290 392,277 C392,268 385,260 375,260Z" fill="#F33283" opacity="0.5" class="zl-map__chap-pin"/>
+
+            <!-- Label pill Chapinero -->
+            <g class="zl-map__chap-label">
+              <rect x="268" y="225" width="150" height="30" rx="15" fill="#F33283"/>
+              <text x="343" y="244" fill="#fff" font-size="12" font-weight="800" font-family="Space Grotesk, sans-serif" text-anchor="middle" letter-spacing="1">CHAPINERO</text>
+            </g>
+            <text x="375" y="310" fill="rgba(255,255,255,0.6)" font-size="10" font-family="Space Grotesk, sans-serif" font-weight="700" text-anchor="middle">Punto Físico</text>
+
+            <!-- Líneas de delivery desde Chapinero -->
+            <g class="zl-map__routes" opacity="0.18">
+              <line x1="375" y1="280" x2="155" y2="130" stroke="#F33283" stroke-width="1" stroke-dasharray="4,6"/>
+              <line x1="375" y1="280" x2="360" y2="120" stroke="#F33283" stroke-width="1" stroke-dasharray="4,6"/>
+              <line x1="375" y1="280" x2="240" y2="250" stroke="#F33283" stroke-width="1" stroke-dasharray="4,6"/>
+              <line x1="375" y1="280" x2="100" y2="300" stroke="#F33283" stroke-width="1" stroke-dasharray="4,6"/>
+              <line x1="375" y1="280" x2="230" y2="335" stroke="#F33283" stroke-width="1" stroke-dasharray="4,6"/>
+              <line x1="375" y1="280" x2="65" y2="418" stroke="#F33283" stroke-width="1" stroke-dasharray="4,6"/>
+              <line x1="375" y1="280" x2="110" y2="510" stroke="#F33283" stroke-width="1" stroke-dasharray="4,6"/>
+            </g>
+
+            <!-- Dots en cada zona delivery -->
+            <circle cx="155" cy="130" r="4.5" fill="#FF6B9A" opacity="0.55" class="zl-map__dot"/>
+            <circle cx="360" cy="120" r="4.5" fill="#FF6B9A" opacity="0.55" class="zl-map__dot"/>
+            <circle cx="240" cy="250" r="4.5" fill="#FF6B9A" opacity="0.55" class="zl-map__dot"/>
+            <circle cx="100" cy="300" r="4.5" fill="#FF6B9A" opacity="0.55" class="zl-map__dot"/>
+            <circle cx="230" cy="335" r="4.5" fill="#FF6B9A" opacity="0.55" class="zl-map__dot"/>
+            <circle cx="65" cy="418" r="4.5" fill="#FF6B9A" opacity="0.55" class="zl-map__dot"/>
+            <circle cx="110" cy="510" r="4.5" fill="#FF6B9A" opacity="0.55" class="zl-map__dot"/>
+          </svg>
         </div>
       </div>
 
-      <!-- Cards premium -->
-      <div class="zonas-main__cards">
-        @for (zona of zonas; track zona.slug; let i = $index) {
-          <a [routerLink]="['/zonas', zona.slug]" class="zona-card"
-             [class.is-active]="hoveredSlug === zona.slug"
-             (mouseenter)="hoveredSlug = zona.slug"
-             (mouseleave)="hoveredSlug = null"
-             data-animate="fade-up" [attr.data-animate-delay]="i * 50">
-
-            <div class="zona-card__head">
-              <div class="zona-card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div>
-                <h2 class="zona-card__title">Plomero en {{ zona.nombre }}</h2>
-                <p class="zona-card__desc">{{ zona.destacado }}</p>
-              </div>
-            </div>
-
-            <div class="zona-card__meta">
-              <div class="zona-card__time">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                {{ zona.tiempoRespuesta }}
-              </div>
-              <div class="zona-card__service-type">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                Destapes · Fugas · 24h
-              </div>
-            </div>
-
-            <div class="zona-card__footer">
-              <div class="zona-card__barrios">
-                @for (barrio of zona.barrios; track barrio) {
-                  <span>{{ barrio }}</span>
-                }
-              </div>
-              <span class="zona-card__arrow">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </span>
-            </div>
-          </a>
-        }
+      <div class="zl-map__info">
+        <div class="zl-map__store">
+          <span class="zl-map__store-badge">📍 Punto Físico</span>
+          <h3>Chapinero</h3>
+          <p>Visítanos en el corazón de Chapinero. Prueba toda nuestra carta en persona.</p>
+          <a routerLink="/zonas/chapinero" class="zl-map__store-btn">Ver ubicación →</a>
+        </div>
+        <div class="zl-map__delivery">
+          <h4>🛵 Domicilios disponibles</h4>
+          <p>Hacemos entregas en {{ zonas.length }} localidades de Bogotá</p>
+          <ul>
+            @for (zona of zonas; track zona.slug) {
+              <li>
+                <a [routerLink]="['/zonas', zona.slug]">
+                  @if (zona.esFisico) { 📍 } @else { 🛵 }
+                  {{ zona.nombre }}
+                  <span>{{ zona.tiempoRespuesta }}</span>
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ Por qué elegirnos ═══ -->
-<section class="zonas-porque" data-animate="fade-up">
+<!-- ══ Zonas cards ══ -->
+<section class="zl-zones">
   <div class="container">
-    <div class="zonas-porque__header">
-      <span class="zonas-porque__label">¿Por qué SEP Soluciones?</span>
-      <h2>Lo que nos diferencia de otros plomeros en Bogotá</h2>
+    <div class="zl-zones__header" data-animate="fade-up">
+      <h2>Nuestras zonas de entrega</h2>
+      <p>Selecciona tu localidad para ver barrios y tiempos de entrega</p>
     </div>
-
-    <div class="zonas-porque__grid">
-      <div class="zonas-porque__card" data-animate="fade-up" data-animate-delay="0">
-        <div class="zonas-porque__number">01</div>
-        <div class="zonas-porque__content">
-          <h3>Garantía real por escrito</h3>
-          <p>Todos nuestros trabajos incluyen garantía documentada. Si algo falla, volvemos sin costo adicional.</p>
-        </div>
-        <div class="zonas-porque__accent"></div>
-      </div>
-
-      <div class="zonas-porque__card" data-animate="fade-up" data-animate-delay="100">
-        <div class="zonas-porque__number">02</div>
-        <div class="zonas-porque__content">
-          <h3>Cotización antes de iniciar</h3>
-          <p>Te decimos el precio exacto antes de tocar una sola tubería. Cero sorpresas, cero costos ocultos.</p>
-        </div>
-        <div class="zonas-porque__accent"></div>
-      </div>
-
-      <div class="zonas-porque__card" data-animate="fade-up" data-animate-delay="200">
-        <div class="zonas-porque__number">03</div>
-        <div class="zonas-porque__content">
-          <h3>Llegamos en 20–55 minutos</h3>
-          <p>Servicio de emergencias 24/7, los 365 días del año. Atención inmediata cuando más lo necesitas.</p>
-        </div>
-        <div class="zonas-porque__accent"></div>
-      </div>
+    <div class="zl-zones__grid">
+      @for (zona of zonas; track zona.slug; let i = $index) {
+        <a [routerLink]="['/zonas', zona.slug]" class="zl-card" [class.zl-card--featured]="zona.esFisico" data-animate="fade-up" [attr.data-animate-delay]="i * 80">
+          <div class="zl-card__top">
+            @if (zona.esFisico) {
+              <span class="zl-card__badge">📍 Punto físico</span>
+            } @else {
+              <span class="zl-card__badge zl-card__badge--delivery">🛵 Domicilio</span>
+            }
+            <h3>{{ zona.nombre }}</h3>
+            <p class="zl-card__highlight">{{ zona.destacado }}</p>
+          </div>
+          <div class="zl-card__bottom">
+            <div class="zl-card__meta">
+              <span class="zl-card__time">⏱ {{ zona.tiempoRespuesta }}</span>
+              <span class="zl-card__barrios">{{ zona.barrios.length }} barrios</span>
+            </div>
+            <span class="zl-card__arrow">→</span>
+          </div>
+        </a>
+      }
     </div>
   </div>
 </section>
 
-<!-- ═══ CTA Final ═══ -->
-<section class="zonas-cta" data-animate="fade-up">
+<!-- ══ CTA ══ -->
+<section class="zl-cta">
   <div class="container">
-    <div class="zonas-cta__content">
-      <div class="zonas-cta__badge">🔧 Plomería urgente en Bogotá</div>
-      <h2>¿Emergencia de plomería?<br>Estamos listos para ayudarte</h2>
-      <p>Cobertura en las 20 localidades de Bogotá. Destapadas, reparación de fugas, instalaciones sanitarias y más. Llámanos y un técnico estará en camino.</p>
-      <div class="zonas-cta__actions">
-        <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="zonas-cta__btn zonas-cta__btn--wa">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          Escribir por WhatsApp
-        </a>
-        <a [href]="'tel:' + contact.phoneFormatted" class="zonas-cta__btn zonas-cta__btn--call">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          Escribir por WhatsApp
-        </a>
-        <a [href]="'tel:' + contact.phoneFormatted" class="zonas-cta__btn zonas-cta__btn--call">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Llamar Ahora — 24/7
-        </a>
-      </div>
+    <div class="zl-cta__content" data-animate="fade-up">
+      <h2>¿No ves tu zona?</h2>
+      <p>Escríbenos por WhatsApp y te confirmamos si llegamos a tu ubicación.</p>
+      <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="zl-cta__btn">
+        Preguntar por WhatsApp
+      </a>
     </div>
   </div>
 </section>
-
-<!-- ═══ Botón flotante WhatsApp ═══ -->
-<a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer"
-   class="floating-wa" aria-label="Contactar por WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-  <span class="floating-wa__tooltip">¿Necesitas un plomero?</span>
-</a>

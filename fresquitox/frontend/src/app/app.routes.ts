@@ -4,15 +4,15 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./pages/home/home'),
-    title: 'SEP Soluciones Élite | Plomería Profesional en Bogotá — Emergencias 24/7'
+    title: 'Fresquitox | Refrescos Naturales en Bogotá — Pedidos a Domicilio'
   },
   {
-    path: 'servicios',
+    path: 'productos',
     children: [
       {
         path: '',
         loadComponent: () => import('./pages/servicios/servicios-list/servicios-list'),
-        title: 'Servicios de Plomería en Bogotá | SEP Soluciones Élite'
+        title: 'Productos | Fresquitox — Granizados, Jugos y Más'
       },
       {
         path: ':slug',
@@ -26,7 +26,7 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('./pages/zonas/zonas-list/zonas-list'),
-        title: 'Zonas de Cobertura en Bogotá | SEP Soluciones Élite'
+        title: 'Zonas de Entrega en Bogotá | Fresquitox'
       },
       {
         path: ':slug',
@@ -35,14 +35,24 @@ export const routes: Routes = [
     ]
   },
   {
+    path: 'experiencia',
+    loadComponent: () => import('./pages/experiencia/experiencia'),
+    title: 'Experiencia | Fresquitox — Sabores que Despiertan Emociones'
+  },
+  {
+    path: 'eventos',
+    loadComponent: () => import('./pages/eventos/eventos'),
+    title: 'Eventos y Música en Vivo | Fresquitox Chapinero'
+  },
+  {
     path: 'nosotros',
     loadComponent: () => import('./pages/nosotros/nosotros'),
-    title: 'Nosotros — Empresa de Plomería en Bogotá | SEP Soluciones Élite'
+    title: 'Nosotros — Nuestra Historia | Fresquitox'
   },
   {
     path: 'contacto',
     loadComponent: () => import('./pages/contacto/contacto'),
-    title: 'Contacto — Plomero en Bogotá 24/7 | SEP Soluciones Élite'
+    title: 'Contacto | Fresquitox — Pedidos y Eventos'
   },
   {
     path: 'blog',
@@ -50,7 +60,7 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () => import('./pages/blog/blog-list/blog-list'),
-        title: 'Blog de Plomería — Consejos y Guías | SEP Soluciones Élite'
+        title: 'Blog | Fresquitox'
       },
       {
         path: ':slug',
@@ -61,11 +71,11 @@ export const routes: Routes = [
   {
     path: 'preguntas-frecuentes',
     loadComponent: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes'),
-    title: 'Preguntas Frecuentes sobre Plomería | SEP Soluciones Élite'
+    title: 'Preguntas Frecuentes | Fresquitox'
   },
   {
     path: '**',
     loadComponent: () => import('./pages/not-found/not-found'),
-    title: 'Página No Encontrada (404) | SEP Soluciones Élite'
+    title: 'Página No Encontrada (404) | Fresquitox'
   }
 ];

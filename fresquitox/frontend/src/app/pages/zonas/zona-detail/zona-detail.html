@@ -1,130 +1,102 @@
-<!-- ═══ HERO Detail ═══ -->
-<section class="detail-hero">
-  <div class="detail-hero__bg"></div>
+﻿<!-- HERO -->
+<section class="zd-hero">
+  <div class="zd-hero__orb zd-hero__orb--1"></div>
+  <div class="zd-hero__orb zd-hero__orb--2"></div>
   <div class="container">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+    <nav class="zd-bread" aria-label="Breadcrumb">
       <a routerLink="/">Inicio</a>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span class="zd-bread__sep">/</span>
       <a routerLink="/zonas">Zonas</a>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span class="zd-bread__sep">/</span>
       <span>{{ zona.nombre }}</span>
     </nav>
-
-    <div class="detail-hero__content">
-      <div class="detail-hero__badge">
-        <span class="detail-hero__pulse"></span>
-        Disponible ahora en {{ zona.nombre }}
-      </div>
-      <h1>Plomero en {{ zona.nombre }}, Bogotá</h1>
-      <p>Servicio profesional de plomería en {{ zona.nombre }} y alrededores. Destapadas, detección de fugas, instalaciones sanitarias y emergencias 24/7.</p>
-
-      <div class="detail-hero__meta">
-        <div class="detail-hero__meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <strong>{{ zona.tiempoRespuesta }}</strong>
+    <div class="zd-hero__inner">
+      <span class="zd-hero__badge">
+        @if (zona.esFisico) {
+          <span class="zd-hero__dot zd-hero__dot--store"></span> Punto F&iacute;sico
+        } @else {
+          <span class="zd-hero__dot"></span> Domicilio Activo
+        }
+      </span>
+      <h1>Fresquitox en {{ zona.nombre }}</h1>
+      <p class="zd-hero__desc">{{ zona.descripcionSeo }}</p>
+      <div class="zd-hero__meta">
+        <div class="zd-hero__meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          {{ zona.tiempoRespuesta }}
         </div>
-        <div class="detail-hero__meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <strong>{{ zona.barrios.length }}+ barrios</strong>
-        </div>
-        <div class="detail-hero__meta-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <strong>24/7</strong>
+        <div class="zd-hero__meta-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {{ zona.barrios.length }}+ barrios
         </div>
       </div>
-
-      <div class="detail-hero__actions">
-        <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="detail-hero__cta detail-hero__cta--primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-          Solicitar servicio
-        </a>
-        <a [href]="'tel:' + contact.phoneFormatted" class="detail-hero__cta detail-hero__cta--secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Llamar ahora
-        </a>
+      <div class="zd-hero__actions">
+        <app-delivery-options variant="mini" theme="dark" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ Barrios cubiertos ═══ -->
-<section class="detail-barrios">
+<!-- BARRIOS -->
+<section class="zd-barrios" data-animate>
   <div class="container">
-    <div class="detail-barrios__inner">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <span>Barrios:</span>
+    <div class="zd-barrios__head">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Barrios que cubrimos en {{ zona.nombre }}</span>
+    </div>
+    <div class="zd-barrios__tags">
       @for (barrio of zona.barrios; track barrio) {
-        <span class="detail-barrios__tag">{{ barrio }}</span>
+        <span class="zd-barrios__tag">{{ barrio }}</span>
       }
     </div>
   </div>
 </section>
 
-<!-- ═══ Contenido + Sidebar ═══ -->
-<section class="zona-detail">
+<!-- CONTENIDO + SIDEBAR -->
+<section class="zd-body">
   <div class="container">
-    <div class="zona-detail__content">
-      <div class="zona-detail__main">
+    <div class="zd-body__grid">
+      <div class="zd-body__main" data-animate>
         @for (parrafo of zona.contenido; track $index) {
           <p>{{ parrafo }}</p>
         }
 
-        <h2>Servicios de Plomería en {{ zona.nombre }}</h2>
-        <div class="zona-detail__servicios">
-          @for (servicio of servicios; track servicio.slug) {
-            <a [routerLink]="['/servicios', servicio.slug]" class="servicio-mini">
+        <h2>Nuestros Productos Disponibles en {{ zona.nombre }}</h2>
+        <div class="zd-productos">
+          @for (prod of productos; track prod.slug) {
+            <a [routerLink]="['/productos', prod.slug]" class="zd-prod">
+              <span class="zd-prod__emoji">{{ prod.emoji }}</span>
               <div>
-                <h3>{{ servicio.nombre }}</h3>
-                <p>{{ servicio.descripcionCorta }}</p>
+                <h3>{{ prod.nombre }}</h3>
+                <p>{{ prod.descripcionCorta }}</p>
               </div>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
           }
         </div>
 
-        <!-- CTA inline -->
-        <div class="zona-detail__cta">
-          <div class="zona-detail__cta-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <h2>¿Necesita un plomero en {{ zona.nombre }}?</h2>
-          <p>Llámenos ahora y un técnico certificado estará en su ubicación en el menor tiempo posible. Atención inmediata 24/7.</p>
-          <div class="zona-detail__cta-actions">
-            <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-              WhatsApp
-            </a>
-            <a [href]="'tel:' + contact.phoneFormatted" class="btn btn--primary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Llamar Ahora
-            </a>
-            <a [href]="'tel:' + contact.phoneFormatted" class="btn btn--primary">Llamar Ahora</a>
-            <a [href]="contact.whatsapp" class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <!-- CTA -->
+        <div class="zd-inline-cta" data-animate>
+          <span class="zd-inline-cta__emoji">🍧</span>
+          <h2>&iquest;Quieres Fresquitox en {{ zona.nombre }}?</h2>
+          <p>Haz tu pedido ahora y recibe tus refrescos artesanales favoritos directo a tu puerta.</p>
+          <div class="zd-inline-cta__actions">
+            <app-delivery-options variant="mini" theme="dark" />
           </div>
         </div>
       </div>
 
-      <aside class="zona-detail__sidebar">
-        <div class="sidebar-card">
-          <h3>Otras Zonas de Servicio</h3>
+      <aside class="zd-body__sidebar" data-animate data-animate-delay="150">
+        <div class="zd-sidebar-card">
+          <h3>Otras Zonas de Entrega</h3>
           @for (otra of otrasZonas; track otra.slug) {
-            <a [routerLink]="['/zonas', otra.slug]" class="sidebar-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a [routerLink]="['/zonas', otra.slug]" class="zd-sidebar-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               {{ otra.nombre }}
-              <span class="sidebar-link__time">{{ otra.tiempoRespuesta }}</span>
+              <span class="zd-sidebar-link__time">{{ otra.tiempoRespuesta }}</span>
             </a>
           }
-          <a routerLink="/zonas" class="sidebar-link sidebar-link--all">
-            Ver todas las zonas →
-          </a>
-        </div>
-
-        <div class="sidebar-card sidebar-card--cta">
-          <h3>¿Urgencia de plomería?</h3>
-          <p>Servicio inmediato en {{ zona.nombre }}. Técnicos disponibles las 24 horas.</p>
-          <a [href]="'tel:' + contact.phoneFormatted" class="btn btn--primary btn--block">
-            Llamar {{ contact.phoneDisplay }}
-          </a>
+          <a routerLink="/zonas" class="zd-sidebar-link zd-sidebar-link--all">Ver todas las zonas &rarr;</a>
         </div>
       </aside>
     </div>

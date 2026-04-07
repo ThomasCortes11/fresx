@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { CONTACT_INFO } from '../../../shared/constants/contact-info';
+import { DeliveryOptions } from '../../../shared/components/delivery-options/delivery-options';
 
 @Component({
   selector: 'app-hero',
-  imports: [RouterLink],
+  imports: [DeliveryOptions],
   templateUrl: './hero.html',
   styleUrl: './hero.scss'
 })

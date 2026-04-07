@@ -1,686 +1,500 @@
-﻿// Fresquitox — STREETWEAR UNDERGROUND EDITION
-// Dark cream bg with heavy grain, raw typography, slap stickers
-// Brown:    #4A2518 / #3A1A10 / #2A0E06
-// Pink:     #E91E8C / #FF2D9B / #D4186F
-// Cream:    #F5E6D0 / #EDD8BF
+﻿// ══════════════════════════════════════════════════════════
+// FRESQUITOX — Premium Hero
+// Black bg + Pink gradient orbs + Modern typography
+// ══════════════════════════════════════════════════════════
 
-// ══════════════════════════════════════════════════════════
-//  HERO – Street / Underground / Raw
-// ══════════════════════════════════════════════════════════
 .hero {
-  background: #F5E6D0;
-  color: #4A2518;
+  background: #000;
+  color: #fff;
   position: relative;
   overflow: hidden;
-  height: calc(100vh - 70px); // fit exactly in first viewport
+  min-height: calc(100vh - 76px);
   display: flex;
   flex-direction: column;
 
-  // ── Heavy noise grain overlay — gritty texture
-  &__noise {
+  // ── Gradient orbs — dreamy background
+  &__orbs {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 3;
-    opacity: 0.12;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 160px 160px;
-    background-repeat: repeat;
-  }
-
-  // ── Spray paint drip decoration
-  &__drip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0.04;
-    background:
-      radial-gradient(ellipse 2px 40px at 15% 0%, #4A2518 0%, transparent 100%),
-      radial-gradient(ellipse 3px 60px at 35% 0%, #E91E8C 0%, transparent 100%),
-      radial-gradient(ellipse 2px 35px at 72% 0%, #4A2518 0%, transparent 100%),
-      radial-gradient(ellipse 2px 50px at 88% 0%, #E91E8C 0%, transparent 100%);
-    background-repeat: no-repeat;
-  }
-
-  // ── Right-side color bleed — more aggressive
-  &__colorblock {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 55%;
-    height: 100%;
-    background: linear-gradient(150deg, rgba(233, 30, 140, 0.06) 0%, rgba(233, 30, 140, 0.22) 40%, rgba(233, 30, 140, 0.35) 100%);
-    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
-    pointer-events: none;
     z-index: 0;
   }
 
-  // ── Tape marquee — raw, tilted slightly
-  &__tape {
-    background: #E91E8C;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 0.55rem 0;
-    position: relative;
-    z-index: 6;
-    border-bottom: 4px solid #2A0E06;
-    transform: rotate(-0.3deg);
-    margin: 0 -1rem;
-  }
-
-  &__tape-track {
-    display: inline-flex;
-    align-items: center;
-    gap: 2.5rem;
-    animation: tape-scroll 18s linear infinite;
-    font-size: 0.7rem;
-    font-weight: 900;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: #fff;
-    padding-right: 2.5rem;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
-  }
-
-  &__tape-sep { opacity: 0.7; font-size: 0.55rem; }
-
-  // ── Street announcement bar
-  &__announcement {
-    background: #2A0E06;
-    border-bottom: 4px solid #1A0A04;
-    padding: 0.7rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #F5E6D0;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 5;
-
-    &-div { opacity: 0.25; }
-
-    &-cta {
-      color: #FF2D9B;
-      text-decoration: none;
-      font-weight: 900;
-      border-bottom: 2px solid #FF2D9B;
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
-      &:hover { opacity: 0.7; }
-    }
-  }
-
-  // ── Main grid container — fills remaining space
-  &__container {
-    max-width: 1320px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0.5rem 2.5rem 0.5rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    align-items: center;
-    position: relative;
-    z-index: 4;
-    flex: 1;
-  }
-
-  &__content { position: relative; z-index: 2; }
-
-  // ── Slap sticker badge — more raw, tilted, thick border
-  &__sticker {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 4px solid #2A0E06;
-    background: #fff;
-    color: #2A0E06;
-    padding: 0.3rem 1.1rem;
-    font-size: 0.65rem;
-    font-weight: 900;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    transform: rotate(-3deg);
-    box-shadow: 6px 6px 0 #2A0E06;
-    animation: sticker-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: 0.05s;
-    position: relative;
-
-    // Peeled corner effect
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      right: -4px;
-      width: 16px;
-      height: 16px;
-      background: linear-gradient(135deg, #F5E6D0 50%, #2A0E06 50%);
-    }
-  }
-
-  &__sticker-icon { font-size: 0.85rem; }
-  &__sticker-sep { opacity: 0.35; font-weight: 400; }
-
-  // ── Headline – MASSIVE, raw, layered shadows, graffiti feel
-  &__headline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-bottom: 0.4rem;
-    animation: content-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: 0.12s;
-  }
-
-  &__headline-line {
-    display: block;
-    font-size: clamp(3.5rem, 7vw, 7rem);
-    font-weight: 900;
-    line-height: 0.82;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
 
     &--1 {
-      color: #2A0E06;
-      text-shadow:
-        4px 4px 0 rgba(233, 30, 140, 0.15),
-        -1px -1px 0 rgba(74, 37, 24, 0.08);
+      width: 500px;
+      height: 500px;
+      background: rgba(243, 50, 131, 0.25);
+      top: -10%;
+      right: -5%;
+      animation: orb-float 8s ease-in-out infinite;
     }
 
     &--2 {
-      color: transparent;
-      -webkit-text-stroke: 4px #E91E8C;
-      filter: drop-shadow(3px 3px 0 rgba(42, 14, 6, 0.1));
+      width: 350px;
+      height: 350px;
+      background: rgba(255, 107, 154, 0.15);
+      bottom: 10%;
+      left: -8%;
+      animation: orb-float 10s ease-in-out infinite 2s;
     }
 
     &--3 {
-      color: #E91E8C;
-      text-shadow:
-        5px 5px 0 rgba(42, 14, 6, 0.12),
-        -2px -2px 0 rgba(233, 30, 140, 0.1);
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 167, 215, 0.12);
+      top: 40%;
+      left: 40%;
+      animation: orb-float 12s ease-in-out infinite 4s;
     }
   }
 
-  // ── Sub — street separator style
-  &__sub {
-    font-size: 0.68rem;
-    font-weight: 900;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: #6B3A2A;
-    opacity: 0.55;
-    margin-bottom: 0.4rem;
-    animation: content-up 0.7s ease both;
-    animation-delay: 0.22s;
-  }
-
-  &__description {
-    font-size: 0.82rem;
-    color: #5A2E1E;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
-    max-width: 400px;
-    animation: content-up 0.7s ease both;
-    animation-delay: 0.3s;
-  }
-
-  // ── CTAs — chunky, raw, bold
-  &__actions {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.75rem;
-    animation: content-up 0.7s ease both;
-    animation-delay: 0.37s;
-  }
-
-  &__cta-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    background: #E91E8C;
-    color: #fff;
-    padding: 0.7rem 1.75rem;
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    border: 4px solid #2A0E06;
-    box-shadow: 6px 6px 0 #2A0E06;
-    transition: transform 0.1s, box-shadow 0.1s;
-
-    svg { flex-shrink: 0; }
-
-    &:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 9px 9px 0 #2A0E06;
-    }
-
-    &:active {
-      transform: translate(4px, 4px);
-      box-shadow: 1px 1px 0 #2A0E06;
-    }
-  }
-
-  &__cta-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: #fff;
-    color: #2A0E06;
-    padding: 0.7rem 1.5rem;
-    text-decoration: none;
-    font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    border: 4px solid #2A0E06;
-    box-shadow: 5px 5px 0 #2A0E06;
-    transition: transform 0.1s, box-shadow 0.1s;
-
-    &:hover {
-      transform: translate(-3px, -3px);
-      box-shadow: 8px 8px 0 #2A0E06;
-    }
-  }
-
-  // ── Hashtag tags — graffiti style
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    animation: content-up 0.7s ease both;
-    animation-delay: 0.44s;
-  }
-
-  &__tag {
-    font-size: 0.7rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #4A2518;
-    opacity: 0.35;
-    text-decoration: none;
-    transition: color 0.2s, opacity 0.2s, transform 0.2s;
-    position: relative;
-
-    &:hover {
-      color: #E91E8C;
-      opacity: 1;
-      transform: rotate(-2deg) scale(1.05);
-    }
-  }
-
-  // ── Stats — bold, underground
-  &__stats {
-    display: flex;
-    gap: 0;
-    padding-top: 0.75rem;
-    border-top: 4px solid rgba(42, 14, 6, 0.15);
-    animation: content-up 0.7s ease both;
-    animation-delay: 0.5s;
-  }
-
-  &__stat {
-    display: flex;
-    flex-direction: column;
-    padding-right: 1.5rem;
-    margin-right: 1.5rem;
-    border-right: 4px solid rgba(42, 14, 6, 0.1);
-
-    &:last-child {
-      border-right: none;
-      margin-right: 0;
-      padding-right: 0;
-    }
-
-    &-number {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      color: #2A0E06;
-      line-height: 1;
-    }
-
-    &-label {
-      font-size: 0.58rem;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #6B3A2A;
-      opacity: 0.4;
-      margin-top: 0.3rem;
-    }
-  }
-
-  // ── Right: brand image
-  &__brand {
-    position: relative;
-    z-index: 2;
-    animation: brand-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: 0.2s;
-  }
-
-  // ── Starburst splash — bigger, bolder
-  &__splash {
-    position: absolute;
-    width: 1080px;
-    height: 1080px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(15deg);
-    background: #E91E8C;
-    clip-path: polygon(
-      50% 0%, 59% 35%, 93% 20%, 70% 48%,
-      100% 50%, 70% 52%, 93% 80%, 59% 65%,
-      50% 100%, 41% 65%, 7% 80%, 30% 52%,
-      0% 50%, 30% 48%, 7% 20%, 41% 35%
-    );
-    opacity: 0.22;
-    z-index: 0;
-    animation: splash-spin 18s linear infinite;
-  }
-
-  // ── Decorative bubbles
-  &__deco {
+  // ── Grid pattern overlay
+  &__grid-pattern {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 1;
+    opacity: 0.03;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  // ── Floating bubbles
+  &__bubbles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
     overflow: hidden;
   }
 
   &__bubble {
     position: absolute;
     border-radius: 50%;
-    border: none;
-    background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 70%);
-    box-shadow: inset 0 -6px 12px rgba(233, 30, 140, 0.08), 0 0 8px rgba(255, 255, 255, 0.3);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15) 0%, rgba(243, 50, 131, 0.05) 60%, transparent 70%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 
-    &::after {
-      content: '';
-      position: absolute;
-      width: 30%;
-      height: 20%;
-      top: 18%;
-      left: 22%;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.6);
-      filter: blur(1px);
+    &--1 { width: 80px; height: 80px; top: 15%; right: 15%; animation: bubble-rise 7s ease-in-out infinite; }
+    &--2 { width: 40px; height: 40px; top: 30%; left: 10%; animation: bubble-rise 9s ease-in-out infinite 1.5s; }
+    &--3 { width: 60px; height: 60px; bottom: 20%; right: 25%; animation: bubble-rise 8s ease-in-out infinite 0.7s; }
+    &--4 { width: 24px; height: 24px; top: 60%; left: 30%; animation: bubble-rise 6s ease-in-out infinite 3s; }
+    &--5 { width: 50px; height: 50px; bottom: 30%; left: 5%; animation: bubble-rise 11s ease-in-out infinite 1s; }
+    &--6 { width: 32px; height: 32px; top: 80%; right: 40%; animation: bubble-rise 7.5s ease-in-out infinite 2s; }
+  }
+
+  // ── Tape marquee
+  &__tape {
+    background: linear-gradient(90deg, #F33283, #FF6B9A, #F33283);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0.6rem 0;
+    position: relative;
+    z-index: 6;
+  }
+
+  &__tape-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+    animation: tape-scroll 20s linear infinite;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    padding-right: 2rem;
+  }
+
+  &__tape-dot {
+    font-size: 0.4rem;
+    opacity: 0.6;
+  }
+
+  // ── Main container
+  &__container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+    flex: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  // ── Badge
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(243, 50, 131, 0.1);
+    border: 1px solid rgba(243, 50, 131, 0.2);
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #FF6B9A;
+    margin-bottom: 2rem;
+    animation: fade-in-up 0.6s ease both;
+  }
+
+  &__badge-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F33283;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  // ── Wordmark — brand typography image
+  &__wordmark {
+    margin-bottom: 1.5rem;
+    animation: fade-in-up 0.65s ease both;
+    animation-delay: 0.08s;
+  }
+
+  &__wordmark-img {
+    display: block;
+    width: clamp(240px, 40vw, 420px);
+    height: auto;
+    filter: drop-shadow(0 4px 24px rgba(243, 50, 131, 0.35));
+  }
+
+  // ── Headline — massive, modern
+  &__headline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    animation: fade-in-up 0.7s ease both;
+    animation-delay: 0.1s;
+  }
+
+  &__headline-line {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+    font-weight: 700;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+
+    &--1 {
+      color: #fff;
     }
 
-    &--1 { width: 64px; height: 64px; top: 6%; right: 10%; animation: bub-rise 6s ease-in-out infinite; }
-    &--2 { width: 32px; height: 32px; top: 18%; left: 48%; animation: bub-rise 8s ease-in-out infinite 1.2s; }
-    &--3 { width: 90px; height: 90px; bottom: 10%; left: 5%; opacity: 0.5; animation: bub-rise 7s ease-in-out infinite 0.5s; }
-    &--4 { width: 22px; height: 22px; top: 40%; right: 38%; animation: bub-rise 5s ease-in-out infinite 2.5s; }
-    &--5 { width: 48px; height: 48px; bottom: 22%; right: 15%; animation: bub-rise 9s ease-in-out infinite 0.8s; }
-    &--6 { width: 16px; height: 16px; top: 60%; left: 12%; animation: bub-rise 4.5s ease-in-out infinite 3s; }
-    &--7 { width: 72px; height: 72px; top: 12%; right: 30%; opacity: 0.4; animation: bub-rise 10s ease-in-out infinite 1.5s; }
-    &--8 { width: 18px; height: 18px; bottom: 35%; left: 30%; animation: bub-rise 5.5s ease-in-out infinite 0.3s; }
-    &--9 { width: 38px; height: 38px; top: 75%; right: 52%; opacity: 0.6; animation: bub-rise 7.5s ease-in-out infinite 2s; }
+    &--2 {
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+    }
+
+    &--3 {
+      background: linear-gradient(135deg, #F33283, #FF6B9A, #FFA7D7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
   }
 
-  &__logo {
+  // ── Sub
+  &__sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+    animation: fade-in-up 0.7s ease both;
+    animation-delay: 0.2s;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 440px;
+    animation: fade-in-up 0.7s ease both;
+    animation-delay: 0.3s;
+  }
+
+  // ── CTAs — modern, pill-shaped
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    animation: fade-in-up 0.7s ease both;
+    animation-delay: 0.4s;
+  }
+
+  &__cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, #F33283, #FF6B9A);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 4px 24px rgba(243, 50, 131, 0.35);
+    transition: all 0.3s ease;
+
+    svg { flex-shrink: 0; }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 40px rgba(243, 50, 131, 0.5);
+    }
+  }
+
+  &__cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: #fff;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(243, 50, 131, 0.5);
+      background: rgba(243, 50, 131, 0.08);
+      transform: translateY(-2px);
+    }
+  }
+
+  // ── Stats
+  &__stats {
+    display: flex;
+    gap: 2.5rem;
+    animation: fade-in-up 0.7s ease both;
+    animation-delay: 0.5s;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+
+    &-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    &-label {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: 0.35rem;
+      font-weight: 500;
+    }
+  }
+
+  // ── Right: visual with glow
+  &__visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: hero-visual-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.2s;
+  }
+
+  &__glow {
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(243, 50, 131, 0.2) 0%, rgba(243, 50, 131, 0.05) 50%, transparent 70%);
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  &__image {
     display: block;
-    width: 300%;
+    width: 120%;
     max-width: none;
     height: auto;
-    margin-left: -80%;
-    margin-right: -1%;
     position: relative;
     z-index: 1;
-    animation: logo-float 4s ease-in-out infinite;
-    filter: drop-shadow(0 8px 24px rgba(42, 14, 6, 0.18));
+    animation: float 5s ease-in-out infinite;
+    filter: brightness(0) invert(1) drop-shadow(0 20px 60px rgba(243, 50, 131, 0.3));
   }
 }
 
-// ── Animations – snappier, more raw
+// ── Animations
 @keyframes tape-scroll {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to { transform: translateX(-50%); }
 }
 
-@keyframes sticker-in {
-  from { opacity: 0; transform: rotate(-6deg) scale(0.7) translateY(10px); }
-  to   { opacity: 1; transform: rotate(-3deg) scale(1); }
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes content-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes hero-visual-in {
+  from { opacity: 0; transform: scale(0.9) translateX(40px); }
+  to { opacity: 1; transform: scale(1) translateX(0); }
 }
 
-@keyframes brand-in {
-  from { opacity: 0; transform: translateX(60px) scale(0.95); }
-  to   { opacity: 1; transform: translateX(0) scale(1); }
-}
-
-@keyframes logo-float {
+@keyframes float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-14px); }
+  50% { transform: translateY(-16px); }
 }
 
-@keyframes bub-rise {
-  0%   { transform: translateY(0) scale(1); opacity: var(--o, 1); }
-  50%  { transform: translateY(-18px) scale(1.08); opacity: calc(var(--o, 1) + 0.1); }
-  100% { transform: translateY(0) scale(1); opacity: var(--o, 1); }
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -15px) scale(1.05); }
+  66% { transform: translate(-15px, 10px) scale(0.95); }
 }
 
-@keyframes splash-spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 0.8; }
+  100% { transform: translateY(0) scale(1); opacity: 0.6; }
 }
 
-// ── Responsive ─────────────────────────────────────────────
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
+}
 
-// ── Tablet (≤960px): single column, logo on top
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+// ── Responsive ─────────────────────────────────────────
+
 @media (max-width: 960px) {
-  .hero__container {
-    grid-template-columns: 1fr;
-    padding: 2.5rem 1.5rem 3rem;
-    gap: 1.5rem;
+  .hero {
     min-height: auto;
   }
 
-  .hero { min-height: auto; }
-
-  .hero__brand {
-    order: -1;
-    text-align: center;
-    padding-bottom: 0;
-    margin-bottom: 0;
+  .hero__container {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem;
+    gap: 2rem;
   }
 
-  .hero__logo {
-    width: auto;
+  .hero__visual {
+    order: -1;
     max-width: 320px;
     margin: 0 auto;
   }
 
-  .hero__splash {
-    width: 380px;
-    height: 380px;
+  .hero__image {
+    width: 100%;
   }
-
-  .hero__colorblock { display: none; }
 
   .hero__headline-line {
-    font-size: clamp(3rem, 9vw, 5.5rem);
+    font-size: clamp(3rem, 10vw, 5.5rem);
   }
 
-  .hero__sticker { margin-bottom: 1.5rem; }
-
-  .hero__description { max-width: 100%; }
-
-  .hero__tape { transform: none; margin: 0; }
+  .hero__orb {
+    &--1 { width: 300px; height: 300px; }
+    &--2 { width: 200px; height: 200px; }
+  }
 
   .hero__bubble {
-    &--1 { width: 44px; height: 44px; }
-    &--3 { width: 60px; height: 60px; }
-    &--5 { width: 36px; height: 36px; }
-    &--7 { width: 48px; height: 48px; }
+    &--3, &--5 { display: none; }
   }
 }
 
-// ── Phone landscape / small tablet (≤600px)
 @media (max-width: 600px) {
-  .hero__tape { padding: 0.35rem 0; }
-
-  .hero__tape-track {
-    font-size: 0.55rem;
+  .hero__container {
+    padding: 2rem 1.25rem 2.5rem;
     gap: 1.5rem;
   }
 
-  .hero__announcement {
-    padding: 0.5rem 1rem;
-    font-size: 0.62rem;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .hero__container {
-    padding: 2rem 1.2rem 2.5rem;
-    gap: 1rem;
-  }
-
-  .hero__brand { order: -1; }
-
-  .hero__logo {
-    max-width: 240px;
-    margin: 0 auto;
-  }
-
-  .hero__splash {
-    width: 280px;
-    height: 280px;
-  }
-
-  .hero__sticker {
+  .hero__tape-track {
     font-size: 0.6rem;
-    padding: 0.3rem 0.8rem;
+    gap: 1.2rem;
+  }
+
+  .hero__badge {
+    font-size: 0.65rem;
+    padding: 0.35rem 1rem;
     margin-bottom: 1.25rem;
-    box-shadow: 3px 3px 0 #2A0E06;
-
-    &::after { display: none; }
   }
 
-  .hero__headline {
-    margin-bottom: 1rem;
-  }
+  .hero__visual { max-width: 240px; }
 
   .hero__headline-line {
-    font-size: clamp(2.4rem, 13vw, 3.5rem);
+    font-size: clamp(2.5rem, 14vw, 3.5rem);
 
-    &--2 { -webkit-text-stroke-width: 2px; }
+    &--2 { -webkit-text-stroke-width: 1.5px; }
   }
 
-  .hero__sub {
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
-  }
+  .hero__sub { font-size: 0.95rem; }
 
   .hero__description {
-    font-size: 0.82rem;
-    margin-bottom: 1.75rem;
+    font-size: 0.9rem;
     max-width: 100%;
   }
 
   .hero__actions {
     flex-direction: column;
-    gap: 0.6rem;
-    margin-bottom: 1.25rem;
+    gap: 0.75rem;
   }
 
   .hero__cta-primary,
   .hero__cta-secondary {
     justify-content: center;
     width: 100%;
-    padding: 0.85rem 1.5rem;
-    font-size: 0.68rem;
-    box-shadow: 3px 3px 0 #2A0E06;
   }
-
-  .hero__tags {
-    gap: 0.6rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .hero__tag { font-size: 0.6rem; }
 
   .hero__stats {
-    padding-top: 1.25rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
-    gap: 1rem;
   }
 
-  .hero__stat {
-    padding-right: 1rem;
-    margin-right: 1rem;
+  .hero__stat-number { font-size: 1.5rem; }
 
-    &-number { font-size: 1.35rem; }
-    &-label { font-size: 0.52rem; }
-  }
-
-  // Hide some bubbles, shrink the rest
   .hero__bubble {
-    &--3, &--7, &--9 { display: none; }
-    &--1 { width: 30px; height: 30px; }
-    &--5 { width: 24px; height: 24px; }
+    &--1, &--4, &--6 { display: none; }
+  }
+
+  .hero__orb {
+    &--1 { width: 200px; height: 200px; }
+    &--2 { display: none; }
+    &--3 { display: none; }
   }
 }
 
-// ── Small phones (≤400px)
 @media (max-width: 400px) {
   .hero__container { padding: 1.5rem 1rem 2rem; }
-
-  .hero__logo { max-width: 190px; }
-
-  .hero__splash {
-    width: 220px;
-    height: 220px;
-  }
-
-  .hero__headline-line {
-    font-size: clamp(2rem, 14vw, 2.8rem);
-  }
-
-  .hero__announcement {
-    font-size: 0.55rem;
-    padding: 0.4rem 0.75rem;
-
-    &-div { display: none; }
-  }
-
-  .hero__stat {
-    padding-right: 0.75rem;
-    margin-right: 0.75rem;
-
-    &-number { font-size: 1.15rem; }
-  }
-
-  .hero__cta-primary,
-  .hero__cta-secondary {
-    padding: 0.75rem 1rem;
-    font-size: 0.62rem;
-  }
-
-  // Only keep tiny bubbles
-  .hero__bubble {
-    &--1, &--5 { display: none; }
-  }
+  .hero__headline-line { font-size: clamp(2rem, 15vw, 3rem); }
 }

@@ -1,0 +1,140 @@
+<!-- HERO -->
+<section class="exp-hero">
+  <div class="exp-hero__orb exp-hero__orb--1"></div>
+  <div class="exp-hero__orb exp-hero__orb--2"></div>
+  <div class="exp-hero__orb exp-hero__orb--3"></div>
+  <div class="container">
+    <span class="exp-hero__badge" data-animate>✨ La Experiencia</span>
+    <h1 data-animate data-animate-delay="100">Más que un refresco,<br>una <em>experiencia sensorial</em></h1>
+    <p data-animate data-animate-delay="200">Cada producto Fresquitox está diseñado para despertar emociones. Descubre lo que cada sabor transmite y encuentra el que resuena contigo.</p>
+  </div>
+</section>
+
+<!-- EXPERIENCIAS -->
+<section class="exp-list">
+  <div class="container">
+    @for (prod of productos; track prod.slug; let i = $index) {
+      <article class="exp-card" [class.exp-card--reverse]="i % 2 !== 0" data-animate [attr.data-animate-delay]="i * 80">
+        <div class="exp-card__visual">
+          <span class="exp-card__emoji">{{ prod.emoji }}</span>
+          <div class="exp-card__glow"></div>
+        </div>
+        <div class="exp-card__content">
+          <span class="exp-card__number">0{{ i + 1 }}</span>
+          <h2>{{ prod.nombre }}</h2>
+          <p class="exp-card__tagline">{{ prod.descripcionCorta }}</p>
+
+          <div class="exp-card__experience">
+            <h3>🎭 Lo que transmite</h3>
+            @switch (prod.slug) {
+              @case ('granizados') {
+                <p>Una explosión de <strong>nostalgia y frescura</strong> que te transporta a las tardes de infancia bajo el sol. El crujido del hielo, el color vibrante del jarabe artesanal y ese primer sorbo que congela el tiempo. Es alegría pura en cada cristal de hielo.</p>
+              }
+              @case ('raspados') {
+                <p>La <strong>textura artesanal</strong> del hielo raspado a mano crea una experiencia táctil única. Cada cucharada es un viaje sensorial donde la suavidad del hielo se funde con sabores intensos. Transmite <strong>autenticidad y tradición</strong> callejera elevada a premium.</p>
+              }
+              @case ('jugos-naturales') {
+                <p><strong>Vitalidad y bienestar</strong> en estado líquido. El color natural de la fruta fresca, el aroma que se libera al servir y el sabor sin artificios reconectan con lo esencial. Cada sorbo transmite <strong>energía genuina</strong> y cuidado por tu cuerpo.</p>
+              }
+              @case ('limonadas') {
+                <p>El equilibrio perfecto entre <strong>acidez refrescante y dulzura sutil</strong>. Una limonada Fresquitox transmite <strong>simplicidad elegante</strong> — ese momento de pausa donde un trago frío resuelve todo. Es el refresco universal que une a todos.</p>
+              }
+              @case ('smoothies') {
+                <p><strong>Sofisticación y cuidado personal</strong>. La cremosidad envolvente, las texturas combinadas y los superfoods crean una experiencia que transmite <strong>wellness moderno</strong>. Es como un abrazo nutritivo que dice: "me lo merezco".</p>
+              }
+              @case ('cocteleria-sin-alcohol') {
+                <p><strong>Elegancia sin excesos</strong>. La presentación cuidada, los garnishes artísticos y los sabores complejos transmiten <strong>celebración consciente</strong>. Perfecto para quienes disfrutan el ritual del cóctel sin necesitar alcohol. Pura sofisticación social.</p>
+              }
+              @case ('estacion-de-refrescos') {
+                <p>La estación completa transmite <strong>generosidad y espectáculo</strong>. Ver las opciones desplegadas, elegir tu combinación y compartir con otros crea un <strong>momento comunitario</strong>. Es hospitalidad en su máxima expresión.</p>
+              }
+              @case ('fresquitox-con-licor') {
+                <p><strong>Fiesta y atrevimiento</strong>. El toque de licor transforma el refresco en una experiencia nocturna. Transmite <strong>desinhibición creativa</strong>, momentos de risa y la energía de quien sabe celebrar la vida con estilo.</p>
+              }
+              @default {
+                <p>Una experiencia única diseñada para sorprenderte.</p>
+              }
+            }
+          </div>
+
+          <div class="exp-card__senses">
+            <h3>👁️ Los sentidos</h3>
+            <div class="exp-card__sense-tags">
+              @switch (prod.slug) {
+                @case ('granizados') {
+                  <span class="sense-tag sense-tag--vista">👁️ Colores vibrantes</span>
+                  <span class="sense-tag sense-tag--tacto">🧊 Textura crujiente</span>
+                  <span class="sense-tag sense-tag--gusto">👅 Dulce intenso</span>
+                  <span class="sense-tag sense-tag--oido">👂 Crunch del hielo</span>
+                }
+                @case ('raspados') {
+                  <span class="sense-tag sense-tag--vista">👁️ Hielo artesanal</span>
+                  <span class="sense-tag sense-tag--tacto">🤲 Suave y sedoso</span>
+                  <span class="sense-tag sense-tag--gusto">👅 Sabores intensos</span>
+                  <span class="sense-tag sense-tag--temp">🌡️ Frío extremo</span>
+                }
+                @case ('jugos-naturales') {
+                  <span class="sense-tag sense-tag--vista">👁️ Color natural</span>
+                  <span class="sense-tag sense-tag--olfato">👃 Aroma frutal</span>
+                  <span class="sense-tag sense-tag--gusto">👅 Sabor puro</span>
+                  <span class="sense-tag sense-tag--energia">⚡ Energizante</span>
+                }
+                @case ('limonadas') {
+                  <span class="sense-tag sense-tag--vista">👁️ Cristalino</span>
+                  <span class="sense-tag sense-tag--gusto">👅 Cítrico perfecto</span>
+                  <span class="sense-tag sense-tag--temp">🌡️ Ultra refrescante</span>
+                  <span class="sense-tag sense-tag--olfato">👃 Aroma a limón</span>
+                }
+                @case ('smoothies') {
+                  <span class="sense-tag sense-tag--tacto">🤲 Cremoso</span>
+                  <span class="sense-tag sense-tag--gusto">👅 Complejo</span>
+                  <span class="sense-tag sense-tag--energia">⚡ Nutritivo</span>
+                  <span class="sense-tag sense-tag--vista">👁️ Capas de color</span>
+                }
+                @case ('cocteleria-sin-alcohol') {
+                  <span class="sense-tag sense-tag--vista">👁️ Presentación luxury</span>
+                  <span class="sense-tag sense-tag--olfato">👃 Aromático</span>
+                  <span class="sense-tag sense-tag--gusto">👅 Capas de sabor</span>
+                  <span class="sense-tag sense-tag--tacto">🥂 Elegante</span>
+                }
+                @case ('estacion-de-refrescos') {
+                  <span class="sense-tag sense-tag--vista">👁️ Espectáculo visual</span>
+                  <span class="sense-tag sense-tag--gusto">👅 Variedad infinita</span>
+                  <span class="sense-tag sense-tag--oido">👂 Ambiente festivo</span>
+                  <span class="sense-tag sense-tag--tacto">🎪 Interactivo</span>
+                }
+                @case ('fresquitox-con-licor') {
+                  <span class="sense-tag sense-tag--gusto">👅 Bold & atrevido</span>
+                  <span class="sense-tag sense-tag--temp">🔥 Cálido interior</span>
+                  <span class="sense-tag sense-tag--vista">👁️ Colores neon</span>
+                  <span class="sense-tag sense-tag--oido">🎵 Party vibes</span>
+                }
+                @default {
+                  <span class="sense-tag">✨ Único</span>
+                }
+              }
+            </div>
+          </div>
+
+          <a [routerLink]="['/productos', prod.slug]" class="exp-card__link">
+            Ver producto
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="exp-cta" data-animate>
+  <div class="exp-cta__orb"></div>
+  <div class="container">
+    <span class="exp-cta__emoji">🍧</span>
+    <h2>¿Listo para vivir la experiencia?</h2>
+    <p>Haz tu pedido ahora y descubre por qué miles en Bogotá eligen Fresquitox para refrescar sus momentos.</p>
+    <div class="exp-cta__actions">
+      <app-delivery-options variant="compact" theme="dark" />
+    </div>
+  </div>
+</section>

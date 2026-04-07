@@ -15,6 +15,7 @@ export class Header implements OnInit, OnDestroy {
   private scrollListener?: () => void;
   readonly contact = CONTACT_INFO;
   menuOpen = false;
+  orderOpen = false;
   scrolled = false;
 
   ngOnInit(): void {

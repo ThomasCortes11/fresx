@@ -1,1066 +1,140 @@
+﻿// ══════════════════════════════════════════════════════════
+// FRESQUITOX — Zonas List
 // ══════════════════════════════════════════════════════════
-//  ZONAS LIST – Rediseño Premium "Startup de Servicios"
-// ══════════════════════════════════════════════════════════
 
-// ── Palette ────────────────────────────────────
-$brand-dark:    #0a1628;
-$brand-navy:    #0f2440;
-$brand-blue:    #0066FF;
-$brand-blue-l:  #3d8bfd;
-$brand-accent:  #FF6B35;
-$brand-green:   #10B981;
-$brand-light:   #f0f4f8;
-$brand-surface: #ffffff;
-$text-primary:  #111827;
-$text-secondary:#6b7280;
-$border-soft:   #e5e7eb;
-$radius-lg:     16px;
-$radius-md:     12px;
-$shadow-card:   0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-$shadow-hover:  0 10px 40px rgba($brand-blue, 0.12), 0 4px 12px rgba(0,0,0,0.06);
-$ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
-
-// ── HERO ───────────────────────────────────────
-.hero-zonas {
-  position: relative;
-  background: linear-gradient(165deg, $brand-dark 0%, $brand-navy 45%, #003d99 100%);
-  padding: 5rem 1rem 3rem;
-  color: #fff;
-  overflow: hidden;
-
-  &__bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 80% 20%, rgba($brand-blue, 0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba($brand-accent, 0.06) 0%, transparent 60%);
-    pointer-events: none;
+.zl-hero {
+  position: relative; background: #000; padding: 6rem 0 4rem; overflow: hidden;
+  &__bg { position: absolute; inset: 0; pointer-events: none; }
+  &__orb { position: absolute; border-radius: 50%; filter: blur(100px);
+    &--1 { width: 400px; height: 400px; background: rgba(243,50,131,0.12); top: -15%; right: -5%; }
+    &--2 { width: 300px; height: 300px; background: rgba(255,107,154,0.08); bottom: -10%; left: -8%; }
   }
-
-  .container {
-    position: relative;
-    z-index: 1;
+  .breadcrumb { position: relative; z-index: 1; margin-bottom: 1.5rem;
+    a { color: rgba(255,255,255,0.5); text-decoration: none; &:hover { color: #F33283; } }
+    span { color: rgba(255,255,255,0.3); }
   }
-
-  .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-bottom: 2rem;
-    font-size: 0.85rem;
-
-    a {
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      transition: color 0.2s;
-      &:hover { color: #fff; }
-    }
-
-    svg { color: rgba(255,255,255,0.35); }
-    span { color: rgba(255,255,255,0.75); }
+  &__content { position: relative; z-index: 1; max-width: 640px; }
+  &__badge { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 600; color: #FF6B9A; background: rgba(243,50,131,0.1); border: 1px solid rgba(243,50,131,0.15); padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.25rem; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.12; color: #fff; margin-bottom: 1rem;
+    span { background: linear-gradient(135deg, #F33283, #FF6B9A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   }
-
-  &__content {
-    max-width: 680px;
-  }
-
-  &__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba($brand-green, 0.15);
-    border: 1px solid rgba($brand-green, 0.3);
-    color: $brand-green;
-    padding: 0.4rem 1rem;
-    border-radius: 100px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-    letter-spacing: 0.01em;
-  }
-
-  &__pulse-dot {
-    width: 8px;
-    height: 8px;
-    background: $brand-green;
-    border-radius: 50%;
-    animation: pulse-glow 2s infinite;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-
-    span {
-      background: linear-gradient(135deg, $brand-blue-l, #66a3ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-  }
-
-  &__sub {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-
-    strong { color: #fff; }
-  }
-
-  &__actions {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 0;
-  }
-
-  &__cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.85rem 1.6rem;
-    border-radius: $radius-md;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: transform 0.3s $ease-out, box-shadow 0.3s ease;
-
-    &:hover { transform: translateY(-2px); }
-
-    &--primary {
-      background: $brand-green;
-      color: #fff;
-      box-shadow: 0 4px 24px rgba($brand-green, 0.35);
-      &:hover { box-shadow: 0 8px 36px rgba($brand-green, 0.5); }
-    }
-
-    &--secondary {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(8px);
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba($brand-blue, 0.15), rgba(255,255,255,0.05));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      &:hover {
-        background: rgba(255,255,255,0.16);
-        border-color: rgba(255,255,255,0.4);
-        box-shadow: 0 8px 32px rgba($brand-blue, 0.2), 0 0 0 1px rgba(255,255,255,0.1);
-
-        &::before { opacity: 1; }
-      }
-
-      svg { position: relative; z-index: 1; }
-      span, & > * { position: relative; z-index: 1; }
-    }
-  }
-
-  // ── Trust metrics ────
-  &__metrics {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    flex-wrap: wrap;
-  }
-
-  &__metric {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-
-    strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.2;
-    }
-
-    span {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-    }
-  }
-
-  &__metric-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba($brand-blue, 0.15);
-    border-radius: 10px;
-    color: $brand-blue-l;
-    flex-shrink: 0;
-  }
-
-  &__metric-divider {
-    width: 1px;
-    height: 32px;
-    background: rgba(255,255,255,0.1);
-  }
+  p { font-size: 1rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba($brand-green, 0.4); }
-  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba($brand-green, 0); }
-}
-
-// ── Trust strip ────────────────────────────────
-.zonas-trust {
-  background: $brand-surface;
-  border-bottom: 1px solid $border-soft;
-  padding: 1rem 0;
-
-  &__inner {
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
+// ── Map Section
+.zl-map { padding: 5rem 0; background: var(--fq-off-white);
+  &__grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem; align-items: start; }
+  &__visual { position: relative; }
+  &__bogota { background: #0a0a0a; border-radius: 24px; padding: 1.5rem 2rem 2rem; border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden;
+    &::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 65% 40%, rgba(243,50,131,0.06) 0%, transparent 60%); pointer-events: none; }
   }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-size: 0.82rem;
-    color: $text-secondary;
-
-    svg { color: $brand-blue; flex-shrink: 0; }
-    strong { color: $text-primary; font-weight: 700; }
+  &__title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; position: relative; z-index: 1; }
+  &__map-title { font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; text-transform: uppercase; }
+  &__map-legend { display: flex; align-items: center; gap: 0.75rem; font-size: 0.7rem; color: rgba(255,255,255,0.35); font-weight: 500; }
+  &__legend-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.25rem;
+    &--fisico { background: #F33283; box-shadow: 0 0 6px rgba(243,50,131,0.5); }
+    &--delivery { background: #FF6B9A; opacity: 0.5; }
   }
-}
-
-// ── Main section (map + cards) ─────────────────
-.zonas-main {
-  padding: 3.5rem 0 4.5rem;
-  background: linear-gradient(180deg, #f8faff 0%, $brand-light 100%);
-
-  &__header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-
-    h2 {
-      font-size: clamp(1.4rem, 3vw, 1.9rem);
-      font-weight: 800;
-      color: $text-primary;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-
-      span {
-        background: linear-gradient(135deg, $brand-blue, $brand-blue-l);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+  &__svg { width: 100%; height: auto; display: block; }
+  &__zona { transition: all 0.3s;
+    &--delivery:hover { fill: rgba(255,107,154,0.15); stroke: rgba(255,107,154,0.35); cursor: pointer; }
+    &--chapinero { animation: chapBreathe 3s ease-in-out infinite; cursor: pointer;
+      &:hover { fill: rgba(243,50,131,0.4); }
     }
-
-    p {
-      font-size: 1rem;
-      color: $text-secondary;
-      max-width: 540px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
+    &--inactive { pointer-events: none; }
+  }
+  &__dot { animation: mapDotPulse 2.5s ease-in-out infinite; }
+  &__label { fill: rgba(255,255,255,0.45); font-size: 11px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; text-anchor: middle; pointer-events: none; }
+  &__chap-aura { animation: chapAura 4s ease-in-out infinite; }
+  &__chap-dot { animation: chapDotPulse 2s ease-in-out infinite; }
+  &__chap-ring {
+    &--1 { animation: chapRingPulse 3s ease-in-out infinite; }
+    &--2 { animation: chapRingPulse 3s ease-in-out infinite 0.5s; }
+    &--3 { animation: chapRingPulse 3s ease-in-out infinite 1s; }
+  }
+  &__chap-label rect { animation: chapLabelGlow 2s ease-in-out infinite; }
+  &__chap-pin { animation: chapPinFloat 2s ease-in-out infinite; }
+  &__routes line { animation: routeFlow 3s linear infinite;
+    stroke-dasharray: 4 8;
   }
 
-  &__layout {
-    display: grid;
-    grid-template-columns: 50% 1fr;
-    gap: 2rem;
-    align-items: start;
+  &__info { display: flex; flex-direction: column; gap: 1.5rem; }
+  &__store { background: #000; border-radius: 20px; padding: 2rem; position: relative; overflow: hidden;
+    &::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #F33283, #FF6B9A); }
+    h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0.75rem 0 0.5rem; }
+    p { font-size: 0.9rem; color: rgba(255,255,255,0.4); margin-bottom: 1rem; line-height: 1.6; }
   }
-
-  &__map {
-    position: sticky;
-    top: 5rem;
+  &__store-badge { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 600; color: #FF6B9A; background: rgba(243,50,131,0.1); padding: 0.25rem 0.75rem; border-radius: 50px; }
+  &__store-btn { display: inline-flex; align-items: center; gap: 0.4rem; color: #F33283; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+    &:hover { color: #FF6B9A; }
   }
-
-  &__map-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-    padding: 0 0.25rem;
-  }
-
-  &__map-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: $text-primary;
-    margin-bottom: 0;
-    text-align: left;
-
-    svg { color: $brand-blue; filter: drop-shadow(0 0 4px rgba($brand-blue, 0.3)); }
-  }
-
-  &__map-status {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: #fff;
-    background: $brand-green;
-    padding: 0.35rem 0.85rem;
-    border-radius: 100px;
-    box-shadow: 0 2px 10px rgba($brand-green, 0.3);
-  }
-
-  &__map-live {
-    width: 7px;
-    height: 7px;
-    background: $brand-green;
-    border-radius: 50%;
-    animation: pulse-glow 2s infinite;
-  }
-
-  &__cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem;
-  }
-}
-
-// ── SVG Map (mejorado) ─────────────────────────
-.zonas-main__svg-wrap {
-  border-radius: $radius-lg;
-  background: $brand-surface;
-  border: 1px solid $border-soft;
-  box-shadow: 0 2px 12px rgba($brand-blue, 0.06);
-  padding: 0.75rem;
-  transition: box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $brand-blue, $brand-green);
-  }
-
-  &:hover {
-    box-shadow: 0 8px 30px rgba($brand-blue, 0.1);
-  }
-}
-
-.bogota-map {
-  &__frame {
-    position: relative;
-  }
-
-  &__img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: invert(86%) sepia(10%) saturate(300%) hue-rotate(185deg) brightness(98%);
-  }
-
-  &__overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-  }
-
-  &__zone {
-    &.is-active,
-    &:hover {
-      .bogota-map__pulse {
-        opacity: 0.18;
-        animation: map-pulse 1.5s ease-out infinite;
-      }
-      .bogota-map__dot {
-        fill: $brand-blue;
-        r: 10;
-        filter: drop-shadow(0 0 6px rgba($brand-blue, 0.5));
-      }
-      .bogota-map__label {
-        fill: $brand-dark;
-        font-weight: 800;
-      }
-    }
-  }
-
-  &__pulse {
-    fill: $brand-blue;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &__dot {
-    fill: $brand-blue;
-    stroke: #fff;
-    stroke-width: 3;
-    transition: fill 0.25s ease, r 0.25s ease, filter 0.25s ease;
-    filter: drop-shadow(0 1px 3px rgba($brand-blue, 0.3));
-  }
-
-  &__label {
-    fill: #1e3a5f;
-    font-size: 22px;
-    font-weight: 700;
-    font-family: inherit;
-    pointer-events: none;
-    paint-order: stroke;
-    stroke: rgba(255,255,255,0.92);
-    stroke-width: 5;
-    stroke-linejoin: round;
-    transition: fill 0.2s ease, font-weight 0.2s ease;
-  }
-}
-
-@keyframes map-pulse {
-  0% { r: 26; opacity: 0.18; }
-  100% { r: 40; opacity: 0; }
-}
-
-// ── Zona card (Premium) ────────────────────────
-.zona-card {
-  display: flex;
-  flex-direction: column;
-  padding: 1.1rem 1.2rem 1rem;
-  background: $brand-surface;
-  border: 1px solid $border-soft;
-  border-radius: $radius-lg;
-  text-decoration: none;
-  color: $text-primary;
-  position: relative;
-  box-shadow: $shadow-card;
-  overflow: hidden;
-  transition:
-    transform 0.4s $ease-out,
-    box-shadow 0.4s $ease-out,
-    border-color 0.35s ease;
-
-  // Top accent line
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $brand-blue, $brand-blue-l);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
-
-  &:hover,
-  &.is-active {
-    transform: translateY(-5px);
-    border-color: rgba($brand-blue, 0.25);
-    box-shadow: 0 12px 36px rgba($brand-blue, 0.10), 0 4px 12px rgba(0,0,0,0.05);
-
-    &::before {
-      opacity: 1;
-    }
-
-    .zona-card__arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .zona-card__icon {
-      background: linear-gradient(135deg, $brand-blue, $brand-blue-l);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba($brand-blue, 0.3);
-    }
-
-    .zona-card__title {
-      color: $brand-blue;
-    }
-
-    .zona-card__barrios span {
-      background: rgba($brand-blue, 0.06);
-      color: #3366aa;
-    }
-  }
-
-  &__head {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
-    margin-bottom: 0.6rem;
-  }
-
-  &__icon {
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba($brand-blue, 0.1), rgba($brand-blue, 0.05));
-    color: $brand-blue;
-    border-radius: 10px;
-    flex-shrink: 0;
-    transition: background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
-  }
-
-  &__title {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: $text-primary;
-    margin: 0;
-    line-height: 1.25;
-    text-align: left;
-    transition: color 0.3s ease;
-  }
-
-  &__desc {
-    font-size: 0.73rem;
-    color: $text-secondary;
-    margin: 0.15rem 0 0;
-    line-height: 1.4;
-  }
-
-  &__meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.65rem;
-    flex-wrap: wrap;
-  }
-
-  &__time {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: $brand-blue;
-    background: rgba($brand-blue, 0.06);
-    padding: 0.2rem 0.6rem;
-    border-radius: 100px;
-    svg { color: $brand-blue; }
-  }
-
-  &__service-type {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: $brand-green;
-    background: rgba($brand-green, 0.06);
-    padding: 0.2rem 0.6rem;
-    border-radius: 100px;
-    svg { color: $brand-green; }
-  }
-
-  &__footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-top: auto;
-  }
-
-  &__barrios {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-
-    span {
-      font-size: 0.62rem;
-      font-weight: 600;
-      color: #5a6a7e;
-      background: #eef2f7;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-  }
-
-  &__arrow {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba($brand-blue, 0.08);
-    border-radius: 50%;
-    color: $brand-blue;
-    opacity: 0;
-    transform: translateX(-6px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-}
-
-// ── Por qué elegirnos ──────────────────────────
-.zonas-porque {
-  padding: 5rem 0;
-  background: $brand-dark;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-      radial-gradient(ellipse 50% 50% at 0% 0%, rgba($brand-blue, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 40% 40% at 100% 100%, rgba($brand-accent, 0.05) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  &__header {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-  }
-
-  &__label {
-    display: inline-block;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: $brand-blue-l;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 0.75rem;
-  }
-
-  h2 {
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.025em;
-    max-width: 540px;
-    margin: 0 auto;
-    line-height: 1.25;
-  }
-
-  &__grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    position: relative;
-  }
-
-  &__card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: $radius-lg;
-    padding: 2rem 1.75rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.4s $ease-out, border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
-
-    &:hover {
-      transform: translateY(-6px);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba($brand-blue, 0.35);
-      box-shadow: 0 12px 40px rgba($brand-blue, 0.15), 0 0 0 1px rgba($brand-blue, 0.1);
-
-      .zonas-porque__number {
-        color: $brand-blue;
-        text-shadow: 0 0 30px rgba($brand-blue, 0.4);
-      }
-
-      .zonas-porque__accent {
-        transform: scaleX(1);
-      }
-
-      .zonas-porque__content p {
-        color: rgba(255, 255, 255, 0.85);
-      }
-    }
-  }
-
-  &__number {
-    font-size: 2.8rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.1);
-    line-height: 1;
-    margin-bottom: 0.75rem;
-    transition: color 0.4s ease, text-shadow 0.4s ease;
-    letter-spacing: -0.04em;
-  }
-
-  &__content {
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.7;
-      margin: 0;
-      transition: color 0.4s ease;
-    }
-  }
-
-  &__accent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $brand-blue, $brand-blue-l, $brand-green);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s $ease-out;
-  }
-}
-
-// ── CTA Bottom ─────────────────────────────────
-.zonas-cta {
-  padding: 5rem 0;
-  background: linear-gradient(165deg, $brand-dark 0%, $brand-navy 50%, #003d99 100%);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -30%;
-    right: -5%;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba($brand-blue, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    left: -5%;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba($brand-accent, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  &__content {
-    text-align: center;
-    max-width: 620px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  &__badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.85);
-    padding: 0.4rem 1rem;
-    border-radius: 100px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-    letter-spacing: 0.01em;
-  }
-
-  h2 {
-    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
-  }
-
-  p {
-    color: #94a3b8;
-    font-size: 1rem;
-    margin-bottom: 2.25rem;
-    line-height: 1.65;
-  }
-
-  &__actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  &__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.9rem 1.8rem;
-    border-radius: $radius-md;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    transition: transform 0.3s $ease-out, box-shadow 0.3s ease;
-
-    &:hover {
-      transform: translateY(-3px);
-    }
-
-    &--wa {
-      background: $brand-green;
-      color: #fff;
-      box-shadow: 0 4px 24px rgba($brand-green, 0.3);
-      &:hover { box-shadow: 0 8px 36px rgba($brand-green, 0.5); }
-    }
-
-    &--call {
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(4px);
-      &:hover {
-        background: rgba(255,255,255,0.14);
-        box-shadow: 0 8px 32px rgba(255,255,255,0.08);
-      }
+  &__delivery { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; padding: 1.5rem;
+    h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: var(--fq-dark); margin-bottom: 0.35rem; }
+    > p { font-size: 0.85rem; color: var(--fq-gray-mid); margin-bottom: 1rem; }
+    ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.25rem; }
+    li a { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border-radius: 10px; text-decoration: none; color: var(--fq-dark); font-size: 0.88rem; transition: all 0.2s;
+      span { margin-left: auto; font-size: 0.78rem; color: var(--fq-gray-mid); font-weight: 500; }
+      &:hover { background: rgba(243,50,131,0.06); color: var(--fq-pink); }
     }
   }
 }
 
-// ── Botón flotante WhatsApp ────────────────────
-.floating-wa {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  width: 56px;
-  height: 56px;
-  background: $brand-green;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 4px 20px rgba($brand-green, 0.4);
-  z-index: 1000;
-  transition: transform 0.3s $ease-out, box-shadow 0.3s ease;
-  animation: float-bounce 3s ease-in-out infinite;
+@keyframes chapBreathe { 0%,100% { fill-opacity: 0.5; } 50% { fill-opacity: 0.75; } }
+@keyframes chapAura { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.08); } }
+@keyframes chapDotPulse { 0%,100% { r: 8; } 50% { r: 10; } }
+@keyframes chapRingPulse { 0%,100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.08; transform: scale(1.06); } }
+@keyframes chapLabelGlow { 0%,100% { filter: drop-shadow(0 0 4px rgba(243,50,131,0.4)); } 50% { filter: drop-shadow(0 0 10px rgba(243,50,131,0.7)); } }
+@keyframes chapPinFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes mapDotPulse { 0%,100% { opacity: 0.4; r: 4.5; } 50% { opacity: 0.8; r: 5.5; } }
+@keyframes routeFlow { to { stroke-dashoffset: -24; } }
 
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba($brand-green, 0.55);
-
-    .floating-wa__tooltip {
-      opacity: 1;
-      transform: translateX(0);
-      pointer-events: auto;
-    }
+// ── Zones grid
+.zl-zones { padding: 5rem 0;
+  &__header { margin-bottom: 3rem;
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: var(--fq-dark); margin-bottom: 0.5rem; }
+    p { font-size: 1rem; color: var(--fq-gray-mid); }
   }
-
-  &__tooltip {
-    position: absolute;
-    right: calc(100% + 0.75rem);
-    background: $brand-dark;
-    color: #fff;
-    padding: 0.5rem 0.85rem;
-    border-radius: 8px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateX(8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: -5px;
-      top: 50%;
-      transform: translateY(-50%);
-      border: 5px solid transparent;
-      border-left-color: $brand-dark;
-    }
-  }
+  &__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
 }
 
-@keyframes float-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+.zl-card { display: flex; flex-direction: column; background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 20px; padding: 1.5rem; text-decoration: none; color: var(--fq-dark); transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+  &:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(243,50,131,0.08); border-color: rgba(243,50,131,0.15); }
+  &--featured { background: #000; color: #fff; border-color: rgba(243,50,131,0.2);
+    .zl-card__highlight { color: rgba(255,255,255,0.4); }
+    .zl-card__time, .zl-card__barrios { color: rgba(255,255,255,0.35); }
+    .zl-card__arrow { color: #F33283; }
+    &:hover { box-shadow: 0 12px 40px rgba(243,50,131,0.2); }
+  }
+  &__top { flex: 1; margin-bottom: 1rem; }
+  &__badge { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 600; color: var(--fq-pink); background: rgba(243,50,131,0.06); padding: 0.2rem 0.65rem; border-radius: 50px; margin-bottom: 0.75rem;
+    &--delivery { color: var(--fq-gray-mid); background: rgba(0,0,0,0.04); }
+  }
+  h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.35rem; }
+  &__highlight { font-size: 0.85rem; color: var(--fq-gray-mid); }
+  &__bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.04); }
+  &__meta { display: flex; gap: 1rem; }
+  &__time, &__barrios { font-size: 0.78rem; color: var(--fq-gray-mid); font-weight: 500; }
+  &__arrow { font-size: 1.2rem; color: var(--fq-pink); transition: transform 0.3s; }
+  &:hover &__arrow { transform: translateX(4px); }
 }
 
-// ── Scroll Reveal ──────────────────────────────
-[data-animate].animate-init {
-  opacity: 0;
-  transition:
-    opacity 0.7s $ease-out,
-    transform 0.7s $ease-out;
-
-  &[data-animate="fade-up"] {
-    transform: translateY(32px);
+// ── CTA
+.zl-cta { padding: 6rem 0; background: #000;
+  &__content { text-align: center; max-width: 480px; margin: 0 auto;
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+    p { font-size: 1rem; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
   }
-
-  &.is-visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-// ── Responsive ─────────────────────────────────
-@media (max-width: 1100px) {
-  .zonas-main__layout {
-    grid-template-columns: 48% 1fr;
-    gap: 1.5rem;
-  }
-
-  .zonas-porque__grid {
-    grid-template-columns: repeat(2, 1fr);
+  &__btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #F33283, #FF6B9A); color: #fff; padding: 0.85rem 2rem; border-radius: 50px; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 4px 24px rgba(243,50,131,0.3);
+    &:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(243,50,131,0.45); }
   }
 }
 
 @media (max-width: 860px) {
-  .hero-zonas {
-    padding: 3.5rem 1rem 2.5rem;
-  }
-
-  .hero-zonas__metrics {
-    gap: 1rem;
-  }
-
-  .hero-zonas__metric-divider {
-    display: none;
-  }
-
-  .zonas-main__layout {
-    grid-template-columns: 1fr;
-  }
-
-  .zonas-main__map {
-    position: static;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .zonas-main__cards {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .zonas-porque__grid {
-    grid-template-columns: 1fr;
-  }
+  .zl-map__grid { grid-template-columns: 1fr; }
+  .zl-hero h1 { font-size: 2rem; }
 }
-
 @media (max-width: 600px) {
-  .hero-zonas {
-    padding: 3rem 1rem 2rem;
-
-    h1 {
-      font-size: 1.75rem;
-    }
-
-    &__actions {
-      flex-direction: column;
-    }
-
-    &__cta {
-      justify-content: center;
-      text-align: center;
-      width: 100%;
-    }
-
-    &__metrics {
-      gap: 0.75rem;
-    }
-
-    &__metric-icon {
-      width: 34px;
-      height: 34px;
-    }
-  }
-
-  .zonas-trust__inner {
-    gap: 1rem;
-    justify-content: flex-start;
-  }
-
-  .zonas-main {
-    padding: 2.5rem 0 3rem;
-  }
-
-  .zonas-main__cards {
-    grid-template-columns: 1fr;
-  }
-
-  .zona-card__barrios {
-    display: none;
-  }
-
-  .zona-card__service-type {
-    display: none;
-  }
-
-  .zonas-porque__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .zonas-cta {
-    padding: 3.5rem 0;
-  }
-
-  .zonas-cta__actions {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .zonas-cta__btn {
-    justify-content: center;
-    text-align: center;
-  }
-
-  .floating-wa__tooltip {
-    display: none;
-  }
-}
-
-// ── Reduced motion ─────────────────────────────
-@media (prefers-reduced-motion: reduce) {
-  [data-animate].animate-init {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  .bogota-map__pulse,
-  .bogota-map__dot,
-  .bogota-map__label,
-  .zona-card,
-  .testimonio-card,
-  .zonas-garantias__item,
-  .floating-wa {
-    transition: none !important;
-    animation: none !important;
-  }
-
-  .hero-zonas__pulse-dot,
-  .zonas-main__map-live {
-    animation: none !important;
-  }
+  .zl-hero { padding: 4rem 0 3rem; }
+  .zl-zones { padding: 3.5rem 0; }
+  .zl-zones__grid { grid-template-columns: 1fr; }
 }

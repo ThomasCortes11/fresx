@@ -3,34 +3,66 @@
 
     <!-- Logo -->
     <a routerLink="/" class="header__logo" (click)="closeMenu()" aria-label="Fresquitox - Inicio">
-      <span class="header__logo-text">FRESQUITOX</span>
+      <img src="images/logo.png" alt="" class="header__logo-img" width="36" height="36">
+      <img src="images/tipografia.png" alt="Fresquitox" class="header__logo-wordmark" height="20">
     </a>
 
     <!-- Nav -->
     <nav class="header__nav" [class.header__nav--open]="menuOpen" aria-label="Navegación principal">
-      <!-- Botón cerrar dentro del panel móvil -->
       <button class="header__nav-close" (click)="closeMenu()" aria-label="Cerrar menú">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Inicio</a>
-      <a routerLink="/servicios" routerLinkActive="active" (click)="closeMenu()">Servicios</a>
+      <a routerLink="/productos" routerLinkActive="active" (click)="closeMenu()">Productos</a>
       <a routerLink="/zonas" routerLinkActive="active" (click)="closeMenu()">Zonas</a>
       <a routerLink="/nosotros" routerLinkActive="active" (click)="closeMenu()">Nosotros</a>
-      <a routerLink="/blog" routerLinkActive="active" (click)="closeMenu()">Blog</a>
-      <a routerLink="/preguntas-frecuentes" routerLinkActive="active" (click)="closeMenu()">FAQ</a>
+      <a routerLink="/experiencia" routerLinkActive="active" (click)="closeMenu()">Experiencia</a>
+      <a routerLink="/eventos" routerLinkActive="active" (click)="closeMenu()">Eventos</a>
     </nav>
 
     <!-- Right actions -->
     <div class="header__actions">
-      <a [href]="'tel:' + contact.phoneFormatted" class="header__phone">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.46 16z"/>
-        </svg>
-        {{ contact.phoneDisplay }}
+      <a [href]="contact.instagram" target="_blank" rel="noopener noreferrer" class="header__social" aria-label="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       </a>
-      <a routerLink="/contacto" class="header__cta" (click)="closeMenu()" routerLinkActive="active">
-        Contacto
-      </a>
+
+      <!-- Pedir dropdown -->
+      <div class="header__order" (mouseenter)="orderOpen = true" (mouseleave)="orderOpen = false">
+        <button class="header__cta" (click)="orderOpen = !orderOpen" [attr.aria-expanded]="orderOpen" aria-haspopup="true">
+          <span class="header__cta-dot"></span>
+          Pedir ahora
+          <svg class="header__cta-chev" [class.header__cta-chev--open]="orderOpen" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        @if (orderOpen) {
+          <div class="header__dropdown" (click)="orderOpen = false">
+            <a [href]="contact.didiFood" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--didi">
+              <span class="header__drop-icon">🟠</span>
+              <div>
+                <span class="header__drop-name">Didi Food</span>
+                <span class="header__drop-desc">Delivery rápido</span>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <a [href]="contact.rappi" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--rappi">
+              <span class="header__drop-icon">🧡</span>
+              <div>
+                <span class="header__drop-name">Rappi</span>
+                <span class="header__drop-desc">Pide y recibe</span>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+            <div class="header__drop-divider"></div>
+            <a [href]="contact.googleMaps" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--store">
+              <span class="header__drop-icon">📍</span>
+              <div>
+                <span class="header__drop-name">Punto Físico</span>
+                <span class="header__drop-desc">Chapinero, Bogotá</span>
+              </div>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        }
+      </div>
       <!-- Hamburger -->
       <button
         class="header__toggle"
@@ -46,7 +78,6 @@
 
   </div>
 
-  <!-- Mobile overlay nav -->
   @if (menuOpen) {
     <div class="header__overlay" (click)="closeMenu()" (keydown.escape)="closeMenu()" aria-hidden="true"></div>
   }

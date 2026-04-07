@@ -1,0 +1,282 @@
+﻿<!-- HERO -->
+<section class="ev-hero">
+  <div class="ev-hero__vinyl"></div>
+  <div class="ev-hero__eq">
+    @for (bar of eqBars; track $index) {
+      <span class="ev-hero__eq-bar" [style.animation-delay]="bar + 's'"></span>
+    }
+  </div>
+  <div class="container">
+    <span class="ev-hero__badge" data-animate>
+      <span class="ev-hero__badge-dot"></span>
+      En Vivo &mdash; Chapinero, Bogot&aacute;
+    </span>
+    <h1 data-animate data-animate-delay="100">
+      Donde el <em>sabor</em> se<br>encuentra con la <em>m&uacute;sica</em>
+    </h1>
+    <p class="ev-hero__sub" data-animate data-animate-delay="200">Refrescos artesanales, artistas locales y la mejor energ&iacute;a de Chapinero. Cada semana, una experiencia nueva.</p>
+    <div class="ev-hero__stats" data-animate data-animate-delay="300">
+      <div class="ev-hero__stat">
+        <strong>8+</strong>
+        <span>Eventos / Mes</span>
+      </div>
+      <div class="ev-hero__stat-divider"></div>
+      <div class="ev-hero__stat">
+        <strong>4</strong>
+        <span>G&eacute;neros Musicales</span>
+      </div>
+      <div class="ev-hero__stat-divider"></div>
+      <div class="ev-hero__stat">
+        <strong>100%</strong>
+        <span>Entrada Libre</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTROS -->
+<section class="ev-filters">
+  <div class="container">
+    <div class="ev-filters__row">
+      @for (tipo of tipos; track tipo.key) {
+        <button class="ev-chip" [class.ev-chip--active]="filtroActivo === tipo.key" (click)="setFiltro(tipo.key)">
+          <span class="ev-chip__emoji">{{ tipo.emoji }}</span>
+          <span>{{ tipo.label }}</span>
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED (destacados) -->
+@if (eventoDestacado) {
+  <section class="ev-featured" data-animate>
+    <div class="container">
+      <div class="ev-featured__card">
+        <div class="ev-featured__glow"></div>
+        <div class="ev-featured__badge">&#x2605; Pr&oacute;ximo Destacado</div>
+        <div class="ev-featured__body">
+          <div class="ev-featured__left">
+            <div class="ev-featured__icon-wrap">
+              <span class="ev-featured__icon">{{ eventoDestacado.emoji }}</span>
+            </div>
+            <span class="ev-featured__tipo">{{ eventoDestacado.tipo === 'dj' ? 'DJ Set' : eventoDestacado.tipo === 'musica-en-vivo' ? 'M\u00fasica en Vivo' : eventoDestacado.tipo === 'karaoke' ? 'Karaoke' : 'Especial' }}</span>
+            <h2>{{ eventoDestacado.titulo }}</h2>
+            <p>{{ eventoDestacado.descripcion }}</p>
+            <div class="ev-featured__meta">
+              <span class="ev-featured__meta-item">&#x1F4C5; {{ formatFechaLarga(eventoDestacado.fecha) }}</span>
+              <span class="ev-featured__meta-item">&#x1F553; {{ eventoDestacado.hora }}</span>
+              <span class="ev-featured__meta-item">&#x1F3A4; {{ eventoDestacado.artista }}</span>
+            </div>
+            <button class="ev-btn ev-btn--pink" (click)="abrirReserva(eventoDestacado)">
+              Reservar mi lugar
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+          <div class="ev-featured__right">
+            <div class="ev-featured__visual">
+              <span class="ev-featured__visual-emoji">{{ eventoDestacado.emoji }}</span>
+              <div class="ev-featured__visual-ring ev-featured__visual-ring--1"></div>
+              <div class="ev-featured__visual-ring ev-featured__visual-ring--2"></div>
+              <div class="ev-featured__visual-ring ev-featured__visual-ring--3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+<!-- CALENDAR GRID -->
+<section class="ev-grid">
+  <div class="container">
+    <div class="ev-grid__header" data-animate>
+      <h2>Cronograma <em>Completo</em></h2>
+      <p>Todos los eventos programados. Elige tu noche favorita.</p>
+    </div>
+
+    <div class="ev-grid__list">
+      @for (evento of eventosFiltrados; track evento.id; let i = $index) {
+        <article class="ev-card" [class.ev-card--featured]="evento.destacado" data-animate [attr.data-animate-delay]="i * 60">
+          <div class="ev-card__date-col">
+            <span class="ev-card__weekday">{{ getDiaSemana(evento.fecha) }}</span>
+            <span class="ev-card__day-num">{{ getDia(evento.fecha) }}</span>
+            <span class="ev-card__month">{{ getMes(evento.fecha) }}</span>
+          </div>
+          <div class="ev-card__content">
+            <div class="ev-card__top-row">
+              <span class="ev-card__tipo-badge" [attr.data-type]="evento.tipo">
+                {{ evento.tipo === 'dj' ? 'DJ SET' : evento.tipo === 'musica-en-vivo' ? 'M\u00daSICA EN VIVO' : evento.tipo === 'karaoke' ? 'KARAOKE' : 'ESPECIAL' }}
+              </span>
+              @if (evento.destacado) {
+                <span class="ev-card__star">&#x2B50;</span>
+              }
+            </div>
+            <h3>{{ evento.titulo }}</h3>
+            <div class="ev-card__meta">
+              <span>&#x1F3A4; {{ evento.artista }}</span>
+              <span>&#x1F553; {{ evento.hora }}</span>
+            </div>
+            <p>{{ evento.descripcion }}</p>
+          </div>
+          <div class="ev-card__action">
+            <button class="ev-card__cta" (click)="abrirReserva(evento)">
+              Reservar
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </article>
+      }
+
+      @if (eventosFiltrados.length === 0) {
+        <div class="ev-empty" data-animate>
+          <div class="ev-empty__icon">&#x1F3B5;</div>
+          <h3>No hay eventos de este tipo</h3>
+          <p>Pronto programaremos m&aacute;s. &iexcl;S&iacute;guenos en Instagram para enterarte primero!</p>
+          <a [href]="contact.instagram" target="_blank" rel="noopener noreferrer" class="ev-btn ev-btn--glass">Seguir en Instagram</a>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- GENRES -->
+<section class="ev-genres">
+  <div class="container">
+    <h2 data-animate>Lo que <em>suena</em> en Fresquitox</h2>
+    <div class="ev-genres__grid">
+      <div class="ev-genre" data-animate data-animate-delay="0">
+        <div class="ev-genre__icon">&#x1F3A7;</div>
+        <h3>DJ Sets</h3>
+        <p>Tropical house, reggaeton, electr&oacute;nica y beats urbanos para mover el cuerpo.</p>
+      </div>
+      <div class="ev-genre" data-animate data-animate-delay="100">
+        <div class="ev-genre__icon">&#x1F3B8;</div>
+        <h3>M&uacute;sica en Vivo</h3>
+        <p>Vallenato fusi&oacute;n, salsa, bossa nova y ac&uacute;sticos con artistas locales de Bogot&aacute;.</p>
+      </div>
+      <div class="ev-genre" data-animate data-animate-delay="200">
+        <div class="ev-genre__icon">&#x1F3A4;</div>
+        <h3>Karaoke</h3>
+        <p>Mic abierto, tem&aacute;ticos de amor, retos vocales y granizados gratis para los valientes.</p>
+      </div>
+      <div class="ev-genre" data-animate data-animate-delay="300">
+        <div class="ev-genre__icon">&#x2B50;</div>
+        <h3>Especiales</h3>
+        <p>Lanzamientos de sabores, aniversarios, fiestas de temporada y colaboraciones &uacute;nicas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ev-cta" data-animate>
+  <div class="ev-cta__orb ev-cta__orb--1"></div>
+  <div class="ev-cta__orb ev-cta__orb--2"></div>
+  <div class="container">
+    <h2>&#x00BF;Quieres un evento privado<br>con <em>Fresquitox</em>?</h2>
+    <p>Fiestas, empresas, bodas, cumplea&ntilde;os. Montamos la estaci&oacute;n de refrescos con DJ y decoraci&oacute;n. T&uacute; disfrutas, nosotros hacemos la magia.</p>
+    <div class="ev-cta__actions">
+      <a [href]="contact.whatsapp" target="_blank" rel="noopener noreferrer" class="ev-btn ev-btn--pink">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Cotizar evento privado
+      </a>
+      <a routerLink="/contacto" class="ev-btn ev-btn--glass">Cont&aacute;ctanos</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- RESERVATION MODAL — Urban / Under / Street style          -->
+<!-- ══════════════════════════════════════════════════════════ -->
+@if (modalOpen && modalEvento) {
+  <div class="rv" (click)="cerrarReserva()" (keydown.escape)="cerrarReserva()">
+    <div class="rv__card" (click)="$event.stopPropagation()">
+
+      <!-- Graffiti tape top -->
+      <div class="rv__tape">
+        <span>RESERVA TU CUPO · LA CALLE TE LLAMA · FRESQUITOX UNDER · NO TE LO PIERDAS · CHAPINERO VIBRA · </span>
+        <span>RESERVA TU CUPO · LA CALLE TE LLAMA · FRESQUITOX UNDER · NO TE LO PIERDAS · CHAPINERO VIBRA · </span>
+      </div>
+
+      <!-- Close -->
+      <button class="rv__close" (click)="cerrarReserva()" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+
+      <!-- Header -->
+      <div class="rv__header">
+        <span class="rv__sticker">&#x1F3AB;</span>
+        <h2 class="rv__title">
+          APART&Aacute; TU<br><span>PARCHE</span>
+        </h2>
+        <p class="rv__slogan">la entrada es free, el cupo no espera &mdash; aseg&uacute;ralo ya.</p>
+      </div>
+
+      <!-- Event info strip -->
+      <div class="rv__event">
+        <span class="rv__event-emoji">{{ modalEvento.emoji }}</span>
+        <div class="rv__event-info">
+          <strong>{{ modalEvento.titulo }}</strong>
+          <span>{{ formatFechaLarga(modalEvento.fecha) }} &middot; {{ modalEvento.hora }}</span>
+        </div>
+      </div>
+
+      @if (!reservaEnviada) {
+        <!-- Form -->
+        <div class="rv__form">
+          <div class="rv__field">
+            <label class="rv__label" for="rv-nombre">&#x1F91F; &iquest;c&oacute;mo te llamas, parce?</label>
+            <input class="rv__input" id="rv-nombre" type="text" placeholder="Tu nombre o tu alias" [(ngModel)]="reserva.nombre" autocomplete="name" />
+          </div>
+
+          <div class="rv__field">
+            <label class="rv__label" for="rv-tel">&#x1F4F1; tu n&uacute;mero pa&rsquo; confirmarte</label>
+            <input class="rv__input" id="rv-tel" type="tel" placeholder="300 123 4567" [(ngModel)]="reserva.telefono" autocomplete="tel" />
+          </div>
+
+          <div class="rv__row">
+            <div class="rv__field rv__field--half">
+              <label class="rv__label" for="rv-personas">&#x1F46B; &iquest;cu&aacute;ntos caen?</label>
+              <div class="rv__counter">
+                <button class="rv__counter-btn" (click)="reserva.personas = reserva.personas > 1 ? reserva.personas - 1 : 1" type="button">&minus;</button>
+                <span class="rv__counter-val">{{ reserva.personas }}</span>
+                <button class="rv__counter-btn" (click)="reserva.personas = reserva.personas + 1" type="button">+</button>
+              </div>
+            </div>
+            <div class="rv__field rv__field--half">
+              <label class="rv__label" for="rv-msg">&#x1F4AC; algo que debamos saber?</label>
+              <input class="rv__input" id="rv-msg" type="text" placeholder="cumplea&ntilde;os, mesa vip..." [(ngModel)]="reserva.mensaje" />
+            </div>
+          </div>
+
+          <button class="rv__submit" [class.rv__submit--loading]="enviando" [disabled]="!reserva.nombre.trim() || !reserva.telefono.trim() || enviando" (click)="enviarReserva()">
+            @if (enviando) {
+              <span class="rv__spinner"></span>
+              Apartando tu cupo...
+            } @else {
+              &#x1F525; APARTAR MI PUESTO
+            }
+          </button>
+
+          <p class="rv__note">te redirigimos a WhatsApp para confirmar tu reserva al toque &#x26A1;</p>
+        </div>
+      } @else {
+        <!-- Success state -->
+        <div class="rv__success">
+          <span class="rv__success-icon">&#x1F389;</span>
+          <h3>&iexcl;LISTO, PARCERO!</h3>
+          <p>Tu reserva se est&aacute; cocinando. Confirma por WhatsApp y nos vemos en la noche.</p>
+          <button class="rv__submit" (click)="cerrarReserva()">&#x1F44A; Dale, cerrar</button>
+        </div>
+      }
+
+      <!-- Graffiti tape bottom -->
+      <div class="rv__tape rv__tape--bottom">
+        <span>SABOR UNDER · BEATS & GRANIZADOS · CHAPINERO NIGHTS · FRESQUITOX CREW · CALLE REAL · </span>
+        <span>SABOR UNDER · BEATS & GRANIZADOS · CHAPINERO NIGHTS · FRESQUITOX CREW · CALLE REAL · </span>
+      </div>
+
+    </div>
+  </div>
+}

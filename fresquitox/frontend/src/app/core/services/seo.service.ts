@@ -18,9 +18,9 @@ export class SeoService {
   private readonly titleService = inject(Title);
   private readonly document = inject(DOCUMENT);
 
-  private readonly baseUrl = 'https://www.sepsoluciones.com';
-  private readonly defaultImage = `${this.baseUrl}/images/og/logosepsolucionesblancoynegro.webp`;
-  private readonly siteName = 'SEP Soluciones Élite';
+  private readonly baseUrl = 'https://www.fresquitox.com';
+  private readonly defaultImage = `${this.baseUrl}/images/og/fresquitox-og.webp`;
+  private readonly siteName = 'Fresquitox';
 
   updateSeo(config: SeoConfig): void {
     const fullTitle = `${config.title} | ${this.siteName}`;
