@@ -1,19 +1,34 @@
 ﻿// ══════════════════════════════════════════════════════════
-// FRESQUITOX — Premium Hero
-// Black bg + Pink gradient orbs + Modern typography
+// FRESQUITOX — HERO v3 · Street Culture Edition
+// Dark / Neon / Urban / Cyberpunk-lite
 // ══════════════════════════════════════════════════════════
 
+// ── Tokens
+$neon:       #F33283;
+$neon-mid:   #FF4D94;
+$neon-light: #FF85B8;
+$neon-hot:   #FF1074;
+$dark:       #050507;
+$ease-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+$ease-back:  cubic-bezier(0.34, 1.56, 0.64, 1);
+$ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+// ══════════════════════════════════════════════════════════
+// ROOT
+// ══════════════════════════════════════════════════════════
 .hero {
-  background: #000;
-  color: #fff;
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 76px);
+  min-height: calc(100dvh - 76px);
   display: flex;
   flex-direction: column;
+  background: $dark;
+  color: #fff;
 
-  // ── Gradient orbs — dreamy background
-  &__orbs {
+  // ══════════════════════════════════════════════════════
+  // AMBIENT FX — Orbs / Glow blobs
+  // ══════════════════════════════════════════════════════
+  &__ambient {
     position: absolute;
     inset: 0;
     pointer-events: none;
@@ -23,113 +38,149 @@
   &__orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(100px);
+    will-change: transform;
 
     &--1 {
-      width: 500px;
-      height: 500px;
-      background: rgba(243, 50, 131, 0.25);
-      top: -10%;
-      right: -5%;
-      animation: orb-float 8s ease-in-out infinite;
+      width: 600px; height: 600px;
+      background: rgba($neon, 0.12);
+      top: -15%; right: -8%;
+      animation: orb-drift 14s ease-in-out infinite;
     }
-
     &--2 {
-      width: 350px;
-      height: 350px;
-      background: rgba(255, 107, 154, 0.15);
-      bottom: 10%;
-      left: -8%;
-      animation: orb-float 10s ease-in-out infinite 2s;
+      width: 420px; height: 420px;
+      background: rgba($neon-hot, 0.08);
+      bottom: -5%; left: -12%;
+      animation: orb-drift 18s ease-in-out infinite 3s;
     }
-
     &--3 {
-      width: 200px;
-      height: 200px;
-      background: rgba(255, 167, 215, 0.12);
-      top: 40%;
-      left: 40%;
-      animation: orb-float 12s ease-in-out infinite 4s;
+      width: 260px; height: 260px;
+      background: rgba($neon-light, 0.06);
+      top: 45%; left: 35%;
+      animation: orb-drift 20s ease-in-out infinite 5s;
+    }
+    &--4 {
+      width: 180px; height: 180px;
+      background: rgba($neon-mid, 0.07);
+      top: 20%; right: 30%;
+      animation: orb-drift 16s ease-in-out infinite 1s;
     }
   }
 
-  // ── Grid pattern overlay
-  &__grid-pattern {
+  // ── Scanlines — CRT urban feel
+  &__scanlines {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 1;
-    opacity: 0.03;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 2px,
+      rgba(0, 0, 0, 0.15) 4px
+    );
+    opacity: 0.08;
   }
 
-  // ── Floating bubbles
-  &__bubbles {
+  // ── Noise grain
+  &__noise {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 2;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    mix-blend-mode: overlay;
+  }
+
+  // ── Grid
+  &__grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.025;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  // ══════════════════════════════════════════════════════
+  // FLOATING ICE PARTICLES
+  // ══════════════════════════════════════════════════════
+  &__particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
     overflow: hidden;
   }
 
-  &__bubble {
+  &__particle {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15) 0%, rgba(243, 50, 131, 0.05) 60%, transparent 70%);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    will-change: transform, opacity;
 
-    &--1 { width: 80px; height: 80px; top: 15%; right: 15%; animation: bubble-rise 7s ease-in-out infinite; }
-    &--2 { width: 40px; height: 40px; top: 30%; left: 10%; animation: bubble-rise 9s ease-in-out infinite 1.5s; }
-    &--3 { width: 60px; height: 60px; bottom: 20%; right: 25%; animation: bubble-rise 8s ease-in-out infinite 0.7s; }
-    &--4 { width: 24px; height: 24px; top: 60%; left: 30%; animation: bubble-rise 6s ease-in-out infinite 3s; }
-    &--5 { width: 50px; height: 50px; bottom: 30%; left: 5%; animation: bubble-rise 11s ease-in-out infinite 1s; }
-    &--6 { width: 32px; height: 32px; top: 80%; right: 40%; animation: bubble-rise 7.5s ease-in-out infinite 2s; }
+    // White sparkles
+    &--1 { width: 3px; height: 3px; background: rgba(#fff, 0.6); top: 18%; left: 12%;  animation: sparkle-float 10s ease-in-out infinite; }
+    &--2 { width: 2px; height: 2px; background: rgba(#fff, 0.5); top: 25%; right: 20%; animation: sparkle-float 12s ease-in-out infinite 1s; }
+    &--3 { width: 4px; height: 4px; background: rgba(#fff, 0.5); top: 55%; left: 8%;  animation: sparkle-float 11s ease-in-out infinite 2s; }
+    &--4 { width: 2px; height: 2px; background: rgba(#fff, 0.4); top: 70%; right: 35%; animation: sparkle-float 13s ease-in-out infinite 0.5s; }
+    &--5 { width: 3px; height: 3px; background: rgba(#fff, 0.5); top: 40%; left: 45%; animation: sparkle-float 9s ease-in-out infinite 3s; }
+    &--6 { width: 4px; height: 4px; background: rgba(#fff, 0.35); top: 82%; left: 25%; animation: sparkle-float 14s ease-in-out infinite 1.5s; }
+    &--7 { width: 2px; height: 2px; background: rgba(#fff, 0.4); top: 12%; left: 55%; animation: sparkle-float 11s ease-in-out infinite 4s; }
+    &--8 { width: 3px; height: 3px; background: rgba(#fff, 0.35); bottom: 15%; right: 12%; animation: sparkle-float 10s ease-in-out infinite 2.5s; }
   }
 
-  // ── Tape marquee
+  // ══════════════════════════════════════════════════════
+  // RUNNING TAPE
+  // ══════════════════════════════════════════════════════
   &__tape {
-    background: linear-gradient(90deg, #F33283, #FF6B9A, #F33283);
+    background: linear-gradient(90deg, $neon-hot, $neon, $neon-hot);
     overflow: hidden;
     white-space: nowrap;
-    padding: 0.6rem 0;
+    padding: 0.55rem 0;
     position: relative;
-    z-index: 6;
+    z-index: 8;
   }
 
   &__tape-track {
     display: inline-flex;
     align-items: center;
-    gap: 2rem;
-    animation: tape-scroll 20s linear infinite;
+    gap: 1.8rem;
+    animation: tape-scroll 22s linear infinite;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: #fff;
-    padding-right: 2rem;
+    padding-right: 1.8rem;
   }
 
-  &__tape-dot {
-    font-size: 0.4rem;
+  &__tape-sep {
+    font-size: 0.55rem;
     opacity: 0.6;
   }
 
-  // ── Main container
-  &__container {
-    max-width: 1280px;
+  // ══════════════════════════════════════════════════════
+  // MAIN LAYOUT
+  // ══════════════════════════════════════════════════════
+  &__layout {
+    max-width: 1360px;
     width: 100%;
     margin: 0 auto;
     padding: 4rem 2.5rem 3rem;
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 3rem;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
     align-items: center;
     position: relative;
-    z-index: 4;
+    z-index: 5;
     flex: 1;
   }
 
@@ -138,363 +189,611 @@
     z-index: 2;
   }
 
-  // ── Badge
-  &__badge {
+  // ══════════════════════════════════════════════════════
+  // TAG — street badge
+  // ══════════════════════════════════════════════════════
+  &__tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    background: rgba(243, 50, 131, 0.1);
-    border: 1px solid rgba(243, 50, 131, 0.2);
+    gap: 0.65rem;
+    background: rgba($neon, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba($neon, 0.18);
     padding: 0.4rem 1.2rem;
     border-radius: 50px;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: #FF6B9A;
-    margin-bottom: 2rem;
-    animation: fade-in-up 0.6s ease both;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $neon-light;
+    margin-bottom: 1.8rem;
+    animation: enter-up 0.7s $ease-expo both;
+    transition: border-color 0.3s, background 0.3s;
+
+    &:hover {
+      border-color: rgba($neon, 0.4);
+      background: rgba($neon, 0.12);
+    }
   }
 
-  &__badge-pulse {
-    width: 8px;
-    height: 8px;
+  &__tag-dot {
+    width: 7px; height: 7px;
     border-radius: 50%;
-    background: #F33283;
-    animation: pulse 2s ease-in-out infinite;
+    background: $neon;
+    box-shadow: 0 0 10px rgba($neon, 0.7);
+    animation: dot-pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
   }
 
-  // ── Wordmark — brand typography image
+  // ══════════════════════════════════════════════════════
+  // WORDMARK
+  // ══════════════════════════════════════════════════════
   &__wordmark {
     margin-bottom: 1.5rem;
-    animation: fade-in-up 0.65s ease both;
-    animation-delay: 0.08s;
+    animation: enter-up 0.7s $ease-expo 0.08s both;
   }
 
   &__wordmark-img {
     display: block;
-    width: clamp(240px, 40vw, 420px);
+    width: clamp(220px, 34vw, 400px);
     height: auto;
-    filter: drop-shadow(0 4px 24px rgba(243, 50, 131, 0.35));
+    filter: drop-shadow(0 4px 32px rgba($neon, 0.4));
+    transition: filter 0.4s ease;
+
+    &:hover {
+      filter: drop-shadow(0 6px 48px rgba($neon, 0.6));
+    }
   }
 
-  // ── Headline — massive, modern
+  // ══════════════════════════════════════════════════════
+  // HEADLINE — The manifesto
+  // ══════════════════════════════════════════════════════
   &__headline {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    margin-bottom: 1.5rem;
-    animation: fade-in-up 0.7s ease both;
-    animation-delay: 0.1s;
+    margin-bottom: 1.6rem;
   }
 
-  &__headline-line {
+  &__line {
     display: block;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(3.5rem, 7.5vw, 7.5rem);
-    font-weight: 700;
-    line-height: 0.88;
-    letter-spacing: -0.03em;
+    font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: -0.03em;
+    will-change: transform, opacity;
 
-    &--1 {
-      color: #fff;
+    // ── Small connector lines
+    &--sm {
+      font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      line-height: 1.6;
+      animation: enter-left 0.7s $ease-expo 0.14s both;
     }
 
-    &--2 {
+    // ── "GRANIZADO." — massive outline
+    &--outline {
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.9;
       color: transparent;
-      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
+      margin-bottom: 0.08em;
+      animation: enter-left 0.8s $ease-expo 0.22s both;
+      transition: -webkit-text-stroke-color 0.3s ease;
+
+      &:hover {
+        -webkit-text-stroke-color: rgba($neon, 0.5);
+      }
     }
 
-    &--3 {
-      background: linear-gradient(135deg, #F33283, #FF6B9A, #FFA7D7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    // ── "ACTITUD." — gradient neon, the star
+    &--hero {
+      font-size: clamp(3.8rem, 8.5vw, 8rem);
+      line-height: 0.88;
+      position: relative;
+      animation: enter-scale 0.9s $ease-back 0.36s both;
     }
   }
 
-  // ── Sub
-  &__sub {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 1rem;
-    animation: fade-in-up 0.7s ease both;
-    animation-delay: 0.2s;
+  &__line-inner {
+    background: linear-gradient(
+      135deg,
+      $neon-hot 0%,
+      $neon 25%,
+      $neon-mid 50%,
+      $neon-light 75%,
+      #fff 100%
+    );
+    background-size: 250% 250%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-flow 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 40px rgba($neon, 0.35));
+    transition: filter 0.3s ease;
+
+    &:hover {
+      filter: drop-shadow(0 0 70px rgba($neon, 0.55));
+    }
   }
 
-  &__description {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.4);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-    max-width: 440px;
-    animation: fade-in-up 0.7s ease both;
-    animation-delay: 0.3s;
-  }
-
-  // ── CTAs — modern, pill-shaped
-  &__actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+  // ══════════════════════════════════════════════════════
+  // CTA ZONE
+  // ══════════════════════════════════════════════════════
+  &__cta-zone {
     margin-bottom: 2.5rem;
-    animation: fade-in-up 0.7s ease both;
-    animation-delay: 0.4s;
+    animation: enter-up 0.7s $ease-expo 0.55s both;
   }
 
-  &__cta-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: linear-gradient(135deg, #F33283, #FF6B9A);
-    color: #fff;
-    padding: 0.85rem 2rem;
-    text-decoration: none;
+  &__cta-label {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 50px;
-    box-shadow: 0 4px 24px rgba(243, 50, 131, 0.35);
-    transition: all 0.3s ease;
-
-    svg { flex-shrink: 0; }
-
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 40px rgba(243, 50, 131, 0.5);
-    }
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 0.8rem;
   }
 
-  &__cta-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: transparent;
-    color: #fff;
-    padding: 0.85rem 2rem;
-    text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.3s ease;
-
-    &:hover {
-      border-color: rgba(243, 50, 131, 0.5);
-      background: rgba(243, 50, 131, 0.08);
-      transform: translateY(-2px);
-    }
-  }
-
-  // ── Stats
-  &__stats {
+  // ══════════════════════════════════════════════════════
+  // PROOF BAR — social proof stats
+  // ══════════════════════════════════════════════════════
+  &__proof {
     display: flex;
-    gap: 2.5rem;
-    animation: fade-in-up 0.7s ease both;
-    animation-delay: 0.5s;
+    align-items: center;
+    gap: 1.5rem;
+    animation: enter-up 0.7s $ease-expo 0.65s both;
   }
 
-  &__stat {
+  &__proof-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &__proof-item {
     display: flex;
     flex-direction: column;
+    position: relative;
+    cursor: default;
+    transition: transform 0.3s $ease-spring;
 
-    &-number {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1;
-      letter-spacing: -0.02em;
-    }
-
-    &-label {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.35);
-      margin-top: 0.35rem;
-      font-weight: 500;
-    }
+    &:hover { transform: translateY(-3px); }
   }
 
-  // ── Right: visual with glow
+  &__proof-val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 20px rgba($neon, 0.25);
+  }
+
+  &__proof-key {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.3rem;
+  }
+
+  // ══════════════════════════════════════════════════════
+  // VISUAL — Character zone
+  // ══════════════════════════════════════════════════════
   &__visual {
     position: relative;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: hero-visual-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: 0.2s;
+    animation: visual-enter 1s $ease-spring 0.2s both;
   }
 
+  // ── Neon halo rings
+  &__halo {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+  }
+
+  &__halo-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid;
+
+    &--1 {
+      width: 80%;
+      height: 80%;
+      border-color: rgba(#fff, 0.06);
+      animation: halo-spin 30s linear infinite;
+      box-shadow:
+        0 0 20px rgba(#fff, 0.02),
+        inset 0 0 20px rgba(#fff, 0.01);
+    }
+
+    &--2 {
+      width: 95%;
+      height: 95%;
+      border-color: rgba(#fff, 0.03);
+      border-style: dashed;
+      animation: halo-spin 50s linear infinite reverse;
+    }
+  }
+
+  // ── Radial glow
   &__glow {
     position: absolute;
-    width: 110%;
-    height: 110%;
-    top: -5%;
-    left: -5%;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(243, 50, 131, 0.2) 0%, rgba(243, 50, 131, 0.05) 50%, transparent 70%);
-    animation: glow-pulse 4s ease-in-out infinite;
+    background: radial-gradient(
+      circle,
+      rgba(#fff, 0.04) 0%,
+      rgba(#fff, 0.015) 40%,
+      transparent 70%
+    );
+    animation: glow-breathe 6s ease-in-out infinite;
+    z-index: 0;
   }
 
-  &__image {
+  // ── Character wrapper — slurp loop
+  &__char {
+    position: relative;
+    z-index: 3;
+    animation: char-slurp 4.5s ease-in-out infinite;
+    transform-origin: 50% 85%;
+  }
+
+  &__char-img {
     display: block;
     width: 120%;
     max-width: none;
     height: auto;
-    position: relative;
-    z-index: 1;
-    animation: float 5s ease-in-out infinite;
-    filter: brightness(0) invert(1) drop-shadow(0 20px 60px rgba(243, 50, 131, 0.3));
+    filter:
+      brightness(0) invert(1)
+      drop-shadow(0 0 8px rgba($neon, 0.4))
+      drop-shadow(0 0 20px rgba($neon, 0.25))
+      drop-shadow(0 0 45px rgba($neon, 0.15));
+    transition: filter 0.5s ease;
+    animation: outline-pulse 4s ease-in-out infinite;
+  }
+
+  // ── Floating "SLURP!" text
+  &__float-text {
+    position: absolute;
+    top: 12%;
+    right: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: rgba(#fff, 0.7);
+    text-shadow: 0 0 12px rgba(#fff, 0.3);
+    opacity: 0;
+    animation: slurp-text 4.5s ease-in-out infinite;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  // ── Slurp drop bubbles
+  &__slurp {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  &__slurp-drop {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(#fff, 0.35), rgba(#fff, 0.1));
+    border: 1px solid rgba(#fff, 0.12);
+    opacity: 0;
+
+    &--1 { width: 10px; height: 10px; top: 30%; left: 54%; animation: drop-rise 4.5s ease-in-out infinite 0s; }
+    &--2 { width: 7px;  height: 7px;  top: 35%; left: 58%; animation: drop-rise 4.5s ease-in-out infinite 0.7s; }
+    &--3 { width: 5px;  height: 5px;  top: 33%; left: 51%; animation: drop-rise 4.5s ease-in-out infinite 1.4s; }
+    &--4 { width: 8px;  height: 8px;  top: 38%; left: 56%; animation: drop-rise 4.5s ease-in-out infinite 2.1s; }
+    &--5 { width: 5px;  height: 5px;  top: 28%; left: 60%; animation: drop-rise 4.5s ease-in-out infinite 2.8s; }
+    &--6 { width: 6px;  height: 6px;  top: 40%; left: 53%; animation: drop-rise 4.5s ease-in-out infinite 3.5s; }
+  }
+
+  // ── Straw liquid
+  &__straw {
+    position: absolute;
+    top: 18%;
+    left: 55%;
+    width: 3px;
+    height: 20%;
+    z-index: 5;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgba(#fff, 0.03);
+  }
+
+  &__straw-fill {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(to top, rgba(#fff, 0.5), rgba(#fff, 0.2), transparent);
+    animation: straw-fill 4.5s ease-in-out infinite;
+    transform-origin: bottom;
   }
 }
 
-// ── Animations
+// ══════════════════════════════════════════════════════════
+// KEYFRAMES
+// ══════════════════════════════════════════════════════════
+
+// ── Entry animations
+@keyframes enter-up {
+  from { opacity: 0; transform: translateY(18px); filter: blur(3px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+
+@keyframes enter-left {
+  from { opacity: 0; transform: translateX(-20px); filter: blur(3px); }
+  to   { opacity: 1; transform: translateX(0);     filter: blur(0); }
+}
+
+@keyframes enter-scale {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); filter: blur(4px); }
+  to   { opacity: 1; transform: scale(1) translateY(0);       filter: blur(0); }
+}
+
+@keyframes visual-enter {
+  from { opacity: 0; transform: scale(0.94) translateX(30px); filter: blur(6px); }
+  to   { opacity: 1; transform: scale(1) translateX(0);       filter: blur(0); }
+}
+
+// ── Tape
 @keyframes tape-scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
 
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes hero-visual-in {
-  from { opacity: 0; transform: scale(0.9) translateX(40px); }
-  to { opacity: 1; transform: scale(1) translateX(0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
-}
-
-@keyframes orb-float {
+// ── Ambient
+@keyframes orb-drift {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(20px, -15px) scale(1.05); }
-  66% { transform: translate(-15px, 10px) scale(0.95); }
+  25%  { transform: translate(12px, -10px) scale(1.02); }
+  50%  { transform: translate(-6px, 8px) scale(0.98); }
+  75%  { transform: translate(-10px, -5px) scale(1.01); }
 }
 
-@keyframes bubble-rise {
-  0% { transform: translateY(0) scale(1); opacity: 0.6; }
-  50% { transform: translateY(-20px) scale(1.1); opacity: 0.8; }
-  100% { transform: translateY(0) scale(1); opacity: 0.6; }
+@keyframes sparkle-float {
+  0%   { transform: translateY(0) scale(1); opacity: 0.15; }
+  25%  { opacity: 0.5; }
+  50%  { transform: translateY(-10px) scale(1.15); opacity: 0.35; }
+  75%  { opacity: 0.4; }
+  100% { transform: translateY(0) scale(1); opacity: 0.15; }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.3); }
+// ── Headline gradient
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
 }
 
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
+// ── Character slurp cycle
+@keyframes char-slurp {
+  0%   { transform: translateY(0)    rotate(0deg); }
+  15%  { transform: translateY(-5px) rotate(-0.8deg); }
+  30%  { transform: translateY(-2px)  rotate(0.3deg); }
+  50%  { transform: translateY(-6px) rotate(-0.5deg); }
+  70%  { transform: translateY(-3px)  rotate(0.2deg); }
+  85%  { transform: translateY(-1px)  rotate(-0.2deg); }
+  100% { transform: translateY(0)     rotate(0deg); }
 }
 
-// ── Responsive ─────────────────────────────────────────
+// ── Slurp text pop
+@keyframes slurp-text {
+  0%, 100% { opacity: 0; transform: translateY(5px) scale(0.9); }
+  15%      { opacity: 0.6; transform: translateY(-3px) scale(1.02); }
+  30%      { opacity: 0.4; transform: translateY(-1px) scale(1); }
+  50%      { opacity: 0; transform: translateY(-8px) scale(0.95); }
+}
 
-@media (max-width: 960px) {
+// ── Drop bubbles rise
+@keyframes drop-rise {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  15%  { opacity: 0.5; transform: translateY(-5px) scale(1); }
+  45%  { opacity: 0.3; transform: translateY(-20px) scale(1.05); }
+  75%  { opacity: 0.1; transform: translateY(-35px) scale(0.7); }
+  100% { opacity: 0; transform: translateY(-45px) scale(0.3); }
+}
+
+// ── Straw liquid
+@keyframes straw-fill {
+  0%   { transform: scaleY(0);   opacity: 0.2; }
+  25%  { transform: scaleY(0.6); opacity: 0.6; }
+  45%  { transform: scaleY(1);   opacity: 0.85; }
+  65%  { transform: scaleY(0.4); opacity: 0.4; }
+  100% { transform: scaleY(0);   opacity: 0.2; }
+}
+
+// ── Halo
+@keyframes halo-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+// ── Glow
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(1.02); }
+}
+
+// ── Tag dot
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px rgba($neon, 0.5); }
+  50%      { opacity: 0.5; transform: scale(1.2); box-shadow: 0 0 14px rgba($neon, 0.7); }
+}
+
+// ── Character outline pulse — pink contour glow
+@keyframes outline-pulse {
+  0%, 100% {
+    filter:
+      brightness(0) invert(1)
+      drop-shadow(0 0 6px rgba($neon, 0.35))
+      drop-shadow(0 0 18px rgba($neon, 0.2))
+      drop-shadow(0 0 40px rgba($neon, 0.1));
+  }
+  50% {
+    filter:
+      brightness(0) invert(1)
+      drop-shadow(0 0 12px rgba($neon, 0.55))
+      drop-shadow(0 0 30px rgba($neon, 0.35))
+      drop-shadow(0 0 60px rgba($neon, 0.2));
+  }
+}
+
+// ══════════════════════════════════════════════════════════
+// RESPONSIVE
+// ══════════════════════════════════════════════════════════
+
+@media (max-width: 1024px) {
   .hero {
     min-height: auto;
   }
 
-  .hero__container {
+  .hero__layout {
     grid-template-columns: 1fr;
     padding: 3rem 1.5rem;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .hero__visual {
     order: -1;
-    max-width: 320px;
+    max-width: 300px;
     margin: 0 auto;
   }
 
-  .hero__image {
-    width: 100%;
-  }
+  .hero__char-img { width: 100%; }
 
-  .hero__headline-line {
-    font-size: clamp(3rem, 10vw, 5.5rem);
+  .hero__line {
+    &--outline { font-size: clamp(2.6rem, 9vw, 4.5rem); }
+    &--hero    { font-size: clamp(3rem, 10vw, 5.5rem); }
   }
 
   .hero__orb {
-    &--1 { width: 300px; height: 300px; }
-    &--2 { width: 200px; height: 200px; }
+    &--1 { width: 350px; height: 350px; }
+    &--2 { width: 220px; height: 220px; }
+    &--4 { display: none; }
   }
 
-  .hero__bubble {
-    &--3, &--5 { display: none; }
+  .hero__particle {
+    &--5, &--7, &--8 { display: none; }
   }
+
+  .hero__float-text { display: none; }
 }
 
 @media (max-width: 600px) {
-  .hero__container {
+  .hero__layout {
     padding: 2rem 1.25rem 2.5rem;
-    gap: 1.5rem;
-  }
-
-  .hero__tape-track {
-    font-size: 0.6rem;
     gap: 1.2rem;
   }
 
-  .hero__badge {
-    font-size: 0.65rem;
-    padding: 0.35rem 1rem;
-    margin-bottom: 1.25rem;
+  .hero__tape-track {
+    font-size: 0.58rem;
+    gap: 1rem;
   }
 
-  .hero__visual { max-width: 240px; }
-
-  .hero__headline-line {
-    font-size: clamp(2.5rem, 14vw, 3.5rem);
-
-    &--2 { -webkit-text-stroke-width: 1.5px; }
+  .hero__tag {
+    font-size: 0.58rem;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.2rem;
   }
 
-  .hero__sub { font-size: 0.95rem; }
+  .hero__visual { max-width: 220px; }
 
-  .hero__description {
-    font-size: 0.9rem;
+  .hero__line {
+    &--sm      { font-size: clamp(0.85rem, 3.5vw, 1.1rem); }
+    &--outline {
+      font-size: clamp(2rem, 11vw, 3rem);
+      -webkit-text-stroke-width: 1.5px;
+    }
+    &--hero { font-size: clamp(2.5rem, 13vw, 3.5rem); }
+  }
+
+  .hero__tagline {
+    font-size: 0.88rem;
     max-width: 100%;
   }
 
-  .hero__actions {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+  .hero__br-desktop { display: none; }
 
-  .hero__cta-primary,
-  .hero__cta-secondary {
-    justify-content: center;
-    width: 100%;
-  }
-
-  .hero__stats {
-    gap: 1.5rem;
+  .hero__proof {
+    gap: 1rem;
     flex-wrap: wrap;
   }
 
-  .hero__stat-number { font-size: 1.5rem; }
+  .hero__proof-val { font-size: 1.3rem; }
 
-  .hero__bubble {
-    &--1, &--4, &--6 { display: none; }
+  .hero__proof-divider {
+    height: 24px;
   }
+
+  .hero__slurp-drop {
+    &--4, &--5, &--6 { display: none; }
+  }
+
+  .hero__straw { display: none; }
 
   .hero__orb {
-    &--1 { width: 200px; height: 200px; }
-    &--2 { display: none; }
-    &--3 { display: none; }
+    &--1 { width: 220px; height: 220px; }
+    &--2, &--3, &--4 { display: none; }
   }
+
+  .hero__particle {
+    &--2, &--3, &--6, &--7, &--8 { display: none; }
+  }
+
+  .hero__halo-ring--2 { display: none; }
 }
 
 @media (max-width: 400px) {
-  .hero__container { padding: 1.5rem 1rem 2rem; }
-  .hero__headline-line { font-size: clamp(2rem, 15vw, 3rem); }
+  .hero__layout { padding: 1.5rem 1rem 2rem; }
+
+  .hero__line {
+    &--sm      { font-size: clamp(0.75rem, 3.5vw, 0.95rem); }
+    &--outline { font-size: clamp(1.6rem, 12vw, 2.4rem); }
+    &--hero    { font-size: clamp(2rem, 14vw, 2.8rem); }
+  }
+
+  .hero__wordmark-img {
+    width: clamp(160px, 55vw, 240px);
+  }
+}
+
+// ── Accessibility
+@media (prefers-reduced-motion: reduce) {
+  .hero__char,
+  .hero__char-img,
+  .hero__slurp-drop,
+  .hero__straw-fill,
+  .hero__orb,
+  .hero__particle,
+  .hero__halo-ring,
+  .hero__glow,
+  .hero__float-text {
+    animation: none !important;
+  }
+
+  .hero__line-inner {
+    animation: none !important;
+    background-size: 100% 100%;
+  }
 }

@@ -2,83 +2,131 @@
 
 <!-- BENEFICIOS -->
 <section class="benefits">
-  <div class="benefits__divider" aria-hidden="true">
-    <div class="benefits__divider-line"></div>
-    <span class="benefits__divider-tag">¿POR QUÉ FRESQUITOX?</span>
-    <div class="benefits__divider-line"></div>
+  <!-- Ambient -->
+  <div class="benefits__bg" aria-hidden="true">
+    <div class="benefits__orb benefits__orb--1"></div>
+    <div class="benefits__orb benefits__orb--2"></div>
+    <div class="benefits__noise"></div>
+    <div class="benefits__grid-lines"></div>
   </div>
+
   <div class="container">
-    <div class="benefits__grid">
-
-      <div class="benefit-card benefit-card--natural" data-animate="fade-up">
-        <div class="benefit-card__accent" aria-hidden="true"></div>
-        <div class="benefit-card__top">
-          <span class="benefit-card__number">01</span>
-          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--green">
-            <span class="benefit-card__icon">🍃</span>
-          </div>
+    <div class="benefits__layout">
+      <!-- Left: header sticky -->
+      <div class="benefits__left" data-animate="fade-up">
+        <span class="benefits__tag"><span class="benefits__tag-dot"></span>¿Por qué Fresquitox?</span>
+        <h2 class="benefits__headline">No somos<br>como los<br><span>demás.</span></h2>
+        <p class="benefits__sub">4 razones por las que la gente repite</p>
+        <div class="benefits__counter">
+          <span class="benefits__counter-num">+50</span>
+          <span class="benefits__counter-label">Sabores en carta</span>
         </div>
-        <h3 class="benefit-card__title">100% Natural</h3>
-        <p class="benefit-card__desc">Fruta fresca del día, cero conservantes, cero artificiales. Lo real no necesita trucos.</p>
-        <span class="benefit-card__tag">Sin conservantes</span>
       </div>
 
-      <div class="benefit-card benefit-card--speed" data-animate="fade-up" data-animate-delay="120">
-        <div class="benefit-card__accent" aria-hidden="true"></div>
-        <div class="benefit-card__top">
-          <span class="benefit-card__number">02</span>
-          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--orange">
-            <span class="benefit-card__icon">⚡</span>
+      <!-- Right: cards staggered -->
+      <div class="benefits__right">
+        <div class="bcard bcard--green" data-animate="fade-up">
+          <div class="bcard__glow" aria-hidden="true"></div>
+          <div class="bcard__stripe" aria-hidden="true"></div>
+          <div class="bcard__head">
+            <span class="bcard__num">01</span>
+            <div class="bcard__icon-ring">
+              <span class="bcard__icon">🍃</span>
+            </div>
+          </div>
+          <h3 class="bcard__title">100% Natural</h3>
+          <p class="bcard__desc">Fruta fresca del día, cero conservantes, cero artificiales. Lo real no necesita trucos.</p>
+          <div class="bcard__foot">
+            <span class="bcard__pill">Sin conservantes</span>
+            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </div>
         </div>
-        <h3 class="benefit-card__title">Entrega rápida</h3>
-        <p class="benefit-card__desc">En tu puerta en 30 minutos o menos. Fresquito, como debe ser.</p>
-        <span class="benefit-card__tag">30 min máximo</span>
-      </div>
 
-      <div class="benefit-card benefit-card--combos" data-animate="fade-up" data-animate-delay="240">
-        <div class="benefit-card__accent" aria-hidden="true"></div>
-        <div class="benefit-card__top">
-          <span class="benefit-card__number">03</span>
-          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--pink">
-            <span class="benefit-card__icon">🎨</span>
+        <div class="bcard bcard--orange" data-animate="fade-up" data-animate-delay="120">
+          <div class="bcard__glow" aria-hidden="true"></div>
+          <div class="bcard__stripe" aria-hidden="true"></div>
+          <div class="bcard__head">
+            <span class="bcard__num">02</span>
+            <div class="bcard__icon-ring">
+              <span class="bcard__icon">⚡</span>
+            </div>
+          </div>
+          <h3 class="bcard__title">Entrega rápida</h3>
+          <p class="bcard__desc">En tu puerta en 30 minutos o menos. Fresquito, como debe ser.</p>
+          <div class="bcard__foot">
+            <span class="bcard__pill">30 min máximo</span>
+            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </div>
         </div>
-        <h3 class="benefit-card__title">+50 Sabores</h3>
-        <p class="benefit-card__desc">La carta más extravagante de granizados en toda Bogotá. Siempre algo nuevo.</p>
-        <span class="benefit-card__tag">Carta infinita</span>
-      </div>
 
-      <div class="benefit-card benefit-card--alcohol" data-animate="fade-up" data-animate-delay="360">
-        <div class="benefit-card__accent" aria-hidden="true"></div>
-        <div class="benefit-card__top">
-          <span class="benefit-card__number">04</span>
-          <div class="benefit-card__icon-wrap benefit-card__icon-wrap--purple">
-            <span class="benefit-card__icon">🍹</span>
+        <div class="bcard bcard--pink" data-animate="fade-up" data-animate-delay="240">
+          <div class="bcard__glow" aria-hidden="true"></div>
+          <div class="bcard__stripe" aria-hidden="true"></div>
+          <div class="bcard__head">
+            <span class="bcard__num">03</span>
+            <div class="bcard__icon-ring">
+              <span class="bcard__icon">🎨</span>
+            </div>
+          </div>
+          <h3 class="bcard__title">+50 Sabores</h3>
+          <p class="bcard__desc">La carta más extravagante de granizados en toda Bogotá. Siempre algo nuevo.</p>
+          <div class="bcard__foot">
+            <span class="bcard__pill">Carta infinita</span>
+            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </div>
         </div>
-        <h3 class="benefit-card__title">Con y sin alcohol</h3>
-        <p class="benefit-card__desc">Pa' los que toman y los que no. Versiones para todos, sin excluir a nadie.</p>
-        <span class="benefit-card__tag">Para todos</span>
-      </div>
 
+        <div class="bcard bcard--purple" data-animate="fade-up" data-animate-delay="360">
+          <div class="bcard__glow" aria-hidden="true"></div>
+          <div class="bcard__stripe" aria-hidden="true"></div>
+          <div class="bcard__head">
+            <span class="bcard__num">04</span>
+            <div class="bcard__icon-ring">
+              <span class="bcard__icon">🍹</span>
+            </div>
+          </div>
+          <h3 class="bcard__title">Con y sin alcohol</h3>
+          <p class="bcard__desc">Pa' los que toman y los que no. Versiones para todos, sin excluir a nadie.</p>
+          <div class="bcard__foot">
+            <span class="bcard__pill">Para todos</span>
+            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- PRODUCTOS DESTACADOS -->
 <section class="productos-home">
+  <!-- Ambient FX -->
+  <div class="productos-home__bg" aria-hidden="true">
+    <div class="productos-home__orb productos-home__orb--1"></div>
+    <div class="productos-home__orb productos-home__orb--2"></div>
+    <div class="productos-home__noise"></div>
+    <div class="productos-home__scanlines"></div>
+  </div>
+
   <div class="container">
     <div class="productos-home__header" data-animate="fade-up">
-      <span class="productos-home__tag">Nuestro menú</span>
+      <span class="productos-home__tag"><span class="productos-home__tag-dot"></span>Nuestro menú</span>
       <h2 class="productos-home__headline">Sabores que<br><span>rompen esquemas.</span></h2>
       <p class="productos-home__sub">Bebidas preparadas al instante con frutas frescas y todo el sabor</p>
+    </div>
+
+    <div class="productos-home__divider" data-animate="fade-up">
+      <div class="productos-home__divider-line"></div>
     </div>
 
     <div class="productos-home__grid">
       @for (producto of productosDestacados; track producto.slug; let i = $index) {
         <a [routerLink]="['/productos']" class="pcard" data-animate="fade-up" [attr.data-animate-delay]="i * 120">
-          <div class="pcard__number">0{{ i + 1 }}</div>
+          <div class="pcard__accent"></div>
+          <span class="pcard__bg-num">0{{ i + 1 }}</span>
+          <div class="pcard__top">
+            <span class="pcard__number">0{{ i + 1 }}</span>
+            <svg class="pcard__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
           <div class="pcard__body">
             <h3 class="pcard__title">{{ producto.nombre }}</h3>
             <p class="pcard__desc">{{ producto.descripcionCorta }}</p>
@@ -89,8 +137,8 @@
             </div>
           </div>
           <div class="pcard__footer">
-            <span>Ver producto</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <span class="pcard__link">Explorar</span>
+            <span class="pcard__link-line"></span>
           </div>
         </a>
       }
@@ -98,7 +146,8 @@
 
     <div class="productos-home__cta" data-animate="fade-up">
       <a routerLink="/productos" class="productos-home__btn">
-        Ver todos los productos →
+        <span>Ver todo el menú</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
@@ -109,20 +158,55 @@
   <div class="brand-section__bg" aria-hidden="true">
     <div class="brand-section__orb brand-section__orb--1"></div>
     <div class="brand-section__orb brand-section__orb--2"></div>
+    <div class="brand-section__noise"></div>
   </div>
+
   <div class="container">
-    <div class="brand-section__content" data-animate="scale-up">
-      <img src="images/logo.png" alt="" class="brand-section__mascot" width="80" height="80" aria-hidden="true">
-      <span class="brand-section__tag">Más que bebidas</span>
-      <h2 class="brand-section__headline">
-        No vendemos granizados.<br>
-        <span>Vendemos actitud.</span>
-      </h2>
-      <p class="brand-section__text">Fresquitox nació en la calle. En la música. En el arte. Somos la generación que no se conforma con lo básico. Cada sorbo es una declaración.</p>
-      <div class="brand-section__actions">
-        <a routerLink="/experiencia" class="brand-section__btn brand-section__btn--primary">Vivir la experiencia</a>
-        <a routerLink="/nosotros" class="brand-section__btn brand-section__btn--outline">Nuestra historia</a>
+    <div class="brand-section__grid">
+
+      <!-- LEFT — Character visual -->
+      <div class="brand-section__visual" data-animate="fade-up">
+        <div class="brand-section__ring" aria-hidden="true"></div>
+        <img src="images/logo.png" alt="" class="brand-section__mascot" width="340" height="340" aria-hidden="true">
       </div>
+
+      <!-- RIGHT — Copy -->
+      <div class="brand-section__copy" data-animate="fade-up" data-animate-delay="100">
+        <span class="brand-section__tag">
+          <span class="brand-section__tag-dot"></span>
+          Más que bebidas
+        </span>
+
+        <h2 class="brand-section__headline">
+          No vendemos<br>granizados.<br>
+          <span>Vendemos experiencia.</span>
+        </h2>
+
+        <p class="brand-section__text">Fresquitox nació en la calle. En la música. En el arte. Somos la generación que no se conforma con lo básico. Cada sorbo es una declaración.</p>
+
+        <div class="brand-section__stats">
+          <div class="brand-section__stat">
+            <strong>+50</strong>
+            <span>Sabores</span>
+          </div>
+          <div class="brand-section__stat-sep"></div>
+          <div class="brand-section__stat">
+            <strong>100%</strong>
+            <span>Natural</span>
+          </div>
+          <div class="brand-section__stat-sep"></div>
+          <div class="brand-section__stat">
+            <strong>20+</strong>
+            <span>Zonas</span>
+          </div>
+        </div>
+
+        <div class="brand-section__actions">
+          <a routerLink="/experiencia" class="brand-section__btn brand-section__btn--primary">Vivir la experiencia</a>
+          <a routerLink="/nosotros" class="brand-section__btn brand-section__btn--outline">Nuestra historia</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -130,26 +214,38 @@
 <!-- ZONAS -->
 <section class="zonas-home">
   <div class="container">
-    <div class="zonas-home__header" data-animate="fade-up">
-      <span class="zonas-home__tag">Cobertura</span>
-      <h2 class="zonas-home__headline">Zonas de<br><span>entrega.</span></h2>
-      <p class="zonas-home__sub">Llevamos frescura a las principales localidades de Bogotá</p>
-    </div>
+    <div class="zonas-home__layout">
 
-    <div class="zonas-home__grid">
-      @for (zona of zonas; track zona.slug; let i = $index) {
-        <a [routerLink]="['/zonas', zona.slug]" class="zona-chip" data-animate="fade-up" [attr.data-animate-delay]="i * 80">
-          <span class="zona-chip__dot"></span>
-          {{ zona.nombre }}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <!-- LEFT — Header + CTA -->
+      <div class="zonas-home__left" data-animate="fade-up">
+        <span class="zonas-home__tag">
+          <span class="zonas-home__tag-dot"></span>
+          Cobertura en Bogotá
+        </span>
+        <h2 class="zonas-home__headline">Llegamos a<br><span>tu zona.</span></h2>
+        <p class="zonas-home__sub">Frescura directa a las principales localidades de Bogotá. Sin excusas, sin demoras.</p>
+        <a routerLink="/zonas" class="zonas-home__view-all">
+          Ver todas las zonas
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-      }
-    </div>
+      </div>
 
-    <div class="zonas-home__footer" data-animate="fade-up">
-      <a routerLink="/zonas" class="zonas-home__view-all">
-        Ver todas las zonas →
-      </a>
+      <!-- RIGHT — Zona chips grid -->
+      <div class="zonas-home__right">
+        <div class="zonas-home__grid">
+          @for (zona of zonas; track zona.slug; let i = $index) {
+            <a [routerLink]="['/zonas', zona.slug]" class="zona-chip" data-animate="fade-up" [attr.data-animate-delay]="i * 80">
+              <span class="zona-chip__icon">📍</span>
+              <div class="zona-chip__info">
+                <span class="zona-chip__name">{{ zona.nombre }}</span>
+                <span class="zona-chip__label">Delivery activo</span>
+              </div>
+              <svg class="zona-chip__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          }
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -157,18 +253,57 @@
 <!-- CTA FINAL -->
 <section class="cta-final">
   <div class="cta-final__bg" aria-hidden="true">
-    <div class="cta-final__orb"></div>
+    <div class="cta-final__orb cta-final__orb--1"></div>
+    <div class="cta-final__orb cta-final__orb--2"></div>
+    <div class="cta-final__grid-lines"></div>
+    <div class="cta-final__scanlines"></div>
   </div>
+
   <div class="container">
-    <div class="cta-final__content" data-animate="scale-up">
-      <h2 class="cta-final__headline">
-        <span class="cta-final__line cta-final__line--1">Pedí tu</span>
-        <span class="cta-final__line cta-final__line--2">granizado.</span>
-      </h2>
-      <p class="cta-final__sub">Sabor garantizado en cada sorbo. En tu puerta o en nuestro punto.</p>
-      <div class="cta-final__actions">
-        <app-delivery-options variant="compact" theme="dark" />
+    <div class="cta-final__layout">
+
+      <!-- LEFT — Copy + CTA -->
+      <div class="cta-final__copy" data-animate="fade-up">
+        <span class="cta-final__tag">
+          <span class="cta-final__tag-dot"></span>
+          Ordena ahora
+        </span>
+
+        <h2 class="cta-final__headline">
+          <span class="cta-final__line cta-final__line--1">Pedí tu</span>
+          <span class="cta-final__line cta-final__line--2">granizado.</span>
+        </h2>
+
+        <p class="cta-final__sub">Sabor garantizado en cada sorbo.<br>En tu puerta o en nuestro punto.</p>
+
+        <div class="cta-final__delivery">
+          <app-delivery-options variant="compact" theme="dark" />
+        </div>
+
+        <!-- Trust line -->
+        <div class="cta-final__trust">
+          <div class="cta-final__trust-item">
+            <span class="cta-final__trust-icon">🍃</span>
+            <span>100% Natural</span>
+          </div>
+          <div class="cta-final__trust-item">
+            <span class="cta-final__trust-icon">⚡</span>
+            <span>30 min delivery</span>
+          </div>
+          <div class="cta-final__trust-item">
+            <span class="cta-final__trust-icon">🎯</span>
+            <span>+50 Sabores</span>
+          </div>
+        </div>
       </div>
+
+      <!-- RIGHT — Character prominent -->
+      <div class="cta-final__visual" data-animate="fade-up" data-animate-delay="150">
+        <div class="cta-final__ring" aria-hidden="true"></div>
+        <div class="cta-final__glow" aria-hidden="true"></div>
+        <img src="images/logo.png" alt="" class="cta-final__mascot" width="400" height="400" aria-hidden="true">
+      </div>
+
     </div>
   </div>
 </section>

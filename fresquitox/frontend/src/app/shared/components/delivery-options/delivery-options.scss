@@ -52,13 +52,15 @@ $green-store: #22C55E;
     align-items: center;
     gap: 0.35rem;
     padding: 1.1rem 0.75rem;
-    border-radius: 16px;
+    border-radius: 14px;
     text-decoration: none;
     position: relative;
     overflow: hidden;
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 
     &::before {
       content: '';
@@ -69,35 +71,76 @@ $green-store: #22C55E;
       transition: opacity 0.35s ease;
     }
 
+    // Shine sweep
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+      transition: left 0.5s ease;
+      z-index: 1;
+    }
+
     &:hover {
-      transform: translateY(-3px);
+      transform: translateY(-3px) scale(1.02);
       border-color: rgba(255, 255, 255, 0.15);
 
       &::before { opacity: 1; }
+      &::after  { left: 120%; }
+    }
+
+    &:active {
+      transform: translateY(-1px) scale(0.98);
     }
 
     // Didi
     &--didi {
       &::before { background: linear-gradient(135deg, rgba($orange-didi, 0.12), rgba($orange-didi, 0.03)); }
-      &:hover { border-color: rgba($orange-didi, 0.35); box-shadow: 0 8px 32px rgba($orange-didi, 0.15); }
+      &:hover {
+        border-color: rgba($orange-didi, 0.4);
+        box-shadow:
+          0 8px 32px rgba($orange-didi, 0.18),
+          0 0 12px rgba($orange-didi, 0.08);
+      }
     }
 
     // Rappi
     &--rappi {
       &::before { background: linear-gradient(135deg, rgba($orange-rappi, 0.12), rgba($orange-rappi, 0.03)); }
-      &:hover { border-color: rgba($orange-rappi, 0.35); box-shadow: 0 8px 32px rgba($orange-rappi, 0.15); }
+      &:hover {
+        border-color: rgba($orange-rappi, 0.4);
+        box-shadow:
+          0 8px 32px rgba($orange-rappi, 0.18),
+          0 0 12px rgba($orange-rappi, 0.08);
+      }
     }
 
     // Store
     &--store {
       &::before { background: linear-gradient(135deg, rgba($green-store, 0.12), rgba($green-store, 0.03)); }
-      &:hover { border-color: rgba($green-store, 0.35); box-shadow: 0 8px 32px rgba($green-store, 0.15); }
+      &:hover {
+        border-color: rgba($green-store, 0.4);
+        box-shadow:
+          0 8px 32px rgba($green-store, 0.18),
+          0 0 12px rgba($green-store, 0.08);
+      }
     }
 
     &-icon {
       font-size: 1.6rem;
       line-height: 1;
       margin-bottom: 0.15rem;
+    }
+
+    &-logo {
+      height: 20px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 0.1rem;
+      flex-shrink: 0;
     }
 
     &-name {
@@ -145,6 +188,7 @@ $green-store: #22C55E;
     border-radius: 12px;
 
     &-icon { font-size: 1.15rem; margin-bottom: 0; }
+    &-logo { height: 16px; }
     &-name { font-size: 0.82rem; }
     &-arrow { position: static; margin-left: auto; }
   }

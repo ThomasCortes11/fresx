@@ -1,95 +1,138 @@
 ﻿<section class="hero">
 
-  <!-- Gradient orbs -->
-  <div class="hero__orbs" aria-hidden="true">
+  <!-- ═══ Ambient FX layer ═══ -->
+  <div class="hero__ambient" aria-hidden="true">
     <div class="hero__orb hero__orb--1"></div>
     <div class="hero__orb hero__orb--2"></div>
     <div class="hero__orb hero__orb--3"></div>
+    <div class="hero__orb hero__orb--4"></div>
   </div>
 
-  <!-- Grid pattern overlay -->
-  <div class="hero__grid-pattern" aria-hidden="true"></div>
+  <!-- Scanlines + noise -->
+  <div class="hero__scanlines" aria-hidden="true"></div>
+  <div class="hero__noise" aria-hidden="true"></div>
 
-  <!-- Floating bubbles -->
-  <div class="hero__bubbles" aria-hidden="true">
-    <span class="hero__bubble hero__bubble--1"></span>
-    <span class="hero__bubble hero__bubble--2"></span>
-    <span class="hero__bubble hero__bubble--3"></span>
-    <span class="hero__bubble hero__bubble--4"></span>
-    <span class="hero__bubble hero__bubble--5"></span>
-    <span class="hero__bubble hero__bubble--6"></span>
+  <!-- Diagonal grid -->
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <!-- Floating ice particles -->
+  <div class="hero__particles" aria-hidden="true">
+    <span class="hero__particle hero__particle--1"></span>
+    <span class="hero__particle hero__particle--2"></span>
+    <span class="hero__particle hero__particle--3"></span>
+    <span class="hero__particle hero__particle--4"></span>
+    <span class="hero__particle hero__particle--5"></span>
+    <span class="hero__particle hero__particle--6"></span>
+    <span class="hero__particle hero__particle--7"></span>
+    <span class="hero__particle hero__particle--8"></span>
   </div>
 
-  <!-- Scrolling tape -->
+  <!-- ═══ Running tape ═══ -->
   <div class="hero__tape" aria-hidden="true">
     <div class="hero__tape-track">
-      <span>FRESQUITOX</span><span class="hero__tape-dot">●</span>
-      <span>GRANIZADOS</span><span class="hero__tape-dot">●</span>
-      <span>CON & SIN ALCOHOL</span><span class="hero__tape-dot">●</span>
-      <span>BOGOTÁ</span><span class="hero__tape-dot">●</span>
-      <span>100% ACTITUD</span><span class="hero__tape-dot">●</span>
-      <span>FRESQUITOX</span><span class="hero__tape-dot">●</span>
-      <span>GRANIZADOS</span><span class="hero__tape-dot">●</span>
-      <span>CON & SIN ALCOHOL</span><span class="hero__tape-dot">●</span>
-      <span>BOGOTÁ</span><span class="hero__tape-dot">●</span>
-      <span>100% ACTITUD</span><span class="hero__tape-dot">●</span>
+      <span>FRESQUITOX</span><span class="hero__tape-sep">✦</span>
+      <span>ESTO NO ES UN GRANIZADO</span><span class="hero__tape-sep">✦</span>
+      <span>BOGOTÁ UNDER</span><span class="hero__tape-sep">✦</span>
+      <span>CON & SIN ALCOHOL</span><span class="hero__tape-sep">✦</span>
+      <span>CULTURA CALLEJERA</span><span class="hero__tape-sep">✦</span>
+      <span>FRESQUITOX</span><span class="hero__tape-sep">✦</span>
+      <span>ESTO NO ES UN GRANIZADO</span><span class="hero__tape-sep">✦</span>
+      <span>BOGOTÁ UNDER</span><span class="hero__tape-sep">✦</span>
+      <span>CON & SIN ALCOHOL</span><span class="hero__tape-sep">✦</span>
+      <span>CULTURA CALLEJERA</span><span class="hero__tape-sep">✦</span>
     </div>
   </div>
 
-  <div class="hero__container">
+  <!-- ═══ Main layout ═══ -->
+  <div class="hero__layout">
 
+    <!-- LEFT — Copy -->
     <div class="hero__content">
 
-      <!-- Badge -->
-      <div class="hero__badge">
-        <span class="hero__badge-pulse"></span>
-        🍧 GRANIZADOS CON ACTITUD — BOGOTÁ
+      <!-- Tag -->
+      <div class="hero__tag">
+        <span class="hero__tag-dot"></span>
+        BOGOTÁ · CULTURA CALLEJERA · DESDE 2024
       </div>
 
-      <!-- Headline -->
+      <!-- Wordmark -->
       <div class="hero__wordmark">
         <img src="images/tipografia.png" alt="Fresquitox" class="hero__wordmark-img" width="420" height="60">
       </div>
 
+      <!-- ═══ HEADLINE — The statement ═══ -->
       <h1 class="hero__headline">
-        <span class="hero__headline-line hero__headline-line--1">EL SABOR</span>
-        <span class="hero__headline-line hero__headline-line--2">DE LA</span>
-        <span class="hero__headline-line hero__headline-line--3">CALLE.</span>
+        <span class="hero__line hero__line--sm">ESTO NO ES UN</span>
+        <span class="hero__line hero__line--outline">GRANIZADO.</span>
+        <span class="hero__line hero__line--sm">ES UNA</span>
+        <span class="hero__line hero__line--hero">
+          <span class="hero__line-inner">EXPERIENCIA.</span>
+        </span>
       </h1>
 
-      <p class="hero__sub">Granizados con actitud. Con y sin alcohol.</p>
-
-      <p class="hero__description">
-        Sabores que rompen esquemas. Frescura real para gente real. Directo a tu puerta en Bogotá.
-      </p>
-
-      <!-- CTAs -->
-      <div class="hero__actions">
+      <!-- CTA zone -->
+      <div class="hero__cta-zone">
+        <p class="hero__cta-label">Pide tu veneno:</p>
         <app-delivery-options variant="compact" theme="dark" />
       </div>
 
-      <!-- Stats -->
-      <div class="hero__stats">
-        <div class="hero__stat">
-          <span class="hero__stat-number">+50</span>
-          <span class="hero__stat-label">Sabores</span>
+      <!-- Proof bar -->
+      <div class="hero__proof">
+        <div class="hero__proof-item">
+          <span class="hero__proof-val">+50</span>
+          <span class="hero__proof-key">Sabores</span>
         </div>
-        <div class="hero__stat">
-          <span class="hero__stat-number">100%</span>
-          <span class="hero__stat-label">Natural</span>
+        <div class="hero__proof-divider"></div>
+        <div class="hero__proof-item">
+          <span class="hero__proof-val">100%</span>
+          <span class="hero__proof-key">Real</span>
         </div>
-        <div class="hero__stat">
-          <span class="hero__stat-number">30min</span>
-          <span class="hero__stat-label">Entrega</span>
+        <div class="hero__proof-divider"></div>
+        <div class="hero__proof-item">
+          <span class="hero__proof-val">30'</span>
+          <span class="hero__proof-key">A tu puerta</span>
         </div>
       </div>
+
     </div>
 
-    <!-- Right: visual -->
+    <!-- RIGHT — Character visual -->
     <div class="hero__visual">
+
+      <!-- Neon halo -->
+      <div class="hero__halo" aria-hidden="true">
+        <div class="hero__halo-ring hero__halo-ring--1"></div>
+        <div class="hero__halo-ring hero__halo-ring--2"></div>
+      </div>
+
+      <!-- Radial glow -->
       <div class="hero__glow" aria-hidden="true"></div>
-      <img src="images/logo.png" alt="Fresquitox - Granizados con actitud en Bogotá" class="hero__image" width="480" height="480" loading="eager">
+
+      <!-- Slurp FX bubbles -->
+      <div class="hero__slurp" aria-hidden="true">
+        <span class="hero__slurp-drop hero__slurp-drop--1"></span>
+        <span class="hero__slurp-drop hero__slurp-drop--2"></span>
+        <span class="hero__slurp-drop hero__slurp-drop--3"></span>
+        <span class="hero__slurp-drop hero__slurp-drop--4"></span>
+        <span class="hero__slurp-drop hero__slurp-drop--5"></span>
+        <span class="hero__slurp-drop hero__slurp-drop--6"></span>
+      </div>
+
+      <!-- Straw liquid -->
+      <div class="hero__straw" aria-hidden="true">
+        <div class="hero__straw-fill"></div>
+      </div>
+
+      <!-- Character -->
+      <div class="hero__char">
+        <img src="images/logo.png" alt="Fresquitox — Granizados con actitud en Bogotá" class="hero__char-img" width="480" height="480" loading="eager">
+      </div>
+
+      <!-- Floating text accent -->
+      <span class="hero__float-text" aria-hidden="true">SLURP!</span>
+
     </div>
 
   </div>
+
 </section>

@@ -3,80 +3,159 @@
   <div class="nos-hero__bg" aria-hidden="true">
     <div class="nos-hero__orb nos-hero__orb--1"></div>
     <div class="nos-hero__orb nos-hero__orb--2"></div>
+    <div class="nos-hero__orb nos-hero__orb--3"></div>
+    <div class="nos-hero__noise"></div>
+    <div class="nos-hero__scanlines"></div>
+    <div class="nos-hero__particle nos-hero__particle--1"></div>
+    <div class="nos-hero__particle nos-hero__particle--2"></div>
+    <div class="nos-hero__particle nos-hero__particle--3"></div>
+    <div class="nos-hero__particle nos-hero__particle--4"></div>
   </div>
-  <div class="nos-hero__content" data-animate="fade-up">
+  <div class="container">
     <nav class="nos-hero__breadcrumb" aria-label="Breadcrumb">
       <a routerLink="/">Inicio</a>
-      <span class="nos-hero__breadcrumb-sep">›</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       <span>Nosotros</span>
     </nav>
-    <div class="nos-hero__badge">
-      <span class="nos-hero__badge-dot"></span>
-      Nuestra historia
+    <div class="nos-hero__grid">
+      <div class="nos-hero__content">
+        <span class="nos-hero__badge nos-anim" style="--d:0s"><span class="nos-hero__badge-dot"></span>Nuestra historia</span>
+        <h1 class="nos-anim" style="--d:0.1s">
+          <span class="nos-hero__line">No somos</span>
+          <span class="nos-hero__line">una marca.</span>
+          <span class="nos-hero__line nos-hero__line--accent">Somos una</span>
+          <span class="nos-hero__line nos-hero__line--accent">actitud.</span>
+        </h1>
+        <p class="nos-hero__subtitle nos-anim" style="--d:0.25s">Fresquitox nació en las calles de Bogotá con una misión: refrescar la vida con sabor real, ingredientes naturales y la vibra que solo lo auténtico tiene.</p>
+        <div class="nos-hero__metrics nos-anim" style="--d:0.35s">
+          <div class="nos-hero__metric">
+            <strong>100%</strong>
+            <span>Natural</span>
+          </div>
+          <div class="nos-hero__metric-sep"></div>
+          <div class="nos-hero__metric">
+            <strong>20+</strong>
+            <span>Zonas</span>
+          </div>
+          <div class="nos-hero__metric-sep"></div>
+          <div class="nos-hero__metric">
+            <strong>∞</strong>
+            <span>Sabor</span>
+          </div>
+        </div>
+      </div>
+      <div class="nos-hero__visual">
+        <div class="nos-hero__ring nos-hero__ring--1" aria-hidden="true"></div>
+        <div class="nos-hero__ring nos-hero__ring--2" aria-hidden="true"></div>
+        <div class="nos-hero__ring nos-hero__ring--3" aria-hidden="true"></div>
+        <div class="nos-hero__glow" aria-hidden="true"></div>
+        <img src="images/logo.png" alt="Fresquitox mascota" class="nos-hero__mascot" width="280" height="280" loading="eager">
+      </div>
     </div>
-    <h1>No somos una marca.<br><span>Somos una actitud.</span></h1>
-    <p class="nos-hero__subtitle">Fresquitox nació en las calles de Bogotá con una misión: refrescar la vida con sabor real, ingredientes naturales y la vibra que solo lo auténtico tiene.</p>
-    <div class="nos-hero__metrics">
-      <div class="nos-hero__metric">
-        <strong>100%</strong>
-        <span>Natural</span>
+  </div>
+  <div class="nos-hero__fade" aria-hidden="true"></div>
+</section>
+
+<div class="nos-divider" aria-hidden="true"><div class="nos-divider__line"></div></div>
+
+<!-- ══ Quiénes Somos — Story + Character ══ -->
+<section class="nos-story">
+  <div class="nos-story__bg" aria-hidden="true">
+    <div class="nos-story__orb nos-story__orb--1"></div>
+    <div class="nos-story__orb nos-story__orb--2"></div>
+    <div class="nos-story__noise"></div>
+    <div class="nos-story__scanlines"></div>
+  </div>
+  <div class="container">
+    <div class="nos-story__grid">
+      <!-- Left: character showcase -->
+      <div class="nos-story__character" data-animate="fade-up">
+        <div class="nos-story__char-frame" aria-hidden="true"></div>
+        <div class="nos-story__char-ring nos-story__char-ring--2" aria-hidden="true"></div>
+        <div class="nos-story__char-glow" aria-hidden="true"></div>
+        <img src="images/logo.png" alt="Fresquitox personaje" class="nos-story__char-img" width="320" height="320" loading="lazy">
+        <!-- Floating labels around character -->
+        <div class="nos-story__float-tag nos-story__float-tag--1">🍧 +50 sabores</div>
+        <div class="nos-story__float-tag nos-story__float-tag--2">🔥 100% natural</div>
+        <div class="nos-story__float-tag nos-story__float-tag--3">⚡ Entrega rápida</div>
       </div>
-      <div class="nos-hero__metric-sep"></div>
-      <div class="nos-hero__metric">
-        <strong>20+</strong>
-        <span>Zonas</span>
-      </div>
-      <div class="nos-hero__metric-sep"></div>
-      <div class="nos-hero__metric">
-        <strong>∞</strong>
-        <span>Sabor</span>
+
+      <!-- Right: story text -->
+      <div class="nos-story__text" data-animate="fade-up" data-animate-delay="150">
+        <span class="nos-story__tag"><span class="nos-story__tag-dot"></span>Nuestra Historia</span>
+        <h2 class="nos-story__headline">¿Quiénes <span>Somos</span>?</h2>
+        <div class="nos-story__quote">
+          <p><strong>Fresquitox</strong> nació en las calles de Bogotá con un carrito, una licuadora y un sueño: demostrar que lo natural puede ser lo más fresco, lo más sabroso y lo más real.</p>
+        </div>
+        <p class="nos-story__body-text">Hoy somos una marca que representa sabor de calle, actitud urbana e ingredientes 100% naturales. No somos una franquicia genérica. Somos el refresco que te encuentra en la esquina, en el parque, en el evento — siempre con el mismo sabor que te hace volver.</p>
+        <p class="nos-story__body-text">Cada granizado, cada jugo, cada raspado está hecho con frutas frescas, sin conservantes artificiales ni colorantes. Porque el sabor real no necesita trucos.</p>
+        <div class="nos-story__signature">
+          <div class="nos-story__sig-line"></div>
+          <span>El equipo Fresquitox</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ Quiénes Somos ══ -->
-<section class="nos-about">
+<!-- ══ Pilares — Cards Premium ══ -->
+<section class="nos-pilares">
   <div class="container">
-    <div class="nos-about__grid" data-animate="fade-up">
-      <div class="nos-about__text">
-        <span class="nos-about__tag">Nuestra Historia</span>
-        <h2>¿Quiénes <span>Somos</span>?</h2>
-        <p class="nos-about__lead"><strong>Fresquitox</strong> nació en las calles de Bogotá con un carrito, una licuadora y un sueño: demostrar que lo natural puede ser lo más fresco, lo más sabroso y lo más real.</p>
-        <p>Hoy somos una marca que representa sabor de calle, actitud urbana e ingredientes 100% naturales. No somos una franquicia genérica. Somos el refresco que te encuentra en la esquina, en el parque, en el evento — siempre con el mismo sabor que te hace volver.</p>
-        <p>Cada granizado, cada jugo, cada raspado está hecho con frutas frescas, sin conservantes artificiales ni colorantes. Porque el sabor real no necesita trucos.</p>
+    <div class="nos-pilares__header" data-animate="fade-up">
+      <span class="nos-pilares__tag"><span class="nos-pilares__tag-dot"></span>Lo que nos define</span>
+      <h2 class="nos-pilares__headline">4 pilares que<br><span>nos hacen únicos.</span></h2>
+    </div>
+    <div class="nos-pilares__grid">
+      <div class="nos-pilares__card nos-pilares__card--green" data-animate="fade-up">
+        <div class="nos-pilares__card-glow" aria-hidden="true"></div>
+        <div class="nos-pilares__card-stripe" aria-hidden="true"></div>
+        <div class="nos-pilares__card-head">
+          <span class="nos-pilares__card-num">01</span>
+          <div class="nos-pilares__card-icon-ring"><span>🍋</span></div>
+        </div>
+        <h3>Ingredientes<br>Reales</h3>
+        <p>Fruta fresca cada día, cero artificiales, cero conservantes. Lo real no necesita trucos.</p>
+        <div class="nos-pilares__card-foot">
+          <span class="nos-pilares__card-pill">Sin conservantes</span>
+        </div>
       </div>
-      <div class="nos-about__highlights">
-        <div class="nos-about__mascot-wrap">
-          <img src="images/logo.png" alt="Fresquitox mascota" class="nos-about__mascot" width="140" height="140">
+      <div class="nos-pilares__card nos-pilares__card--orange" data-animate="fade-up" data-animate-delay="100">
+        <div class="nos-pilares__card-glow" aria-hidden="true"></div>
+        <div class="nos-pilares__card-stripe" aria-hidden="true"></div>
+        <div class="nos-pilares__card-head">
+          <span class="nos-pilares__card-num">02</span>
+          <div class="nos-pilares__card-icon-ring"><span>🔥</span></div>
         </div>
-        <div class="nos-about__highlight" data-animate="fade-up" data-animate-delay="100">
-          <span class="nos-about__highlight-num">01</span>
-          <div class="nos-about__highlight-body">
-            <strong>Ingredientes reales</strong>
-            <span>Fruta fresca cada día, cero artificiales</span>
-          </div>
+        <h3>Sabor de<br>Calle</h3>
+        <p>Recetas nacidas en la calle, perfeccionadas con pasión. La auténtica vibra bogotana.</p>
+        <div class="nos-pilares__card-foot">
+          <span class="nos-pilares__card-pill">Recetas originales</span>
         </div>
-        <div class="nos-about__highlight" data-animate="fade-up" data-animate-delay="200">
-          <span class="nos-about__highlight-num">02</span>
-          <div class="nos-about__highlight-body">
-            <strong>Sabor de calle</strong>
-            <span>Recetas que nacieron en la calle y se perfeccionaron con pasión</span>
-          </div>
+      </div>
+      <div class="nos-pilares__card nos-pilares__card--pink" data-animate="fade-up" data-animate-delay="200">
+        <div class="nos-pilares__card-glow" aria-hidden="true"></div>
+        <div class="nos-pilares__card-stripe" aria-hidden="true"></div>
+        <div class="nos-pilares__card-head">
+          <span class="nos-pilares__card-num">03</span>
+          <div class="nos-pilares__card-icon-ring"><span>⚡</span></div>
         </div>
-        <div class="nos-about__highlight" data-animate="fade-up" data-animate-delay="300">
-          <span class="nos-about__highlight-num">03</span>
-          <div class="nos-about__highlight-body">
-            <strong>Entrega rápida</strong>
-            <span>Llegamos a tu zona en Bogotá con la misma frescura</span>
-          </div>
+        <h3>Entrega<br>Rápida</h3>
+        <p>Llegamos a tu zona en Bogotá con la misma frescura. En tu puerta en 30 min o menos.</p>
+        <div class="nos-pilares__card-foot">
+          <span class="nos-pilares__card-pill">30 min máximo</span>
         </div>
-        <div class="nos-about__highlight" data-animate="fade-up" data-animate-delay="400">
-          <span class="nos-about__highlight-num">04</span>
-          <div class="nos-about__highlight-body">
-            <strong>Eventos y fiestas</strong>
-            <span>Tu evento merece refrescos de verdad, no de paquete</span>
-          </div>
+      </div>
+      <div class="nos-pilares__card nos-pilares__card--purple" data-animate="fade-up" data-animate-delay="300">
+        <div class="nos-pilares__card-glow" aria-hidden="true"></div>
+        <div class="nos-pilares__card-stripe" aria-hidden="true"></div>
+        <div class="nos-pilares__card-head">
+          <span class="nos-pilares__card-num">04</span>
+          <div class="nos-pilares__card-icon-ring"><span>🎉</span></div>
+        </div>
+        <h3>Eventos y<br>Fiestas</h3>
+        <p>Tu evento merece refrescos de verdad. Estaciones completas para cualquier celebración.</p>
+        <div class="nos-pilares__card-foot">
+          <span class="nos-pilares__card-pill">Para todos</span>
         </div>
       </div>
     </div>
@@ -88,66 +167,52 @@
   <div class="nos-mv__bg" aria-hidden="true">
     <div class="nos-mv__orb nos-mv__orb--1"></div>
     <div class="nos-mv__orb nos-mv__orb--2"></div>
+    <div class="nos-mv__noise"></div>
   </div>
   <div class="container">
     <div class="nos-mv__grid">
       <div class="nos-mv__card" data-animate="fade-up">
+        <div class="nos-mv__card-accent nos-mv__card-accent--mission"></div>
         <span class="nos-mv__tag">Misión</span>
         <h3>Nuestra Misión</h3>
         <p>Refrescar la vida de cada persona con bebidas 100% naturales, hechas con ingredientes reales y pasión de calle. Cada vaso que servimos es una experiencia de sabor auténtico.</p>
+        <div class="nos-mv__card-icon">🎯</div>
       </div>
       <div class="nos-mv__card" data-animate="fade-up" data-animate-delay="150">
+        <div class="nos-mv__card-accent nos-mv__card-accent--vision"></div>
         <span class="nos-mv__tag nos-mv__tag--alt">Visión</span>
         <h3>Nuestra Visión</h3>
         <p>Ser la marca de refrescos naturales más querida de Colombia para 2028. Llevar el sabor de la calle a cada rincón, con la misma calidad, frescura y actitud que nos define.</p>
+        <div class="nos-mv__card-icon">🚀</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ Valores ══ -->
-<section class="nos-valores">
-  <div class="container">
-    <div class="nos-valores__header" data-animate="fade-up">
-      <span class="nos-valores__tag">Lo que nos define</span>
-      <h2>Nuestros Valores</h2>
-    </div>
-    <div class="nos-valores__grid">
-      <div class="nos-valores__item" data-animate="fade-up">
-        <span class="nos-valores__emoji">🍋</span>
-        <h4>Frescura Real</h4>
-        <p>Ingredientes naturales, preparados al momento. Sin atajos.</p>
-      </div>
-      <div class="nos-valores__item" data-animate="fade-up" data-animate-delay="100">
-        <span class="nos-valores__emoji">🔥</span>
-        <h4>Pasión Callejera</h4>
-        <p>Nuestro sabor nace de la calle, la cultura y la energía de Bogotá.</p>
-      </div>
-      <div class="nos-valores__item" data-animate="fade-up" data-animate-delay="200">
-        <span class="nos-valores__emoji">✨</span>
-        <h4>Autenticidad</h4>
-        <p>Somos lo que ves: sin artificiales, sin pretensiones, solo sabor.</p>
-      </div>
-      <div class="nos-valores__item" data-animate="fade-up" data-animate-delay="300">
-        <span class="nos-valores__emoji">🤝</span>
-        <h4>Comunidad</h4>
-        <p>Apoyamos a proveedores locales y creemos en el trabajo en equipo.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="nos-divider" aria-hidden="true"><div class="nos-divider__line"></div></div>
 
 <!-- ══ CTA ══ -->
-<section class="nos-cta" data-animate="fade-up">
+<section class="nos-cta">
   <div class="nos-cta__bg" aria-hidden="true">
-    <div class="nos-cta__orb"></div>
+    <div class="nos-cta__orb nos-cta__orb--1"></div>
+    <div class="nos-cta__orb nos-cta__orb--2"></div>
+    <div class="nos-cta__noise"></div>
+    <div class="nos-cta__scanlines"></div>
   </div>
   <div class="container">
-    <div class="nos-cta__content">
-      <h2>¿Listo para probar<br><span>el sabor real?</span></h2>
-      <p>Pide tu refresco favorito o contáctanos para tu próximo evento.</p>
-      <div class="nos-cta__actions">
-        <app-delivery-options variant="compact" theme="dark" />
+    <div class="nos-cta__grid" data-animate="fade-up">
+      <div class="nos-cta__content">
+        <span class="nos-cta__badge"><span class="nos-cta__badge-dot"></span>Pide ahora</span>
+        <h2>¿Listo para probar<br><span>el sabor real?</span></h2>
+        <p>Pide tu refresco favorito o contáctanos para tu próximo evento.</p>
+        <div class="nos-cta__actions">
+          <app-delivery-options variant="compact" theme="dark" />
+        </div>
+      </div>
+      <div class="nos-cta__visual">
+        <div class="nos-cta__ring nos-cta__ring--2" aria-hidden="true"></div>
+        <div class="nos-cta__glow" aria-hidden="true"></div>
+        <img src="images/logo.png" alt="Fresquitox" class="nos-cta__mascot" width="200" height="200" loading="lazy">
       </div>
     </div>
   </div>

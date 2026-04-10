@@ -1,0 +1,904 @@
+﻿// ══════════════════════════════════════════════════════════
+// FRESQUITOX — Premium Hero v2
+// Dark UI + Neon/Gradient accents + Slurp character animation
+// Urban, rebel, premium startup vibe
+// ══════════════════════════════════════════════════════════
+
+// ── Timing tokens
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+$ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+
+.hero {
+  background: #000;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 76px);
+  display: flex;
+  flex-direction: column;
+
+  // ── Gradient orbs — dreamy background
+  &__orbs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    will-change: transform;
+
+    &--1 {
+      width: 550px;
+      height: 550px;
+      background: rgba(243, 50, 131, 0.28);
+      top: -12%;
+      right: -6%;
+      animation: orb-float 8s ease-in-out infinite;
+    }
+
+    &--2 {
+      width: 380px;
+      height: 380px;
+      background: rgba(255, 107, 154, 0.16);
+      bottom: 8%;
+      left: -10%;
+      animation: orb-float 10s ease-in-out infinite 2s;
+    }
+
+    &--3 {
+      width: 220px;
+      height: 220px;
+      background: rgba(255, 167, 215, 0.13);
+      top: 38%;
+      left: 38%;
+      animation: orb-float 12s ease-in-out infinite 4s;
+    }
+  }
+
+  // ── Grid pattern overlay
+  &__grid-pattern {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.03;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  // ── Noise texture
+  &__noise {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+  }
+
+  // ── Floating bubbles
+  &__bubbles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  &__bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18) 0%, rgba(243, 50, 131, 0.06) 60%, transparent 70%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    will-change: transform;
+
+    &--1 { width: 80px; height: 80px; top: 15%; right: 15%; animation: bubble-rise 7s ease-in-out infinite; }
+    &--2 { width: 40px; height: 40px; top: 30%; left: 10%; animation: bubble-rise 9s ease-in-out infinite 1.5s; }
+    &--3 { width: 60px; height: 60px; bottom: 20%; right: 25%; animation: bubble-rise 8s ease-in-out infinite 0.7s; }
+    &--4 { width: 24px; height: 24px; top: 60%; left: 30%; animation: bubble-rise 6s ease-in-out infinite 3s; }
+    &--5 { width: 50px; height: 50px; bottom: 30%; left: 5%; animation: bubble-rise 11s ease-in-out infinite 1s; }
+    &--6 { width: 32px; height: 32px; top: 80%; right: 40%; animation: bubble-rise 7.5s ease-in-out infinite 2s; }
+  }
+
+  // ── Tape marquee
+  &__tape {
+    background: linear-gradient(90deg, #F33283, #FF6B9A, #F33283);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0.6rem 0;
+    position: relative;
+    z-index: 6;
+  }
+
+  &__tape-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+    animation: tape-scroll 20s linear infinite;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    padding-right: 2rem;
+  }
+
+  &__tape-dot {
+    font-size: 0.4rem;
+    opacity: 0.6;
+  }
+
+  // ── Main container
+  &__container {
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4.5rem 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2rem;
+    align-items: center;
+    position: relative;
+    z-index: 4;
+    flex: 1;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  // ── Badge — glassmorphism pill
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(243, 50, 131, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(243, 50, 131, 0.22);
+    padding: 0.45rem 1.3rem;
+    border-radius: 50px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #FF6B9A;
+    margin-bottom: 2rem;
+    animation: fade-blur-in 0.7s $ease-out-expo both;
+    transition: border-color 0.3s ease, background 0.3s ease;
+
+    &:hover {
+      border-color: rgba(243, 50, 131, 0.45);
+      background: rgba(243, 50, 131, 0.14);
+    }
+  }
+
+  &__badge-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #F33283;
+    box-shadow: 0 0 8px rgba(243, 50, 131, 0.6);
+    animation: pulse-neon 2s ease-in-out infinite;
+  }
+
+  // ── Wordmark — brand typography image
+  &__wordmark {
+    margin-bottom: 1.6rem;
+    animation: fade-blur-in 0.8s $ease-out-expo both;
+    animation-delay: 0.1s;
+  }
+
+  &__wordmark-img {
+    display: block;
+    width: clamp(240px, 38vw, 420px);
+    height: auto;
+    filter: drop-shadow(0 4px 30px rgba(243, 50, 131, 0.4));
+    transition: filter 0.4s ease;
+
+    &:hover {
+      filter: drop-shadow(0 6px 40px rgba(243, 50, 131, 0.55));
+    }
+  }
+
+  // ══════════════════════════════════════════════════════
+  // HEADLINE — Massive, staggered, gradient accent
+  // ══════════════════════════════════════════════════════
+  &__headline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 1.8rem;
+  }
+
+  &__headline-line {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    will-change: transform, opacity;
+
+    // Default — small connector lines
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    color: rgba(255, 255, 255, 0.35);
+    animation: slide-blur-in 0.75s $ease-out-expo both;
+
+    // Line 1: "NO VENDEMOS" — understated
+    &--1 {
+      animation-delay: 0.12s;
+      margin-bottom: 0.15em;
+    }
+
+    // Line 2: "GRANIZADOS." — outline stroke, massive
+    &--2 {
+      font-size: clamp(3.2rem, 7vw, 7rem);
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.25);
+      line-height: 0.88;
+      animation-delay: 0.2s;
+      transition: -webkit-text-stroke-color 0.4s ease;
+
+      &:hover {
+        -webkit-text-stroke-color: rgba(243, 50, 131, 0.5);
+      }
+    }
+
+    // Line 3: "VENDEMOS" — understated
+    &--3 {
+      animation-delay: 0.3s;
+      margin-top: 0.3em;
+      margin-bottom: 0.15em;
+    }
+
+    // Line 4: "ACTITUD." — gradient, massive, neon glow
+    &--4 {
+      font-size: clamp(3.5rem, 7.5vw, 7.5rem);
+      line-height: 0.88;
+      background: linear-gradient(135deg, #F33283 0%, #FF6B9A 40%, #FFA7D7 75%, #fff 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation:
+        slide-blur-in 0.8s $ease-out-expo 0.38s both,
+        gradient-shift 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 30px rgba(243, 50, 131, 0.3));
+      transition: filter 0.3s ease;
+
+      &:hover {
+        filter: drop-shadow(0 0 50px rgba(243, 50, 131, 0.5));
+      }
+    }
+  }
+
+  // ── Sub
+  &__sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+    animation: fade-blur-in 0.7s $ease-out-expo both;
+    animation-delay: 0.45s;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.38);
+    line-height: 1.75;
+    margin-bottom: 2.2rem;
+    max-width: 440px;
+    animation: fade-blur-in 0.7s $ease-out-expo both;
+    animation-delay: 0.55s;
+  }
+
+  // ── CTAs
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    animation: fade-blur-in 0.7s $ease-out-expo both;
+    animation-delay: 0.62s;
+  }
+
+  &__cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, #F33283, #FF6B9A);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow:
+      0 4px 24px rgba(243, 50, 131, 0.35),
+      0 0 0 0 rgba(243, 50, 131, 0);
+    transition: all 0.35s $ease-spring;
+    position: relative;
+    overflow: hidden;
+
+    svg { flex-shrink: 0; }
+
+    // Shine sweep on hover
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    &:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 8px 40px rgba(243, 50, 131, 0.5),
+        0 0 20px rgba(243, 50, 131, 0.25);
+
+      &::after { left: 120%; }
+    }
+
+    &:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+  }
+
+  &__cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: all 0.35s $ease-spring;
+
+    &:hover {
+      border-color: rgba(243, 50, 131, 0.55);
+      background: rgba(243, 50, 131, 0.1);
+      box-shadow: 0 0 20px rgba(243, 50, 131, 0.15);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // ── Stats — with neon underline accent
+  &__stats {
+    display: flex;
+    gap: 2.5rem;
+    animation: fade-blur-in 0.7s $ease-out-expo both;
+    animation-delay: 0.7s;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 0.6rem;
+    transition: transform 0.3s $ease-spring;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #F33283, #FF6B9A);
+      border-radius: 2px;
+      transition: width 0.4s $ease-out-expo;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      &::after { width: 100%; }
+    }
+
+    &-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    &-label {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: 0.35rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  // ══════════════════════════════════════════════════════
+  // VISUAL — Character drinking animation zone
+  // ══════════════════════════════════════════════════════
+  &__visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: hero-visual-in 1s $ease-spring both;
+    animation-delay: 0.25s;
+  }
+
+  // ── Neon ring behind character
+  &__neon-ring {
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    border: 2px solid rgba(243, 50, 131, 0.15);
+    box-shadow:
+      0 0 40px rgba(243, 50, 131, 0.08),
+      inset 0 0 40px rgba(243, 50, 131, 0.05);
+    animation: neon-ring-pulse 4s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  &__glow {
+    position: absolute;
+    width: 115%;
+    height: 115%;
+    top: -7%;
+    left: -7%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(243, 50, 131, 0.22) 0%, rgba(243, 50, 131, 0.06) 45%, transparent 70%);
+    animation: glow-pulse 4s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  // ── Character wrapper — slurp animation
+  &__character {
+    position: relative;
+    z-index: 3;
+    animation: character-slurp 3s ease-in-out infinite;
+    transform-origin: 50% 90%;
+  }
+
+  &__image {
+    display: block;
+    width: 115%;
+    max-width: none;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    filter: brightness(0) invert(1) drop-shadow(0 20px 60px rgba(243, 50, 131, 0.35));
+    transition: filter 0.4s ease;
+  }
+
+  // ── Slurp bubble FX — bubbles near the character
+  &__slurp-fx {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  &__slurp-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(243, 50, 131, 0.35), rgba(255, 107, 154, 0.15));
+    border: 1px solid rgba(243, 50, 131, 0.2);
+    opacity: 0;
+
+    &--1 {
+      width: 14px;
+      height: 14px;
+      top: 35%;
+      left: 55%;
+      animation: slurp-bubble-up 2.8s ease-in-out infinite 0s;
+    }
+    &--2 {
+      width: 10px;
+      height: 10px;
+      top: 40%;
+      left: 58%;
+      animation: slurp-bubble-up 2.8s ease-in-out infinite 0.6s;
+    }
+    &--3 {
+      width: 8px;
+      height: 8px;
+      top: 38%;
+      left: 52%;
+      animation: slurp-bubble-up 2.8s ease-in-out infinite 1.2s;
+    }
+    &--4 {
+      width: 12px;
+      height: 12px;
+      top: 42%;
+      left: 56%;
+      animation: slurp-bubble-up 2.8s ease-in-out infinite 1.8s;
+    }
+    &--5 {
+      width: 6px;
+      height: 6px;
+      top: 36%;
+      left: 60%;
+      animation: slurp-bubble-up 2.8s ease-in-out infinite 2.3s;
+    }
+  }
+
+  // ── Straw liquid FX — liquid going up the straw
+  &__straw-fx {
+    position: absolute;
+    top: 20%;
+    left: 54%;
+    width: 4px;
+    height: 22%;
+    z-index: 5;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgba(243, 50, 131, 0.06);
+  }
+
+  &__straw-liquid {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(to top, #F33283, #FF6B9A, transparent);
+    animation: liquid-rise 2.8s ease-in-out infinite;
+    transform-origin: bottom;
+  }
+}
+
+// ══════════════════════════════════════════════════════
+// KEYFRAMES
+// ══════════════════════════════════════════════════════
+
+// ── Tape
+@keyframes tape-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+// ── Entry animations — fade + slide + blur
+@keyframes fade-blur-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes slide-blur-in {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-visual-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateX(50px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    filter: blur(0);
+  }
+}
+
+// ── Gradient shift for headline
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+// ── Character slurp — bob + slight tilt (drinking)
+@keyframes character-slurp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  15% {
+    transform: translateY(-8px) rotate(-1.5deg);
+  }
+  30% {
+    transform: translateY(-4px) rotate(0deg);
+  }
+  45% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  60% {
+    transform: translateY(-3px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(-7px) rotate(0.8deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+// ── Slurp bubbles — rise and fade
+@keyframes slurp-bubble-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translateY(-10px) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-30px) scale(1.1);
+  }
+  80% {
+    opacity: 0.2;
+    transform: translateY(-50px) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-65px) scale(0.4);
+  }
+}
+
+// ── Liquid rising through straw
+@keyframes liquid-rise {
+  0% {
+    transform: scaleY(0);
+    opacity: 0.3;
+  }
+  30% {
+    transform: scaleY(0.7);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scaleY(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleY(0);
+    opacity: 0.3;
+  }
+}
+
+// ── Neon ring
+@keyframes neon-ring-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+    box-shadow:
+      0 0 30px rgba(243, 50, 131, 0.06),
+      inset 0 0 30px rgba(243, 50, 131, 0.04);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+    box-shadow:
+      0 0 60px rgba(243, 50, 131, 0.12),
+      inset 0 0 60px rgba(243, 50, 131, 0.08);
+  }
+}
+
+// ── Background decorations
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -15px) scale(1.05); }
+  66% { transform: translate(-15px, 10px) scale(0.95); }
+}
+
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-22px) scale(1.12); opacity: 0.75; }
+  100% { transform: translateY(0) scale(1); opacity: 0.5; }
+}
+
+@keyframes pulse-neon {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(243, 50, 131, 0.6);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.4);
+    box-shadow: 0 0 16px rgba(243, 50, 131, 0.9);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+// ══════════════════════════════════════════════════════
+// RESPONSIVE
+// ══════════════════════════════════════════════════════
+
+@media (max-width: 960px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__container {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .hero__visual {
+    order: -1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .hero__image {
+    width: 100%;
+  }
+
+  .hero__headline-line {
+    &--2 { font-size: clamp(2.8rem, 9vw, 4.5rem); }
+    &--4 { font-size: clamp(3rem, 10vw, 5.5rem); }
+  }
+
+  .hero__orb {
+    &--1 { width: 300px; height: 300px; }
+    &--2 { width: 200px; height: 200px; }
+  }
+
+  .hero__bubble {
+    &--3, &--5 { display: none; }
+  }
+
+  .hero__slurp-bubble {
+    &--4, &--5 { display: none; }
+  }
+}
+
+@media (max-width: 600px) {
+  .hero__container {
+    padding: 2rem 1.25rem 2.5rem;
+    gap: 1.5rem;
+  }
+
+  .hero__tape-track {
+    font-size: 0.6rem;
+    gap: 1.2rem;
+  }
+
+  .hero__badge {
+    font-size: 0.65rem;
+    padding: 0.35rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__visual { max-width: 240px; }
+
+  .hero__headline-line {
+    font-size: clamp(1.4rem, 5vw, 2rem) !important;
+
+    &--2 {
+      font-size: clamp(2.2rem, 10vw, 3.2rem) !important;
+      -webkit-text-stroke-width: 1.5px;
+    }
+
+    &--4 {
+      font-size: clamp(2.5rem, 12vw, 3.5rem) !important;
+    }
+  }
+
+  .hero__sub { font-size: 0.95rem; }
+
+  .hero__description {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero__cta-primary,
+  .hero__cta-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero__stats {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__stat-number { font-size: 1.5rem; }
+
+  .hero__bubble {
+    &--1, &--4, &--6 { display: none; }
+  }
+
+  .hero__orb {
+    &--1 { width: 200px; height: 200px; }
+    &--2 { display: none; }
+    &--3 { display: none; }
+  }
+
+  .hero__straw-fx { display: none; }
+
+  .hero__slurp-bubble {
+    &--3, &--4, &--5 { display: none; }
+  }
+}
+
+@media (max-width: 400px) {
+  .hero__container { padding: 1.5rem 1rem 2rem; }
+
+  .hero__headline-line {
+    font-size: clamp(1.2rem, 5vw, 1.6rem) !important;
+    &--2 { font-size: clamp(1.8rem, 12vw, 2.5rem) !important; }
+    &--4 { font-size: clamp(2rem, 14vw, 3rem) !important; }
+  }
+}
+
+// ── Reduce motion for accessibility
+@media (prefers-reduced-motion: reduce) {
+  .hero__character,
+  .hero__slurp-bubble,
+  .hero__straw-liquid,
+  .hero__orb,
+  .hero__bubble,
+  .hero__neon-ring,
+  .hero__glow {
+    animation: none !important;
+  }
+
+  .hero__headline-line--4 {
+    animation: fade-blur-in 0.5s ease both !important;
+  }
+}
