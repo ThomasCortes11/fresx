@@ -55,6 +55,23 @@ export default class Home implements OnInit {
       if (delay) el.style.transitionDelay = delay + 'ms';
     });
 
+    // Auto-stagger grid children with data-animate-stagger on parent
+    const staggerParents = this.el.nativeElement.querySelectorAll('[data-animate-stagger]') as NodeListOf<HTMLElement>;
+    staggerParents.forEach((parent: HTMLElement) => {
+      const staggerMs = parseInt(parent.dataset['animateStagger'] || '80', 10);
+      const children = parent.children;
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i] as HTMLElement;
+        if (!child.hasAttribute('data-animate')) {
+          child.setAttribute('data-animate', 'fade-up');
+        }
+        child.classList.add('animate-init');
+        child.style.transitionDelay = (i * staggerMs) + 'ms';
+      }
+    });
+
+    const allAnimated = this.el.nativeElement.querySelectorAll('.animate-init') as NodeListOf<HTMLElement>;
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -64,10 +81,10 @@ export default class Home implements OnInit {
           }
         }
       },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
     );
 
-    elements.forEach((el: HTMLElement) => observer.observe(el));
+    allAnimated.forEach((el: HTMLElement) => observer.observe(el));
     this.destroyRef.onDestroy(() => observer.disconnect());
   }
 

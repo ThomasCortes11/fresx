@@ -4,14 +4,14 @@
 // ══════════════════════════════════════════════════════════
 
 // ── Palette
-$pl-pink: #F33283;
-$pl-pink-light: #FF6B9A;
+$pl-pink: #FF4677;
+$pl-pink-light: #FF5299;
 $pl-green: #22c55e;
 $pl-green-light: #4ade80;
-$pl-gold: #FF6B35;
-$pl-gold-light: #FFB347;
-$pl-dark: #050507;
-$pl-light-bg: #f8f8fa;
+$pl-gold: #E08736;
+$pl-gold-light: #E08736;
+$pl-dark: #351E09;
+$pl-light-bg: #FFFDF0;
 
 // ── Noise texture
 $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
@@ -75,7 +75,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     &--1 { width: 4px; height: 4px; background: $pl-pink; top: 18%; left: 12%; animation: plParticle 7s ease-in-out infinite; opacity: 0.5; }
     &--2 { width: 3px; height: 3px; background: $pl-pink-light; top: 72%; right: 18%; animation: plParticle 9s ease-in-out infinite; animation-delay: -2s; opacity: 0.35; }
     &--3 { width: 5px; height: 5px; background: $pl-gold; top: 35%; right: 35%; animation: plParticle 11s ease-in-out infinite; animation-delay: -4s; opacity: 0.25; }
-    &--4 { width: 2px; height: 2px; background: #fff; top: 55%; left: 25%; animation: plParticle 8s ease-in-out infinite; animation-delay: -1s; opacity: 0.3; }
+    &--4 { width: 2px; height: 2px; background: #FFFBEC; top: 55%; left: 25%; animation: plParticle 8s ease-in-out infinite; animation-delay: -1s; opacity: 0.3; }
     &--5 { width: 3px; height: 3px; background: $pl-pink; bottom: 25%; left: 45%; animation: plParticle 10s ease-in-out infinite; animation-delay: -6s; opacity: 0.4; }
     &--6 { width: 4px; height: 4px; background: $pl-gold; top: 15%; right: 25%; animation: plParticle 6s ease-in-out infinite; animation-delay: -3s; opacity: 0.2; }
   }
@@ -91,7 +91,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   // ── Breadcrumb
   &__breadcrumb {
     margin-bottom: 3rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.8rem; font-weight: 500;
     display: flex; align-items: center; gap: 0.5rem;
     animation: plFadeIn 0.6s ease both;
@@ -113,7 +113,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   // ── Content left
   &__badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
     color: $pl-pink; letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.4rem 1.2rem; background: rgba($pl-pink, 0.06);
     border: 1px solid rgba($pl-pink, 0.12); border-radius: 50px; margin-bottom: 2rem;
@@ -130,7 +130,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 
   &__headline-line {
     display: block;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 900; line-height: 1.02;
     color: #fff; letter-spacing: -0.04em;
@@ -161,12 +161,12 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &__stat { display: flex; flex-direction: column; gap: 0.2rem; }
 
   &__stat-num {
-    font-family: 'Space Grotesk', sans-serif; font-size: 2rem;
+    font-family: 'Poppins', sans-serif; font-size: 2rem;
     font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1;
   }
 
   &__stat-label {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.68rem;
+    font-family: 'Poppins', sans-serif; font-size: 0.68rem;
     font-weight: 600; color: rgba(255,255,255,0.3);
     letter-spacing: 0.06em; text-transform: uppercase;
   }
@@ -179,7 +179,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &__btn {
     display: inline-flex; align-items: center; gap: 0.6rem;
     padding: 0.9rem 2rem; border-radius: 50px; text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-weight: 700;
     font-size: 0.9rem; letter-spacing: 0.02em;
     border: none; cursor: pointer;
     position: relative; overflow: hidden;
@@ -272,7 +272,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   }
 
   &__nav-label-explore {
-    display: block; font-family: 'Space Grotesk', sans-serif;
+    display: block; font-family: 'Poppins', sans-serif;
     font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
     text-transform: uppercase; color: rgba(255,255,255,0.2);
     margin-bottom: 1.25rem;
@@ -288,7 +288,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     border: 1px solid rgba(255,255,255,0.07);
     padding: 0.75rem 1.6rem; border-radius: 16px;
     color: rgba(255,255,255,0.55);
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 600;
+    font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 600;
     cursor: pointer; position: relative; overflow: hidden;
     transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
 
@@ -343,7 +343,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &__left { position: sticky; top: 120px; }
 
   &__num {
-    display: block; font-family: 'Space Grotesk', sans-serif;
+    display: block; font-family: 'Poppins', sans-serif;
     font-size: 0.72rem; font-weight: 800; letter-spacing: 0.15em;
     margin-bottom: 1rem;
   }
@@ -351,7 +351,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &__icon { display: block; font-size: 3rem; margin-bottom: 1rem; line-height: 1; }
 
   &__title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem); font-weight: 900;
     line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 0.75rem;
   }
@@ -361,12 +361,12 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &__count { display: flex; align-items: baseline; gap: 0.4rem; }
 
   &__count-num {
-    font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif; font-size: 2.5rem;
     font-weight: 900; letter-spacing: -0.03em; line-height: 1;
   }
 
   &__count-label {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem;
+    font-family: 'Poppins', sans-serif; font-size: 0.78rem;
     font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.4;
   }
 
@@ -403,23 +403,23 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &--light {
     background: $pl-light-bg;
 
-    .pl-cat__num { color: rgba(0,0,0,0.15); }
-    .pl-cat__title { color: #121217; }
-    .pl-cat__sub { color: rgba(0,0,0,0.45); }
-    .pl-cat__count-label { color: rgba(0,0,0,0.35); }
+    .pl-cat__num { color: rgba(53, 30, 9,0.15); }
+    .pl-cat__title { color: #351E09; }
+    .pl-cat__sub { color: rgba(53, 30, 9,0.45); }
+    .pl-cat__count-label { color: rgba(53, 30, 9,0.35); }
 
     .pl-cat__orb { opacity: 0.3; }
     .pl-cat__noise { opacity: 0.3; }
 
     .pl-card {
-      background: #fff;
-      border-color: rgba(0,0,0,0.06);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      background: #FFFBEC;
+      border-color: rgba(53, 30, 9,0.06);
+      box-shadow: 0 2px 16px rgba(53, 30, 9,0.04);
     }
-    .pl-card__title { color: #121217; }
-    .pl-card__desc { color: rgba(0,0,0,0.45); }
-    .pl-card__foot { border-left-color: rgba(0,0,0,0.06); }
-    .pl-card__arrow { color: rgba(0,0,0,0.15); }
+    .pl-card__title { color: #351E09; }
+    .pl-card__desc { color: rgba(53, 30, 9,0.45); }
+    .pl-card__foot { border-left-color: rgba(53, 30, 9,0.06); }
+    .pl-card__arrow { color: rgba(53, 30, 9,0.15); }
 
     // White shine sweep
     .pl-card::before {
@@ -430,8 +430,8 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     .pl-cat__bg::after {
       content: ''; position: absolute; inset: 0;
       background-image:
-        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(53, 30, 9,0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(53, 30, 9,0.02) 1px, transparent 1px);
       background-size: 80px 80px;
       mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
@@ -456,7 +456,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     .pl-card__link-line { background: $pl-pink; }
     .pl-card:hover {
       border-color: rgba($pl-pink, 0.2);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba($pl-pink, 0.08);
+      box-shadow: 0 20px 60px rgba(53, 30, 9,0.4), 0 0 40px rgba($pl-pink, 0.08);
       .pl-card__arrow { color: $pl-pink; }
     }
   }
@@ -486,7 +486,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 
   // ── Per-category accents: PREMIUM (Gold)
   &--premium {
-    background: #0a0a0e;
+    background: #3D2210;
 
     .pl-cat__orb--1 { width: 400px; height: 400px; background: rgba($pl-gold, 0.1); top: -15%; left: -5%; }
     .pl-cat__orb--2 { width: 300px; height: 300px; background: rgba($pl-gold-light, 0.06); bottom: -10%; right: -8%; }
@@ -504,7 +504,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     .pl-card__link-line { background: $pl-gold; }
     .pl-card:hover {
       border-color: rgba($pl-gold, 0.2);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba($pl-gold, 0.08);
+      box-shadow: 0 20px 60px rgba(53, 30, 9,0.4), 0 0 40px rgba($pl-gold, 0.08);
       .pl-card__arrow { color: $pl-gold; }
     }
   }
@@ -566,7 +566,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   }
 
   &__title {
-    font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem;
+    font-family: 'Poppins', sans-serif; font-size: 1.25rem;
     font-weight: 800; letter-spacing: -0.01em;
   }
 
@@ -587,13 +587,13 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   }
 
   &__price {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif; font-size: 0.95rem;
     font-weight: 800; letter-spacing: -0.01em;
   }
 
   &__link {
     display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem;
+    font-family: 'Poppins', sans-serif; font-size: 0.82rem;
     font-weight: 700; letter-spacing: 0.03em;
   }
 
@@ -643,7 +643,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 
   &__badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 700;
     color: $pl-pink; letter-spacing: 0.08em; text-transform: uppercase;
     padding: 0.35rem 1.1rem; background: rgba($pl-pink, 0.08);
     border: 1px solid rgba($pl-pink, 0.12); border-radius: 50px; margin-bottom: 1.5rem;
@@ -655,7 +655,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   }
 
   &__headline {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900; line-height: 1.05; color: #fff;
     letter-spacing: -0.03em; margin-bottom: 1rem;
@@ -738,7 +738,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     }
   }
 
-  .pl-cat--light .pl-card__foot { border-top-color: rgba(0,0,0,0.06); }
+  .pl-cat--light .pl-card__foot { border-top-color: rgba(53, 30, 9,0.06); }
 
   .pl-cta {
     padding: 5rem 0;

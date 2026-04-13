@@ -1,9 +1,9 @@
-﻿$pink: #F33283;
-$pink-mid: #FF6B9A;
-$pink-light: #FFA7D7;
-$dark: #000;
-$off: #F9F9F9;
-$gray: #888;
+$pink: #FF4677;
+$pink-mid: #FF5299;
+$pink-light: #FF97BD;
+$dark: #351E09;
+$off: #FFFDF0;
+$gray: #996633;
 $ease: cubic-bezier(.22,1,.36,1);
 
 .faq-hero {
@@ -18,7 +18,7 @@ $ease: cubic-bezier(.22,1,.36,1);
     span { color: rgba(#fff,.35); &:last-child { color: rgba(#fff,.75); } }
   }
   &__badge { display: inline-block; background: rgba($pink,.12); border: 1px solid rgba($pink,.2); color: $pink-light; padding: .3rem .9rem; border-radius: 100px; font-size: .78rem; font-weight: 600; margin-bottom: 1.25rem; }
-  h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem,4.5vw,2.6rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: .75rem; em { font-style: normal; color: $pink; } }
+  h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem,4.5vw,2.6rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: .75rem; em { font-style: normal; color: $pink; } }
   p { font-size: 1.05rem; color: rgba(#fff,.55); line-height: 1.7; }
 }
 
@@ -29,20 +29,20 @@ $ease: cubic-bezier(.22,1,.36,1);
 .faq-list { display: flex; flex-direction: column; gap: .5rem; }
 
 .faq-item {
-  background: #fff; border: 1px solid #eee; border-radius: 14px; overflow: hidden;
+  background: #FFFBEC; border: 1px solid #E8D5C0; border-radius: 14px; overflow: hidden;
   transition: border-color .25s;
   &--open { border-color: rgba($pink,.3); }
   &__trigger {
     width: 100%; display: flex; align-items: center; gap: .75rem; padding: 1.1rem 1.25rem;
     background: none; border: none; cursor: pointer; text-align: left;
   }
-  &__num { font-family: 'Space Grotesk', sans-serif; font-size: .75rem; font-weight: 800; color: $pink; flex-shrink: 0; }
+  &__num { font-family: 'Poppins', sans-serif; font-size: .75rem; font-weight: 800; color: $pink; flex-shrink: 0; }
   h3 { flex: 1; font-size: .95rem; font-weight: 700; color: $dark; }
   &__icon { flex-shrink: 0; color: $gray; transition: transform .3s $ease; }
   &--open &__icon { transform: rotate(45deg); }
   &__v { transition: opacity .2s; }
   &--open &__v { opacity: 0; }
-  &__body { padding: 0 1.25rem 1.25rem 3rem; p { font-size: .92rem; color: #555; line-height: 1.7; } }
+  &__body { padding: 0 1.25rem 1.25rem 3rem; p { font-size: .92rem; color: #996633; line-height: 1.7; } }
 }
 
 .faq-sidebar {
@@ -51,7 +51,7 @@ $ease: cubic-bezier(.22,1,.36,1);
     background: $dark; color: #fff; border-radius: 20px; padding: 2rem; text-align: center;
   }
   &__emoji { font-size: 2.5rem; display: block; margin-bottom: .75rem; }
-  h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: .5rem; }
+  h3 { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: .5rem; }
   p { font-size: .9rem; color: rgba(#fff,.55); margin-bottom: 1.25rem; line-height: 1.6; }
   &__btn {
     display: inline-flex; align-items: center; gap: .5rem; background: $pink; color: #fff;

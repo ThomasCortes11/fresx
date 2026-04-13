@@ -1,37 +1,32 @@
-/* Google Fonts — Space Grotesk (bold titles) + Inter (body) */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-/* Self-hosted Inter font — latin only */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: optional;
-  src: url('/fonts/inter-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+/* Google Fonts — Poppins: loaded via <link> in index.html for performance */
 
 /* ══════════════════════════════════════════════════════════
-   FRESQUITOX — Premium Identity System
-   Rosa fuerte: #F33283 | Rosa medio: #FF6B9A | Rosa pastel: #FFA7D7
-   Negro: #000 / #111 | Blanco: #FFF / #F9F9F9
+   FRESQUITOX — Brand Identity System (Manual de Marca 2026)
+   Rosa fuerte: #FF4677 | Rosa medio: #FF5299 | Rosa pastel: #FF97BD
+   Marrón oscuro: #351E09 | Marrón: #996633 | Naranja: #E08736
+   Crema: #FFFDF0 | Blanco cálido: #FFFBEC
+   Tipografía: Poppins
    ══════════════════════════════════════════════════════════ */
 
 :root {
-  --fq-pink: #F33283;
-  --fq-pink-mid: #FF6B9A;
-  --fq-pink-light: #FFA7D7;
-  --fq-pink-glow: rgba(243, 50, 131, 0.25);
-  --fq-black: #000000;
-  --fq-dark: #111111;
-  --fq-gray: #1a1a1a;
-  --fq-gray-mid: #888;
-  --fq-white: #ffffff;
-  --fq-off-white: #F9F9F9;
-  --fq-gradient: linear-gradient(135deg, #F33283 0%, #FF6B9A 50%, #FFA7D7 100%);
-  --fq-gradient-dark: linear-gradient(135deg, #F33283 0%, #D12A6E 100%);
-  --fq-font-display: 'Space Grotesk', 'Inter', sans-serif;
-  --fq-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --fq-pink: #FF4677;
+  --fq-pink-mid: #FF5299;
+  --fq-pink-light: #FF97BD;
+  --fq-pink-glow: rgba(255, 70, 119, 0.25);
+  --fq-black: #351E09;
+  --fq-dark: #351E09;
+  --fq-gray: #351E09;
+  --fq-gray-mid: #996633;
+  --fq-brown: #996633;
+  --fq-brown-dark: #351E09;
+  --fq-orange: #E08736;
+  --fq-white: #FFFBEC;
+  --fq-off-white: #FFFDF0;
+  --fq-cream: #FFFDF0;
+  --fq-gradient: linear-gradient(135deg, #FF4677 0%, #FF5299 50%, #FF97BD 100%);
+  --fq-gradient-dark: linear-gradient(135deg, #FF4677 0%, #E08736 100%);
+  --fq-font-display: 'Poppins', sans-serif;
+  --fq-font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --fq-radius: 16px;
   --fq-radius-sm: 10px;
   --fq-transition: cubic-bezier(0.22, 1, 0.36, 1);
@@ -139,14 +134,38 @@ img {
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
-  transition: all 0.3s var(--fq-transition);
+  transition: all 0.35s var(--fq-transition);
   cursor: pointer;
   border: none;
   position: relative;
   overflow: hidden;
 
+  // Shine sweep on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  // Active press feedback
+  &:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 0.1s;
+  }
+
   &:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
   }
 
   &--primary {
@@ -155,7 +174,7 @@ img {
     box-shadow: 0 4px 20px var(--fq-pink-glow);
 
     &:hover {
-      background: #D12A6E;
+      background: #E03A65;
       box-shadow: 0 8px 32px var(--fq-pink-glow);
     }
   }
@@ -167,7 +186,7 @@ img {
 
     &:hover {
       background: var(--fq-pink);
-      color: #fff;
+      color: #FFFBEC;
     }
   }
 
@@ -178,17 +197,17 @@ img {
 
     &:hover {
       background: var(--fq-pink);
-      color: #fff;
+      color: #FFFBEC;
     }
   }
 
   &--whatsapp {
     background: var(--fq-pink);
-    color: #fff;
+    color: #FFFBEC;
     box-shadow: 0 4px 20px var(--fq-pink-glow);
 
     &:hover {
-      background: #D12A6E;
+      background: #E03A65;
       box-shadow: 0 8px 32px var(--fq-pink-glow);
     }
   }
@@ -202,20 +221,79 @@ img {
 
 // ── Selection color
 ::selection {
-  background: rgba(243, 50, 131, 0.55);
-  color: #ffffff;
+  background: rgba(255, 70, 119, 0.55);
+  color: #FFFBEC;
 }
 
-// ── Scroll animations
+// ── Scroll animations — Premium reveal system
 .animate-init {
   opacity: 0;
-  transition: opacity 0.7s ease, transform 0.7s var(--fq-transition);
+  transition: opacity 0.8s ease, transform 0.8s var(--fq-transition), filter 0.8s ease;
+  will-change: opacity, transform;
 
-  &[data-animate='fade-up'] { transform: translateY(40px); }
-  &[data-animate='scale-up'] { transform: scale(0.92); }
+  &[data-animate='fade-up'] { transform: translateY(50px); filter: blur(4px); }
+  &[data-animate='fade-down'] { transform: translateY(-50px); filter: blur(4px); }
+  &[data-animate='fade-left'] { transform: translateX(-50px); filter: blur(4px); }
+  &[data-animate='fade-right'] { transform: translateX(50px); filter: blur(4px); }
+  &[data-animate='scale-up'] { transform: scale(0.88); filter: blur(6px); }
+  &[data-animate='reveal'] { clip-path: inset(100% 0 0 0); transform: none; filter: none; }
 
   &.is-visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) translateX(0) scale(1);
+    filter: blur(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+// ── Smooth section transitions
+section {
+  position: relative;
+}
+
+// ── Premium glow effect utility
+.glow-text {
+  text-shadow: 0 0 40px var(--fq-pink-glow), 0 0 80px rgba(255, 70, 119, 0.1);
+}
+
+// ── Magnetic hover utility
+.hover-lift {
+  transition: transform 0.4s var(--fq-transition), box-shadow 0.4s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(53, 30, 9, 0.12);
+  }
+}
+
+// ── Shimmer loading effect
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+// ── Smooth counter animation
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// ── Pulse glow for CTAs
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 4px 20px var(--fq-pink-glow); }
+  50% { box-shadow: 0 8px 40px rgba(255, 70, 119, 0.4), 0 0 60px rgba(255, 70, 119, 0.15); }
+}
+
+// ── Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .animate-init {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: none;
   }
 }

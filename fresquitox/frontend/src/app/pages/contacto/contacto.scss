@@ -1,9 +1,9 @@
-﻿$pink: #F33283;
-$pink-mid: #FF6B9A;
-$pink-light: #FFA7D7;
-$dark: #000;
-$off: #F9F9F9;
-$gray: #888;
+$pink: #FF4677;
+$pink-mid: #FF5299;
+$pink-light: #FF97BD;
+$dark: #351E09;
+$off: #FFFDF0;
+$gray: #996633;
 $ease: cubic-bezier(.22,1,.36,1);
 
 .ct-hero {
@@ -18,7 +18,7 @@ $ease: cubic-bezier(.22,1,.36,1);
     span { color: rgba(#fff,.35); &:last-child { color: rgba(#fff,.75); } }
   }
   &__badge { display: inline-block; background: rgba($pink,.12); border: 1px solid rgba($pink,.2); color: $pink-light; padding: .3rem .9rem; border-radius: 100px; font-size: .78rem; font-weight: 600; margin-bottom: 1.25rem; }
-  h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem,4.5vw,2.8rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: .75rem;
+  h1 { font-family: 'Poppins', sans-serif; font-size: clamp(1.8rem,4.5vw,2.8rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: .75rem;
     em { font-style: normal; color: $pink; }
   }
   p { font-size: 1.05rem; color: rgba(#fff,.55); line-height: 1.7; }
@@ -29,14 +29,14 @@ $ease: cubic-bezier(.22,1,.36,1);
 .ct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 
 .ct-info {
-  h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 800; color: $dark; margin-bottom: 1.5rem; }
+  h2 { font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 800; color: $dark; margin-bottom: 1.5rem; }
 }
 
 .ct-item {
   display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start;
   &__icon { font-size: 1.4rem; flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba($pink,.08); border-radius: 12px; }
   h3 { font-size: .95rem; font-weight: 700; color: $dark; margin-bottom: .2rem; }
-  a, p { color: #555; text-decoration: none; font-size: .92rem; }
+  a, p { color: #996633; text-decoration: none; font-size: .92rem; }
   a:hover { color: $pink; }
 }
 
@@ -48,23 +48,23 @@ $ease: cubic-bezier(.22,1,.36,1);
   transition: transform .3s $ease, box-shadow .3s;
   &:hover { transform: translateY(-2px); }
   &--pink { background: $pink; color: #fff; box-shadow: 0 4px 20px rgba($pink,.3); &:hover { box-shadow: 0 8px 32px rgba($pink,.5); } }
-  &--dark { background: $dark; color: #fff; &:hover { box-shadow: 0 8px 24px rgba(0,0,0,.2); } }
+  &--dark { background: $dark; color: #fff; &:hover { box-shadow: 0 8px 24px rgba(53, 30, 9,.2); } }
 }
 
 .ct-coverage {
-  h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 800; color: $dark; margin-bottom: .75rem; }
-  > p { color: #555; line-height: 1.65; margin-bottom: 1.5rem; font-size: .95rem; strong { color: $dark; } }
+  h2 { font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 800; color: $dark; margin-bottom: .75rem; }
+  > p { color: #996633; line-height: 1.65; margin-bottom: 1.5rem; font-size: .95rem; strong { color: $dark; } }
 }
 
 .ct-zones { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
 
 .ct-zone {
   display: inline-flex; align-items: center; gap: .4rem;
-  background: #fff; border: 1px solid #eee; padding: .45rem 1rem;
-  border-radius: 100px; text-decoration: none; color: #555; font-size: .85rem; font-weight: 600;
+  background: #FFFBEC; border: 1px solid #E8D5C0; padding: .45rem 1rem;
+  border-radius: 100px; text-decoration: none; color: #996633; font-size: .85rem; font-weight: 600;
   transition: all .2s $ease;
   &:hover { border-color: $pink; color: $pink; }
-  &--featured { background: $dark; color: #fff; border-color: $dark; &:hover { background: #111; color: #fff; } }
+  &--featured { background: $dark; color: #fff; border-color: $dark; &:hover { background: #3D2210; color: #fff; } }
   &__dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: ctPulse 2s infinite; }
 }
 

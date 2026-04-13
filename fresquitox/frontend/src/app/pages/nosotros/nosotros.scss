@@ -2,14 +2,14 @@
 // FRESQUITOX — Nosotros Page Premium Redesign
 // ══════════════════════════════════════════════════════════
 
-$nos-pink: #F33283;
-$nos-pink-light: #FF6B9A;
-$nos-gold: #FF6B35;
+$nos-pink: #FF4677;
+$nos-pink-light: #FF5299;
+$nos-gold: #E08736;
 $nos-green: #22c55e;
-$nos-orange: #fb923c;
+$nos-orange: #E08736;
 $nos-purple: #a855f7;
-$nos-dark: #050507;
-$nos-light-bg: #f8f8fa;
+$nos-dark: #351E09;
+$nos-light-bg: #FFFDF0;
 $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
 
 // Staggered entry
@@ -51,7 +51,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
     &--1 { width: 4px; height: 4px; background: $nos-pink; top: 18%; left: 15%; animation: nosParticle 7s ease-in-out infinite; opacity: 0.5; }
     &--2 { width: 3px; height: 3px; background: $nos-pink-light; top: 70%; right: 20%; animation: nosParticle 9s ease-in-out infinite; animation-delay: -2s; opacity: 0.35; }
     &--3 { width: 5px; height: 5px; background: $nos-gold; top: 40%; right: 40%; animation: nosParticle 11s ease-in-out infinite; animation-delay: -4s; opacity: 0.25; }
-    &--4 { width: 2px; height: 2px; background: #fff; top: 55%; left: 30%; animation: nosParticle 8s ease-in-out infinite; animation-delay: -1s; opacity: 0.3; }
+    &--4 { width: 2px; height: 2px; background: #FFFBEC; top: 55%; left: 30%; animation: nosParticle 8s ease-in-out infinite; animation-delay: -1s; opacity: 0.3; }
   }
 
   &__fade {
@@ -66,7 +66,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   }
 
   &__breadcrumb {
-    margin-bottom: 3rem; font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 3rem; font-family: 'Poppins', sans-serif;
     font-size: 0.8rem; font-weight: 500;
     display: flex; align-items: center; gap: 0.5rem;
     animation: nosFadeIn 0.6s ease both;
@@ -82,7 +82,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
   &__badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
     color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.06);
     border: 1px solid rgba($nos-pink, 0.12); border-radius: 50px; margin-bottom: 2rem;
@@ -96,7 +96,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   h1 { margin-bottom: 1.5rem; }
 
   &__line {
-    display: block; font-family: 'Space Grotesk', sans-serif;
+    display: block; font-family: 'Poppins', sans-serif;
     font-size: clamp(2.6rem, 5.5vw, 4.2rem);
     font-weight: 900; line-height: 1.02; color: #fff; letter-spacing: -0.04em;
 
@@ -125,13 +125,13 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
     padding: 0 1.5rem;
 
     strong {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem;
+      font-family: 'Poppins', sans-serif; font-size: 1.8rem;
       font-weight: 900; color: #fff; letter-spacing: -0.02em;
     }
     span {
       font-size: 0.68rem; color: rgba(255,255,255,0.3);
       text-transform: uppercase; letter-spacing: 0.08em;
-      font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+      font-family: 'Poppins', sans-serif; font-weight: 600;
     }
   }
 
@@ -146,32 +146,23 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
   &__ring {
     position: absolute; border-radius: 50%;
-    &--1 { width: 85%; height: 85%; border: 2px dashed rgba($nos-pink, 0.35); animation: nosRingSpin 35s linear infinite; box-shadow: 0 0 15px rgba($nos-pink, 0.08); }
-    &--2 { width: 68%; height: 68%; border: 2px solid rgba($nos-pink, 0.4); animation: nosRingSpin 25s linear infinite reverse; box-shadow: 0 0 20px rgba($nos-pink, 0.1); }
-    &--3 { width: 52%; height: 52%; border: 1.5px dotted rgba($nos-gold, 0.3); animation: nosRingSpin 18s linear infinite; }
+    &--1 { width: 85%; height: 85%; border: 1px solid rgba($nos-pink, 0.1); animation: nosRingSpin 35s linear infinite; }
+    &--2 { width: 68%; height: 68%; border: 1px solid rgba($nos-pink, 0.08); animation: nosRingSpin 25s linear infinite reverse; }
+    &--3 { width: 52%; height: 52%; border: 1px dotted rgba($nos-gold, 0.06); animation: nosRingSpin 18s linear infinite; }
   }
 
   &__glow {
     position: absolute; width: 90%; height: 90%; border-radius: 50%;
     background: radial-gradient(circle,
-      rgba($nos-pink, 0.85) 0%,
-      rgba($nos-pink, 0.5) 20%,
-      rgba($nos-pink-light, 0.25) 45%,
-      rgba($nos-pink, 0.08) 70%,
-      transparent 90%);
+      rgba($nos-pink, 0.08) 0%,
+      rgba($nos-pink, 0.03) 40%,
+      transparent 70%);
     animation: nosGlow 4s ease-in-out infinite;
   }
 
   &__mascot {
     display: block; width: 62%; height: auto; position: relative; z-index: 1;
-    filter:
-      brightness(2.3)
-      contrast(1.15)
-      saturate(1.2)
-      drop-shadow(0 0 15px rgba(#fff, 0.4))
-      drop-shadow(0 0 30px rgba($nos-pink, 1))
-      drop-shadow(0 0 60px rgba($nos-pink, 0.8))
-      drop-shadow(0 0 120px rgba($nos-pink, 0.5));
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
     animation: nosFloat 5s ease-in-out infinite;
   }
 }
@@ -216,55 +207,35 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
   &__char-frame {
     position: absolute; width: 80%; height: 80%; border-radius: 50%;
-    border: 2px solid rgba($nos-pink, 0.35);
-    background: radial-gradient(circle, rgba($nos-pink, 0.18) 0%, rgba($nos-pink, 0.06) 50%, transparent 70%);
-    box-shadow: 0 0 30px rgba($nos-pink, 0.1), inset 0 0 40px rgba($nos-pink, 0.06);
+    border: 1px solid rgba($nos-pink, 0.1);
     animation: nosFramePulse 6s ease-in-out infinite;
-
-    &::before {
-      content: ''; position: absolute; inset: -3px; border-radius: 50%;
-      background: conic-gradient(from 0deg, transparent 0%, $nos-pink 15%, transparent 30%, transparent 50%, $nos-gold 65%, transparent 80%);
-      mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
-      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px));
-      animation: nosConicSpin 8s linear infinite;
-      opacity: 0.8;
-    }
   }
 
   &__char-ring {
     position: absolute; border-radius: 50%;
-    &--1 { width: 90%; height: 90%; border: 2px dashed rgba($nos-pink, 0.3); animation: nosRingSpin 30s linear infinite; box-shadow: 0 0 12px rgba($nos-pink, 0.06); }
-    &--2 { width: 70%; height: 70%; border: 2px solid rgba($nos-pink, 0.35); animation: nosRingSpin 22s linear infinite reverse; box-shadow: 0 0 18px rgba($nos-pink, 0.08); }
+    &--1 { width: 90%; height: 90%; border: 1px dashed rgba($nos-pink, 0.08); animation: nosRingSpin 30s linear infinite; }
+    &--2 { width: 70%; height: 70%; border: 1px solid rgba($nos-pink, 0.06); animation: nosRingSpin 22s linear infinite reverse; }
   }
 
   &__char-glow {
     position: absolute; width: 90%; height: 90%; border-radius: 50%;
     background: radial-gradient(circle,
-      rgba($nos-pink, 0.85) 0%,
-      rgba($nos-pink, 0.5) 20%,
-      rgba($nos-pink-light, 0.25) 45%,
-      rgba($nos-pink, 0.08) 70%,
-      transparent 90%);
+      rgba($nos-pink, 0.08) 0%,
+      rgba($nos-pink, 0.03) 40%,
+      transparent 70%);
     animation: nosGlow 4s ease-in-out infinite;
   }
 
   &__char-img {
     display: block; width: 62%; height: auto; position: relative; z-index: 2;
-    filter:
-      brightness(2.3)
-      contrast(1.15)
-      saturate(1.2)
-      drop-shadow(0 0 15px rgba(#fff, 0.4))
-      drop-shadow(0 0 30px rgba($nos-pink, 1))
-      drop-shadow(0 0 60px rgba($nos-pink, 0.8))
-      drop-shadow(0 0 120px rgba($nos-pink, 0.5));
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
     animation: nosFloat 5s ease-in-out infinite;
   }
 
   // ── Floating tags around character
   &__float-tag {
     position: absolute; z-index: 3;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
     color: #fff; padding: 0.4rem 0.9rem; border-radius: 50px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
@@ -280,7 +251,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   // ── Text side
   &__tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
     color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.06);
     border: 1px solid rgba($nos-pink, 0.12); border-radius: 50px; margin-bottom: 1.5rem;
@@ -292,7 +263,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   }
 
   &__headline {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 900; line-height: 1.05; color: #fff;
     letter-spacing: -0.03em; margin-bottom: 2rem;
@@ -333,7 +304,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   }
 
   &__signature span {
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.82rem;
+    font-family: 'Poppins', sans-serif; font-size: 0.82rem;
     font-weight: 700; color: rgba(255,255,255,0.3);
     letter-spacing: 0.04em; text-transform: uppercase;
   }
@@ -352,7 +323,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
   &__tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
     color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.06);
     border: 1px solid rgba($nos-pink, 0.12); border-radius: 50px; margin-bottom: 1.5rem;
@@ -364,9 +335,9 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   }
 
   &__headline {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    font-weight: 900; line-height: 1.05; color: #121217;
+    font-weight: 900; line-height: 1.05; color: #351E09;
     letter-spacing: -0.03em;
 
     span {
@@ -382,11 +353,11 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
   // ── Card (mirror of home's bcard)
   &__card {
-    position: relative; background: #fff;
-    border: 1px solid rgba(0,0,0,0.06); border-radius: 24px;
+    position: relative; background: #FFFBEC;
+    border: 1px solid rgba(53, 30, 9,0.06); border-radius: 24px;
     padding: 2rem 1.75rem; overflow: hidden;
     display: flex; flex-direction: column;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 16px rgba(53, 30, 9,0.04);
     transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
 
     &:nth-child(2) { transform: translateY(2rem); }
@@ -394,8 +365,8 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
     &:hover {
       transform: translateY(-8px);
-      border-color: rgba(0,0,0,0.08);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03);
+      border-color: rgba(53, 30, 9,0.08);
+      box-shadow: 0 20px 60px rgba(53, 30, 9,0.08), 0 0 0 1px rgba(53, 30, 9,0.03);
       .nos-pilares__card-glow { opacity: 0.6; }
       .nos-pilares__card-stripe { opacity: 1; }
       .nos-pilares__card-icon-ring { transform: scale(1.1) rotate(-5deg); }
@@ -430,13 +401,13 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
     }
 
     &-num {
-      font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem;
-      font-weight: 800; letter-spacing: 0.12em; color: rgba(0,0,0,0.12);
+      font-family: 'Poppins', sans-serif; font-size: 0.72rem;
+      font-weight: 800; letter-spacing: 0.12em; color: rgba(53, 30, 9,0.12);
     }
 
     &-icon-ring {
       width: 52px; height: 52px; border-radius: 16px;
-      border: 1px solid rgba(0,0,0,0.06);
+      border: 1px solid rgba(53, 30, 9,0.06);
       display: flex; align-items: center; justify-content: center;
       transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
       position: relative; z-index: 2;
@@ -444,24 +415,24 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
     }
 
     h3 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem;
-      font-weight: 800; color: #121217; letter-spacing: -0.01em;
+      font-family: 'Poppins', sans-serif; font-size: 1.2rem;
+      font-weight: 800; color: #351E09; letter-spacing: -0.01em;
       margin-bottom: 0.6rem; position: relative; z-index: 2;
     }
 
     p {
-      font-size: 0.85rem; color: rgba(#121217, 0.45); line-height: 1.7;
+      font-size: 0.85rem; color: rgba(#351E09, 0.45); line-height: 1.7;
       margin-bottom: 1.5rem; flex: 1; position: relative; z-index: 2;
     }
 
     &-foot { position: relative; z-index: 2; }
 
     &-pill {
-      display: inline-block; font-family: 'Space Grotesk', sans-serif;
+      display: inline-block; font-family: 'Poppins', sans-serif;
       font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em;
       padding: 0.3rem 0.85rem; border-radius: 50px;
-      color: rgba(#121217, 0.4);
-      background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06);
+      color: rgba(#351E09, 0.4);
+      background: rgba(53, 30, 9,0.02); border: 1px solid rgba(53, 30, 9,0.06);
       transition: all 0.4s ease;
     }
 
@@ -509,7 +480,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 // MISIÓN Y VISIÓN (DARK)
 // ═══════════════════════════════════════════════════════
 .nos-mv {
-  padding: 8rem 0; background: #070709; position: relative; overflow: hidden;
+  padding: 8rem 0; background: #351E09; position: relative; overflow: hidden;
 
   &__bg { position: absolute; inset: 0; pointer-events: none; }
 
@@ -539,11 +510,11 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
     &:hover {
       transform: translateY(-6px);
       border-color: rgba($nos-pink, 0.15);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+      box-shadow: 0 16px 48px rgba(53, 30, 9,0.3);
     }
 
     h3 {
-      font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem;
+      font-family: 'Poppins', sans-serif; font-size: 1.35rem;
       font-weight: 800; color: #fff; margin-bottom: 1rem; position: relative; z-index: 1;
     }
 
@@ -557,7 +528,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
     position: absolute; top: 0; left: 0; right: 0; height: 3px;
 
     &--mission { background: linear-gradient(90deg, $nos-pink, $nos-pink-light); }
-    &--vision { background: linear-gradient(90deg, $nos-gold, #FFB347); }
+    &--vision { background: linear-gradient(90deg, $nos-gold, #E08736); }
   }
 
   &__card-icon {
@@ -566,7 +537,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   }
 
   &__tag {
-    display: inline-block; font-family: 'Space Grotesk', sans-serif;
+    display: inline-block; font-family: 'Poppins', sans-serif;
     font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
     text-transform: uppercase; color: $nos-pink;
     background: rgba($nos-pink, 0.08); border: 1px solid rgba($nos-pink, 0.12);
@@ -585,7 +556,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 // CTA (DARK — 2 columns)
 // ═══════════════════════════════════════════════════════
 .nos-cta {
-  position: relative; background: #08080c; padding: 8rem 0; overflow: hidden;
+  position: relative; background: #351E09; padding: 8rem 0; overflow: hidden;
 
   &__bg { position: absolute; inset: 0; pointer-events: none; }
 
@@ -614,7 +585,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
   &__badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
     color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
     padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.06);
     border: 1px solid rgba($nos-pink, 0.12); border-radius: 50px; margin-bottom: 1.5rem;
@@ -626,7 +597,7 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
   }
 
   h2 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 900; line-height: 1.05; color: #fff;
     letter-spacing: -0.03em; margin-bottom: 1rem;
@@ -648,30 +619,23 @@ $nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://w
 
   &__ring {
     position: absolute; border-radius: 50%;
-    &--1 { width: 240px; height: 240px; border: 2px dashed rgba($nos-pink, 0.35); animation: nosRingSpin 25s linear infinite; box-shadow: 0 0 12px rgba($nos-pink, 0.06); }
-    &--2 { width: 180px; height: 180px; border: 2px solid rgba($nos-pink, 0.4); animation: nosRingSpin 18s linear infinite reverse; box-shadow: 0 0 18px rgba($nos-pink, 0.08); }
+    &--1 { width: 240px; height: 240px; border: 1px dashed rgba($nos-pink, 0.1); animation: nosRingSpin 25s linear infinite; }
+    &--2 { width: 180px; height: 180px; border: 1px solid rgba($nos-pink, 0.08); animation: nosRingSpin 18s linear infinite reverse; }
   }
 
   &__glow {
     position: absolute; width: 85%; height: 85%; border-radius: 50%;
     background: radial-gradient(circle,
-      rgba($nos-pink, 0.8) 0%,
-      rgba($nos-pink, 0.45) 25%,
-      rgba($nos-pink-light, 0.2) 50%,
-      transparent 80%);
+      rgba($nos-pink, 0.08) 0%,
+      rgba($nos-pink, 0.03) 40%,
+      transparent 70%);
     animation: nosGlow 4s ease-in-out infinite;
   }
 
   &__mascot {
     display: block; width: 75%; max-width: 220px; height: auto;
     position: relative; z-index: 1;
-    filter:
-      brightness(2.3)
-      contrast(1.15)
-      saturate(1.2)
-      drop-shadow(0 0 12px rgba(#fff, 0.35))
-      drop-shadow(0 0 25px rgba($nos-pink, 1))
-      drop-shadow(0 0 55px rgba($nos-pink, 0.7));
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
     animation: nosFloat 5s ease-in-out infinite;
   }
 }

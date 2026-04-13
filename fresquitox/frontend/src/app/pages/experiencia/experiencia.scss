@@ -1,9 +1,9 @@
-$pink: #F33283;
-$pink-mid: #FF6B9A;
-$pink-light: #FFA7D7;
-$dark: #000;
-$off: #F9F9F9;
-$gray: #888;
+$pink: #FF4677;
+$pink-mid: #FF5299;
+$pink-light: #FF97BD;
+$dark: #1a0e04;
+$off: #FFFDF0;
+$gray: #996633;
 $ease: cubic-bezier(.22, 1, .36, 1);
 
 // ── HERO ──
@@ -40,7 +40,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
   }
 
   h1 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 800;
     letter-spacing: -.04em;
@@ -70,7 +70,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
   gap: 3rem;
   align-items: center;
   padding: 3rem 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #E8D5C0;
 
   &--reverse { grid-template-columns: 1fr 320px; .exp-card__visual { order: 2; } .exp-card__content { order: 1; } }
 
@@ -105,7 +105,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
 
   &__number {
     display: block;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: .8rem;
     font-weight: 800;
     color: $pink;
@@ -115,7 +115,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
   }
 
   h2 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.6rem;
     font-weight: 800;
     color: $dark;
@@ -133,7 +133,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
   &__experience {
     margin-bottom: 1.5rem;
     h3 { font-size: .85rem; font-weight: 700; color: $dark; margin-bottom: .5rem; }
-    p { font-size: .92rem; line-height: 1.7; color: #555; strong { color: $dark; } }
+    p { font-size: .92rem; line-height: 1.7; color: #996633; strong { color: $dark; } }
   }
 
   &__senses {
@@ -207,7 +207,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
   &__emoji { font-size: 3rem; display: block; margin-bottom: 1rem; }
 
   h2 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(1.5rem, 3.5vw, 2rem);
     font-weight: 800;
     margin-bottom: .75rem;

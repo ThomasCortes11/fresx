@@ -1,17 +1,17 @@
-﻿/* Blog Detail — bd-page (Fresquitox theme) */
+/* Blog Detail — bd-page (Fresquitox theme) */
 .bd-page {
   display: block;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-$pink: #F33283;
-$pink-mid: #FF6B9A;
-$pink-light: #FFA7D7;
-$dark: #000;
-$off: #F9F9F9;
-$txt: #1F2937;
-$txt2: #4B5563;
-$txt3: #9CA3AF;
+$pink: #FF4677;
+$pink-mid: #FF5299;
+$pink-light: #FF97BD;
+$dark: #351E09;
+$off: #FFFDF0;
+$txt: #351E09;
+$txt2: #6B3311;
+$txt3: #996633;
 $bdr: #E5E7EB;
 
 /* Progress bar */
@@ -69,7 +69,7 @@ $bdr: #E5E7EB;
 .bd-page .bd-hero h1 {
   font-size: clamp(1.6rem, 4.5vw, 2.5rem); font-weight: 800;
   color: #fff; line-height: 1.2; margin-bottom: 1.2rem; text-align: left;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .bd-page .bd-meta {
   display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
@@ -101,7 +101,7 @@ $bdr: #E5E7EB;
 .bd-page .bd-section h2 {
   font-size: 1.3rem; font-weight: 800; color: $dark; line-height: 1.3;
   margin-bottom: 0.75rem; padding-left: 1rem; position: relative; text-align: left;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .bd-page .bd-section h2::before {
   content: ''; position: absolute; left: 0; top: 0.18rem;
@@ -127,7 +127,7 @@ $bdr: #E5E7EB;
   width: 7px; height: 7px; border-radius: 50%; background: $pink;
 }
 .bd-page .bd-list li strong { color: $txt; font-weight: 700; }
-.bd-page .bd-list li + li { border-top: 1px solid rgba(0,0,0,0.04); }
+.bd-page .bd-list li + li { border-top: 1px solid rgba(53, 30, 9,0.04); }
 
 /* CTA box */
 .bd-page .bd-cta-box {
@@ -137,7 +137,7 @@ $bdr: #E5E7EB;
 .bd-page .bd-cta-box h2 {
   font-size: 1.3rem; font-weight: 700; color: #fff;
   margin-bottom: 0.5rem; text-align: center; padding-left: 0;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .bd-page .bd-cta-box h2::before { display: none; }
 .bd-page .bd-cta-box > p {
@@ -165,14 +165,14 @@ $bdr: #E5E7EB;
   position: sticky; top: 5rem; display: flex; flex-direction: column; gap: 1.5rem;
 }
 .bd-page .bd-card {
-  background: #fff; border-radius: 16px; padding: 1.5rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 6px 20px rgba(0,0,0,0.04);
+  background: #FFFBEC; border-radius: 16px; padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(53, 30, 9,0.06), 0 6px 20px rgba(53, 30, 9,0.04);
 }
 .bd-page .bd-card h3 {
   font-size: 1rem; font-weight: 700; color: $txt;
   margin-bottom: 1rem; padding-bottom: 0.75rem;
   border-bottom: 2px solid $bdr; text-align: left;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .bd-page .bd-card-items { display: flex; flex-direction: column; gap: 0.25rem; }
 .bd-page .bd-side-link {

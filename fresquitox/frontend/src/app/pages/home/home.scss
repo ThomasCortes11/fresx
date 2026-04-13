@@ -1,21 +1,24 @@
-﻿// ══════════════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
 // FRESQUITOX — Premium Home Sections
 // Black + White + Pink gradient system
 // ══════════════════════════════════════════════════════════
 
+// ── SECTION DIVIDERS ─────────────────────────────────────
 // ── BENEFITS SECTION (LIGHT) ─────────────────────────────
 $b-green: #22c55e;
-$b-orange: #fb923c;
-$b-pink: #F33283;
+$b-orange: #E08736;
+$b-pink: #FF4677;
 $b-purple: #a855f7;
-$b-bg: #f8f8fa;
-$b-dark: #121217;
+$b-bg: #FFFDF0;
+$b-dark: #351E09;
 
 .benefits {
   padding: 8rem 0;
   background: $b-bg;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid rgba(53, 30, 9, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
   &__bg {
     position: absolute;
@@ -61,8 +64,8 @@ $b-dark: #121217;
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-      linear-gradient(0deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+      linear-gradient(90deg, rgba(53, 30, 9, 0.02) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(53, 30, 9, 0.02) 1px, transparent 1px);
     background-size: 80px 80px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
@@ -86,7 +89,7 @@ $b-dark: #121217;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
     color: $b-pink;
@@ -108,7 +111,7 @@ $b-dark: #121217;
   }
 
   &__headline {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
     line-height: 1;
@@ -117,7 +120,7 @@ $b-dark: #121217;
     margin-bottom: 1rem;
 
     span {
-      background: linear-gradient(135deg, $b-pink, #FF6B9A, $b-orange);
+      background: linear-gradient(135deg, $b-pink, #FF5299, $b-orange);
       background-size: 200% 200%;
       animation: bGradient 6s ease infinite;
       -webkit-background-clip: text;
@@ -140,7 +143,7 @@ $b-dark: #121217;
   }
 
   &__counter-num {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(3rem, 5vw, 4.5rem);
     font-weight: 900;
     letter-spacing: -0.04em;
@@ -152,7 +155,7 @@ $b-dark: #121217;
   }
 
   &__counter-label {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.8rem;
     font-weight: 600;
     color: rgba($b-dark, 0.35);
@@ -170,14 +173,14 @@ $b-dark: #121217;
 // ── Benefit Cards — Light Glass ──────────────────────────
 .bcard {
   position: relative;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #FFFBEC;
+  border: 1px solid rgba(53, 30, 9, 0.06);
   border-radius: 24px;
   padding: 2rem 1.75rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 16px rgba(53, 30, 9, 0.04);
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 
   // Stagger
@@ -229,19 +232,20 @@ $b-dark: #121217;
   }
 
   &:hover {
-    transform: translateY(-8px);
-    border-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
+    transform: translateY(-10px);
+    border-color: rgba(53, 30, 9, 0.08);
+    box-shadow: 0 24px 64px rgba(53, 30, 9, 0.1), 0 0 0 1px rgba(53, 30, 9, 0.03);
 
-    .bcard__glow { opacity: 0.6; }
+    .bcard__glow { opacity: 0.7; }
     .bcard__stripe { opacity: 1; }
-    .bcard__icon-ring { transform: scale(1.1) rotate(-5deg); }
+    .bcard__icon-ring { transform: scale(1.12) rotate(-8deg); }
     .bcard__arrow { transform: rotate(0deg); opacity: 1; }
+    .bcard__title { letter-spacing: 0.01em; }
     &::before { left: 120%; }
   }
 
-  &:nth-child(2):hover { transform: translateY(calc(2rem - 8px)); }
-  &:nth-child(4):hover { transform: translateY(calc(2rem - 8px)); }
+  &:nth-child(2):hover { transform: translateY(calc(2rem - 10px)); }
+  &:nth-child(4):hover { transform: translateY(calc(2rem - 10px)); }
 
   // ── Per-card accents ──
   &--green {
@@ -295,18 +299,18 @@ $b-dark: #121217;
   }
 
   &__num {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.12em;
-    color: rgba(0, 0, 0, 0.12);
+    color: rgba(53, 30, 9, 0.12);
   }
 
   &__icon-ring {
     width: 52px;
     height: 52px;
     border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(53, 30, 9, 0.06);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -323,7 +327,7 @@ $b-dark: #121217;
   }
 
   &__title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     font-weight: 800;
     color: $b-dark;
@@ -353,20 +357,20 @@ $b-dark: #121217;
 
   &__pill {
     display: inline-block;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     padding: 0.3rem 0.85rem;
     border-radius: 50px;
     color: rgba($b-dark, 0.4);
-    background: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(53, 30, 9, 0.02);
+    border: 1px solid rgba(53, 30, 9, 0.06);
     transition: all 0.4s ease;
   }
 
   &__arrow {
-    color: rgba(0, 0, 0, 0.15);
+    color: rgba(53, 30, 9, 0.15);
     transform: rotate(-45deg);
     opacity: 0.5;
     transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -391,16 +395,17 @@ $b-dark: #121217;
 }
 
 // ── PRODUCTOS SECTION ────────────────────────────────────
-$prod-pink: #F33283;
-$prod-orange: #FF6B35;
+$prod-pink: #FF4677;
+$prod-orange: #E08736;
 $prod-cyan: #00C9FF;
 $prod-lime: #A8FF00;
 
 .productos-home {
   padding: 8rem 0;
-  background: #050507;
+  background: #351E09;
   position: relative;
   overflow: hidden;
+  border-top: 2px solid rgba(255, 70, 119, 0.12);
 
   &__bg {
     position: absolute;
@@ -462,7 +467,7 @@ $prod-lime: #A8FF00;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.78rem;
     font-weight: 600;
     color: $prod-pink;
@@ -484,7 +489,7 @@ $prod-lime: #A8FF00;
   }
 
   &__headline {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 800;
     line-height: 1.05;
@@ -492,7 +497,7 @@ $prod-lime: #A8FF00;
     letter-spacing: -0.02em;
 
     span {
-      background: linear-gradient(135deg, $prod-pink, #FF6B9A, $prod-orange);
+      background: linear-gradient(135deg, $prod-pink, #FF5299, $prod-orange);
       background-size: 200% 200%;
       animation: prodGradient 6s ease infinite;
       -webkit-background-clip: text;
@@ -541,7 +546,7 @@ $prod-lime: #A8FF00;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50px;
     text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 0.95rem;
     letter-spacing: 0.02em;
@@ -617,7 +622,7 @@ $prod-lime: #A8FF00;
     position: absolute;
     top: -20px;
     right: -5px;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 8rem;
     font-weight: 900;
     color: rgba(255, 255, 255, 0.02);
@@ -661,30 +666,32 @@ $prod-lime: #A8FF00;
   }
 
   &:hover {
-    transform: translateY(-8px) scale(1.01);
-    border-color: rgba($prod-pink, 0.2);
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba($prod-pink, 0.25);
     box-shadow:
-      0 20px 60px rgba(0, 0, 0, 0.4),
-      0 0 40px rgba($prod-pink, 0.08);
+      0 24px 70px rgba(53, 30, 9, 0.45),
+      0 0 50px rgba($prod-pink, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
 
     .pcard__accent { opacity: 1; }
-    .pcard__bg-num { color: rgba(255, 255, 255, 0.045); transform: translateY(-5px); }
+    .pcard__bg-num { color: rgba(255, 255, 255, 0.05); transform: translateY(-8px); }
     .pcard__arrow { transform: rotate(0deg); color: $prod-pink; }
     .pcard__link-line { width: 100%; }
+    .pcard__title { text-shadow: 0 0 30px rgba(255, 255, 255, 0.1); }
     &::after { opacity: 1; }
     &::before { left: 130%; }
   }
 
   // ── Per-card accent colors ──
   &:nth-child(2) {
-    .pcard__accent { background: linear-gradient(90deg, $prod-orange, #FFB347); }
+    .pcard__accent { background: linear-gradient(90deg, $prod-orange, #E08736); }
     .pcard__number { color: $prod-orange; }
     .pcard__tag { color: $prod-orange; border-color: rgba($prod-orange, 0.2); background: rgba($prod-orange, 0.08); }
     .pcard__link { color: $prod-orange; }
     .pcard__link-line { background: $prod-orange; }
     &:hover {
       border-color: rgba($prod-orange, 0.2);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba($prod-orange, 0.08);
+      box-shadow: 0 20px 60px rgba(53, 30, 9, 0.4), 0 0 40px rgba($prod-orange, 0.08);
       .pcard__arrow { color: $prod-orange; }
       &::after { background: radial-gradient(circle, rgba($prod-orange, 0.06) 0%, transparent 70%); }
     }
@@ -698,7 +705,7 @@ $prod-lime: #A8FF00;
     .pcard__link-line { background: $prod-cyan; }
     &:hover {
       border-color: rgba($prod-cyan, 0.2);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba($prod-cyan, 0.08);
+      box-shadow: 0 20px 60px rgba(53, 30, 9, 0.4), 0 0 40px rgba($prod-cyan, 0.08);
       .pcard__arrow { color: $prod-cyan; }
       &::after { background: radial-gradient(circle, rgba($prod-cyan, 0.06) 0%, transparent 70%); }
     }
@@ -712,7 +719,7 @@ $prod-lime: #A8FF00;
     .pcard__link-line { background: $prod-lime; }
     &:hover {
       border-color: rgba($prod-lime, 0.2);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba($prod-lime, 0.08);
+      box-shadow: 0 20px 60px rgba(53, 30, 9, 0.4), 0 0 40px rgba($prod-lime, 0.08);
       .pcard__arrow { color: $prod-lime; }
       &::after { background: radial-gradient(circle, rgba($prod-lime, 0.06) 0%, transparent 70%); }
     }
@@ -728,7 +735,7 @@ $prod-lime: #A8FF00;
   }
 
   &__number {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     font-weight: 800;
     color: $prod-pink;
@@ -751,7 +758,7 @@ $prod-lime: #A8FF00;
   }
 
   &__title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.3rem;
     font-weight: 800;
     color: #fff;
@@ -794,7 +801,7 @@ $prod-lime: #A8FF00;
   }
 
   &__link {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.82rem;
     font-weight: 700;
     color: $prod-pink;
@@ -836,9 +843,10 @@ $prod-lime: #A8FF00;
 // ── BRAND EMOCIONAL SECTION ──────────────────────────────
 .brand-section {
   padding: 10rem 0 8rem;
-  background: #050507;
+  background: #2a1507;
   position: relative;
   overflow: hidden;
+  border-top: 2px solid rgba(255, 70, 119, 0.12);
 
   &__bg {
     position: absolute;
@@ -854,7 +862,7 @@ $prod-lime: #A8FF00;
     &--1 {
       width: 500px;
       height: 500px;
-      background: rgba(243, 50, 131, 0.1);
+      background: rgba(255, 70, 119, 0.1);
       top: -20%;
       left: -5%;
     }
@@ -903,7 +911,7 @@ $prod-lime: #A8FF00;
     width: 85%;
     height: 85%;
     border-radius: 50%;
-    border: 1.5px solid rgba(243, 50, 131, 0.12);
+    border: 1.5px solid rgba(255, 70, 119, 0.12);
     animation: brandRingSpin 40s linear infinite;
 
     &::after {
@@ -911,7 +919,7 @@ $prod-lime: #A8FF00;
       position: absolute;
       inset: -12%;
       border-radius: 50%;
-      border: 1px dashed rgba(243, 50, 131, 0.06);
+      border: 1px dashed rgba(255, 70, 119, 0.06);
       animation: brandRingSpin 60s linear infinite reverse;
     }
   }
@@ -922,10 +930,7 @@ $prod-lime: #A8FF00;
     object-fit: contain;
     position: relative;
     z-index: 1;
-    filter:
-      brightness(0) invert(1)
-      drop-shadow(0 0 8px rgba(243, 50, 131, 0.3))
-      drop-shadow(0 0 25px rgba(243, 50, 131, 0.15));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
     animation: brandMascotFloat 5s ease-in-out infinite;
   }
 
@@ -938,16 +943,16 @@ $prod-lime: #A8FF00;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.72rem;
     font-weight: 700;
-    color: rgba(243, 50, 131, 0.85);
+    color: rgba(255, 70, 119, 0.85);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     padding: 0.35rem 1.1rem;
-    background: rgba(243, 50, 131, 0.06);
-    border: 1px solid rgba(243, 50, 131, 0.12);
+    background: rgba(255, 70, 119, 0.06);
+    border: 1px solid rgba(255, 70, 119, 0.12);
     border-radius: 50px;
   }
 
@@ -955,13 +960,13 @@ $prod-lime: #A8FF00;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #F33283;
-    box-shadow: 0 0 8px rgba(243, 50, 131, 0.5);
+    background: #FF4677;
+    box-shadow: 0 0 8px rgba(255, 70, 119, 0.5);
     flex-shrink: 0;
   }
 
   &__headline {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 4.5vw, 3.4rem);
     font-weight: 800;
     line-height: 1.1;
@@ -970,7 +975,7 @@ $prod-lime: #A8FF00;
     letter-spacing: -0.02em;
 
     span {
-      background: linear-gradient(135deg, #F33283, #FF6B9A, #FFA7D7);
+      background: linear-gradient(135deg, #FF4677, #FF5299, #FF97BD);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -978,7 +983,7 @@ $prod-lime: #A8FF00;
   }
 
   &__text {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.4);
     line-height: 1.75;
@@ -997,14 +1002,24 @@ $prod-lime: #A8FF00;
   &__stat {
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
 
     strong {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-size: 1.5rem;
       font-weight: 800;
       color: #fff;
       line-height: 1;
       letter-spacing: -0.02em;
+      transition: text-shadow 0.3s ease;
+    }
+
+    &:hover strong {
+      text-shadow: 0 0 24px rgba(255, 70, 119, 0.3);
     }
 
     span {
@@ -1036,21 +1051,35 @@ $prod-lime: #A8FF00;
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
     text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 0.88rem;
     letter-spacing: 0.02em;
     transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 
     &--primary {
-      background: linear-gradient(135deg, #F33283, #FF4D94);
+      background: linear-gradient(135deg, #FF4677, #FF5299);
       color: #fff;
-      box-shadow: 0 4px 20px rgba(243, 50, 131, 0.25);
+      box-shadow: 0 4px 20px rgba(255, 70, 119, 0.25);
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+        transform: translateX(-100%);
+        transition: transform 0.5s ease;
+      }
 
       &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 32px rgba(243, 50, 131, 0.4);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 10px 36px rgba(255, 70, 119, 0.45), 0 0 20px rgba(255, 70, 119, 0.12);
+        &::before { transform: translateX(100%); }
       }
+
+      &:active { transform: translateY(0) scale(0.98); }
     }
 
     &--outline {
@@ -1059,8 +1088,10 @@ $prod-lime: #A8FF00;
       border: 1px solid rgba(255, 255, 255, 0.12);
 
       &:hover {
-        border-color: rgba(243, 50, 131, 0.35);
-        background: rgba(243, 50, 131, 0.06);
+        border-color: rgba(255, 70, 119, 0.4);
+        background: rgba(255, 70, 119, 0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(255, 70, 119, 0.08);
       }
     }
   }
@@ -1082,6 +1113,8 @@ $prod-lime: #A8FF00;
   background: var(--fq-off-white);
   position: relative;
   overflow: hidden;
+  border-top: 1px solid rgba(53, 30, 9, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
   // ── 2-col layout
   &__layout {
@@ -1100,7 +1133,7 @@ $prod-lime: #A8FF00;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.72rem;
     font-weight: 700;
     color: var(--fq-pink);
@@ -1108,8 +1141,8 @@ $prod-lime: #A8FF00;
     text-transform: uppercase;
     margin-bottom: 1.2rem;
     padding: 0.35rem 1.1rem;
-    background: rgba(243, 50, 131, 0.06);
-    border: 1px solid rgba(243, 50, 131, 0.1);
+    background: rgba(255, 70, 119, 0.06);
+    border: 1px solid rgba(255, 70, 119, 0.1);
     border-radius: 50px;
   }
 
@@ -1122,7 +1155,7 @@ $prod-lime: #A8FF00;
   }
 
   &__headline {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2.2rem, 4.5vw, 3.2rem);
     font-weight: 800;
     line-height: 1.08;
@@ -1131,7 +1164,7 @@ $prod-lime: #A8FF00;
     margin-bottom: 1rem;
 
     span {
-      background: linear-gradient(135deg, #F33283, #FF6B9A);
+      background: linear-gradient(135deg, #FF4677, #FF5299);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1152,22 +1185,36 @@ $prod-lime: #A8FF00;
     gap: 0.6rem;
     color: #fff;
     text-decoration: none;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 0.88rem;
     padding: 0.75rem 1.6rem;
-    background: linear-gradient(135deg, #F33283, #FF4D94);
+    background: linear-gradient(135deg, #FF4677, #FF5299);
     border-radius: 50px;
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 4px 16px rgba(243, 50, 131, 0.2);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    box-shadow: 0 4px 16px rgba(255, 70, 119, 0.2);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.18) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
 
     svg { transition: transform 0.3s ease; }
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(243, 50, 131, 0.35);
-      svg { transform: translateX(3px); }
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 32px rgba(255, 70, 119, 0.4), 0 0 16px rgba(255, 70, 119, 0.1);
+      svg { transform: translateX(4px); }
+      &::before { transform: translateX(100%); }
     }
+
+    &:active { transform: translateY(0) scale(0.97); }
   }
 
   // ── Grid on the right
@@ -1184,13 +1231,13 @@ $prod-lime: #A8FF00;
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.15rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #FFFBEC;
+  border: 1px solid rgba(53, 30, 9, 0.05);
   border-radius: 14px;
   text-decoration: none;
   color: var(--fq-dark);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 4px rgba(53, 30, 9, 0.03);
 
   &__icon {
     font-size: 1.2rem;
@@ -1205,7 +1252,7 @@ $prod-lime: #A8FF00;
   }
 
   &__name {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.92rem;
     font-weight: 700;
     color: var(--fq-dark);
@@ -1222,20 +1269,21 @@ $prod-lime: #A8FF00;
 
   &__arrow {
     margin-left: auto;
-    color: rgba(0, 0, 0, 0.15);
+    color: rgba(53, 30, 9, 0.15);
     flex-shrink: 0;
     transition: all 0.3s ease;
   }
 
   &:hover {
-    border-color: rgba(243, 50, 131, 0.25);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(243, 50, 131, 0.1);
+    border-color: rgba(255, 70, 119, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(255, 70, 119, 0.12), 0 0 0 1px rgba(255, 70, 119, 0.06);
+    background: #fff;
 
     .zona-chip__name { color: var(--fq-pink); }
     .zona-chip__arrow {
       color: var(--fq-pink);
-      transform: translateX(2px);
+      transform: translateX(3px);
     }
   }
 }
@@ -1243,9 +1291,10 @@ $prod-lime: #A8FF00;
 // ── CTA FINAL SECTION ────────────────────────────────────
 .cta-final {
   padding: 7rem 0;
-  background: #050507;
+  background: #351E09;
   position: relative;
   overflow: hidden;
+  border-top: 2px solid rgba(255, 70, 119, 0.12);
 
   &__bg {
     position: absolute;
@@ -1264,7 +1313,7 @@ $prod-lime: #A8FF00;
       top: 50%;
       right: -5%;
       transform: translateY(-50%);
-      background: radial-gradient(circle, rgba(243, 50, 131, 0.14) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(255, 70, 119, 0.14) 0%, transparent 60%);
     }
 
     &--2 {
@@ -1320,16 +1369,16 @@ $prod-lime: #A8FF00;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.7rem;
     font-weight: 700;
-    color: rgba(243, 50, 131, 0.85);
+    color: rgba(255, 70, 119, 0.85);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     padding: 0.35rem 1.1rem;
-    background: rgba(243, 50, 131, 0.06);
-    border: 1px solid rgba(243, 50, 131, 0.12);
+    background: rgba(255, 70, 119, 0.06);
+    border: 1px solid rgba(255, 70, 119, 0.12);
     border-radius: 50px;
   }
 
@@ -1337,8 +1386,8 @@ $prod-lime: #A8FF00;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #F33283;
-    box-shadow: 0 0 8px rgba(243, 50, 131, 0.5);
+    background: #FF4677;
+    box-shadow: 0 0 8px rgba(255, 70, 119, 0.5);
     flex-shrink: 0;
     animation: ctaDot 2.5s ease-in-out infinite;
   }
@@ -1350,7 +1399,7 @@ $prod-lime: #A8FF00;
   }
 
   &__line {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2.8rem, 6vw, 4.8rem);
     font-weight: 800;
     line-height: 1;
@@ -1358,7 +1407,7 @@ $prod-lime: #A8FF00;
 
     &--1 { color: #fff; }
     &--2 {
-      background: linear-gradient(135deg, #F33283, #FF6B9A, #FFA7D7);
+      background: linear-gradient(135deg, #FF4677, #FF5299, #FF97BD);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -1366,7 +1415,7 @@ $prod-lime: #A8FF00;
   }
 
   &__sub {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.35);
     line-height: 1.7;
@@ -1389,7 +1438,7 @@ $prod-lime: #A8FF00;
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.3);
@@ -1401,7 +1450,9 @@ $prod-lime: #A8FF00;
     transition: border-color 0.3s ease;
 
     &:hover {
-      border-color: rgba(243, 50, 131, 0.2);
+      border-color: rgba(255, 70, 119, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-1px);
     }
   }
 
@@ -1424,7 +1475,7 @@ $prod-lime: #A8FF00;
     width: 75%;
     height: 75%;
     border-radius: 50%;
-    border: 1.5px solid rgba(243, 50, 131, 0.1);
+    border: 1.5px solid rgba(255, 70, 119, 0.1);
     animation: ctaRingSpin 45s linear infinite;
 
     &::before {
@@ -1432,7 +1483,7 @@ $prod-lime: #A8FF00;
       position: absolute;
       inset: -15%;
       border-radius: 50%;
-      border: 1px dashed rgba(243, 50, 131, 0.05);
+      border: 1px dashed rgba(255, 70, 119, 0.05);
       animation: ctaRingSpin 70s linear infinite reverse;
     }
 
@@ -1453,8 +1504,8 @@ $prod-lime: #A8FF00;
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(243, 50, 131, 0.12) 0%,
-      rgba(243, 50, 131, 0.04) 40%,
+      rgba(255, 70, 119, 0.12) 0%,
+      rgba(255, 70, 119, 0.04) 40%,
       transparent 70%
     );
     animation: ctaGlow 5s ease-in-out infinite;
@@ -1466,25 +1517,21 @@ $prod-lime: #A8FF00;
     object-fit: contain;
     position: relative;
     z-index: 1;
-    filter:
-      brightness(0) invert(1)
-      drop-shadow(0 0 10px rgba(243, 50, 131, 0.35))
-      drop-shadow(0 0 30px rgba(243, 50, 131, 0.18));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
     animation: ctaMascotFloat 5s ease-in-out infinite;
     transition: filter 0.4s ease;
 
     &:hover {
       filter:
-        brightness(0) invert(1)
-        drop-shadow(0 0 16px rgba(243, 50, 131, 0.5))
-        drop-shadow(0 0 45px rgba(243, 50, 131, 0.28));
+        drop-shadow(0 6px 20px rgba(255, 70, 119, 0.3))
+        drop-shadow(0 0 40px rgba(255, 70, 119, 0.15));
     }
   }
 }
 
 @keyframes ctaDot {
-  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(243, 50, 131, 0.5); }
-  50% { opacity: 0.5; box-shadow: 0 0 14px rgba(243, 50, 131, 0.8); }
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(255, 70, 119, 0.5); }
+  50% { opacity: 0.5; box-shadow: 0 0 14px rgba(255, 70, 119, 0.8); }
 }
 
 @keyframes ctaRingSpin {

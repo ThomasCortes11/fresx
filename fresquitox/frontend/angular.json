@@ -57,7 +57,7 @@
                   "inlineCritical": true
                 },
                 "fonts": {
-                  "inline": false
+                  "inline": true
                 }
               },
               "outputHashing": "all",

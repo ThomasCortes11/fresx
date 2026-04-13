@@ -1,4 +1,4 @@
-﻿.not-found {
+.not-found {
   min-height: 70vh;
   display: flex;
   align-items: center;
@@ -14,14 +14,14 @@
     object-fit: contain;
     margin-bottom: 1rem;
     animation: mascotBounce 2s ease-in-out infinite;
-    filter: drop-shadow(0 8px 24px rgba(243, 50, 131, 0.2));
+    filter: drop-shadow(0 8px 24px rgba(255, 70, 119, 0.2));
   }
 
   &__error {
     font-size: clamp(6rem, 15vw, 10rem);
     font-weight: 900;
     line-height: 1;
-    background: linear-gradient(135deg, #F33283, #FF6B9A);
+    background: linear-gradient(135deg, #FF4677, #FF5299);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -30,17 +30,17 @@
   }
 
   &__title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 800;
-    color: #000;
+    color: #351E09;
     margin-bottom: 1rem;
     animation: fadeIn 0.8s ease-out 0.2s both;
   }
 
   &__description {
     font-size: 1.125rem;
-    color: #888;
+    color: #996633;
     max-width: 32rem;
     margin: 0 auto 3rem;
     animation: fadeIn 0.8s ease-out 0.3s both;
@@ -58,7 +58,7 @@
   &__links {
     margin-bottom: 3rem;
     animation: fadeIn 0.8s ease-out 0.5s both;
-    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: #000; margin-bottom: 2rem; }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: #351E09; margin-bottom: 2rem; }
   }
 
   &__grid {
@@ -72,22 +72,22 @@
     align-items: center;
     gap: 1rem;
     padding: 1.25rem;
-    background: #fff;
-    border: 1px solid #eee;
+    background: #FFFBEC;
+    border: 1px solid #E8D5C0;
     border-radius: 0.75rem;
     text-decoration: none;
     transition: all 0.2s ease;
 
     &:hover {
-      border-color: #F33283;
-      box-shadow: 0 4px 12px rgba(243, 50, 131, 0.15);
+      border-color: #FF4677;
+      box-shadow: 0 4px 12px rgba(255, 70, 119, 0.15);
       transform: translateY(-2px);
     }
 
-    svg { flex-shrink: 0; color: #F33283; }
+    svg { flex-shrink: 0; color: #FF4677; }
     div { flex: 1; text-align: left; }
-    h3 { font-size: 1rem; font-weight: 600; color: #000; margin-bottom: 0.25rem; }
-    p { font-size: 0.875rem; color: #888; margin: 0; }
+    h3 { font-size: 1rem; font-weight: 600; color: #351E09; margin-bottom: 0.25rem; }
+    p { font-size: 0.875rem; color: #996633; margin: 0; }
   }
 
   &__emergency {
@@ -96,16 +96,16 @@
     justify-content: center;
     gap: 1.5rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    background: linear-gradient(135deg, #FFF0E8, #FFDDD0);
     border-radius: 1rem;
     animation: fadeIn 0.8s ease-out 0.6s both;
 
-    svg { flex-shrink: 0; color: #F33283; }
+    svg { flex-shrink: 0; color: #FF4677; }
     div { text-align: left; }
-    strong { display: block; font-size: 1.125rem; color: #880E4F; margin-bottom: 0.25rem; }
+    strong { display: block; font-size: 1.125rem; color: #351E09; margin-bottom: 0.25rem; }
     p {
-      margin: 0; color: #AD1457; font-size: 0.9375rem;
-      a { color: #F33283; font-weight: 700; text-decoration: none; &:hover { text-decoration: underline; } }
+      margin: 0; color: #6B3311; font-size: 0.9375rem;
+      a { color: #FF4677; font-weight: 700; text-decoration: none; &:hover { text-decoration: underline; } }
     }
   }
 }
@@ -124,15 +124,15 @@
   cursor: pointer;
 
   &--primary {
-    background: #F33283;
+    background: #FF4677;
     color: white;
-    &:hover { background: #d42a72; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(243, 50, 131, 0.4); }
+    &:hover { background: #E03A65; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255, 70, 119, 0.4); }
   }
 
   &--secondary {
-    background: #f5f5f5;
-    color: #333;
-    &:hover { background: #eee; }
+    background: #FFFDF0;
+    color: #351E09;
+    &:hover { background: #E8D5C0; }
   }
 }
 

@@ -47,7 +47,6 @@ export const SERVICIOS: Servicio[] = [
       'Disponible en tres tamaños: Personal (12oz), Mediano (16oz) y Jumbo (24oz). Perfecto para una persona o para compartir.'
     ],
     categoria: 'clasicos',
-    precio: 'Desde $6.000'
   },
   {
     slug: 'raspados',
@@ -65,7 +64,6 @@ export const SERVICIOS: Servicio[] = [
       'Un clásico callejero elevado a nivel premium. La textura perfecta para un día cualquiera en Bogotá.'
     ],
     categoria: 'clasicos',
-    precio: 'Desde $7.000'
   },
   {
     slug: 'jugos-naturales',
@@ -83,7 +81,6 @@ export const SERVICIOS: Servicio[] = [
       'Nuestras frutas llegan cada mañana del mercado para garantizar máxima frescura. Eso es Fresquitox: fresco de verdad.'
     ],
     categoria: 'naturales',
-    precio: 'Desde $5.000'
   },
   {
     slug: 'limonadas',
@@ -101,7 +98,6 @@ export const SERVICIOS: Servicio[] = [
       'La opción perfecta para acompañar tu comida o simplemente para refrescarte en cualquier momento del día. Tamaños desde 12oz hasta 1 litro para compartir.'
     ],
     categoria: 'naturales',
-    precio: 'Desde $4.500'
   },
   {
     slug: 'smoothies',
@@ -119,7 +115,6 @@ export const SERVICIOS: Servicio[] = [
       'Preparados al instante, sin polvos ni concentrados. Solo ingredientes reales que puedes ver y sentir en cada sorbo.'
     ],
     categoria: 'naturales',
-    precio: 'Desde $9.000'
   },
   {
     slug: 'cocteleria-sin-alcohol',
@@ -137,7 +132,6 @@ export const SERVICIOS: Servicio[] = [
       'Disponibles para eventos, fiestas y celebraciones. También puedes pedirlas en nuestro punto en Chapinero o a domicilio.'
     ],
     categoria: 'premium',
-    precio: 'Desde $12.000'
   },
   {
     slug: 'estacion-de-refrescos',
@@ -155,7 +149,6 @@ export const SERVICIOS: Servicio[] = [
       'Cotización personalizada según tus necesidades. Contáctanos por WhatsApp para armar el paquete perfecto para tu evento.'
     ],
     categoria: 'premium',
-    precio: 'Desde $350.000'
   },
   {
     slug: 'fresquitox-con-licor',
@@ -173,6 +166,5 @@ export const SERVICIOS: Servicio[] = [
       'Disponibles únicamente para mayores de 18 años. Solo en nuestro punto físico de Chapinero y en eventos privados.'
     ],
     categoria: 'premium',
-    precio: 'Desde $15.000'
   }
 ];
