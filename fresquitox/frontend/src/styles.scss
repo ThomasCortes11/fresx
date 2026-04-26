@@ -9,10 +9,10 @@
    ══════════════════════════════════════════════════════════ */
 
 :root {
-  --fq-pink: #FF4677;
+  --fq-pink: #FF5299;
   --fq-pink-mid: #FF5299;
   --fq-pink-light: #FF97BD;
-  --fq-pink-glow: rgba(255, 70, 119, 0.25);
+  --fq-pink-glow: rgba(255, 82, 153, 0.28);
   --fq-black: #351E09;
   --fq-dark: #351E09;
   --fq-gray: #351E09;
@@ -23,8 +23,8 @@
   --fq-white: #FFFBEC;
   --fq-off-white: #FFFDF0;
   --fq-cream: #FFFDF0;
-  --fq-gradient: linear-gradient(135deg, #FF4677 0%, #FF5299 50%, #FF97BD 100%);
-  --fq-gradient-dark: linear-gradient(135deg, #FF4677 0%, #E08736 100%);
+  --fq-gradient: linear-gradient(135deg, #FF5299 0%, #FF4677 45%, #FF97BD 100%);
+  --fq-gradient-dark: linear-gradient(135deg, #FF5299 0%, #FF4677 100%);
   --fq-font-display: 'Poppins', sans-serif;
   --fq-font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --fq-radius: 16px;
@@ -65,22 +65,23 @@ img {
   padding: 0 1.5rem;
 }
 
-// Page header — premium dark
+// Page header — light brand surface
 .page-header {
-  background: var(--fq-dark);
-  color: #fff;
+  background: linear-gradient(135deg, var(--fq-white) 0%, var(--fq-off-white) 100%);
+  color: var(--fq-dark);
   padding: 4rem 1.5rem;
 
   h1 {
     font-family: var(--fq-font-display);
     font-size: 2.5rem;
     font-weight: 700;
+    color: var(--fq-pink-mid);
     margin-bottom: 0.5rem;
   }
 
   p {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(53, 30, 9, 0.72);
   }
 }
 
@@ -90,7 +91,7 @@ img {
   font-size: 0.9rem;
 
   a {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(53, 30, 9, 0.68);
     text-decoration: none;
     transition: color 0.2s;
 
@@ -100,7 +101,7 @@ img {
   }
 
   span {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(153, 102, 51, 0.65);
   }
 }
 
