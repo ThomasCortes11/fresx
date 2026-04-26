@@ -2,97 +2,77 @@
 
 <!-- BENEFICIOS -->
 <section class="benefits">
-  <!-- Ambient -->
   <div class="benefits__bg" aria-hidden="true">
     <div class="benefits__orb benefits__orb--1"></div>
     <div class="benefits__orb benefits__orb--2"></div>
     <div class="benefits__noise"></div>
-    <div class="benefits__grid-lines"></div>
+    <div class="benefits__scanlines"></div>
   </div>
 
+  <!-- Header -->
+  <div class="benefits__header">
+    <div class="container">
+      <span class="benefits__tag"><span class="benefits__tag-dot"></span>¿Por qué Fresquitox?</span>
+      <h2 class="benefits__headline">4 razones que<br><span>no negociamos.</span></h2>
+    </div>
+  </div>
+
+  <!-- Feature rows -->
   <div class="container">
-    <div class="benefits__layout">
-      <!-- Left: header sticky -->
-      <div class="benefits__left" data-animate="fade-up">
-        <span class="benefits__tag"><span class="benefits__tag-dot"></span>¿Por qué Fresquitox?</span>
-        <h2 class="benefits__headline">No somos<br>como los<br><span>demás.</span></h2>
-        <p class="benefits__sub">4 razones por las que la gente repite</p>
-        <div class="benefits__counter">
-          <span class="benefits__counter-num">+50</span>
-          <span class="benefits__counter-label">Sabores en carta</span>
+    <div class="benefits__list">
+
+      <div class="brow" data-animate="fade-up">
+        <span class="brow__num">01</span>
+        <div class="brow__sep" aria-hidden="true"></div>
+        <div class="brow__body">
+          <span class="brow__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFBEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </span>
+          <h3 class="brow__title">100% Natural</h3>
         </div>
+        <p class="brow__desc">Fruta fresca del día, cero conservantes, cero artificiales. Lo real no necesita trucos.</p>
+        <span class="brow__pill brow__pill--pink">Sin conservantes</span>
       </div>
 
-      <!-- Right: cards staggered -->
-      <div class="benefits__right" data-animate-stagger="100">
-        <div class="bcard bcard--green" data-animate="fade-up">
-          <div class="bcard__glow" aria-hidden="true"></div>
-          <div class="bcard__stripe" aria-hidden="true"></div>
-          <div class="bcard__head">
-            <span class="bcard__num">01</span>
-            <div class="bcard__icon-ring">
-              <span class="bcard__icon">🍃</span>
-            </div>
-          </div>
-          <h3 class="bcard__title">100% Natural</h3>
-          <p class="bcard__desc">Fruta fresca del día, cero conservantes, cero artificiales. Lo real no necesita trucos.</p>
-          <div class="bcard__foot">
-            <span class="bcard__pill">Sin conservantes</span>
-            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
+      <div class="brow" data-animate="fade-up" data-animate-delay="80">
+        <span class="brow__num">02</span>
+        <div class="brow__sep" aria-hidden="true"></div>
+        <div class="brow__body">
+          <span class="brow__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFBEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </span>
+          <h3 class="brow__title">Entrega rápida</h3>
         </div>
-
-        <div class="bcard bcard--orange" data-animate="fade-up" data-animate-delay="120">
-          <div class="bcard__glow" aria-hidden="true"></div>
-          <div class="bcard__stripe" aria-hidden="true"></div>
-          <div class="bcard__head">
-            <span class="bcard__num">02</span>
-            <div class="bcard__icon-ring">
-              <span class="bcard__icon">⚡</span>
-            </div>
-          </div>
-          <h3 class="bcard__title">Entrega rápida</h3>
-          <p class="bcard__desc">En tu puerta en 30 minutos o menos. Fresquito, como debe ser.</p>
-          <div class="bcard__foot">
-            <span class="bcard__pill">30 min máximo</span>
-            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </div>
-
-        <div class="bcard bcard--pink" data-animate="fade-up" data-animate-delay="240">
-          <div class="bcard__glow" aria-hidden="true"></div>
-          <div class="bcard__stripe" aria-hidden="true"></div>
-          <div class="bcard__head">
-            <span class="bcard__num">03</span>
-            <div class="bcard__icon-ring">
-              <span class="bcard__icon">🎨</span>
-            </div>
-          </div>
-          <h3 class="bcard__title">+50 Sabores</h3>
-          <p class="bcard__desc">La carta más extravagante de granizados en toda Bogotá. Siempre algo nuevo.</p>
-          <div class="bcard__foot">
-            <span class="bcard__pill">Carta infinita</span>
-            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </div>
-
-        <div class="bcard bcard--purple" data-animate="fade-up" data-animate-delay="360">
-          <div class="bcard__glow" aria-hidden="true"></div>
-          <div class="bcard__stripe" aria-hidden="true"></div>
-          <div class="bcard__head">
-            <span class="bcard__num">04</span>
-            <div class="bcard__icon-ring">
-              <span class="bcard__icon">🍹</span>
-            </div>
-          </div>
-          <h3 class="bcard__title">Con y sin alcohol</h3>
-          <p class="bcard__desc">Pa' los que toman y los que no. Versiones para todos, sin excluir a nadie.</p>
-          <div class="bcard__foot">
-            <span class="bcard__pill">Para todos</span>
-            <svg class="bcard__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </div>
-        </div>
+        <p class="brow__desc">En tu puerta en 30 minutos o menos. Fresquito, como debe ser.</p>
+        <span class="brow__pill brow__pill--orange">30 min máximo</span>
       </div>
+
+      <div class="brow" data-animate="fade-up" data-animate-delay="160">
+        <span class="brow__num">03</span>
+        <div class="brow__sep" aria-hidden="true"></div>
+        <div class="brow__body">
+          <span class="brow__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFBEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          </span>
+          <h3 class="brow__title">+50 Sabores</h3>
+        </div>
+        <p class="brow__desc">La carta más extravagante de granizados en toda Bogotá. Siempre algo nuevo.</p>
+        <span class="brow__pill brow__pill--pink">Carta infinita</span>
+      </div>
+
+      <div class="brow" data-animate="fade-up" data-animate-delay="240">
+        <span class="brow__num">04</span>
+        <div class="brow__sep" aria-hidden="true"></div>
+        <div class="brow__body">
+          <span class="brow__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFBEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </span>
+          <h3 class="brow__title">Con y sin alcohol</h3>
+        </div>
+        <p class="brow__desc">Pa' los que toman y los que no. Versiones para todos, sin excluir a nadie.</p>
+        <span class="brow__pill brow__pill--cream">Para todos</span>
+      </div>
+
     </div>
   </div>
 </section>
@@ -159,6 +139,20 @@
     <div class="brand-section__orb brand-section__orb--1"></div>
     <div class="brand-section__orb brand-section__orb--2"></div>
     <div class="brand-section__noise"></div>
+    <div class="brand-section__scanlines"></div>
+    <div class="brand-section__grid"></div>
+    <div class="brand-section__particles">
+      <span class="brand-section__particle brand-section__particle--1"></span>
+      <span class="brand-section__particle brand-section__particle--2"></span>
+      <span class="brand-section__particle brand-section__particle--3"></span>
+      <span class="brand-section__particle brand-section__particle--4"></span>
+      <span class="brand-section__particle brand-section__particle--5"></span>
+      <span class="brand-section__particle brand-section__particle--6"></span>
+    </div>
+    <div class="brand-section__deco brand-section__deco--line1"></div>
+    <div class="brand-section__deco brand-section__deco--line2"></div>
+    <div class="brand-section__deco brand-section__deco--circle1"></div>
+    <div class="brand-section__deco brand-section__deco--circle2"></div>
   </div>
 
   <div class="container">
@@ -167,7 +161,7 @@
       <!-- LEFT — Character visual -->
       <div class="brand-section__visual" data-animate="fade-up">
         <div class="brand-section__ring" aria-hidden="true"></div>
-        <img src="images/mascot-white.webp" alt="" class="brand-section__mascot" width="340" height="340" loading="lazy" aria-hidden="true">
+        <img src="images/Recurso9.png.png" alt="" class="brand-section__mascot" width="340" height="340" loading="lazy" aria-hidden="true">
       </div>
 
       <!-- RIGHT — Copy -->
@@ -283,15 +277,21 @@
         <!-- Trust line -->
         <div class="cta-final__trust">
           <div class="cta-final__trust-item">
-            <span class="cta-final__trust-icon">🍃</span>
+            <span class="cta-final__trust-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFBEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            </span>
             <span>100% Natural</span>
           </div>
           <div class="cta-final__trust-item">
-            <span class="cta-final__trust-icon">⚡</span>
+            <span class="cta-final__trust-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFBEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </span>
             <span>30 min delivery</span>
           </div>
           <div class="cta-final__trust-item">
-            <span class="cta-final__trust-icon">🎯</span>
+            <span class="cta-final__trust-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFBEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            </span>
             <span>+50 Sabores</span>
           </div>
         </div>
@@ -301,7 +301,7 @@
       <div class="cta-final__visual" data-animate="fade-up" data-animate-delay="150">
         <div class="cta-final__ring" aria-hidden="true"></div>
         <div class="cta-final__glow" aria-hidden="true"></div>
-        <img src="images/mascot-white.webp" alt="" class="cta-final__mascot" width="400" height="400" loading="lazy" aria-hidden="true">
+        <img src="images/Recurso9.png.png" alt="" class="cta-final__mascot" width="400" height="400" loading="lazy" aria-hidden="true">
       </div>
 
     </div>
