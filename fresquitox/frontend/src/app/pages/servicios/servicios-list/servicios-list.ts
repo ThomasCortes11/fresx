@@ -1,9 +1,23 @@
-﻿import { Component, OnInit, inject, afterNextRender, DestroyRef, ElementRef } from '@angular/core';
+﻿import { Component, OnInit, inject, afterNextRender, DestroyRef, ElementRef, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../../core/services/seo.service';
 import { SERVICIOS, CATEGORIAS, CategoriaProducto, Servicio } from '../../../shared/data/servicios.data';
 import { CONTACT_INFO } from '../../../shared/constants/contact-info';
 import { DeliveryOptions } from '../../../shared/components/delivery-options/delivery-options';
+import { ProductosService, ProductoAdmin } from '../../../core/services/productos.service';
+
+export interface ProductoVista {
+  slug: string;
+  nombre: string;
+  descripcionCorta: string;
+  icono: string;
+  emoji?: string;
+  idealPara: string[];
+  precio?: string;
+  imagen?: string;
+  etiquetas?: string[];
+  esAdmin?: boolean;
+}
 
 @Component({
   selector: 'app-servicios-list',
@@ -15,13 +29,23 @@ export default class ServiciosList implements OnInit {
   private readonly seo = inject(SeoService);
   private readonly el = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly productosSvc = inject(ProductosService);
   readonly categorias = CATEGORIAS;
   readonly contact = CONTACT_INFO;
-  readonly serviciosPorCategoria: Record<CategoriaProducto, Servicio[]> = {
-    clasicos: SERVICIOS.filter(s => s.categoria === 'clasicos'),
-    naturales: SERVICIOS.filter(s => s.categoria === 'naturales'),
-    premium: SERVICIOS.filter(s => s.categoria === 'premium'),
-  };
+
+  readonly serviciosPorCategoria = computed<Record<CategoriaProducto, ProductoVista[]>>(() => {
+    const adminActivos = this.productosSvc.getActivos();
+    const mezclar = (cat: CategoriaProducto): ProductoVista[] => {
+      const estaticos: ProductoVista[] = SERVICIOS
+        .filter(s => s.categoria === cat)
+        .map(s => ({ ...s, etiquetas: [] }));
+      const admin: ProductoVista[] = adminActivos
+        .filter(p => p.categoria === cat)
+        .map(p => ({ ...p, esAdmin: true }));
+      return [...estaticos, ...admin];
+    };
+    return { clasicos: mezclar('clasicos'), naturales: mezclar('naturales'), premium: mezclar('premium') };
+  });
 
   scrollToGroup(cat: CategoriaProducto): void {
     const el = this.el.nativeElement.querySelector(`#cat-${cat}`) as HTMLElement | null;

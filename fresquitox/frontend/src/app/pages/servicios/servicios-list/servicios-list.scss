@@ -867,3 +867,48 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+// ── Admin product extras
+.pl-card {
+  &--no-link { cursor: default; }
+
+  &__badges {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    z-index: 2;
+  }
+
+  &__badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 50px;
+    color: #fff;
+
+    &--nuevo    { background: #22c55e; }
+    &--oferta   { background: #ef4444; }
+    &--popular  { background: #f59e0b; }
+    &--limitado { background: #8b5cf6; }
+  }
+
+  &__img-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}

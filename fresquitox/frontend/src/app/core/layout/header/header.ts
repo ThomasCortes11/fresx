@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, NgZone, inject, PLATFORM_ID } from '@angu
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CONTACT_INFO } from '../../../shared/constants/contact-info';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import { CONTACT_INFO } from '../../../shared/constants/contact-info';
 export class Header implements OnInit, OnDestroy {
   private readonly ngZone = inject(NgZone);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly auth = inject(AuthService);
   private scrollListener?: () => void;
   readonly contact = CONTACT_INFO;
   menuOpen = false;
@@ -42,5 +44,9 @@ export class Header implements OnInit, OnDestroy {
 
   closeMenu(): void {
     this.menuOpen = false;
+  }
+
+  isAdminLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
   }
 }
