@@ -18,6 +18,8 @@ export interface ProductoAdmin {
   etiquetas: ProductoEtiqueta[];
   activo: boolean;
   fechaCreacion: number;
+  stock: number;
+  stockMinimo: number;
 }
 
 const STORAGE_KEY = 'fq_admin_productos';
@@ -29,6 +31,26 @@ export class ProductosService {
 
   constructor() {
     this.productos.set(this.loadFromStorage());
+  }
+
+  reload(): void {
+    this.productos.set(this.loadFromStorage());
+  }
+
+  updateStock(id: string, delta: number): void {
+    this.persist(
+      this.productos().map((p) =>
+        p.id === id ? { ...p, stock: Math.max(0, p.stock + delta) } : p
+      )
+    );
+  }
+
+  setStock(id: string, cantidad: number): void {
+    this.persist(
+      this.productos().map((p) =>
+        p.id === id ? { ...p, stock: Math.max(0, cantidad) } : p
+      )
+    );
   }
 
   getActivos(): ProductoAdmin[] {

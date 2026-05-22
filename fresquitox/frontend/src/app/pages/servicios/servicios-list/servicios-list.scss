@@ -393,7 +393,12 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.4;
   }
 
-  &__right { display: flex; flex-direction: column; gap: 1.5rem; }
+  &__right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
 
   // ── DARK THEME (Clásicos & Premium)
   &--dark {
@@ -415,7 +420,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     }
     .pl-card__title { color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
     .pl-card__desc { color: rgba(255,255,255,0.85); text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-    .pl-card__foot { border-left-color: rgba(255,255,255,0.2); }
+    .pl-card__foot { border-top-color: rgba(255,255,255,0.2); }
     .pl-card__arrow { color: rgba(255,255,255,0.5); }
 
     // Scanlines on dark sections
@@ -445,7 +450,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     }
     .pl-card__title { color: #351E09; }
     .pl-card__desc { color: rgba(53, 30, 9,0.45); }
-    .pl-card__foot { border-left-color: rgba(53, 30, 9,0.06); }
+    .pl-card__foot { border-top-color: rgba(53, 30, 9,0.06); }
     .pl-card__arrow { color: rgba(53, 30, 9,0.15); }
 
     // White shine sweep
@@ -537,20 +542,21 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 
 
 // ═══════════════════════════════════════════════════════
-//  PRODUCT CARDS — Horizontal Layout
+//  PRODUCT CARDS — Grid Card Layout
 // ═══════════════════════════════════════════════════════
 .pl-card {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.75rem;
   border-radius: 24px;
   border: 1px solid transparent;
   text-decoration: none;
   color: inherit;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+  height: 100%;
 
   // Top accent bar
   &__accent {
@@ -578,37 +584,40 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &__head { flex-shrink: 0; }
 
   &__emoji-ring {
-    width: 80px; height: 80px; border-radius: 20px;
+    width: 64px; height: 64px; border-radius: 18px;
     border: 1px solid rgba(255,255,255,0.06);
     display: flex; align-items: center; justify-content: center;
     transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
   }
 
-  &__emoji { font-size: 2.2rem; line-height: 1; }
+  &__emoji { font-size: 1.8rem; line-height: 1; }
 
   &__body {
     flex: 1; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0;
   }
 
   &__title {
-    font-family: 'Poppins', sans-serif; font-size: 1.25rem;
+    font-family: 'Poppins', sans-serif; font-size: 1.1rem;
     font-weight: 800; letter-spacing: -0.01em;
   }
 
-  &__desc { font-size: 0.88rem; line-height: 1.65; }
+  &__desc { font-size: 0.85rem; line-height: 1.6; }
 
   &__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
 
   &__tag {
-    font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.65rem;
+    font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.6rem;
     border-radius: 50px; border: 1px solid; letter-spacing: 0.02em;
     transition: all 0.3s ease;
   }
 
   &__foot {
-    flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end;
-    gap: 0.75rem; border-left: 1px solid transparent;
-    padding-left: 2rem; min-width: 130px;
+    display: flex; flex-direction: row; align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid transparent;
+    margin-top: auto;
   }
 
   &__price {
@@ -764,18 +773,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   }
 
   .pl-cat { padding: 5rem 0; }
-
-  .pl-card {
-    flex-direction: column; align-items: flex-start;
-    &__foot {
-      border-left: none; padding-left: 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 1rem; width: 100%;
-      flex-direction: row; align-items: center;
-      justify-content: space-between; min-width: 0;
-    }
-  }
-
+  .pl-cat__right { grid-template-columns: 1fr; }
   .pl-cat--light .pl-card__foot { border-top-color: rgba(53, 30, 9,0.06); }
 
   .pl-cta {
@@ -872,10 +870,33 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 .pl-card {
   &--no-link { cursor: default; }
 
+  // Full-width image banner (admin products with photo)
+  &__banner {
+    position: relative;
+    width: calc(100% + 3.5rem);
+    margin: -1.75rem -1.75rem 0;
+    height: 180px;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &__banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  &:hover &__banner-img {
+    transform: scale(1.06);
+  }
+
   &__badges {
     position: absolute;
-    top: 0.6rem;
-    left: 0.6rem;
+    top: 0.7rem;
+    left: 0.7rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.3rem;
@@ -887,9 +908,10 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    padding: 0.2rem 0.55rem;
+    padding: 0.25rem 0.6rem;
     border-radius: 50px;
     color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 
     &--nuevo    { background: #22c55e; }
     &--oferta   { background: #ef4444; }
@@ -897,18 +919,30 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     &--limitado { background: #8b5cf6; }
   }
 
-  &__img-wrap {
-    width: 80px;
-    height: 80px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 2px solid rgba(255,255,255,0.2);
-  }
+  // WhatsApp order button
+  &__order-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 50px;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    white-space: nowrap;
 
-  &__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    svg { flex-shrink: 0; }
+
+    &:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    }
   }
 }

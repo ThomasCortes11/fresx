@@ -52,6 +52,8 @@ export default class AdminProductos {
   readonly mostrarForm = signal(false);
   readonly guardando = signal(false);
   readonly confirmarEliminar = signal<string | null>(null);
+  readonly editandoStockId = signal<string | null>(null);
+  readonly stockTemporal = signal<number>(0);
 
   readonly form = this.fb.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
@@ -60,6 +62,8 @@ export default class AdminProductos {
     categoria: ['clasicos' as CategoriaProducto],
     icono: ['🍧'],
     etiquetas: [[] as ProductoEtiqueta[]],
+    stock: [0, [Validators.required, Validators.min(0)]],
+    stockMinimo: [5, [Validators.required, Validators.min(0)]],
   });
 
   abrirNuevo(): void {
@@ -72,6 +76,8 @@ export default class AdminProductos {
       categoria: 'clasicos',
       icono: '🍧',
       etiquetas: [],
+      stock: 0,
+      stockMinimo: 5,
     });
     this.mostrarForm.set(true);
   }
@@ -86,6 +92,8 @@ export default class AdminProductos {
       categoria: p.categoria,
       icono: p.icono,
       etiquetas: [...p.etiquetas],
+      stock: p.stock ?? 0,
+      stockMinimo: p.stockMinimo ?? 5,
     });
     this.mostrarForm.set(true);
   }
@@ -130,6 +138,7 @@ export default class AdminProductos {
     const v = this.form.getRawValue();
     const id = this.editandoId() ?? this.svc.generateId();
 
+    const existing = this.svc.productos().find((p) => p.id === id);
     const producto: ProductoAdmin = {
       id,
       slug: this.svc.slugify(v.nombre ?? ''),
@@ -142,10 +151,10 @@ export default class AdminProductos {
       imagen: this.imagenPreview() ?? undefined,
       idealPara: [],
       etiquetas: (v.etiquetas ?? []) as ProductoEtiqueta[],
-      activo: true,
-      fechaCreacion: this.editandoId()
-        ? (this.svc.productos().find((p) => p.id === id)?.fechaCreacion ?? Date.now())
-        : Date.now(),
+      activo: existing?.activo ?? true,
+      fechaCreacion: existing?.fechaCreacion ?? Date.now(),
+      stock: v.stock ?? 0,
+      stockMinimo: v.stockMinimo ?? 5,
     };
 
     this.svc.save(producto);
@@ -160,5 +169,29 @@ export default class AdminProductos {
 
   toggleActivo(id: string): void {
     this.svc.toggleActivo(id);
+  }
+
+  ajustarStock(id: string, delta: number): void {
+    this.svc.updateStock(id, delta);
+  }
+
+  iniciarEditStock(p: ProductoAdmin): void {
+    this.editandoStockId.set(p.id);
+    this.stockTemporal.set(p.stock ?? 0);
+  }
+
+  confirmarStock(id: string): void {
+    this.svc.setStock(id, this.stockTemporal());
+    this.editandoStockId.set(null);
+  }
+
+  cancelarEditStock(): void {
+    this.editandoStockId.set(null);
+  }
+
+  stockStatus(p: ProductoAdmin): 'ok' | 'bajo' | 'agotado' {
+    if (p.stock === 0) return 'agotado';
+    if (p.stock <= p.stockMinimo) return 'bajo';
+    return 'ok';
   }
 }

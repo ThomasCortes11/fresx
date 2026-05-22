@@ -1,112 +1,596 @@
 <div class="dash">
 
-  <!-- ── Header ── -->
+  <!-- ══ HEADER ══ -->
   <header class="dash__header">
     <div class="dash__header-inner">
-      <div>
-        <p class="dash__eyebrow">Fresquitox Admin</p>
-        <h1>Dashboard</h1>
-        <p class="dash__welcome">Bienvenido, <strong>admin</strong></p>
+      <div class="dash__brand">
+        <div class="dash__brand-dot"></div>
+        <span class="dash__brand-name">Fresquitox</span>
+        <span class="dash__brand-tag">Admin</span>
       </div>
-      <div class="dash__header-actions">
-        <a routerLink="/" target="_blank" class="dash__btn dash__btn--ghost">Ver sitio web</a>
-        <button type="button" class="dash__btn dash__btn--logout" (click)="logout()">Cerrar sesión</button>
-      </div>
-    </div>
-
-    <!-- Tabs -->
-    <div class="dash__tabs">
-      <div class="dash__tabs-inner">
-        <button class="dash__tab" [class.dash__tab--active]="tabActiva() === 'resumen'" (click)="tabActiva.set('resumen')">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <nav class="dash__nav">
+        <button class="dash__nav-btn" [class.dash__nav-btn--active]="tabActiva() === 'resumen'" (click)="tabActiva.set('resumen')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
           Resumen
         </button>
-        <button class="dash__tab" [class.dash__tab--active]="tabActiva() === 'productos'" (click)="tabActiva.set('productos')">
+        <button class="dash__nav-btn" [class.dash__nav-btn--active]="tabActiva() === 'pedidos'" (click)="tabActiva.set('pedidos')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Pedidos
+          @if (totalPendientes() > 0) {
+            <span class="dash__nav-badge dash__nav-badge--alert">{{ totalPendientes() }}</span>
+          }
+        </button>
+        <button class="dash__nav-btn" [class.dash__nav-btn--active]="tabActiva() === 'reportes'" (click)="tabActiva.set('reportes')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Reportes
+        </button>
+        <button class="dash__nav-btn" [class.dash__nav-btn--active]="tabActiva() === 'productos'" (click)="tabActiva.set('productos')">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           Productos
-          @if (productos().length > 0) {
-            <span class="dash__tab-badge">{{ productos().length }}</span>
+          @if (totalProductos() > 0) {
+            <span class="dash__nav-badge">{{ totalProductos() }}</span>
           }
+        </button>
+        <button class="dash__nav-btn" [class.dash__nav-btn--active]="tabActiva() === 'mesas'" (click)="tabActiva.set('mesas')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          Mesas / QR
+        </button>
+        <button class="dash__nav-btn" [class.dash__nav-btn--active]="tabActiva() === 'chatbot'" (click)="tabActiva.set('chatbot')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Chatbot
+        </button>
+      </nav>
+      <div class="dash__header-actions">
+        <a routerLink="/" target="_blank" class="dash__action-btn dash__action-btn--ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver sitio
+        </a>
+        <button type="button" class="dash__action-btn dash__action-btn--logout" (click)="logout()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Salir
         </button>
       </div>
     </div>
   </header>
 
-  <!-- ── Contenido ── -->
+  <!-- ══ MAIN ══ -->
   <main class="dash__main">
 
     <!-- ══ TAB: RESUMEN ══ -->
     @if (tabActiva() === 'resumen') {
-      <section class="dash__stats">
-        @for (stat of stats; track stat.label) {
-          <article class="dash__stat-card">
-            <p class="dash__stat-label">{{ stat.label }}</p>
-            <p class="dash__stat-value">{{ stat.value }}</p>
-            <p class="dash__stat-trend">{{ stat.trend }}</p>
-          </article>
-        }
-      </section>
 
+      <!-- Stats -->
+      <div class="dash__stats">
+        <div class="dash__stat dash__stat--pink">
+          <div class="dash__stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+          </div>
+          <div class="dash__stat-body">
+            <span class="dash__stat-num">{{ totalActivos() }}</span>
+            <span class="dash__stat-label">Productos activos</span>
+          </div>
+        </div>
+
+        <div class="dash__stat dash__stat--green">
+          <div class="dash__stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div class="dash__stat-body">
+            <span class="dash__stat-num">{{ totalProductos() }}</span>
+            <span class="dash__stat-label">Total en catálogo</span>
+          </div>
+        </div>
+
+        <div class="dash__stat" [class.dash__stat--red]="alertasStock() > 0" [class.dash__stat--gray]="alertasStock() === 0">
+          <div class="dash__stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="dash__stat-body">
+            <span class="dash__stat-num">{{ alertasStock() }}</span>
+            <span class="dash__stat-label">Alertas de stock</span>
+          </div>
+        </div>
+
+        <div class="dash__stat dash__stat--amber">
+          <div class="dash__stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          </div>
+          <div class="dash__stat-body">
+            <span class="dash__stat-num">3</span>
+            <span class="dash__stat-label">Categorías</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerta stock (si hay) -->
+      @if (alertasStock() > 0) {
+        <div class="dash__alert">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>
+            @if (productosAgotados() > 0) { <strong>{{ productosAgotados() }} agotado{{ productosAgotados() > 1 ? 's' : '' }}</strong> }
+            @if (productosAgotados() > 0 && productosBajoStock() > 0) { · }
+            @if (productosBajoStock() > 0) { <strong>{{ productosBajoStock() }} con stock bajo</strong> }
+            — Revisa el inventario
+          </span>
+          <button type="button" class="dash__alert-btn" (click)="tabActiva.set('productos')">Ver productos →</button>
+        </div>
+      }
+
+      <!-- Grid resumen -->
       <div class="dash__resumen-grid">
+
+        <!-- Acciones rápidas -->
         <section class="dash__panel">
-          <h2>Acciones rápidas</h2>
-          <ul class="dash__quick-links">
-            <li>
-              <button type="button" (click)="tabActiva.set('productos')">
-                <span class="dash__link-icon">🛍️</span>
-                <span><strong>Gestionar productos</strong><small>Crear, editar y publicar</small></span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-              </button>
-            </li>
-            <li>
-              <a routerLink="/productos" target="_blank">
-                <span class="dash__link-icon">🌐</span>
-                <span><strong>Ver /productos</strong><small>Abrir el catálogo público</small></span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/contacto" target="_blank">
-                <span class="dash__link-icon">💬</span>
-                <span><strong>Contacto</strong><small>Ver información de contacto</small></span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-              </a>
-            </li>
-            <li>
-              <a routerLink="/blog" target="_blank">
-                <span class="dash__link-icon">📝</span>
-                <span><strong>Blog</strong><small>Ver publicaciones</small></span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-              </a>
-            </li>
-          </ul>
+          <h2 class="dash__panel-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Acciones rápidas
+          </h2>
+          <div class="dash__actions-grid">
+            <button type="button" class="dash__quick-card" (click)="tabActiva.set('productos')">
+              <span class="dash__quick-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </span>
+              <strong>Gestionar productos</strong>
+              <small>Crear, editar, stock</small>
+            </button>
+            <a routerLink="/productos" target="_blank" class="dash__quick-card">
+              <span class="dash__quick-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span>
+              <strong>Ver catálogo</strong>
+              <small>Página pública</small>
+            </a>
+            <a href="https://wa.me/573213728768" target="_blank" rel="noopener" class="dash__quick-card">
+              <span class="dash__quick-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </span>
+              <strong>WhatsApp</strong>
+              <small>Atender pedidos</small>
+            </a>
+            <a routerLink="/contacto" target="_blank" class="dash__quick-card">
+              <span class="dash__quick-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <strong>Contacto</strong>
+              <small>Info del negocio</small>
+            </a>
+          </div>
         </section>
 
+        <!-- Estado del catálogo -->
         <section class="dash__panel">
-          <h2>Estado del catálogo</h2>
-          <div class="dash__catalog-stats">
+          <h2 class="dash__panel-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Estado del catálogo
+          </h2>
+          <div class="dash__catalog">
             @for (cat of productosPorCategoria(); track cat.id) {
-              <div class="dash__cat-row">
-                <span class="dash__cat-icon">{{ cat.icono }}</span>
-                <span class="dash__cat-name">{{ cat.titulo }}</span>
-                <span class="dash__cat-num">{{ cat.items.length }}</span>
+              <div class="dash__catalog-row">
+                <span class="dash__catalog-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+                </span>
+                <div class="dash__catalog-info">
+                  <span class="dash__catalog-name">{{ cat.titulo }}</span>
+                  <div class="dash__catalog-bar">
+                    <div class="dash__catalog-fill" [style.width.%]="totalProductos() > 0 ? (cat.items.length / totalProductos()) * 100 : 0"></div>
+                  </div>
+                </div>
+                <span class="dash__catalog-num">{{ cat.items.length }}</span>
               </div>
             }
           </div>
-          <button type="button" class="dash__go-productos" (click)="tabActiva.set('productos')">
+          <button type="button" class="dash__panel-cta" (click)="tabActiva.set('productos')">
             Administrar productos
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </section>
+
       </div>
+    }
+
+    <!-- ══ TAB: PEDIDOS ══ -->
+    @if (tabActiva() === 'pedidos') {
+
+      <div class="dash__tickets-topbar">
+        <div>
+          <h2 class="dash__prod-title">Pedidos</h2>
+          <p class="dash__prod-subtitle">Tickets en tiempo real de cada mesa</p>
+        </div>
+        @if (pedidosEntregados().length > 0) {
+          <button type="button" class="dash__btn-clear" (click)="limpiarEntregados()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+            Limpiar entregados
+          </button>
+        }
+      </div>
+
+      <!-- Board de columnas -->
+      <div class="dash__board">
+
+        <!-- NUEVO -->
+        <div class="dash__col">
+          <div class="dash__col-head dash__col-head--nuevo">
+            <span class="dash__col-dot"></span>
+            <span class="dash__col-label">Nuevo</span>
+            @if (pedidosPendientes().length > 0) {
+              <span class="dash__col-count">{{ pedidosPendientes().length }}</span>
+            }
+          </div>
+          <div class="dash__col-body">
+            @if (pedidosPendientes().length === 0) {
+              <p class="dash__col-empty">Sin pedidos nuevos</p>
+            }
+            @for (p of pedidosPendientes(); track p.id) {
+              <div class="dash__ticket dash__ticket--nuevo">
+                <div class="dash__ticket-head">
+                  <span class="dash__ticket-mesa">{{ p.nombreMesa }}</span>
+                  <span class="dash__ticket-time">{{ tiempoDesde(p.fechaCreacion) }}</span>
+                  <button type="button" class="dash__ticket-close" (click)="eliminarPedidoMesa(p.id)" title="Descartar">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                  </button>
+                </div>
+                <ul class="dash__ticket-items">
+                  @for (item of p.items; track item.productoId) {
+                    <li><span class="dash__ticket-qty">×{{ item.cantidad }}</span> {{ item.nombre }}</li>
+                  }
+                </ul>
+                @if (p.notas) { <p class="dash__ticket-notas">"{{ p.notas }}"</p> }
+                <button type="button" class="dash__ticket-btn dash__ticket-btn--nuevo" (click)="cambiarEstado(p.id, 'preparando')">
+                  Comenzar preparación
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- PREPARANDO -->
+        <div class="dash__col">
+          <div class="dash__col-head dash__col-head--prep">
+            <span class="dash__col-dot"></span>
+            <span class="dash__col-label">Preparando</span>
+            @if (pedidosPreparando().length > 0) {
+              <span class="dash__col-count">{{ pedidosPreparando().length }}</span>
+            }
+          </div>
+          <div class="dash__col-body">
+            @if (pedidosPreparando().length === 0) {
+              <p class="dash__col-empty">Nada en preparación</p>
+            }
+            @for (p of pedidosPreparando(); track p.id) {
+              <div class="dash__ticket dash__ticket--prep">
+                <div class="dash__ticket-head">
+                  <span class="dash__ticket-mesa">{{ p.nombreMesa }}</span>
+                  <span class="dash__ticket-time">{{ tiempoDesde(p.fechaCreacion) }}</span>
+                  <button type="button" class="dash__ticket-close" (click)="eliminarPedidoMesa(p.id)" title="Descartar">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                  </button>
+                </div>
+                <ul class="dash__ticket-items">
+                  @for (item of p.items; track item.productoId) {
+                    <li><span class="dash__ticket-qty">×{{ item.cantidad }}</span> {{ item.nombre }}</li>
+                  }
+                </ul>
+                @if (p.notas) { <p class="dash__ticket-notas">"{{ p.notas }}"</p> }
+                <button type="button" class="dash__ticket-btn dash__ticket-btn--prep" (click)="cambiarEstado(p.id, 'listo')">
+                  Marcar como listo
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- LISTO -->
+        <div class="dash__col">
+          <div class="dash__col-head dash__col-head--listo">
+            <span class="dash__col-dot"></span>
+            <span class="dash__col-label">Listo</span>
+            @if (pedidosListos().length > 0) {
+              <span class="dash__col-count">{{ pedidosListos().length }}</span>
+            }
+          </div>
+          <div class="dash__col-body">
+            @if (pedidosListos().length === 0) {
+              <p class="dash__col-empty">Sin pedidos listos</p>
+            }
+            @for (p of pedidosListos(); track p.id) {
+              <div class="dash__ticket dash__ticket--listo">
+                <div class="dash__ticket-head">
+                  <span class="dash__ticket-mesa">{{ p.nombreMesa }}</span>
+                  <span class="dash__ticket-time">{{ tiempoDesde(p.fechaCreacion) }}</span>
+                  <button type="button" class="dash__ticket-close" (click)="eliminarPedidoMesa(p.id)" title="Descartar">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                  </button>
+                </div>
+                <ul class="dash__ticket-items">
+                  @for (item of p.items; track item.productoId) {
+                    <li><span class="dash__ticket-qty">×{{ item.cantidad }}</span> {{ item.nombre }}</li>
+                  }
+                </ul>
+                @if (p.notas) { <p class="dash__ticket-notas">"{{ p.notas }}"</p> }
+                <button type="button" class="dash__ticket-btn dash__ticket-btn--listo" (click)="cambiarEstado(p.id, 'entregado')">
+                  Entregado a mesa
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+
+        <!-- ENTREGADO -->
+        <div class="dash__col dash__col--entregado">
+          <div class="dash__col-head dash__col-head--entregado">
+            <span class="dash__col-dot"></span>
+            <span class="dash__col-label">Entregado</span>
+            @if (pedidosEntregados().length > 0) {
+              <span class="dash__col-count">{{ pedidosEntregados().length }}</span>
+            }
+          </div>
+          <div class="dash__col-body">
+            @if (pedidosEntregados().length === 0) {
+              <p class="dash__col-empty">Aún no hay entregas</p>
+            }
+            @for (p of pedidosEntregados(); track p.id) {
+              <div class="dash__ticket dash__ticket--entregado">
+                <div class="dash__ticket-head">
+                  <span class="dash__ticket-mesa">{{ p.nombreMesa }}</span>
+                  <span class="dash__ticket-time">{{ tiempoDesde(p.fechaCreacion) }}</span>
+                  <button type="button" class="dash__ticket-close" (click)="eliminarPedidoMesa(p.id)" title="Eliminar">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                  </button>
+                </div>
+                <ul class="dash__ticket-items">
+                  @for (item of p.items; track item.productoId) {
+                    <li><span class="dash__ticket-qty">×{{ item.cantidad }}</span> {{ item.nombre }}</li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+        </div>
+
+      </div>
+    }
+
+    <!-- ══ TAB: REPORTES ══ -->
+    @if (tabActiva() === 'reportes') {
+
+      <!-- Topbar -->
+      <div class="dash__rep-topbar">
+        <div>
+          <h2 class="dash__prod-title">Reportes financieros</h2>
+          <p class="dash__prod-subtitle">Registra ingresos y gastos · compara meses · exporta a PDF</p>
+        </div>
+        <div class="dash__rep-actions-row">
+          <!-- Filtro de período -->
+          <div class="dash__rep-periodos">
+            @for (p of [['hoy','Hoy'],['semana','Semana'],['mes','Por mes'],['todo','Todo']] ; track p[0]) {
+              <button type="button" class="dash__rep-periodo" [class.dash__rep-periodo--on]="periodoReporte() === p[0]"
+                (click)="periodoReporte.set($any(p[0]))">{{ p[1] }}</button>
+            }
+          </div>
+          <!-- Botón PDF -->
+          <button type="button" class="dash__btn-pdf" [disabled]="generandoPdf()" (click)="exportarPDF()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            {{ generandoPdf() ? 'Generando...' : 'Exportar PDF' }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Selector de mes (solo visible en modo 'mes') -->
+      @if (periodoReporte() === 'mes') {
+        <div class="dash__rep-mes-selector">
+          <label class="dash__rep-mes-label">Mes a analizar</label>
+          <div class="dash__rep-mes-btns">
+            @for (m of mesesDisponibles(); track m.anio + '-' + m.mes) {
+              <button type="button" class="dash__rep-mes-btn"
+                [class.dash__rep-mes-btn--on]="mesKey() === m.anio + '-' + m.mes"
+                (click)="seleccionarMes(m.anio + '-' + m.mes)">
+                {{ m.label }}
+              </button>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Cards resumen -->
+      <div class="dash__rep-cards">
+        <div class="dash__rep-card dash__rep-card--ingreso">
+          <div class="dash__rep-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div>
+            <p class="dash__rep-card-label">Ingresos</p>
+            <p class="dash__rep-card-val">{{ reportesSvc.formatCOP(resumenReporte().ingresos) }}</p>
+          </div>
+        </div>
+        <div class="dash__rep-card dash__rep-card--gasto">
+          <div class="dash__rep-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+          </div>
+          <div>
+            <p class="dash__rep-card-label">Gastos</p>
+            <p class="dash__rep-card-val">{{ reportesSvc.formatCOP(resumenReporte().gastos) }}</p>
+          </div>
+        </div>
+        <div class="dash__rep-card" [class.dash__rep-card--positivo]="resumenReporte().balance >= 0" [class.dash__rep-card--negativo]="resumenReporte().balance < 0">
+          <div class="dash__rep-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div>
+            <p class="dash__rep-card-label">Balance neto</p>
+            <p class="dash__rep-card-val">
+              {{ resumenReporte().balance >= 0 ? '' : '−' }}{{ reportesSvc.formatCOP(resumenReporte().balance) }}
+            </p>
+          </div>
+        </div>
+        <div class="dash__rep-card dash__rep-card--neutral">
+          <div class="dash__rep-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <p class="dash__rep-card-label">Movimientos</p>
+            <p class="dash__rep-card-val">{{ movsFiltrados().length }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparativa vs mes anterior (solo modo mes) -->
+      @if (periodoReporte() === 'mes' && movsAnteriores().length > 0) {
+        <div class="dash__rep-comparativa">
+          <p class="dash__rep-comp-title">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Comparativa vs {{ reportesSvc.labelMes(mesAntInfo().anio, mesAntInfo().mes) }}
+          </p>
+          <div class="dash__rep-comp-grid">
+            @for (item of [
+              { label: 'Ingresos', actual: resumenReporte().ingresos, anterior: resumenAnterior().ingresos },
+              { label: 'Gastos',   actual: resumenReporte().gastos,   anterior: resumenAnterior().gastos   },
+              { label: 'Balance',  actual: resumenReporte().balance,  anterior: resumenAnterior().balance  }
+            ]; track item.label) {
+              <div class="dash__rep-comp-item">
+                <span class="dash__rep-comp-label">{{ item.label }}</span>
+                <div class="dash__rep-comp-vals">
+                  <span class="dash__rep-comp-ant">{{ reportesSvc.formatCOP(item.anterior) }}</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  <span class="dash__rep-comp-act">{{ reportesSvc.formatCOP(item.actual) }}</span>
+                </div>
+                @if (variacion(item.actual, item.anterior); as v) {
+                  <span class="dash__rep-comp-badge" [class.dash__rep-comp-badge--pos]="v.positivo" [class.dash__rep-comp-badge--neg]="!v.positivo">
+                    {{ v.positivo ? '▲' : '▼' }} {{ v.pct > 0 ? '+' : '' }}{{ v.pct }}%
+                  </span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Grid: formulario + desglose -->
+      <div class="dash__rep-grid">
+
+        <!-- Formulario rápido -->
+        <section class="dash__panel dash__rep-form-panel">
+          <h3 class="dash__panel-title">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+            Registrar movimiento
+          </h3>
+
+          <!-- Tipo -->
+          <div class="dash__rep-tipo-btns">
+            <button type="button" class="dash__rep-tipo" [class.dash__rep-tipo--gasto]="nuevoTipo() === 'gasto'" (click)="nuevoTipo.set('gasto')">
+              Gasto
+            </button>
+            <button type="button" class="dash__rep-tipo" [class.dash__rep-tipo--ingreso]="nuevoTipo() === 'ingreso'" (click)="nuevoTipo.set('ingreso')">
+              Ingreso
+            </button>
+          </div>
+
+          <div class="dash__field">
+            <label>Concepto</label>
+            <input type="text" placeholder="Ej: Compra de frutas" [value]="nuevoConcepto()"
+              (input)="nuevoConcepto.set($any($event.target).value)" />
+          </div>
+
+          <div class="dash__field-row">
+            <div class="dash__field">
+              <label>Monto (COP)</label>
+              <input type="number" placeholder="0" min="0" [value]="nuevoMonto() ?? ''"
+                (input)="nuevoMonto.set(+$any($event.target).value || null)" />
+            </div>
+            @if (nuevoTipo() === 'gasto') {
+              <div class="dash__field">
+                <label>Categoría</label>
+                <select [value]="nuevaCategoria()" (change)="nuevaCategoria.set($any($event.target).value)">
+                  @for (c of categoriasGasto; track c.id) {
+                    <option [value]="c.id">{{ c.label }}</option>
+                  }
+                </select>
+              </div>
+            }
+          </div>
+
+          <div class="dash__field">
+            <label>Notas (opcional)</label>
+            <input type="text" placeholder="Observaciones..." [value]="nuevoNotas()"
+              (input)="nuevoNotas.set($any($event.target).value)" />
+          </div>
+
+          <button type="button" class="dash__btn dash__btn--save" [disabled]="!nuevoConcepto().trim() || !nuevoMonto()" (click)="agregarMovimiento()">
+            Registrar {{ nuevoTipo() === 'gasto' ? 'gasto' : 'ingreso' }}
+          </button>
+        </section>
+
+        <!-- Desglose gastos por categoría -->
+        <section class="dash__panel">
+          <h3 class="dash__panel-title">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+            Gastos por categoría
+          </h3>
+          @if (gastosPorCategoria().length === 0) {
+            <p class="dash__col-empty" style="text-align:left;padding:0">Sin gastos en este período</p>
+          }
+          @for (cat of gastosPorCategoria(); track cat.cat) {
+            <div class="dash__rep-cat-row">
+              <div class="dash__rep-cat-head">
+                <span class="dash__rep-cat-name">{{ cat.label }}</span>
+                <span class="dash__rep-cat-monto">{{ reportesSvc.formatCOP(cat.monto) }}</span>
+                <span class="dash__rep-cat-pct">{{ cat.pct }}%</span>
+              </div>
+              <div class="dash__rep-bar">
+                <div class="dash__rep-bar-fill" [style.width.%]="cat.pct"></div>
+              </div>
+            </div>
+          }
+        </section>
+
+      </div>
+
+      <!-- Historial -->
+      <section class="dash__panel">
+        <h3 class="dash__panel-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Historial de movimientos
+        </h3>
+        @if (movsFiltrados().length === 0) {
+          <p class="dash__col-empty" style="text-align:left;padding:0.5rem 0">Sin movimientos en este período. Empieza registrando un gasto o ingreso.</p>
+        }
+        <div class="dash__rep-historial">
+          @for (m of movsFiltrados(); track m.id) {
+            <div class="dash__rep-mov" [class.dash__rep-mov--ingreso]="m.tipo === 'ingreso'">
+              <div class="dash__rep-mov-tipo">
+                @if (m.tipo === 'ingreso') {
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                } @else {
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg>
+                }
+              </div>
+              <div class="dash__rep-mov-info">
+                <span class="dash__rep-mov-concepto">{{ m.concepto }}</span>
+                @if (m.notas) { <span class="dash__rep-mov-notas">{{ m.notas }}</span> }
+                <span class="dash__rep-mov-fecha">{{ m.categoria }} · {{ m.tipo === 'gasto' ? 'Gasto' : 'Ingreso' }}</span>
+              </div>
+              <span class="dash__rep-mov-monto" [class.dash__rep-mov-monto--pos]="m.tipo === 'ingreso'">
+                {{ m.tipo === 'gasto' ? '−' : '+' }}{{ reportesSvc.formatCOP(m.monto) }}
+              </span>
+              <button type="button" class="dash__ticket-close" (click)="reportesSvc.eliminar(m.id)" title="Eliminar">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+          }
+        </div>
+      </section>
+
     }
 
     <!-- ══ TAB: PRODUCTOS ══ -->
     @if (tabActiva() === 'productos') {
-      <div class="dash__prod-header">
+
+      <div class="dash__prod-topbar">
         <div>
-          <h2>Gestionar Productos</h2>
-          <p>Los productos activos aparecen automáticamente en <a routerLink="/productos" target="_blank">/productos</a></p>
+          <h2 class="dash__prod-title">Productos</h2>
+          <p class="dash__prod-subtitle">Los activos aparecen en <a routerLink="/productos" target="_blank">/productos</a></p>
         </div>
         <button type="button" class="dash__btn-new" (click)="abrirNuevo()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
@@ -114,13 +598,13 @@
         </button>
       </div>
 
-      <!-- Formulario (panel lateral) -->
+      <!-- Formulario (drawer lateral) -->
       @if (mostrarForm()) {
         <div class="dash__overlay" (click)="cancelar()"></div>
         <aside class="dash__form-panel">
           <div class="dash__form-head">
             <h3>{{ editandoId() ? 'Editar producto' : 'Nuevo producto' }}</h3>
-            <button type="button" class="dash__form-close" (click)="cancelar()">
+            <button type="button" class="dash__form-close" (click)="cancelar()" aria-label="Cerrar">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
             </button>
           </div>
@@ -141,7 +625,7 @@
                   <div class="dash__img-placeholder">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
                     <span>Subir imagen</span>
-                    <small>PNG, JPG, WEBP — máx. 2 MB</small>
+                    <small>PNG, JPG, WEBP · máx. 2 MB</small>
                   </div>
                 }
               </div>
@@ -151,34 +635,31 @@
             <!-- Nombre -->
             <div class="dash__field">
               <label>Nombre <span>*</span></label>
-              <input type="text" formControlName="nombre" placeholder="Ej: Granizado de Mango" [class.is-invalid]="form.controls['nombre'].touched && form.controls['nombre'].invalid" />
+              <input type="text" formControlName="nombre" placeholder="Ej: Granizado de Mango"
+                [class.is-invalid]="form.controls['nombre'].touched && form.controls['nombre'].invalid" />
               @if (form.controls['nombre'].touched && form.controls['nombre'].invalid) {
-                <span class="dash__field-error">Nombre requerido (mín. 2 caracteres).</span>
+                <span class="dash__field-error">Mínimo 2 caracteres.</span>
               }
             </div>
 
             <!-- Descripción -->
             <div class="dash__field">
               <label>Descripción <span>*</span></label>
-              <textarea formControlName="descripcionCorta" placeholder="Describe el producto en 1-2 oraciones..." rows="3" [class.is-invalid]="form.controls['descripcionCorta'].touched && form.controls['descripcionCorta'].invalid"></textarea>
+              <textarea formControlName="descripcionCorta" placeholder="Describe el producto brevemente..." rows="3"
+                [class.is-invalid]="form.controls['descripcionCorta'].touched && form.controls['descripcionCorta'].invalid"></textarea>
               @if (form.controls['descripcionCorta'].touched && form.controls['descripcionCorta'].invalid) {
-                <span class="dash__field-error">Descripción requerida (mín. 10 caracteres).</span>
+                <span class="dash__field-error">Mínimo 10 caracteres.</span>
               }
             </div>
 
-            <!-- Precio + Emoji -->
-            <div class="dash__field-row">
-              <div class="dash__field">
-                <label>Precio <span>*</span></label>
-                <input type="text" formControlName="precio" placeholder="$8.000" [class.is-invalid]="form.controls['precio'].touched && form.controls['precio'].invalid" />
-                @if (form.controls['precio'].touched && form.controls['precio'].invalid) {
-                  <span class="dash__field-error">Precio requerido.</span>
-                }
-              </div>
-              <div class="dash__field">
-                <label>Emoji</label>
-                <input type="text" formControlName="icono" placeholder="🍧" maxlength="4" />
-              </div>
+            <!-- Precio -->
+            <div class="dash__field">
+              <label>Precio <span>*</span></label>
+              <input type="text" formControlName="precio" placeholder="Ej: $8.000"
+                [class.is-invalid]="form.controls['precio'].touched && form.controls['precio'].invalid" />
+              @if (form.controls['precio'].touched && form.controls['precio'].invalid) {
+                <span class="dash__field-error">Precio requerido.</span>
+              }
             </div>
 
             <!-- Categoría -->
@@ -186,9 +667,27 @@
               <label>Categoría</label>
               <select formControlName="categoria">
                 @for (cat of categorias; track cat.id) {
-                  <option [value]="cat.id">{{ cat.icono }} {{ cat.titulo }}</option>
+                  <option [value]="cat.id">{{ cat.titulo }}</option>
                 }
               </select>
+            </div>
+
+            <!-- Inventario -->
+            <div class="dash__inventory-box">
+              <p class="dash__inventory-title">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Inventario
+              </p>
+              <div class="dash__field-row">
+                <div class="dash__field">
+                  <label>Stock actual <span>*</span></label>
+                  <input type="number" formControlName="stock" placeholder="0" min="0" />
+                </div>
+                <div class="dash__field">
+                  <label>Stock mínimo (alerta)</label>
+                  <input type="number" formControlName="stockMinimo" placeholder="5" min="0" />
+                </div>
+              </div>
             </div>
 
             <!-- Etiquetas -->
@@ -215,7 +714,6 @@
       @for (cat of productosPorCategoria(); track cat.id) {
         <section class="dash__cat-section">
           <div class="dash__cat-head">
-            <span>{{ cat.icono }}</span>
             <h3>{{ cat.titulo }}</h3>
             <span class="dash__cat-pill">{{ cat.items.length }}</span>
           </div>
@@ -224,9 +722,14 @@
             <div class="dash__prod-grid">
               @for (p of cat.items; track p.id) {
                 <article class="dash__prod-card" [class.dash__prod-card--off]="!p.activo">
+
                   <div class="dash__prod-img">
                     @if (p.imagen) { <img [src]="p.imagen" [alt]="p.nombre" /> }
-                    @else { <span class="dash__prod-emoji">{{ p.emoji || p.icono }}</span> }
+                    @else {
+                      <span class="dash__prod-emoji">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                      </span>
+                    }
                     @if (p.etiquetas.length > 0) {
                       <div class="dash__prod-badges">
                         @for (et of p.etiquetas; track et) {
@@ -234,17 +737,44 @@
                         }
                       </div>
                     }
+                    @if (!p.activo) {
+                      <div class="dash__prod-inactive-cover">Inactivo</div>
+                    }
                   </div>
+
                   <div class="dash__prod-info">
                     <p class="dash__prod-name">{{ p.nombre }}</p>
-                    <p class="dash__prod-desc">{{ p.descripcionCorta }}</p>
                     <p class="dash__prod-price">{{ p.precio }}</p>
+
+                    <!-- Stock -->
+                    <div class="dash__stock" [class.dash__stock--bajo]="stockStatus(p) === 'bajo'" [class.dash__stock--agotado]="stockStatus(p) === 'agotado'">
+                      <span class="dash__stock-label">
+                        @if (stockStatus(p) === 'agotado') { Agotado }
+                        @else if (stockStatus(p) === 'bajo') { Stock bajo }
+                        @else { Stock }
+                      </span>
+                      <div class="dash__stock-controls">
+                        <button type="button" class="dash__stock-btn" (click)="ajustarStock(p.id, -1)" [disabled]="p.stock === 0">−</button>
+                        @if (editandoStockId() === p.id) {
+                          <input class="dash__stock-input" type="number" [value]="stockTemporal()"
+                            (input)="stockTemporal.set(+$any($event.target).value)"
+                            (keydown.enter)="confirmarStock(p.id)"
+                            (keydown.escape)="cancelarEditStock()"
+                            (blur)="confirmarStock(p.id)" min="0" autofocus />
+                        } @else {
+                          <span class="dash__stock-num" (click)="iniciarEditStock(p)" title="Clic para editar">{{ p.stock }}</span>
+                        }
+                        <button type="button" class="dash__stock-btn" (click)="ajustarStock(p.id, 1)">+</button>
+                      </div>
+                    </div>
                   </div>
+
                   <div class="dash__prod-actions">
                     <button type="button" class="dash__toggle" [class.dash__toggle--on]="p.activo" (click)="toggleActivo(p.id)">
-                      <span class="dash__toggle-dot"></span>{{ p.activo ? 'Activo' : 'Inactivo' }}
+                      <span class="dash__toggle-dot"></span>
+                      {{ p.activo ? 'Activo' : 'Inactivo' }}
                     </button>
-                    <button type="button" class="dash__icon-btn dash__icon-btn--edit" (click)="editarProducto(p)">
+                    <button type="button" class="dash__icon-btn dash__icon-btn--edit" (click)="editarProducto(p)" title="Editar">
                       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                     </button>
                     @if (confirmarEliminar() === p.id) {
@@ -254,19 +784,261 @@
                         <button type="button" class="dash__confirm-no" (click)="confirmarEliminar.set(null)">No</button>
                       </span>
                     } @else {
-                      <button type="button" class="dash__icon-btn dash__icon-btn--del" (click)="confirmarEliminar.set(p.id)">
+                      <button type="button" class="dash__icon-btn dash__icon-btn--del" (click)="confirmarEliminar.set(p.id)" title="Eliminar">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6M9 6V4h6v2"/></svg>
                       </button>
                     }
                   </div>
+
                 </article>
               }
             </div>
           } @else {
-            <p class="dash__cat-empty">Sin productos en esta categoría. <button type="button" (click)="abrirNuevo()">Crear uno</button></p>
+            <div class="dash__cat-empty">
+              <p>Sin productos en esta categoría.</p>
+              <button type="button" (click)="abrirNuevo()">+ Crear producto</button>
+            </div>
           }
         </section>
       }
+    }
+
+    <!-- ══ TAB: MESAS ══ -->
+    @if (tabActiva() === 'mesas') {
+
+      <div class="dash__prod-topbar">
+        <div>
+          <h2 class="dash__prod-title">Mesas</h2>
+          <p class="dash__prod-subtitle">Cada mesa tiene su propio QR. Los clientes lo escanean y piden desde su cel.</p>
+        </div>
+        <button type="button" class="dash__btn-new" (click)="nuevaMesa()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Nueva mesa
+        </button>
+      </div>
+
+      <!-- Pedidos activos -->
+      @if (mesasSvc.pedidosActivos().length > 0) {
+        <section class="dash__pedidos-section">
+          <h3 class="dash__pedidos-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Pedidos activos ({{ mesasSvc.pedidosActivos().length }})
+          </h3>
+          <div class="dash__pedidos-grid">
+            @for (pedido of mesasSvc.pedidosActivos(); track pedido.id) {
+              <div class="dash__pedido" [class]="'dash__pedido--' + pedido.estado">
+                <div class="dash__pedido-head">
+                  <span class="dash__pedido-mesa">{{ pedido.nombreMesa }}</span>
+                  <span class="dash__pedido-estado dash__pedido-estado--{{ pedido.estado }}">{{ estadoLabel(pedido.estado) }}</span>
+                  <button type="button" class="dash__icon-btn dash__icon-btn--del" (click)="eliminarPedidoMesa(pedido.id)" title="Cerrar pedido">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                  </button>
+                </div>
+                <ul class="dash__pedido-items">
+                  @for (item of pedido.items; track item.productoId) {
+                    <li>
+                      <span class="dash__pedido-qty">×{{ item.cantidad }}</span>
+                      <span class="dash__pedido-name">{{ item.nombre }}</span>
+                      <span class="dash__pedido-price">{{ item.precio }}</span>
+                    </li>
+                  }
+                </ul>
+                @if (pedido.notas) {
+                  <p class="dash__pedido-notas">{{ pedido.notas }}</p>
+                }
+                @if (estadoSiguiente(pedido.estado); as siguiente) {
+                  <button type="button" class="dash__pedido-avanzar" (click)="cambiarEstado(pedido.id, siguiente)">
+                    Marcar como {{ estadoLabel(siguiente) }}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                }
+              </div>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- Resumen preparación -->
+      @if (resumenPreparacion().length > 0) {
+        <section class="dash__prep-section">
+          <h3 class="dash__pedidos-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            Qué preparar ahora
+          </h3>
+          <div class="dash__prep-grid">
+            @for (item of resumenPreparacion(); track item.nombre) {
+              <div class="dash__prep-row">
+                <span class="dash__prep-total">×{{ item.totalCantidad }}</span>
+                <span class="dash__prep-nombre">{{ item.nombre }}</span>
+                <div class="dash__prep-mesas">
+                  @for (m of item.mesas; track m.mesa) {
+                    <span class="dash__prep-mesa-tag">{{ m.mesa }}{{ item.mesas.length > 1 ? ' ×' + m.cantidad : '' }}</span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+      }
+
+      <!-- QR cards -->
+      <div class="dash__mesas-grid">
+        @for (mesa of mesasSvc.mesas(); track mesa.id) {
+          <div class="dash__mesa-card" [class.dash__mesa-card--off]="!mesa.activa">
+            <div class="dash__mesa-qr">
+              @if (baseUrl()) {
+                <img [src]="qrUrl(mesa.numero)" [alt]="'QR ' + mesa.nombre" width="160" height="160" />
+              } @else {
+                <div class="dash__mesa-qr-placeholder">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="19" y="14" width="2" height="2"/><rect x="14" y="19" width="2" height="2"/><rect x="19" y="17" width="2" height="5"/></svg>
+                  <span>Generando...</span>
+                </div>
+              }
+            </div>
+            <div class="dash__mesa-info">
+              <p class="dash__mesa-name">{{ mesa.nombre }}</p>
+              @if (baseUrl()) {
+                <a [href]="mesaUrl(mesa.numero)" target="_blank" class="dash__mesa-url">{{ mesaUrl(mesa.numero) }}</a>
+              }
+              <div class="dash__mesa-actions">
+                <button type="button" class="dash__toggle" [class.dash__toggle--on]="mesa.activa" (click)="mesasSvc.toggleMesa(mesa.id)">
+                  <span class="dash__toggle-dot"></span>
+                  {{ mesa.activa ? 'Activa' : 'Inactiva' }}
+                </button>
+                <button type="button" class="dash__icon-btn dash__icon-btn--del" (click)="mesasSvc.eliminarMesa(mesa.id)" title="Eliminar">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6M9 6V4h6v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+    }
+
+    <!-- ══ TAB: CHATBOT ══ -->
+    @if (tabActiva() === 'chatbot') {
+
+      <div class="dash__prod-topbar">
+        <div>
+          <h2 class="dash__prod-title">Chatbot / Preguntas frecuentes</h2>
+          <p class="dash__prod-subtitle">Gestiona las respuestas del asistente que aparece en el sitio público</p>
+        </div>
+        <button type="button" class="dash__btn-new" (click)="abrirFaqNueva()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          Nueva respuesta
+        </button>
+      </div>
+
+      <!-- Formulario FAQ -->
+      @if (mostrarFaqForm()) {
+        <div class="dash__overlay" (click)="cancelarFaq()"></div>
+        <aside class="dash__form-panel">
+          <div class="dash__form-head">
+            <h3>{{ faqEditandoId() ? 'Editar respuesta' : 'Nueva respuesta' }}</h3>
+            <button type="button" class="dash__form-close" (click)="cancelarFaq()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div class="dash__form">
+            <div class="dash__field">
+              <label>Pregunta <span>*</span></label>
+              <input type="text" placeholder="Ej: ¿Cuál es el horario?" [value]="faqPregunta()"
+                (input)="faqPregunta.set($any($event.target).value)" />
+            </div>
+            <div class="dash__field">
+              <label>Respuesta del bot <span>*</span></label>
+              <textarea rows="5" placeholder="Escribe la respuesta aquí. Usa **texto** para negrita." [value]="faqRespuesta()"
+                (input)="faqRespuesta.set($any($event.target).value)"></textarea>
+              <span class="dash__field-error" style="color: rgba(53,30,9,0.4); font-size: 0.72rem;">Usa **negrita** y saltos de línea para mejor formato</span>
+            </div>
+            <div class="dash__field">
+              <label>Palabras clave (separadas por coma)</label>
+              <input type="text" placeholder="Ej: horario, hora, abierto, cierre" [value]="faqKeywords()"
+                (input)="faqKeywords.set($any($event.target).value)" />
+              <span class="dash__field-error" style="color: rgba(53,30,9,0.4); font-size: 0.72rem;">El bot detecta estas palabras en el mensaje del cliente</span>
+            </div>
+            <div class="dash__form-actions">
+              <button type="button" class="dash__btn dash__btn--cancel" (click)="cancelarFaq()">Cancelar</button>
+              <button type="button" class="dash__btn dash__btn--save" [disabled]="!faqPregunta().trim() || !faqRespuesta().trim()" (click)="guardarFaq()">
+                {{ faqEditandoId() ? 'Guardar cambios' : 'Crear respuesta' }}
+              </button>
+            </div>
+          </div>
+        </aside>
+      }
+
+      <!-- Config IA DeepSeek -->
+      <div class="dash__ai-config">
+        <div class="dash__ai-config-head">
+          <div>
+            <p class="dash__ai-config-title">IA con DeepSeek</p>
+            <p class="dash__ai-config-sub">Cuando está activa, el bot responde con IA en vez de solo buscar palabras clave</p>
+          </div>
+          <button type="button" class="dash__toggle" [class.dash__toggle--on]="chatbotSvc.aiActiva()" (click)="toggleIA()">
+            <span class="dash__toggle-dot"></span>
+            {{ chatbotSvc.aiActiva() ? 'Activa' : 'Inactiva' }}
+          </button>
+        </div>
+
+        <div class="dash__ai-key-row">
+          <div class="dash__field" style="flex:1">
+            <label>API Key de DeepSeek</label>
+            <input type="password" placeholder="sk-..."
+              [value]="apiKeyInput() || chatbotSvc.apiKey()"
+              (focus)="cargarApiKey()"
+              (input)="apiKeyInput.set($any($event.target).value)" />
+          </div>
+          <button type="button" class="dash__btn dash__btn--save"
+            style="flex:0;align-self:flex-end;white-space:nowrap"
+            (click)="guardarApiKey()">
+            Guardar clave
+          </button>
+        </div>
+
+        @if (chatbotSvc.apiKey()) {
+          <div class="dash__ai-status dash__ai-status--ok">
+            Clave configurada · {{ chatbotSvc.aiActiva() ? 'IA activa' : 'IA desactivada (usando FAQs)' }}
+          </div>
+        } @else {
+          <div class="dash__ai-status">
+            Sin API key — el bot responde solo con las preguntas frecuentes de abajo
+          </div>
+        }
+      </div>
+
+      <!-- Lista de FAQs -->
+      <div class="dash__faq-list">
+        @for (faq of chatbotSvc.faqs(); track faq.id) {
+          <div class="dash__faq-card" [class.dash__faq-card--off]="!faq.activa">
+            <div class="dash__faq-q">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+              {{ faq.pregunta }}
+            </div>
+            <p class="dash__faq-a">{{ faq.respuesta | slice:0:100 }}{{ faq.respuesta.length > 100 ? '…' : '' }}</p>
+            @if (faq.keywords.length > 0) {
+              <div class="dash__faq-kws">
+                @for (kw of faq.keywords; track kw) {
+                  <span class="dash__faq-kw">{{ kw }}</span>
+                }
+              </div>
+            }
+            <div class="dash__prod-actions">
+              <button type="button" class="dash__toggle" [class.dash__toggle--on]="faq.activa" (click)="chatbotSvc.toggleFaq(faq.id)">
+                <span class="dash__toggle-dot"></span>
+                {{ faq.activa ? 'Activa' : 'Inactiva' }}
+              </button>
+              <button type="button" class="dash__icon-btn dash__icon-btn--edit" (click)="editarFaq(faq)" title="Editar">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button type="button" class="dash__icon-btn dash__icon-btn--del" (click)="chatbotSvc.eliminarFaq(faq.id)" title="Eliminar">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
     }
 
   </main>

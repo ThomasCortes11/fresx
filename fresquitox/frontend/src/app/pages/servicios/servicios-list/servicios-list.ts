@@ -1,4 +1,5 @@
-﻿import { Component, OnInit, inject, afterNextRender, DestroyRef, ElementRef, computed } from '@angular/core';
+﻿import { Component, OnInit, inject, afterNextRender, DestroyRef, ElementRef, computed, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../../core/services/seo.service';
 import { SERVICIOS, CATEGORIAS, CategoriaProducto, Servicio } from '../../../shared/data/servicios.data';
@@ -30,6 +31,7 @@ export default class ServiciosList implements OnInit {
   private readonly el = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
   private readonly productosSvc = inject(ProductosService);
+  private readonly platformId = inject(PLATFORM_ID);
   readonly categorias = CATEGORIAS;
   readonly contact = CONTACT_INFO;
 
@@ -47,13 +49,22 @@ export default class ServiciosList implements OnInit {
     return { clasicos: mezclar('clasicos'), naturales: mezclar('naturales'), premium: mezclar('premium') };
   });
 
+  whatsappUrl(nombre: string): string {
+    return `https://wa.me/573213728768?text=${encodeURIComponent(`Hola! Quiero pedir: ${nombre}`)}`;
+  }
+
   scrollToGroup(cat: CategoriaProducto): void {
     const el = this.el.nativeElement.querySelector(`#cat-${cat}`) as HTMLElement | null;
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   constructor() {
-    afterNextRender(() => this.initScrollAnimations());
+    afterNextRender(() => {
+      if (isPlatformBrowser(this.platformId)) {
+        this.productosSvc.reload();
+      }
+      this.initScrollAnimations();
+    });
   }
 
   private initScrollAnimations(): void {

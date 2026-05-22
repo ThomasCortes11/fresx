@@ -532,6 +532,147 @@
   }
 }
 
+// ── Caja de inventario en el form
+.ap__inventory-box {
+  border: 1px solid rgba(53,30,9,0.12);
+  border-radius: 12px;
+  padding: 1rem;
+  background: rgba(53,30,9,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+  min-width: 0;
+
+  .ap__field-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+.ap__inventory-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(53,30,9,0.5);
+  margin: 0;
+}
+
+// ── Inventario en tarjeta
+.ap__stock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  background: rgba(34,197,94,0.08);
+  border: 1px solid rgba(34,197,94,0.2);
+  transition: all 0.3s ease;
+
+  &--bajo {
+    background: rgba(245,158,11,0.08);
+    border-color: rgba(245,158,11,0.25);
+
+    .ap__stock-label { color: #b45309; }
+    .ap__stock-num { color: #b45309; }
+  }
+
+  &--agotado {
+    background: rgba(239,68,68,0.08);
+    border-color: rgba(239,68,68,0.25);
+
+    .ap__stock-label { color: #dc2626; }
+    .ap__stock-num { color: #dc2626; }
+    .ap__stock-btn { border-color: rgba(239,68,68,0.2); color: #dc2626; }
+  }
+}
+
+.ap__stock-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #15803d;
+}
+
+.ap__stock-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.ap__stock-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 1px solid rgba(34,197,94,0.25);
+  background: #fff;
+  color: #15803d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+
+  &:hover:not(:disabled) {
+    background: rgba(34,197,94,0.15);
+    border-color: rgba(34,197,94,0.4);
+    transform: scale(1.1);
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+
+.ap__stock-num {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  min-width: 28px;
+  text-align: center;
+  color: #15803d;
+  line-height: 1;
+
+  &--clickable {
+    cursor: pointer;
+    border-bottom: 1.5px dashed currentColor;
+    padding-bottom: 1px;
+    transition: opacity 0.2s;
+
+    &:hover { opacity: 0.7; }
+  }
+}
+
+.ap__stock-input {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #15803d;
+  width: 52px;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid #15803d;
+  background: transparent;
+  outline: none;
+  padding: 0 2px;
+  line-height: 1;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+}
+
 @keyframes apFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

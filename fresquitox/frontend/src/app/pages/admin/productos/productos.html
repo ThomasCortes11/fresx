@@ -92,31 +92,19 @@
             }
           </div>
 
-          <!-- Precio y Categoría -->
-          <div class="ap__field-row">
-            <div class="ap__field">
-              <label for="ap-precio">Precio <span>*</span></label>
-              <input
-                id="ap-precio"
-                type="text"
-                formControlName="precio"
-                placeholder="Ej: $8.000"
-                [class.is-invalid]="form.controls.precio.touched && form.controls.precio.invalid"
-              />
-              @if (form.controls.precio.touched && form.controls.precio.invalid) {
-                <span class="ap__error">Precio requerido.</span>
-              }
-            </div>
-            <div class="ap__field">
-              <label for="ap-emoji">Emoji / Icono</label>
-              <input
-                id="ap-emoji"
-                type="text"
-                formControlName="icono"
-                placeholder="🍧"
-                maxlength="4"
-              />
-            </div>
+          <!-- Precio -->
+          <div class="ap__field">
+            <label for="ap-precio">Precio <span>*</span></label>
+            <input
+              id="ap-precio"
+              type="text"
+              formControlName="precio"
+              placeholder="Ej: $8.000"
+              [class.is-invalid]="form.controls.precio.touched && form.controls.precio.invalid"
+            />
+            @if (form.controls.precio.touched && form.controls.precio.invalid) {
+              <span class="ap__error">Precio requerido.</span>
+            }
           </div>
 
           <!-- Categoría -->
@@ -127,6 +115,36 @@
                 <option [value]="cat.id">{{ cat.icono }} {{ cat.titulo }}</option>
               }
             </select>
+          </div>
+
+          <!-- Inventario -->
+          <div class="ap__inventory-box">
+            <p class="ap__inventory-title">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              Inventario
+            </p>
+            <div class="ap__field-row">
+              <div class="ap__field">
+                <label for="ap-stock">Stock actual <span>*</span></label>
+                <input
+                  id="ap-stock"
+                  type="number"
+                  formControlName="stock"
+                  placeholder="0"
+                  min="0"
+                />
+              </div>
+              <div class="ap__field">
+                <label for="ap-stock-min">Stock mínimo (alerta)</label>
+                <input
+                  id="ap-stock-min"
+                  type="number"
+                  formControlName="stockMinimo"
+                  placeholder="5"
+                  min="0"
+                />
+              </div>
+            </div>
           </div>
 
           <!-- Etiquetas -->
@@ -194,6 +212,42 @@
                   <h3 class="ap__card-name">{{ p.nombre }}</h3>
                   <p class="ap__card-desc">{{ p.descripcionCorta }}</p>
                   <p class="ap__card-price">{{ p.precio }}</p>
+
+                  <!-- Inventario -->
+                  <div class="ap__stock" [class.ap__stock--bajo]="stockStatus(p) === 'bajo'" [class.ap__stock--agotado]="stockStatus(p) === 'agotado'">
+                    <span class="ap__stock-label">
+                      @if (stockStatus(p) === 'agotado') { <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Agotado }
+                      @else if (stockStatus(p) === 'bajo') { <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Stock bajo }
+                      @else { Stock }
+                    </span>
+                    <div class="ap__stock-controls">
+                      <button type="button" class="ap__stock-btn" (click)="ajustarStock(p.id, -1)" [disabled]="p.stock === 0" aria-label="Restar 1">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                      </button>
+
+                      @if (editandoStockId() === p.id) {
+                        <input
+                          class="ap__stock-input"
+                          type="number"
+                          [value]="stockTemporal()"
+                          (input)="stockTemporal.set(+$any($event.target).value)"
+                          (keydown.enter)="confirmarStock(p.id)"
+                          (keydown.escape)="cancelarEditStock()"
+                          (blur)="confirmarStock(p.id)"
+                          min="0"
+                          autofocus
+                        />
+                      } @else {
+                        <span class="ap__stock-num ap__stock-num--clickable" (click)="iniciarEditStock(p)" title="Clic para editar">
+                          {{ p.stock }}
+                        </span>
+                      }
+
+                      <button type="button" class="ap__stock-btn" (click)="ajustarStock(p.id, 1)" aria-label="Sumar 1">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="ap__card-actions">

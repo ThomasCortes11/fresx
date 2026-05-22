@@ -6,4 +6,7 @@
 </main>
 @if (!hidePublicLayout()) {
   <app-footer />
+  @if (isBrowser()) {
+    <app-chat-widget />
+  }
 }

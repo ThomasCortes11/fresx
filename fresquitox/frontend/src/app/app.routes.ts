@@ -76,6 +76,11 @@ export const routes: Routes = [
     title: 'Preguntas Frecuentes | Fresquitox'
   },
   {
+    path: 'mesa/:numero',
+    loadComponent: () => import('./pages/mesa/mesa'),
+    title: 'Pedir | Fresquitox'
+  },
+  {
     path: 'admin',
     children: [
       {

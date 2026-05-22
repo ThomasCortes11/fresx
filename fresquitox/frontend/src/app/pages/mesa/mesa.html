@@ -1,0 +1,123 @@
+<div class="mesa-page">
+
+  <!-- HEADER -->
+  <header class="mesa-header">
+    <div class="mesa-header__inner">
+      <div class="mesa-header__brand">
+        <div class="mesa-header__dot"></div>
+        <span>Fresquitox</span>
+      </div>
+      @if (mesa()) {
+        <span class="mesa-header__mesa">{{ mesa()!.nombre }}</span>
+      }
+    </div>
+  </header>
+
+  <main class="mesa-main">
+
+    <!-- Mesa no encontrada -->
+    @if (mesaNoEncontrada()) {
+      <div class="mesa-empty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        <h2>Mesa no disponible</h2>
+        <p>Este código QR no corresponde a ninguna mesa activa.<br>Pide ayuda al personal.</p>
+      </div>
+    }
+
+    <!-- Cargando -->
+    @if (!mesa() && !mesaNoEncontrada()) {
+      <div class="mesa-loading">
+        <div class="mesa-loading__spin"></div>
+        <p>Cargando menú...</p>
+      </div>
+    }
+
+    <!-- Pedido enviado -->
+    @if (enviado()) {
+      <div class="mesa-success">
+        <div class="mesa-success__icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>Pedido recibido</h2>
+        <p>Tu pedido está siendo preparado. El personal te avisará cuando esté listo.</p>
+        <p class="mesa-success__id">Referencia: <strong>{{ pedidoId() }}</strong></p>
+        <button type="button" class="mesa-btn mesa-btn--ghost" (click)="nuevoPedido()">
+          Hacer otro pedido
+        </button>
+      </div>
+    }
+
+    <!-- Menú -->
+    @if (mesa() && !enviado()) {
+      <div class="mesa-welcome">
+        <h1>Bienvenido a <strong>{{ mesa()!.nombre }}</strong></h1>
+        <p>Selecciona lo que deseas pedir</p>
+      </div>
+
+      <div class="mesa-productos">
+        @for (p of productos(); track p.id) {
+          <div class="mesa-prod" [class.mesa-prod--selected]="cantidad(p.id) > 0">
+            <div class="mesa-prod__img">
+              @if (p.imagen) { <img [src]="p.imagen" [alt]="p.nombre" /> }
+              @else {
+                <div class="mesa-prod__placeholder">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                </div>
+              }
+              @if (p.etiquetas.length > 0) {
+                <span class="mesa-prod__badge mesa-prod__badge--{{ p.etiquetas[0] }}">{{ p.etiquetas[0] }}</span>
+              }
+            </div>
+            <div class="mesa-prod__info">
+              <p class="mesa-prod__name">{{ p.nombre }}</p>
+              <p class="mesa-prod__desc">{{ p.descripcionCorta }}</p>
+              <p class="mesa-prod__price">{{ p.precio }}</p>
+            </div>
+            <div class="mesa-prod__controls">
+              @if (cantidad(p.id) > 0) {
+                <button type="button" class="mesa-ctrl" (click)="quitar(p.id)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/></svg>
+                </button>
+                <span class="mesa-ctrl__num">{{ cantidad(p.id) }}</span>
+              }
+              <button type="button" class="mesa-ctrl mesa-ctrl--add" (click)="agregar(p)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+            </div>
+          </div>
+        }
+
+        @if (productos().length === 0) {
+          <div class="mesa-empty-menu">
+            <p>Sin productos disponibles por el momento.</p>
+          </div>
+        }
+      </div>
+
+      <!-- Notas -->
+      @if (carrito().length > 0) {
+        <div class="mesa-notas">
+          <label class="mesa-notas__label">Notas u observaciones (opcional)</label>
+          <textarea class="mesa-notas__input" placeholder="Sin azúcar, alergia a… etc." rows="2"
+            [value]="notas()" (input)="notas.set($any($event.target).value)"></textarea>
+        </div>
+      }
+
+      <!-- Carrito fijo -->
+      @if (carrito().length > 0) {
+        <div class="mesa-carrito">
+          <div class="mesa-carrito__inner">
+            <div class="mesa-carrito__info">
+              <span class="mesa-carrito__items">{{ totalItems() }} {{ totalItems() === 1 ? 'producto' : 'productos' }}</span>
+              <span class="mesa-carrito__total">{{ formatPrecio(totalPrecio()) }}</span>
+            </div>
+            <button type="button" class="mesa-btn mesa-btn--primary" [disabled]="enviando()" (click)="enviarPedido()">
+              {{ enviando() ? 'Enviando...' : 'Enviar pedido' }}
+            </button>
+          </div>
+        </div>
+      }
+    }
+
+  </main>
+</div>
