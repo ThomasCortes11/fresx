@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
+import { loginGuard } from './core/guards/login.guard';
 
 export const routes: Routes = [
   {
@@ -72,6 +74,47 @@ export const routes: Routes = [
     path: 'preguntas-frecuentes',
     loadComponent: () => import('./pages/preguntas-frecuentes/preguntas-frecuentes'),
     title: 'Preguntas Frecuentes | Fresquitox'
+  },
+  {
+    path: 'mesa/:numero',
+    loadComponent: () => import('./pages/mesa/mesa'),
+    title: 'Pedir | Fresquitox'
+  },
+  {
+    path: 'admin',
+    children: [
+      {
+        path: 'login',
+        loadComponent: () => import('./pages/admin/login/login'),
+        canActivate: [loginGuard],
+        title: 'Iniciar sesión | Fresquitox Admin'
+      },
+      {
+        path: '',
+        canActivate: [authGuard],
+        children: [
+          {
+            path: '',
+            redirectTo: 'dashboard',
+            pathMatch: 'full'
+          },
+          {
+            path: 'dashboard',
+            loadComponent: () => import('./pages/admin/dashboard/dashboard'),
+            title: 'Dashboard | Fresquitox Admin'
+          },
+          {
+            path: 'productos',
+            loadComponent: () => import('./pages/admin/productos/productos'),
+            title: 'Gestionar Productos | Fresquitox Admin'
+          }
+        ]
+      },
+      {
+        path: '**',
+        redirectTo: 'login'
+      }
+    ]
   },
   {
     path: '**',

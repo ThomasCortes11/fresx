@@ -42,3 +42,12 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment / secrets — NUNCA subir al repo
+src/environments/environment.ts
+src/environments/environment.prod.ts
+src/environments/*.local.ts
+.env
+.env.*
+*.secret
+secrets.json

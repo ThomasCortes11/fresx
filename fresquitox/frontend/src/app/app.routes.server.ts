@@ -5,7 +5,7 @@ import { BLOG_POSTS } from './shared/data/blog.data';
 
 export const serverRoutes: ServerRoute[] = [
   { path: '', renderMode: RenderMode.Prerender },
-  { path: 'productos', renderMode: RenderMode.Prerender },
+  { path: 'productos', renderMode: RenderMode.Client },
   {
     path: 'productos/:slug',
     renderMode: RenderMode.Prerender,
@@ -34,5 +34,9 @@ export const serverRoutes: ServerRoute[] = [
     }
   },
   { path: 'preguntas-frecuentes', renderMode: RenderMode.Prerender },
+  { path: 'mesa/:numero', renderMode: RenderMode.Client },
+  { path: 'admin/login', renderMode: RenderMode.Client },
+  { path: 'admin/dashboard', renderMode: RenderMode.Client },
+  { path: 'admin/productos', renderMode: RenderMode.Client },
   { path: '**', renderMode: RenderMode.Server }
 ];

@@ -1,5 +1,12 @@
-<app-header />
-<main>
+@if (!hidePublicLayout()) {
+  <app-header />
+}
+<main [class.main--admin]="hidePublicLayout()">
   <router-outlet />
 </main>
-<app-footer />
+@if (!hidePublicLayout()) {
+  <app-footer />
+  @if (isBrowser()) {
+    <app-chat-widget />
+  }
+}
