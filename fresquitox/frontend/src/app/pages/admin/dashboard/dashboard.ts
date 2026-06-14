@@ -11,9 +11,10 @@ import {
 import { MesasService, EstadoPedido } from '../../../core/services/mesas.service';
 import { ReportesService, CATEGORIAS_GASTO, TipoMovimiento, CategoriaGasto } from '../../../core/services/reportes.service';
 import { ChatbotService, FaqItem } from '../../../core/services/chatbot.service';
+import { EventosService, Evento, TipoEvento } from '../../../core/services/eventos.service';
 import { CATEGORIAS, CategoriaProducto } from '../../../shared/data/servicios.data';
 
-type Tab = 'resumen' | 'pedidos' | 'reportes' | 'productos' | 'mesas' | 'chatbot';
+type Tab = 'resumen' | 'pedidos' | 'reportes' | 'productos' | 'mesas' | 'chatbot' | 'eventos';
 type Periodo = 'hoy' | 'semana' | 'todo' | 'mes';
 
 @Component({
@@ -375,6 +376,56 @@ export default class AdminDashboard implements OnDestroy {
   }
 
   cancelarFaq(): void { this.mostrarFaqForm.set(false); }
+
+  // ── Eventos ───────────────────────────────────────────────────────────────
+  readonly eventosSvc = inject(EventosService);
+  readonly evEditandoId  = signal<string | null>(null);
+  readonly mostrarEvForm = signal(false);
+  // Campos del formulario
+  readonly evTitulo      = signal('');
+  readonly evFecha       = signal('');
+  readonly evHora        = signal('');
+  readonly evTipo        = signal<TipoEvento>('dj');
+  readonly evArtista     = signal('');
+  readonly evDescripcion = signal('');
+  readonly evEmoji       = signal('🎧');
+  readonly evDestacado   = signal(false);
+
+  abrirEvNuevo(): void {
+    this.evEditandoId.set(null);
+    this.evTitulo.set(''); this.evFecha.set(''); this.evHora.set('7:00 PM - 10:00 PM');
+    this.evTipo.set('dj'); this.evArtista.set(''); this.evDescripcion.set('');
+    this.evEmoji.set('🎧'); this.evDestacado.set(false);
+    this.mostrarEvForm.set(true);
+  }
+
+  editarEv(ev: Evento): void {
+    this.evEditandoId.set(ev.id);
+    this.evTitulo.set(ev.titulo); this.evFecha.set(ev.fecha); this.evHora.set(ev.hora);
+    this.evTipo.set(ev.tipo); this.evArtista.set(ev.artista);
+    this.evDescripcion.set(ev.descripcion); this.evEmoji.set(ev.emoji);
+    this.evDestacado.set(ev.destacado);
+    this.mostrarEvForm.set(true);
+  }
+
+  guardarEv(): void {
+    const t = this.evTitulo().trim(); const f = this.evFecha(); const h = this.evHora().trim();
+    if (!t || !f || !h) return;
+    const data = {
+      titulo: t, fecha: f, hora: h, tipo: this.evTipo(),
+      artista: this.evArtista().trim(), descripcion: this.evDescripcion().trim(),
+      emoji: this.evEmoji() || '🎉', destacado: this.evDestacado(), activo: true,
+    };
+    const id = this.evEditandoId();
+    if (id) { this.eventosSvc.actualizar(id, data); } else { this.eventosSvc.agregar(data); }
+    this.mostrarEvForm.set(false);
+  }
+
+  cancelarEv(): void { this.mostrarEvForm.set(false); }
+
+  tipoEmojiEv(tipo: TipoEvento): string {
+    return this.eventosSvc.TIPOS.find(t => t.key === tipo)?.emoji ?? '🎉';
+  }
 
   // ── Config IA ─────────────────────────────────────────────────────────────
   readonly apiKeyInput = signal('');

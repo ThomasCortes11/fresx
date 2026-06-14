@@ -39,6 +39,13 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Chatbot
         </button>
+        <button class="dash__nav-btn" [class.dash__nav-btn--active]="tabActiva() === 'eventos'" (click)="tabActiva.set('eventos')">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Eventos
+          @if (eventosSvc.eventosActivos().length > 0) {
+            <span class="dash__nav-badge">{{ eventosSvc.eventosActivos().length }}</span>
+          }
+        </button>
       </nav>
       <div class="dash__header-actions">
         <a routerLink="/" target="_blank" class="dash__action-btn dash__action-btn--ghost">
@@ -1040,6 +1047,148 @@
       </div>
 
     }
+
+  <!-- ══ TAB: EVENTOS ══════════════════════════════════════════════════════ -->
+  @if (tabActiva() === 'eventos') {
+    <div class="dash__section">
+
+      <!-- Topbar -->
+      <div class="dash__topbar">
+        <div>
+          <h2 class="dash__section-title">Eventos</h2>
+          <p class="dash__section-sub">Los eventos activos se muestran en la página pública /eventos</p>
+        </div>
+        <button class="dash__btn dash__btn--primary" (click)="abrirEvNuevo()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nuevo evento
+        </button>
+      </div>
+
+      <!-- Lista de eventos -->
+      <div class="dash__ev-list">
+        @for (ev of eventosSvc.eventos(); track ev.id) {
+          <div class="dash__ev-card" [class.dash__ev-card--inactivo]="!ev.activo">
+            <div class="dash__ev-emoji">{{ ev.emoji }}</div>
+            <div class="dash__ev-info">
+              <div class="dash__ev-head">
+                <span class="dash__ev-titulo">{{ ev.titulo }}</span>
+                @if (ev.destacado) {
+                  <span class="dash__ev-badge dash__ev-badge--star">Destacado</span>
+                }
+                <span class="dash__ev-badge dash__ev-badge--tipo">{{ tipoEmojiEv(ev.tipo) }} {{ ev.tipo }}</span>
+              </div>
+              <div class="dash__ev-meta">
+                <span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  {{ ev.fecha }}
+                </span>
+                <span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  {{ ev.hora }}
+                </span>
+                <span>{{ ev.artista }}</span>
+              </div>
+              <p class="dash__ev-desc">{{ ev.descripcion }}</p>
+            </div>
+            <div class="dash__ev-actions">
+              <button type="button" class="dash__toggle dash__toggle--sm"
+                [class.dash__toggle--on]="ev.activo"
+                (click)="eventosSvc.toggleActivo(ev.id)"
+                [title]="ev.activo ? 'Ocultar del sitio' : 'Publicar'">
+                <span class="dash__toggle-dot"></span>
+              </button>
+              <button type="button" class="dash__icon-btn" (click)="editarEv(ev)" title="Editar">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              </button>
+              <button type="button" class="dash__icon-btn dash__icon-btn--del" (click)="eventosSvc.eliminar(ev.id)" title="Eliminar">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6M9 6V4h6v2"/></svg>
+              </button>
+            </div>
+          </div>
+        } @empty {
+          <div class="dash__empty">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <p>No hay eventos aún. Crea el primero.</p>
+          </div>
+        }
+      </div>
+
+      <!-- Formulario lateral -->
+      @if (mostrarEvForm()) {
+        <div class="dash__faq-overlay" (click)="cancelarEv()"></div>
+        <aside class="dash__faq-panel">
+          <div class="dash__faq-panel-head">
+            <h3>{{ evEditandoId() ? 'Editar evento' : 'Nuevo evento' }}</h3>
+            <button type="button" class="dash__icon-btn" (click)="cancelarEv()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          <div class="dash__field">
+            <label>Título del evento</label>
+            <input type="text" placeholder="Noche de DJ — Tropical House"
+              [value]="evTitulo()" (input)="evTitulo.set($any($event.target).value)" />
+          </div>
+
+          <div class="dash__field-row">
+            <div class="dash__field">
+              <label>Fecha</label>
+              <input type="date" [value]="evFecha()" (input)="evFecha.set($any($event.target).value)" />
+            </div>
+            <div class="dash__field">
+              <label>Horario</label>
+              <input type="text" placeholder="7:00 PM - 11:00 PM"
+                [value]="evHora()" (input)="evHora.set($any($event.target).value)" />
+            </div>
+          </div>
+
+          <div class="dash__field-row">
+            <div class="dash__field">
+              <label>Tipo</label>
+              <select [value]="evTipo()" (change)="evTipo.set($any($event.target).value)">
+                @for (t of eventosSvc.TIPOS; track t.key) {
+                  <option [value]="t.key">{{ t.emoji }} {{ t.label }}</option>
+                }
+              </select>
+            </div>
+            <div class="dash__field" style="max-width:90px">
+              <label>Emoji</label>
+              <input type="text" placeholder="🎧" maxlength="4"
+                [value]="evEmoji()" (input)="evEmoji.set($any($event.target).value)" />
+            </div>
+          </div>
+
+          <div class="dash__field">
+            <label>Artista / Presentador</label>
+            <input type="text" placeholder="DJ Fresqui"
+              [value]="evArtista()" (input)="evArtista.set($any($event.target).value)" />
+          </div>
+
+          <div class="dash__field">
+            <label>Descripción</label>
+            <textarea rows="3" placeholder="Describe el evento..."
+              [value]="evDescripcion()" (input)="evDescripcion.set($any($event.target).value)"></textarea>
+          </div>
+
+          <label class="dash__checkbox-row">
+            <input type="checkbox" [checked]="evDestacado()"
+              (change)="evDestacado.set($any($event.target).checked)" />
+            Marcar como evento destacado (aparece primero)
+          </label>
+
+          <div class="dash__faq-panel-foot">
+            <button type="button" class="dash__btn" (click)="cancelarEv()">Cancelar</button>
+            <button type="button" class="dash__btn dash__btn--primary"
+              (click)="guardarEv()"
+              [disabled]="!evTitulo().trim() || !evFecha() || !evHora().trim()">
+              {{ evEditandoId() ? 'Guardar cambios' : 'Crear evento' }}
+            </button>
+          </div>
+        </aside>
+      }
+
+    </div>
+  }
 
   </main>
 </div>

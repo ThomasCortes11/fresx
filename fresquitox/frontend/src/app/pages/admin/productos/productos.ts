@@ -66,6 +66,7 @@ export default class AdminProductos {
     stockMinimo: [5, [Validators.required, Validators.min(0)]],
   });
 
+
   abrirNuevo(): void {
     this.editandoId.set(null);
     this.imagenPreview.set(null);

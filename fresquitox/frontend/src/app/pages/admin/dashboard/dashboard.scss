@@ -1518,6 +1518,80 @@ $radius-sm: var(--fq-radius-sm, 8px);
 @keyframes dashFade  { from { opacity: 0; } to { opacity: 1; } }
 @keyframes dashSlide { from { transform: translateX(100%); } to { transform: translateX(0); } }
 
+// ── EVENTOS ───────────────────────────────────────────────────────────────
+.dash__ev-list {
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+
+.dash__ev-card {
+  background: $white;
+  border-radius: $radius;
+  border: 1.5px solid $border;
+  padding: 1rem 1.25rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  transition: border-color 0.2s, opacity 0.2s;
+
+  &:hover { border-color: rgba($pink, 0.4); }
+  &--inactivo { opacity: 0.5; }
+}
+
+.dash__ev-emoji {
+  font-size: 1.8rem; line-height: 1; flex-shrink: 0; margin-top: 0.1rem;
+}
+
+.dash__ev-info {
+  flex: 1; min-width: 0;
+}
+
+.dash__ev-head {
+  display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3rem;
+}
+
+.dash__ev-titulo {
+  font-size: 0.9rem; font-weight: 700; color: $dark;
+}
+
+.dash__ev-badge {
+  font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem;
+  border-radius: 20px; white-space: nowrap;
+
+  &--star { background: rgba(234,179,8,0.12); color: #92400e; }
+  &--tipo { background: rgba($pink,0.1); color: $pink; text-transform: capitalize; }
+}
+
+.dash__ev-meta {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  font-size: 0.75rem; color: rgba($dark, 0.5); margin-bottom: 0.3rem;
+
+  span { display: flex; align-items: center; gap: 0.3rem; }
+  svg  { flex-shrink: 0; }
+}
+
+.dash__ev-desc {
+  font-size: 0.78rem; color: rgba($dark, 0.6); margin: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.dash__ev-actions {
+  display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0;
+}
+
+.dash__toggle--sm {
+  font-size: 0.7rem; padding: 0.2rem 0.5rem;
+  .dash__toggle-dot { width: 12px; height: 12px; }
+}
+
+.dash__checkbox-row {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  input[type=checkbox] { width: 16px; height: 16px; accent-color: $pink; cursor: pointer; }
+}
+
+.dash__field-row {
+  display: flex; gap: 0.75rem;
+  .dash__field { flex: 1; }
+}
+
 @media (max-width: 640px) {
   .dash {
     &__header-inner { gap: 0.75rem; }
