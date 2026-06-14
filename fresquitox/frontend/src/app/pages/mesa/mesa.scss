@@ -1,8 +1,8 @@
 $pink: var(--fq-pink, #ff4677);
-$dark: var(--fq-dark, #351e09);
+$dark: var(--fq-dark, #0A0A0A);
 $white: #fff;
-$off-white: var(--fq-off-white, #fdf8f3);
-$border: rgba(53,30,9,0.09);
+$off-white: var(--fq-off-white, #F5F5F7);
+$border: rgba(10,10,10,0.09);
 $radius: 14px;
 
 .mesa-page {
@@ -79,7 +79,7 @@ $radius: 14px;
     strong { color: $pink; }
   }
 
-  p { font-size: 0.875rem; color: rgba(53,30,9,0.55); margin: 0; }
+  p { font-size: 0.875rem; color: rgba(10,10,10,0.55); margin: 0; }
 }
 
 // ── PRODUCTOS ─────────────────────────────────────────────────────────────
@@ -116,9 +116,9 @@ $radius: 14px;
 
   &__placeholder {
     width: 100%; height: 100%;
-    background: rgba(53,30,9,0.04);
+    background: rgba(10,10,10,0.04);
     display: flex; align-items: center; justify-content: center;
-    color: rgba(53,30,9,0.2);
+    color: rgba(10,10,10,0.2);
   }
 
   &__badge {
@@ -140,7 +140,7 @@ $radius: 14px;
   }
 
   &__name  { font-size: 0.9rem; font-weight: 700; margin: 0; }
-  &__desc  { font-size: 0.75rem; color: rgba(53,30,9,0.5); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  &__desc  { font-size: 0.75rem; color: rgba(10,10,10,0.5); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   &__price { font-size: 0.9rem; font-weight: 700; color: $pink; margin: 0.15rem 0 0; }
 
   &__controls {
@@ -187,7 +187,7 @@ $radius: 14px;
   flex-direction: column;
   gap: 0.4rem;
 
-  &__label { font-size: 0.8rem; font-weight: 700; color: rgba(53,30,9,0.6); }
+  &__label { font-size: 0.8rem; font-weight: 700; color: rgba(10,10,10,0.6); }
 
   &__input {
     padding: 0.65rem 0.85rem;
@@ -212,7 +212,7 @@ $radius: 14px;
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(8px);
   border-top: 1px solid $border;
-  box-shadow: 0 -4px 20px rgba(53,30,9,0.08);
+  box-shadow: 0 -4px 20px rgba(10,10,10,0.08);
 
   &__inner {
     max-width: 600px;
@@ -227,7 +227,7 @@ $radius: 14px;
     display: flex; flex-direction: column; gap: 0.05rem;
   }
 
-  &__items { font-size: 0.78rem; color: rgba(53,30,9,0.5); font-weight: 500; }
+  &__items { font-size: 0.78rem; color: rgba(10,10,10,0.5); font-weight: 500; }
   &__total { font-size: 1.1rem; font-weight: 800; color: $dark; }
 }
 
@@ -251,10 +251,10 @@ $radius: 14px;
   }
 
   &--ghost {
-    background: rgba(53,30,9,0.06);
+    background: rgba(10,10,10,0.06);
     color: $dark;
     border: 1px solid $border;
-    &:hover { background: rgba(53,30,9,0.1); }
+    &:hover { background: rgba(10,10,10,0.1); }
   }
 }
 
@@ -263,9 +263,9 @@ $radius: 14px;
   display: flex; flex-direction: column; align-items: center;
   gap: 0.75rem; padding: 3rem 1.5rem; text-align: center;
 
-  svg { color: rgba(53,30,9,0.25); }
+  svg { color: rgba(10,10,10,0.25); }
   h2 { font-family: var(--fq-font-display); font-size: 1.35rem; font-weight: 700; margin: 0; }
-  p  { font-size: 0.875rem; color: rgba(53,30,9,0.55); margin: 0; }
+  p  { font-size: 0.875rem; color: rgba(10,10,10,0.55); margin: 0; }
 }
 
 .mesa-success {
@@ -280,21 +280,21 @@ $radius: 14px;
     color: #16a34a;
   }
 
-  &__id { font-size: 0.78rem; color: rgba(53,30,9,0.4); font-family: monospace; }
+  &__id { font-size: 0.78rem; color: rgba(10,10,10,0.4); font-family: monospace; }
 }
 
 .mesa-empty-menu {
   text-align: center;
   padding: 2rem;
   font-size: 0.875rem;
-  color: rgba(53,30,9,0.45);
+  color: rgba(10,10,10,0.45);
 }
 
 .mesa-loading {
   display: flex; flex-direction: column; align-items: center;
   gap: 0.75rem; padding: 3rem;
 
-  p { font-size: 0.875rem; color: rgba(53,30,9,0.45); }
+  p { font-size: 0.875rem; color: rgba(10,10,10,0.45); }
 
   &__spin {
     width: 32px; height: 32px;

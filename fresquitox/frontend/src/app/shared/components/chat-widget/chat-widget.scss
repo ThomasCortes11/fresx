@@ -117,7 +117,7 @@ $radius : 16px;
   scroll-behavior: smooth;
 
   &::-webkit-scrollbar { width: 4px; }
-  &::-webkit-scrollbar-thumb { background: rgba(53,30,9,0.15); border-radius: 4px; }
+  &::-webkit-scrollbar-thumb { background: rgba(10,10,10,0.15); border-radius: 4px; }
 }
 
 // ── Mensajes ───────────────────────────────────────────────────────────────
@@ -166,7 +166,7 @@ $radius : 16px;
 // ── Typing dots ────────────────────────────────────────────────────────────
 .cw__dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(53,30,9,0.3);
+  background: rgba(10,10,10,0.3);
   animation: cwDot 1.2s ease-in-out infinite;
 
   &:nth-child(2) { animation-delay: 0.2s; }
@@ -213,19 +213,19 @@ $radius : 16px;
 .cw__footer {
   display: flex; align-items: flex-end; gap: 0.5rem;
   padding: 0.65rem 0.85rem;
-  border-top: 1px solid rgba(53,30,9,0.08);
+  border-top: 1px solid rgba(10,10,10,0.08);
   background: $white;
   flex-shrink: 0;
 }
 
 .cw__input {
   flex: 1;
-  border: 1.5px solid rgba(53,30,9,0.12);
+  border: 1.5px solid rgba(10,10,10,0.12);
   border-radius: 12px;
   padding: 0.55rem 0.75rem;
   font: inherit; font-size: 0.855rem;
   resize: none; max-height: 80px; overflow-y: auto;
-  line-height: 1.4; background: #fdf8f3;
+  line-height: 1.4; background: #F5F5F7;
   transition: border-color 0.18s;
   &:focus { outline: none; border-color: $pink; }
 }

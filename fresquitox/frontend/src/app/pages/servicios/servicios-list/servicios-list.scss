@@ -9,9 +9,9 @@ $pl-pink-light: #FF5299;
 $pl-amber: #FF97BD;
 $pl-orange: #E08736;
 $pl-cream: #FF5299;
-$pl-brown: #996633;
-$pl-dark: #351E09;
-$pl-light-bg: #FFFBEC;
+$pl-silver: #A8A9AD;
+$pl-dark: #0A0A0A;
+$pl-light-bg: #F5F5F7;
 
 // ── Noise texture
 $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
@@ -32,9 +32,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 .pl-hero {
   position: relative;
   background: 
-    linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-    url('/images/fondosectioncafe.png') center center / cover no-repeat,
-    $pl-brown;
+    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
   padding: 8rem 0 0;
   overflow: hidden;
   min-height: 92vh;
@@ -78,14 +76,14 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     &--1 { width: 4px; height: 4px; background: $pl-pink; top: 18%; left: 12%; animation: plParticle 7s ease-in-out infinite; opacity: 0.5; }
     &--2 { width: 3px; height: 3px; background: $pl-pink-light; top: 72%; right: 18%; animation: plParticle 9s ease-in-out infinite; animation-delay: -2s; opacity: 0.35; }
     &--3 { width: 5px; height: 5px; background: $pl-orange; top: 35%; right: 35%; animation: plParticle 11s ease-in-out infinite; animation-delay: -4s; opacity: 0.25; }
-    &--4 { width: 2px; height: 2px; background: #FFFBEC; top: 55%; left: 25%; animation: plParticle 8s ease-in-out infinite; animation-delay: -1s; opacity: 0.3; }
+    &--4 { width: 2px; height: 2px; background: #F5F5F7; top: 55%; left: 25%; animation: plParticle 8s ease-in-out infinite; animation-delay: -1s; opacity: 0.3; }
     &--5 { width: 3px; height: 3px; background: $pl-pink; bottom: 25%; left: 45%; animation: plParticle 10s ease-in-out infinite; animation-delay: -6s; opacity: 0.4; }
     &--6 { width: 4px; height: 4px; background: $pl-amber; top: 15%; right: 25%; animation: plParticle 6s ease-in-out infinite; animation-delay: -3s; opacity: 0.2; }
   }
 
   &__fade {
     position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
-    background: linear-gradient(to top, $pl-brown 0%, transparent 100%);
+    background: linear-gradient(to top, #0A0A0A 0%, transparent 100%);
     pointer-events: none; z-index: 2;
   }
 
@@ -403,9 +401,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   // ── DARK THEME (Clásicos & Premium)
   &--dark {
     background: 
-      linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-      url('/images/fondosectioncafe.png') center center / cover no-repeat,
-      $pl-brown;
+      linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
 
     .pl-cat__num { color: rgba(255,255,255,0.5); text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
     .pl-cat__title { color: #fff; text-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 2px 12px rgba(0,0,0,0.5); }
@@ -435,23 +431,23 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
   &--light {
     background: $pl-light-bg;
 
-    .pl-cat__num { color: rgba(53, 30, 9,0.15); }
-    .pl-cat__title { color: #351E09; }
-    .pl-cat__sub { color: rgba(53, 30, 9,0.45); }
-    .pl-cat__count-label { color: rgba(53, 30, 9,0.35); }
+    .pl-cat__num { color: rgba(10, 10, 10,0.15); }
+    .pl-cat__title { color: #0A0A0A; }
+    .pl-cat__sub { color: rgba(10, 10, 10,0.45); }
+    .pl-cat__count-label { color: rgba(10, 10, 10,0.35); }
 
     .pl-cat__orb { opacity: 0.3; }
     .pl-cat__noise { opacity: 0.3; }
 
     .pl-card {
-      background: #FFFBEC;
-      border-color: rgba(53, 30, 9,0.06);
-      box-shadow: 0 2px 16px rgba(53, 30, 9,0.04);
+      background: #F5F5F7;
+      border-color: rgba(10, 10, 10,0.06);
+      box-shadow: 0 2px 16px rgba(10, 10, 10,0.04);
     }
-    .pl-card__title { color: #351E09; }
-    .pl-card__desc { color: rgba(53, 30, 9,0.45); }
-    .pl-card__foot { border-top-color: rgba(53, 30, 9,0.06); }
-    .pl-card__arrow { color: rgba(53, 30, 9,0.15); }
+    .pl-card__title { color: #0A0A0A; }
+    .pl-card__desc { color: rgba(10, 10, 10,0.45); }
+    .pl-card__foot { border-top-color: rgba(10, 10, 10,0.06); }
+    .pl-card__arrow { color: rgba(10, 10, 10,0.15); }
 
     // White shine sweep
     .pl-card::before {
@@ -462,8 +458,8 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     .pl-cat__bg::after {
       content: ''; position: absolute; inset: 0;
       background-image:
-        linear-gradient(90deg, rgba(53, 30, 9,0.02) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(53, 30, 9,0.02) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(10, 10, 10,0.02) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(10, 10, 10,0.02) 1px, transparent 1px);
       background-size: 80px 80px;
       mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
       -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
@@ -511,7 +507,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     .pl-card__link-line { background: $pl-orange; }
     .pl-card:hover {
       border-color: rgba($pl-orange, 0.2);
-      box-shadow: 0 20px 60px rgba(53, 30, 9,0.4), 0 0 40px rgba($pl-orange, 0.08);
+      box-shadow: 0 20px 60px rgba(10, 10, 10,0.4), 0 0 40px rgba($pl-orange, 0.08);
       .pl-card__arrow { color: $pl-orange; }
     }
   }
@@ -649,9 +645,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 .pl-cta {
   position: relative; 
   background: 
-    linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-    url('/images/fondosectioncafe.png') center center / cover no-repeat,
-    $pl-brown;
+    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
   padding: 8rem 0; overflow: hidden;
 
   &__bg { position: absolute; inset: 0; pointer-events: none; }
@@ -774,7 +768,7 @@ $pl-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 
   .pl-cat { padding: 5rem 0; }
   .pl-cat__right { grid-template-columns: 1fr; }
-  .pl-cat--light .pl-card__foot { border-top-color: rgba(53, 30, 9,0.06); }
+  .pl-cat--light .pl-card__foot { border-top-color: rgba(10, 10, 10,0.06); }
 
   .pl-cta {
     padding: 5rem 0;

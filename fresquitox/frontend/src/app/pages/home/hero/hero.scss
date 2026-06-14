@@ -8,7 +8,9 @@ $neon:       #FF4677;
 $neon-mid:   #FF5299;
 $neon-light: #FF97BD;
 $neon-hot:   #FF4677;
-$dark:       #351E09;
+$dark:       #0A0A0A;
+$silver:     #A8A9AD;
+$light:      #F5F5F7;
 $ease-expo:  cubic-bezier(0.16, 1, 0.3, 1);
 $ease-back:  cubic-bezier(0.34, 1.56, 0.64, 1);
 $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
@@ -22,10 +24,20 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   min-height: calc(100dvh - 76px);
   display: flex;
   flex-direction: column;
-  background:
-    linear-gradient(150deg, rgba(255, 251, 236, 0.82) 0%, rgba(255, 247, 238, 0.78) 55%, rgba(255, 251, 236, 0.82) 100%),
-    url('/images/fondohero.png') center center / cover no-repeat;
-  color: $dark;
+  background: linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
+  color: $light;
+
+  // Ilustración de fondo: café → plata sobre negro
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/images/fondohero.png') center center / cover no-repeat;
+    filter: grayscale(1) invert(1) brightness(0.82) contrast(1.2);
+    opacity: 0.28;
+    z-index: 0;
+    pointer-events: none;
+  }
 
   // ══════════════════════════════════════════════════════
   // AMBIENT FX — Orbs / Glow blobs
@@ -51,13 +63,13 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     }
     &--2 {
       width: 480px; height: 480px;
-      background: rgba(120, 60, 10, 0.09);
+      background: rgba(168, 169, 173, 0.09);
       bottom: -10%; left: -14%;
       animation: orb-drift 18s ease-in-out infinite 3s;
     }
     &--3 {
       width: 300px; height: 300px;
-      background: rgba(200, 90, 30, 0.07);
+      background: rgba($silver, 0.10);
       top: 45%; left: 35%;
       animation: orb-drift 20s ease-in-out infinite 5s;
     }
@@ -79,10 +91,10 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
       0deg,
       transparent,
       transparent 3px,
-      rgba(53, 30, 9, 0.10) 3px,
-      rgba(53, 30, 9, 0.10) 4px
+      rgba($silver, 0.10) 3px,
+      rgba($silver, 0.10) 4px
     );
-    opacity: 0.45;
+    opacity: 0.35;
   }
 
   // ── Noise grain
@@ -91,11 +103,11 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     inset: 0;
     pointer-events: none;
     z-index: 2;
-    opacity: 0.09;
+    opacity: 0.06;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 128px 128px;
-    mix-blend-mode: multiply;
+    mix-blend-mode: overlay;
   }
 
   // ── Grid
@@ -106,8 +118,8 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1;
     opacity: 1;
     background-image:
-      linear-gradient(rgba(53, 30, 9, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(53, 30, 9, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba($silver, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($silver, 0.07) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -129,13 +141,13 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 
     // Pink sparkles
     &--1 { width: 6px; height: 6px; background: rgba($neon, 0.55); top: 18%; left: 12%;  animation: sparkle-float 10s ease-in-out infinite; box-shadow: 0 0 5px rgba($neon, 0.35); }
-    &--2 { width: 4px; height: 4px; background: rgba(180, 90, 30, 0.50); top: 25%; right: 20%; animation: sparkle-float 12s ease-in-out infinite 1s; }
+    &--2 { width: 4px; height: 4px; background: rgba(168, 169, 173, 0.50); top: 25%; right: 20%; animation: sparkle-float 12s ease-in-out infinite 1s; }
     &--3 { width: 7px; height: 7px; background: rgba($neon, 0.50); top: 55%; left: 8%;  animation: sparkle-float 11s ease-in-out infinite 2s; box-shadow: 0 0 6px rgba($neon, 0.30); }
-    &--4 { width: 4px; height: 4px; background: rgba(140, 70, 20, 0.45); top: 70%; right: 35%; animation: sparkle-float 13s ease-in-out infinite 0.5s; }
+    &--4 { width: 4px; height: 4px; background: rgba(140, 140, 145, 0.45); top: 70%; right: 35%; animation: sparkle-float 13s ease-in-out infinite 0.5s; }
     &--5 { width: 6px; height: 6px; background: rgba($neon, 0.50); top: 40%; left: 45%; animation: sparkle-float 9s ease-in-out infinite 3s; box-shadow: 0 0 5px rgba($neon, 0.30); }
-    &--6 { width: 5px; height: 5px; background: rgba(180, 90, 30, 0.40); top: 82%; left: 25%; animation: sparkle-float 14s ease-in-out infinite 1.5s; }
+    &--6 { width: 5px; height: 5px; background: rgba(168, 169, 173, 0.40); top: 82%; left: 25%; animation: sparkle-float 14s ease-in-out infinite 1.5s; }
     &--7 { width: 4px; height: 4px; background: rgba($neon, 0.50); top: 12%; left: 55%; animation: sparkle-float 11s ease-in-out infinite 4s; box-shadow: 0 0 4px rgba($neon, 0.30); }
-    &--8 { width: 5px; height: 5px; background: rgba(160, 80, 25, 0.40); bottom: 15%; right: 12%; animation: sparkle-float 10s ease-in-out infinite 2.5s; }
+    &--8 { width: 5px; height: 5px; background: rgba(160, 160, 165, 0.40); bottom: 15%; right: 12%; animation: sparkle-float 10s ease-in-out infinite 2.5s; }
   }
 
   // ══════════════════════════════════════════════════════
@@ -272,7 +284,7 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     // ── Small connector lines
     &--sm {
       font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-      color: rgba(53, 30, 9, 0.72);
+      color: rgba($light, 0.72);
       letter-spacing: 0.15em;
       font-weight: 600;
       line-height: 1.6;
@@ -284,7 +296,7 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
       font-size: clamp(3rem, 7vw, 6.5rem);
       line-height: 0.9;
       color: transparent;
-      -webkit-text-stroke: 2.5px rgba(53, 30, 9, 0.55);
+      -webkit-text-stroke: 2.5px rgba($silver, 0.65);
       margin-bottom: 0.08em;
       animation: enter-left 1s $ease-expo 0.35s both;
       transition: -webkit-text-stroke-color 0.4s ease, text-shadow 0.4s ease;
@@ -340,7 +352,7 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(53, 30, 9, 0.72);
+    color: rgba($light, 0.72);
     margin-bottom: 0.8rem;
   }
 
@@ -352,8 +364,8 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     align-items: center;
     gap: 2rem;
     padding: 1rem 1.6rem;
-    background: rgba(53, 30, 9, 0.04);
-    border: 1px solid rgba(53, 30, 9, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba($silver, 0.18);
     border-radius: 16px;
     backdrop-filter: blur(8px);
     animation: enter-up 0.9s $ease-expo 0.8s both;
@@ -401,7 +413,7 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
     font-weight: 800;
-    color: $dark;
+    color: $light;
     line-height: 1;
     letter-spacing: -0.02em;
     text-shadow: 0 0 20px rgba($neon, 0.2);
@@ -411,7 +423,7 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   &__proof-key {
     font-size: 0.65rem;
     font-weight: 600;
-    color: rgba(53, 30, 9, 0.65);
+    color: rgba($light, 0.65);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-top: 0.25rem;
@@ -494,22 +506,13 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     width: 120%;
     max-width: none;
     height: auto;
-    // Outline rosa sobre fondo claro: 4 drop-shadows en 4 sentidos = contorno visible
-    filter:
-      drop-shadow(0 0 18px rgba(153, 102, 51, 0.30))
-      drop-shadow( 2px  0   0 rgba(153, 102, 51, 0.90))
-      drop-shadow(-2px  0   0 rgba(153, 102, 51, 0.90))
-      drop-shadow( 0    2px 0 rgba(153, 102, 51, 0.90))
-      drop-shadow( 0   -2px 0 rgba(153, 102, 51, 0.90));
+    filter: drop-shadow(0 0 28px rgba(255, 82, 153, 0.45));
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 52%, transparent 76%);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 52%, transparent 76%);
     transition: filter 0.5s ease, transform 0.5s ease;
 
     &:hover {
-      filter:
-        drop-shadow(0 0 32px rgba(153, 102, 51, 0.50))
-        drop-shadow( 2px  0   0 rgba(153, 102, 51, 1))
-        drop-shadow(-2px  0   0 rgba(153, 102, 51, 1))
-        drop-shadow( 0    2px 0 rgba(153, 102, 51, 1))
-        drop-shadow( 0   -2px 0 rgba(153, 102, 51, 1));
+      filter: drop-shadow(0 0 42px rgba(255, 82, 153, 0.65));
       transform: scale(1.03);
     }
   }
@@ -524,7 +527,7 @@ $ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
     font-size: clamp(4.5rem, 9vw, 10rem);
     font-weight: 900;
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(53, 30, 9, 0.14);
+    -webkit-text-stroke: 1.5px rgba($silver, 0.18);
     letter-spacing: 0.06em;
     text-transform: uppercase;
     pointer-events: none;

@@ -1,9 +1,9 @@
 $pink: #FF4677;
 $pink-mid: #FF5299;
 $pink-light: #FF97BD;
-$dark: #351E09;
-$off: #FFFDF0;
-$gray: #996633;
+$dark: #0A0A0A;
+$off: #F5F5F7;
+$gray: #A8A9AD;
 $ease: cubic-bezier(.22,1,.36,1);
 
 .zd-hero {
@@ -69,10 +69,10 @@ $ease: cubic-bezier(.22,1,.36,1);
 @keyframes zdPulseG { 0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(#10B981,.4); } 50% { opacity: .6; box-shadow: 0 0 0 6px rgba(#10B981,0); } }
 
 .zd-barrios {
-  background: #FFFBEC; border-bottom: 1px solid #E8D5C0; padding: .85rem 0;
+  background: #F5F5F7; border-bottom: 1px solid #D1D5DB; padding: .85rem 0;
   &__head { display: flex; align-items: center; gap: .5rem; font-size: .84rem; color: $gray; margin-bottom: .65rem; svg { color: $pink; } }
   &__tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-  &__tag { background: $off; color: #351E09; padding: .2rem .65rem; border-radius: 6px; font-size: .78rem; font-weight: 600; }
+  &__tag { background: $off; color: #0A0A0A; padding: .2rem .65rem; border-radius: 6px; font-size: .78rem; font-weight: 600; }
 }
 
 .zd-body {
@@ -88,7 +88,7 @@ $ease: cubic-bezier(.22,1,.36,1);
 
 .zd-prod {
   display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem;
-  background: #FFFBEC; border: 1px solid #E8D5C0; border-radius: 12px; text-decoration: none;
+  background: #F5F5F7; border: 1px solid #D1D5DB; border-radius: 12px; text-decoration: none;
   transition: all .25s $ease;
   &:hover { border-color: $pink; box-shadow: 0 4px 16px rgba($pink,.1); transform: translateY(-1px); }
   &__emoji { font-size: 1.5rem; flex-shrink: 0; }
@@ -106,14 +106,14 @@ $ease: cubic-bezier(.22,1,.36,1);
 }
 
 .zd-sidebar-card {
-  background: #FFFBEC; border: 1px solid #E8D5C0; border-radius: 16px; padding: 1.5rem;
+  background: #F5F5F7; border: 1px solid #D1D5DB; border-radius: 16px; padding: 1.5rem;
   position: sticky; top: 5.5rem;
-  h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 800; color: $dark; margin-bottom: 1rem; padding-bottom: .75rem; border-bottom: 1px solid #E8D5C0; }
+  h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 800; color: $dark; margin-bottom: 1rem; padding-bottom: .75rem; border-bottom: 1px solid #D1D5DB; }
 }
 
 .zd-sidebar-link {
   display: flex; align-items: center; gap: .5rem; padding: .65rem 0;
-  text-decoration: none; font-size: .88rem; color: #351E09; border-bottom: 1px solid #FFFDF0;
+  text-decoration: none; font-size: .88rem; color: #0A0A0A; border-bottom: 1px solid #F5F5F7;
   transition: color .2s;
   svg { color: $pink; flex-shrink: 0; }
   &__time { margin-left: auto; font-size: .75rem; color: $gray; }

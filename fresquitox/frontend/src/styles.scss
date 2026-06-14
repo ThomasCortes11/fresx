@@ -3,8 +3,8 @@
 /* ══════════════════════════════════════════════════════════
    FRESQUITOX — Brand Identity System (Manual de Marca 2026)
    Rosa fuerte: #FF4677 | Rosa medio: #FF5299 | Rosa pastel: #FF97BD
-   Marrón oscuro: #351E09 | Marrón: #996633 | Naranja: #E08736
-   Crema: #FFFDF0 | Blanco cálido: #FFFBEC
+   Negro: #0A0A0A | Plata: #A8A9AD | Naranja: #E08736
+   Gris claro: #F5F5F7 | Blanco plata: #F5F5F7
    Tipografía: Poppins
    ══════════════════════════════════════════════════════════ */
 
@@ -13,16 +13,16 @@
   --fq-pink-mid: #FF5299;
   --fq-pink-light: #FF97BD;
   --fq-pink-glow: rgba(255, 82, 153, 0.28);
-  --fq-black: #351E09;
-  --fq-dark: #351E09;
-  --fq-gray: #351E09;
-  --fq-gray-mid: #996633;
-  --fq-brown: #996633;
-  --fq-brown-dark: #351E09;
+  --fq-black: #0A0A0A;
+  --fq-dark: #0A0A0A;
+  --fq-gray: #0A0A0A;
+  --fq-gray-mid: #A8A9AD;
+  --fq-silver: #A8A9AD;
+  --fq-silver-dark: #0A0A0A;
   --fq-orange: #E08736;
-  --fq-white: #FFFBEC;
-  --fq-off-white: #FFFDF0;
-  --fq-cream: #FFFDF0;
+  --fq-white: #F5F5F7;
+  --fq-off-white: #F5F5F7;
+  --fq-cream: #F5F5F7;
   --fq-gradient: linear-gradient(135deg, #FF5299 0%, #FF4677 45%, #FF97BD 100%);
   --fq-gradient-dark: linear-gradient(135deg, #FF5299 0%, #FF4677 100%);
   --fq-font-display: 'Poppins', sans-serif;
@@ -30,6 +30,7 @@
   --fq-radius: 16px;
   --fq-radius-sm: 10px;
   --fq-transition: cubic-bezier(0.22, 1, 0.36, 1);
+  --fq-section-bg: linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
 }
 
 *,
@@ -81,7 +82,7 @@ img {
 
   p {
     font-size: 1.1rem;
-    color: rgba(53, 30, 9, 0.72);
+    color: rgba(10, 10, 10, 0.72);
   }
 }
 
@@ -91,7 +92,7 @@ img {
   font-size: 0.9rem;
 
   a {
-    color: rgba(53, 30, 9, 0.68);
+    color: rgba(10, 10, 10, 0.68);
     text-decoration: none;
     transition: color 0.2s;
 
@@ -101,7 +102,7 @@ img {
   }
 
   span {
-    color: rgba(153, 102, 51, 0.65);
+    color: rgba(168, 169, 173, 0.65);
   }
 }
 
@@ -187,7 +188,7 @@ img {
 
     &:hover {
       background: var(--fq-pink);
-      color: #FFFBEC;
+      color: #F5F5F7;
     }
   }
 
@@ -198,13 +199,13 @@ img {
 
     &:hover {
       background: var(--fq-pink);
-      color: #FFFBEC;
+      color: #F5F5F7;
     }
   }
 
   &--whatsapp {
     background: var(--fq-pink);
-    color: #FFFBEC;
+    color: #F5F5F7;
     box-shadow: 0 4px 20px var(--fq-pink-glow);
 
     &:hover {
@@ -223,7 +224,7 @@ img {
 // ── Selection color
 ::selection {
   background: rgba(255, 70, 119, 0.55);
-  color: #FFFBEC;
+  color: #F5F5F7;
 }
 
 // ── Scroll animations — Premium reveal system
@@ -262,7 +263,7 @@ section {
   transition: transform 0.4s var(--fq-transition), box-shadow 0.4s ease;
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(53, 30, 9, 0.12);
+    box-shadow: 0 20px 60px rgba(10, 10, 10, 0.12);
   }
 }
 

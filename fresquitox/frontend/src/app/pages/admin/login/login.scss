@@ -13,8 +13,8 @@
     padding: 2.5rem 2rem;
     border-radius: var(--fq-radius);
     background: var(--fq-white);
-    border: 1px solid rgba(53, 30, 9, 0.08);
-    box-shadow: 0 24px 60px rgba(53, 30, 9, 0.12);
+    border: 1px solid rgba(10, 10, 10, 0.08);
+    box-shadow: 0 24px 60px rgba(10, 10, 10, 0.12);
   }
 
   &__brand {
@@ -76,7 +76,7 @@
     input {
       width: 100%;
       padding: 0.75rem 1rem;
-      border: 1px solid rgba(53, 30, 9, 0.15);
+      border: 1px solid rgba(10, 10, 10, 0.15);
       border-radius: var(--fq-radius-sm);
       font: inherit;
       background: #fff;

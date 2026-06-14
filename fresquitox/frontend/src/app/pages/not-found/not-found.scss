@@ -33,14 +33,14 @@
     font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 800;
-    color: #351E09;
+    color: #0A0A0A;
     margin-bottom: 1rem;
     animation: fadeIn 0.8s ease-out 0.2s both;
   }
 
   &__description {
     font-size: 1.125rem;
-    color: #996633;
+    color: #A8A9AD;
     max-width: 32rem;
     margin: 0 auto 3rem;
     animation: fadeIn 0.8s ease-out 0.3s both;
@@ -58,7 +58,7 @@
   &__links {
     margin-bottom: 3rem;
     animation: fadeIn 0.8s ease-out 0.5s both;
-    h2 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: #351E09; margin-bottom: 2rem; }
+    h2 { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; color: #0A0A0A; margin-bottom: 2rem; }
   }
 
   &__grid {
@@ -72,8 +72,8 @@
     align-items: center;
     gap: 1rem;
     padding: 1.25rem;
-    background: #FFFBEC;
-    border: 1px solid #E8D5C0;
+    background: #F5F5F7;
+    border: 1px solid #D1D5DB;
     border-radius: 0.75rem;
     text-decoration: none;
     transition: all 0.2s ease;
@@ -86,8 +86,8 @@
 
     svg { flex-shrink: 0; color: #FF4677; }
     div { flex: 1; text-align: left; }
-    h3 { font-size: 1rem; font-weight: 600; color: #351E09; margin-bottom: 0.25rem; }
-    p { font-size: 0.875rem; color: #996633; margin: 0; }
+    h3 { font-size: 1rem; font-weight: 600; color: #0A0A0A; margin-bottom: 0.25rem; }
+    p { font-size: 0.875rem; color: #A8A9AD; margin: 0; }
   }
 
   &__emergency {
@@ -102,7 +102,7 @@
 
     svg { flex-shrink: 0; color: #FF4677; }
     div { text-align: left; }
-    strong { display: block; font-size: 1.125rem; color: #351E09; margin-bottom: 0.25rem; }
+    strong { display: block; font-size: 1.125rem; color: #0A0A0A; margin-bottom: 0.25rem; }
     p {
       margin: 0; color: #6B3311; font-size: 0.9375rem;
       a { color: #FF4677; font-weight: 700; text-decoration: none; &:hover { text-decoration: underline; } }
@@ -130,9 +130,9 @@
   }
 
   &--secondary {
-    background: #FFFDF0;
-    color: #351E09;
-    &:hover { background: #E8D5C0; }
+    background: #F5F5F7;
+    color: #0A0A0A;
+    &:hover { background: #D1D5DB; }
   }
 }
 

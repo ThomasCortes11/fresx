@@ -1,9 +1,9 @@
 $pink: #FF4677;
 $pink-mid: #FF5299;
 $pink-light: #FF97BD;
-$dark: #351E09;
-$off: #FFFDF0;
-$gray: #996633;
+$dark: #0A0A0A;
+$off: #F5F5F7;
+$gray: #A8A9AD;
 $ease: cubic-bezier(.22,1,.36,1);
 
 .blog-hero {
@@ -27,13 +27,13 @@ $ease: cubic-bezier(.22,1,.36,1);
 .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
 
 .blog-card {
-  background: #FFFBEC; border: 1px solid #E8D5C0; border-radius: 16px; overflow: hidden;
+  background: #F5F5F7; border: 1px solid #D1D5DB; border-radius: 16px; overflow: hidden;
   text-decoration: none; transition: all .3s $ease;
-  &:hover { border-color: rgba($pink,.3); box-shadow: 0 8px 30px rgba(53, 30, 9,.06); transform: translateY(-3px); }
+  &:hover { border-color: rgba($pink,.3); box-shadow: 0 8px 30px rgba(10, 10, 10,.06); transform: translateY(-3px); }
   &__body { padding: 1.5rem; }
   &__date { font-size: .75rem; color: $gray; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
   h2 { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 800; color: $dark; margin: .5rem 0; line-height: 1.35; }
-  p { font-size: .88rem; color: #996633; line-height: 1.6; margin-bottom: 1rem; }
+  p { font-size: .88rem; color: #A8A9AD; line-height: 1.6; margin-bottom: 1rem; }
   &__link { display: inline-flex; align-items: center; gap: .3rem; color: $pink; font-weight: 700; font-size: .85rem; }
 }
 

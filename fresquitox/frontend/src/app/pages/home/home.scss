@@ -7,19 +7,17 @@
 // ── BENEFITS SECTION (DARK — street editorial rows) ──────
 $b-pink:   #FF4677;
 $b-orange: #E08736;
-$b-brown:  #996633;
-$b-cream:  #FFFBEC;
-$b-dark:   #351E09;
+$b-silver:  #A8A9AD;
+$b-cream:  #F5F5F7;
+$b-dark:   #0A0A0A;
 
 .benefits {
   padding: 0;
   background: 
-    linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-    url('/images/fondosectioncafe.png') center center / cover no-repeat,
-    #996633;
+    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
   position: relative;
   overflow: hidden;
-  border-top: 2px solid rgba(255, 251, 236, 0.25);
+  border-top: 2px solid rgba(168, 169, 173, 0.25);
 
   &__bg {
     position: absolute;
@@ -35,12 +33,12 @@ $b-dark:   #351E09;
 
     &--1 {
       width: 600px; height: 600px;
-      background: rgba(255, 251, 236, 0.15);
+      background: rgba(168, 169, 173, 0.15);
       top: -10%; left: -15%;
     }
     &--2 {
       width: 400px; height: 400px;
-      background: rgba(53, 30, 9, 0.10);
+      background: rgba(10, 10, 10, 0.10);
       bottom: -10%; right: -5%;
     }
   }
@@ -62,15 +60,15 @@ $b-dark:   #351E09;
       0deg,
       transparent,
       transparent 3px,
-      rgba(53, 30, 9, 0.03) 3px,
-      rgba(53, 30, 9, 0.03) 4px
+      rgba(10, 10, 10, 0.03) 3px,
+      rgba(10, 10, 10, 0.03) 4px
     );
   }
 
   // ── Section header ──────────────────────────────────
   &__header {
     padding: 5rem 0 3.5rem;
-    border-bottom: 1px solid rgba(255, 251, 236, 0.30);
+    border-bottom: 1px solid rgba(168, 169, 173, 0.30);
     position: relative;
     z-index: 1;
   }
@@ -109,7 +107,7 @@ $b-dark:   #351E09;
     color: $b-cream;
     letter-spacing: -0.03em;
     margin: 0;
-    text-shadow: 0 2px 8px rgba(53, 30, 9, 0.15);
+    text-shadow: 0 2px 8px rgba(10, 10, 10, 0.15);
 
     span { color: $b-pink; }
   }
@@ -128,7 +126,7 @@ $b-dark:   #351E09;
   align-items: center;
   gap: 2.5rem;
   padding: 2.2rem 0;
-  border-bottom: 1px solid rgba(255, 251, 236, 0.25);
+  border-bottom: 1px solid rgba(168, 169, 173, 0.25);
   position: relative;
   transition: padding-left 0.35s cubic-bezier(0.22, 1, 0.36, 1),
               background 0.35s ease;
@@ -147,7 +145,7 @@ $b-dark:   #351E09;
   }
 
   &:hover {
-    background: rgba(255, 251, 236, 0.12);
+    background: rgba(168, 169, 173, 0.12);
     padding-left: 0.75rem;
 
     &::before { opacity: 1; }
@@ -161,7 +159,7 @@ $b-dark:   #351E09;
     font-family: 'Poppins', sans-serif;
     font-size: clamp(2.8rem, 4vw, 4rem);
     font-weight: 900;
-    color: rgba(255, 251, 236, 0.25);
+    color: rgba(168, 169, 173, 0.25);
     letter-spacing: -0.04em;
     line-height: 1;
     flex-shrink: 0;
@@ -174,7 +172,7 @@ $b-dark:   #351E09;
     flex-shrink: 0;
     width: 1px;
     height: 52px;
-    background: rgba(255, 251, 236, 0.35);
+    background: rgba(168, 169, 173, 0.35);
     transition: background 0.35s ease;
   }
 
@@ -195,8 +193,8 @@ $b-dark:   #351E09;
     justify-content: center;
     flex-shrink: 0;
     border-radius: 10px;
-    border: 1px solid rgba(255, 251, 236, 0.35);
-    background: rgba(255, 251, 236, 0.15);
+    border: 1px solid rgba(168, 169, 173, 0.35);
+    background: rgba(168, 169, 173, 0.15);
 
     svg { display: block; }
   }
@@ -216,7 +214,7 @@ $b-dark:   #351E09;
   &__desc {
     font-family: 'Poppins', sans-serif;
     font-size: 0.88rem;
-    color: rgba(255, 251, 236, 0.80);
+    color: rgba(168, 169, 173, 0.80);
     line-height: 1.65;
     flex: 1;
   }
@@ -236,7 +234,7 @@ $b-dark:   #351E09;
 
     &--pink  { color: #fff; background: $b-pink; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 2px 10px rgba($b-pink, 0.25); }
     &--orange{ color: #fff; background: $b-orange; border: 1px solid rgba(255, 255, 255, 0.25); box-shadow: 0 2px 10px rgba($b-orange, 0.25); }
-    &--cream { color: $b-dark; font-weight: 800; background: $b-cream; border: 1px solid rgba(53, 30, 9, 0.15); box-shadow: 0 2px 10px rgba(255, 251, 236, 0.30); }
+    &--cream { color: $b-dark; font-weight: 800; background: $b-cream; border: 1px solid rgba(10, 10, 10, 0.15); box-shadow: 0 2px 10px rgba(168, 169, 173, 0.30); }
   }
 }
 
@@ -254,10 +252,10 @@ $prod-cream: #FF5299;
 
 .productos-home {
   padding: 8rem 0;
-  background: #FFFBEC;
+  background: #F5F5F7;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(53, 30, 9, 0.08);
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
 
   &__bg {
     position: absolute;
@@ -306,8 +304,8 @@ $prod-cream: #FF5299;
       0deg,
       transparent,
       transparent 2px,
-      rgba(53, 30, 9, 0.012) 2px,
-      rgba(53, 30, 9, 0.012) 4px
+      rgba(10, 10, 10, 0.012) 2px,
+      rgba(10, 10, 10, 0.012) 4px
     );
   }
 
@@ -345,7 +343,7 @@ $prod-cream: #FF5299;
     font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 800;
     line-height: 1.05;
-    color: #351E09;
+    color: #0A0A0A;
     letter-spacing: -0.02em;
 
     span {
@@ -360,7 +358,7 @@ $prod-cream: #FF5299;
 
   &__sub {
     font-size: 1.05rem;
-    color: rgba(53, 30, 9, 0.50);
+    color: rgba(10, 10, 10, 0.50);
     margin-top: 0.85rem;
     max-width: 420px;
   }
@@ -394,8 +392,8 @@ $prod-cream: #FF5299;
     gap: 0.6rem;
     padding: 1rem 2.4rem;
     background: transparent;
-    color: #351E09;
-    border: 1px solid rgba(53, 30, 9, 0.20);
+    color: #0A0A0A;
+    border: 1px solid rgba(10, 10, 10, 0.20);
     border-radius: 50px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
@@ -447,11 +445,11 @@ $prod-cream: #FF5299;
 .pcard {
   position: relative;
   background: rgba(255, 255, 255, 0.60);
-  border: 1px solid rgba(53, 30, 9, 0.08);
+  border: 1px solid rgba(10, 10, 10, 0.08);
   border-radius: 24px;
   padding: 2rem;
   text-decoration: none;
-  color: #351E09;
+  color: #0A0A0A;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -478,7 +476,7 @@ $prod-cream: #FF5299;
     font-family: 'Poppins', sans-serif;
     font-size: 8rem;
     font-weight: 900;
-    color: rgba(53, 30, 9, 0.04);
+    color: rgba(10, 10, 10, 0.04);
     line-height: 1;
     pointer-events: none;
     transition: all 0.5s ease;
@@ -522,12 +520,12 @@ $prod-cream: #FF5299;
     transform: translateY(-12px) scale(1.02);
     border-color: rgba($prod-pink, 0.25);
     box-shadow:
-      0 24px 70px rgba(53, 30, 9, 0.18),
+      0 24px 70px rgba(10, 10, 10, 0.18),
       0 0 50px rgba($prod-pink, 0.12),
       inset 0 1px 0 rgba(255, 255, 255, 0.6);
 
     .pcard__accent { opacity: 1; }
-    .pcard__bg-num { color: rgba(53, 30, 9, 0.07); transform: translateY(-8px); }
+    .pcard__bg-num { color: rgba(10, 10, 10, 0.07); transform: translateY(-8px); }
     .pcard__arrow { transform: rotate(0deg); color: $prod-pink; }
     .pcard__link-line { width: 100%; }
     .pcard__title { color: $prod-pink; }
@@ -544,16 +542,14 @@ $prod-cream: #FF5299;
       font-weight: 700;
       border-color: rgba($prod-orange, 0.4);
       background: 
-        linear-gradient(rgba(224, 135, 54, 0.85), rgba(224, 135, 54, 0.85)),
-        url('/images/fondosectioncafe.png') center center / cover no-repeat,
-        $prod-orange;
+        linear-gradient(rgba(224, 135, 54, 0.92), rgba(224, 135, 54, 0.88));
       box-shadow: 0 2px 8px rgba($prod-orange, 0.25);
     }
     .pcard__link { color: $prod-orange; }
     .pcard__link-line { background: $prod-orange; }
     &:hover {
       border-color: rgba($prod-orange, 0.2);
-      box-shadow: 0 20px 60px rgba(53, 30, 9, 0.15), 0 0 40px rgba($prod-orange, 0.08);
+      box-shadow: 0 20px 60px rgba(10, 10, 10, 0.15), 0 0 40px rgba($prod-orange, 0.08);
       .pcard__arrow { color: $prod-orange; }
       &::after { background: radial-gradient(circle, rgba($prod-orange, 0.06) 0%, transparent 70%); }
     }
@@ -567,16 +563,14 @@ $prod-cream: #FF5299;
       font-weight: 700;
       border-color: rgba($prod-orange, 0.4);
       background: 
-        linear-gradient(rgba(224, 135, 54, 0.85), rgba(224, 135, 54, 0.85)),
-        url('/images/fondosectioncafe.png') center center / cover no-repeat,
-        $prod-orange;
+        linear-gradient(rgba(224, 135, 54, 0.92), rgba(224, 135, 54, 0.88));
       box-shadow: 0 2px 8px rgba($prod-orange, 0.25);
     }
     .pcard__link { color: $prod-orange; }
     .pcard__link-line { background: $prod-orange; }
     &:hover {
       border-color: rgba($prod-orange, 0.2);
-      box-shadow: 0 20px 60px rgba(53, 30, 9, 0.15), 0 0 40px rgba($prod-orange, 0.08);
+      box-shadow: 0 20px 60px rgba(10, 10, 10, 0.15), 0 0 40px rgba($prod-orange, 0.08);
       .pcard__arrow { color: $prod-orange; }
       &::after { background: radial-gradient(circle, rgba($prod-orange, 0.06) 0%, transparent 70%); }
     }
@@ -590,7 +584,7 @@ $prod-cream: #FF5299;
     .pcard__link-line { background: $prod-amber; }
     &:hover {
       border-color: rgba($prod-amber, 0.2);
-      box-shadow: 0 20px 60px rgba(53, 30, 9, 0.15), 0 0 40px rgba($prod-amber, 0.08);
+      box-shadow: 0 20px 60px rgba(10, 10, 10, 0.15), 0 0 40px rgba($prod-amber, 0.08);
       .pcard__arrow { color: $prod-amber; }
       &::after { background: radial-gradient(circle, rgba($prod-amber, 0.06) 0%, transparent 70%); }
     }
@@ -614,7 +608,7 @@ $prod-cream: #FF5299;
   }
 
   &__arrow {
-    color: rgba(53, 30, 9, 0.25);
+    color: rgba(10, 10, 10, 0.25);
     transform: rotate(-45deg);
     transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
@@ -632,14 +626,14 @@ $prod-cream: #FF5299;
     font-family: 'Poppins', sans-serif;
     font-size: 1.3rem;
     font-weight: 800;
-    color: #351E09;
+    color: #0A0A0A;
     letter-spacing: -0.01em;
     transition: color 0.3s ease;
   }
 
   &__desc {
     font-size: 0.88rem;
-    color: rgba(53, 30, 9, 0.50);
+    color: rgba(10, 10, 10, 0.50);
     line-height: 1.65;
   }
 
@@ -716,13 +710,11 @@ $prod-cream: #FF5299;
 .brand-section {
   padding: 10rem 0 8rem;
   background: 
-    radial-gradient(ellipse at 30% 50%, rgba(168, 119, 66, 0.92) 0%, rgba(153, 102, 51, 0.88) 40%, rgba(139, 90, 47, 0.92) 100%),
-    url('/images/fondosectioncafe.png') center center / cover no-repeat,
-    #996633;
+    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
   position: relative;
   overflow: hidden;
   border-top: 2px solid rgba(255, 82, 153, 0.25);
-  box-shadow: inset 0 1px 0 rgba(255, 251, 236, 0.08);
+  box-shadow: inset 0 1px 0 rgba(168, 169, 173, 0.08);
 
   &__bg {
     position: absolute;
@@ -769,8 +761,8 @@ $prod-cream: #FF5299;
       0deg,
       transparent,
       transparent 3px,
-      rgba(255, 251, 236, 0.015) 3px,
-      rgba(255, 251, 236, 0.015) 4px
+      rgba(168, 169, 173, 0.015) 3px,
+      rgba(168, 169, 173, 0.015) 4px
     );
     pointer-events: none;
   }
@@ -782,8 +774,8 @@ $prod-cream: #FF5299;
     z-index: 0;
     opacity: 1;
     background-image:
-      linear-gradient(rgba(255, 251, 236, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 251, 236, 0.04) 1px, transparent 1px);
+      linear-gradient(rgba(168, 169, 173, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 169, 173, 0.04) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
@@ -800,11 +792,11 @@ $prod-cream: #FF5299;
     border-radius: 50%;
     will-change: transform, opacity;
 
-    &--1 { width: 5px; height: 5px; background: rgba(255, 251, 236, 0.40); top: 15%; left: 10%; animation: brandSparkle 10s ease-in-out infinite; box-shadow: 0 0 4px rgba(255, 251, 236, 0.25); }
+    &--1 { width: 5px; height: 5px; background: rgba(168, 169, 173, 0.40); top: 15%; left: 10%; animation: brandSparkle 10s ease-in-out infinite; box-shadow: 0 0 4px rgba(168, 169, 173, 0.25); }
     &--2 { width: 4px; height: 4px; background: rgba(255, 82, 153, 0.35); top: 22%; right: 18%; animation: brandSparkle 12s ease-in-out infinite 1s; }
-    &--3 { width: 6px; height: 6px; background: rgba(255, 251, 236, 0.38); top: 58%; left: 12%; animation: brandSparkle 11s ease-in-out infinite 2s; box-shadow: 0 0 5px rgba(255, 251, 236, 0.20); }
+    &--3 { width: 6px; height: 6px; background: rgba(168, 169, 173, 0.38); top: 58%; left: 12%; animation: brandSparkle 11s ease-in-out infinite 2s; box-shadow: 0 0 5px rgba(168, 169, 173, 0.20); }
     &--4 { width: 4px; height: 4px; background: rgba(224, 135, 54, 0.30); top: 72%; right: 25%; animation: brandSparkle 13s ease-in-out infinite 0.5s; }
-    &--5 { width: 5px; height: 5px; background: rgba(255, 251, 236, 0.35); top: 38%; left: 55%; animation: brandSparkle 9s ease-in-out infinite 3s; }
+    &--5 { width: 5px; height: 5px; background: rgba(168, 169, 173, 0.35); top: 38%; left: 55%; animation: brandSparkle 9s ease-in-out infinite 3s; }
     &--6 { width: 4px; height: 4px; background: rgba(255, 82, 153, 0.30); bottom: 18%; left: 28%; animation: brandSparkle 14s ease-in-out infinite 1.5s; }
   }
 
@@ -816,7 +808,7 @@ $prod-cream: #FF5299;
     &--line1 {
       width: 200px;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 251, 236, 0.12), transparent);
+      background: linear-gradient(90deg, transparent, rgba(168, 169, 173, 0.12), transparent);
       top: 25%;
       right: 10%;
       transform: rotate(-15deg);
@@ -834,7 +826,7 @@ $prod-cream: #FF5299;
     &--circle1 {
       width: 120px;
       height: 120px;
-      border: 1px solid rgba(255, 251, 236, 0.06);
+      border: 1px solid rgba(168, 169, 173, 0.06);
       border-radius: 50%;
       top: 10%;
       left: 5%;
@@ -868,6 +860,23 @@ $prod-cream: #FF5299;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 72%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 82, 153, 0.22) 0%,
+        rgba(168, 169, 173, 0.08) 45%,
+        transparent 72%
+      );
+      z-index: 0;
+      pointer-events: none;
+      animation: brandGlowPulse 5s ease-in-out infinite;
+    }
   }
 
   &__ring {
@@ -894,22 +903,15 @@ $prod-cream: #FF5299;
     object-fit: contain;
     position: relative;
     z-index: 1;
-    filter:
-      drop-shadow(0 0 22px rgba(255, 82, 153, 0.40))
-      drop-shadow( 2px  0   0 rgba(255, 82, 153, 0.85))
-      drop-shadow(-2px  0   0 rgba(255, 82, 153, 0.85))
-      drop-shadow( 0    2px 0 rgba(255, 82, 153, 0.85))
-      drop-shadow( 0   -2px 0 rgba(255, 82, 153, 0.85));
+    display: block;
+    filter: drop-shadow(0 0 28px rgba(255, 82, 153, 0.45));
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 52%, transparent 76%);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 52%, transparent 76%);
     animation: brandMascotFloat 5s ease-in-out infinite;
     transition: filter 0.5s ease;
 
     &:hover {
-      filter:
-        drop-shadow(0 0 36px rgba(255, 82, 153, 0.60))
-        drop-shadow( 2px  0   0 rgba(255, 82, 153, 1))
-        drop-shadow(-2px  0   0 rgba(255, 82, 153, 1))
-        drop-shadow( 0    2px 0 rgba(255, 82, 153, 1))
-        drop-shadow( 0   -2px 0 rgba(255, 82, 153, 1));
+      filter: drop-shadow(0 0 42px rgba(255, 82, 153, 0.65));
     }
   }
 
@@ -920,7 +922,7 @@ $prod-cream: #FF5299;
     background: rgba(0, 0, 0, 0.12);
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 251, 236, 0.08);
+    border: 1px solid rgba(168, 169, 173, 0.08);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
 
@@ -970,7 +972,7 @@ $prod-cream: #FF5299;
   &__text {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
-    color: rgba(255, 251, 236, 0.85);
+    color: rgba(168, 169, 173, 0.85);
     line-height: 1.75;
     max-width: 480px;
     margin-bottom: 2rem;
@@ -1010,7 +1012,7 @@ $prod-cream: #FF5299;
     span {
       font-size: 0.7rem;
       font-weight: 600;
-      color: rgba(255, 251, 236, 0.60);
+      color: rgba(168, 169, 173, 0.60);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-top: 0.25rem;
@@ -1020,7 +1022,7 @@ $prod-cream: #FF5299;
   &__stat-sep {
     width: 1px;
     height: 28px;
-    background: rgba(255, 251, 236, 0.30);
+    background: rgba(168, 169, 173, 0.30);
   }
 
   // ── Buttons
@@ -1068,9 +1070,9 @@ $prod-cream: #FF5299;
     }
 
     &--outline {
-      background: rgba(255, 251, 236, 0.06);
+      background: rgba(168, 169, 173, 0.06);
       color: #fff;
-      border: 1.5px solid rgba(255, 251, 236, 0.25);
+      border: 1.5px solid rgba(168, 169, 173, 0.25);
 
       &:hover {
         border-color: rgba(255, 70, 119, 0.5);
@@ -1085,6 +1087,11 @@ $prod-cream: #FF5299;
 @keyframes brandMascotFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+@keyframes brandGlowPulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
 }
 
 @keyframes brandRingSpin {
@@ -1117,7 +1124,7 @@ $prod-cream: #FF5299;
   background: var(--fq-off-white);
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(53, 30, 9, 0.08);
+  border-top: 1px solid rgba(10, 10, 10, 0.08);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 
   // ── 2-col layout
@@ -1235,13 +1242,13 @@ $prod-cream: #FF5299;
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.15rem;
-  background: #FFFBEC;
-  border: 1px solid rgba(53, 30, 9, 0.05);
+  background: #F5F5F7;
+  border: 1px solid rgba(10, 10, 10, 0.05);
   border-radius: 14px;
   text-decoration: none;
   color: var(--fq-dark);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 1px 4px rgba(53, 30, 9, 0.03);
+  box-shadow: 0 1px 4px rgba(10, 10, 10, 0.03);
 
   &__icon {
     font-size: 1.2rem;
@@ -1273,7 +1280,7 @@ $prod-cream: #FF5299;
 
   &__arrow {
     margin-left: auto;
-    color: rgba(53, 30, 9, 0.15);
+    color: rgba(10, 10, 10, 0.15);
     flex-shrink: 0;
     transition: all 0.3s ease;
   }
@@ -1296,12 +1303,10 @@ $prod-cream: #FF5299;
 .cta-final {
   padding: 7rem 0;
   background: 
-    linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-    url('/images/fondosectioncafe.png') center center / cover no-repeat,
-    #996633;
+    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
   position: relative;
   overflow: hidden;
-  border-top: 2px solid rgba(255, 251, 236, 0.25);
+  border-top: 2px solid rgba(168, 169, 173, 0.25);
 
   &__bg {
     position: absolute;
@@ -1328,7 +1333,7 @@ $prod-cream: #FF5299;
       height: 300px;
       bottom: -10%;
       left: 10%;
-      background: rgba(255, 251, 236, 0.10);
+      background: rgba(168, 169, 173, 0.10);
     }
   }
 
@@ -1337,8 +1342,8 @@ $prod-cream: #FF5299;
     inset: 0;
     opacity: 0.5;
     background-image:
-      linear-gradient(rgba(255, 251, 236, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 251, 236, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(168, 169, 173, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 169, 173, 0.05) 1px, transparent 1px);
     background-size: 80px 80px;
   }
 
@@ -1350,8 +1355,8 @@ $prod-cream: #FF5299;
       0deg,
       transparent,
       transparent 2px,
-      rgba(53, 30, 9, 0.03) 2px,
-      rgba(53, 30, 9, 0.03) 4px
+      rgba(10, 10, 10, 0.03) 2px,
+      rgba(10, 10, 10, 0.03) 4px
     );
   }
 
@@ -1413,7 +1418,7 @@ $prod-cream: #FF5299;
     line-height: 1;
     letter-spacing: -0.03em;
 
-    &--1 { color: #FFFBEC; text-shadow: 0 2px 12px rgba(53, 30, 9, 0.20); }
+    &--1 { color: #F5F5F7; text-shadow: 0 2px 12px rgba(10, 10, 10, 0.20); }
     &--2 {
       background: linear-gradient(135deg, #FF4677, #FF5299, #FF97BD);
       -webkit-background-clip: text;
@@ -1426,7 +1431,7 @@ $prod-cream: #FF5299;
   &__sub {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
-    color: rgba(255, 251, 236, 0.80);
+    color: rgba(168, 169, 173, 0.80);
     line-height: 1.7;
     margin-bottom: 2rem;
     max-width: 400px;
@@ -1450,17 +1455,17 @@ $prod-cream: #FF5299;
     font-family: 'Poppins', sans-serif;
     font-size: 0.75rem;
     font-weight: 600;
-    color: rgba(255, 251, 236, 0.85);
+    color: rgba(168, 169, 173, 0.85);
     letter-spacing: 0.02em;
     padding: 0.45rem 1rem;
-    background: rgba(255, 251, 236, 0.10);
-    border: 1px solid rgba(255, 251, 236, 0.25);
+    background: rgba(168, 169, 173, 0.10);
+    border: 1px solid rgba(168, 169, 173, 0.25);
     border-radius: 50px;
     transition: all 0.3s ease;
 
     &:hover {
       border-color: rgba(255, 70, 119, 0.45);
-      background: rgba(255, 251, 236, 0.18);
+      background: rgba(168, 169, 173, 0.18);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
@@ -1492,7 +1497,7 @@ $prod-cream: #FF5299;
     width: 75%;
     height: 75%;
     border-radius: 50%;
-    border: 1.5px solid rgba(255, 251, 236, 0.15);
+    border: 1.5px solid rgba(168, 169, 173, 0.15);
     animation: ctaRingSpin 45s linear infinite;
 
     &::before {
@@ -1500,7 +1505,7 @@ $prod-cream: #FF5299;
       position: absolute;
       inset: -15%;
       border-radius: 50%;
-      border: 1px dashed rgba(255, 251, 236, 0.10);
+      border: 1px dashed rgba(168, 169, 173, 0.10);
       animation: ctaRingSpin 70s linear infinite reverse;
     }
 
@@ -1534,22 +1539,15 @@ $prod-cream: #FF5299;
     object-fit: contain;
     position: relative;
     z-index: 1;
-    filter:
-      drop-shadow(0 0 22px rgba(255, 82, 153, 0.40))
-      drop-shadow( 2px  0   0 rgba(255, 82, 153, 0.85))
-      drop-shadow(-2px  0   0 rgba(255, 82, 153, 0.85))
-      drop-shadow( 0    2px 0 rgba(255, 82, 153, 0.85))
-      drop-shadow( 0   -2px 0 rgba(255, 82, 153, 0.85));
+    display: block;
+    filter: drop-shadow(0 0 28px rgba(255, 82, 153, 0.45));
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 52%, transparent 76%);
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 52%, transparent 76%);
     animation: ctaMascotFloat 5s ease-in-out infinite;
     transition: filter 0.4s ease;
 
     &:hover {
-      filter:
-        drop-shadow(0 0 36px rgba(255, 82, 153, 0.60))
-        drop-shadow( 2px  0   0 rgba(255, 82, 153, 1))
-        drop-shadow(-2px  0   0 rgba(255, 82, 153, 1))
-        drop-shadow( 0    2px 0 rgba(255, 82, 153, 1))
-        drop-shadow( 0   -2px 0 rgba(255, 82, 153, 1));
+      filter: drop-shadow(0 0 42px rgba(255, 82, 153, 0.65));
     }
   }
 }

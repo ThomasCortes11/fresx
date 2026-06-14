@@ -218,20 +218,20 @@ $green-store: #22C55E;
 // ── Light theme ──────────────────────────────────────
 
 .dlv--light {
-  .dlv__label { color: rgba(53, 30, 9, 0.75); }
+  .dlv__label { color: rgba(10, 10, 10, 0.75); }
 
   .dlv__card {
-    border-color: rgba(53, 30, 9, 0.18);
+    border-color: rgba(10, 10, 10, 0.18);
     background: rgba(255, 255, 255, 0.65);
-    box-shadow: 0 2px 12px rgba(53, 30, 9, 0.06);
+    box-shadow: 0 2px 12px rgba(10, 10, 10, 0.06);
 
-    &-name { color: #351E09; }
-    &-desc { color: rgba(53, 30, 9, 0.55); }
-    &-arrow { color: rgba(53, 30, 9, 0.25); }
+    &-name { color: #0A0A0A; }
+    &-desc { color: rgba(10, 10, 10, 0.55); }
+    &-arrow { color: rgba(10, 10, 10, 0.25); }
 
     &:hover {
-      border-color: rgba(53, 30, 9, 0.15);
-      .dlv__card-arrow { color: rgba(53, 30, 9, 0.5); }
+      border-color: rgba(10, 10, 10, 0.15);
+      .dlv__card-arrow { color: rgba(10, 10, 10, 0.5); }
     }
 
     &--didi:hover { border-color: rgba($orange-didi, 0.4); box-shadow: 0 8px 32px rgba($orange-didi, 0.1); }

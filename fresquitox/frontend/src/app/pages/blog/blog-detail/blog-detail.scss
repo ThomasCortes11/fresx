@@ -7,11 +7,11 @@
 $pink: #FF4677;
 $pink-mid: #FF5299;
 $pink-light: #FF97BD;
-$dark: #351E09;
-$off: #FFFDF0;
-$txt: #351E09;
+$dark: #0A0A0A;
+$off: #F5F5F7;
+$txt: #0A0A0A;
 $txt2: #6B3311;
-$txt3: #996633;
+$txt3: #A8A9AD;
 $bdr: #E5E7EB;
 
 /* Progress bar */
@@ -127,7 +127,7 @@ $bdr: #E5E7EB;
   width: 7px; height: 7px; border-radius: 50%; background: $pink;
 }
 .bd-page .bd-list li strong { color: $txt; font-weight: 700; }
-.bd-page .bd-list li + li { border-top: 1px solid rgba(53, 30, 9,0.04); }
+.bd-page .bd-list li + li { border-top: 1px solid rgba(10, 10, 10,0.04); }
 
 /* CTA box */
 .bd-page .bd-cta-box {
@@ -165,8 +165,8 @@ $bdr: #E5E7EB;
   position: sticky; top: 5rem; display: flex; flex-direction: column; gap: 1.5rem;
 }
 .bd-page .bd-card {
-  background: #FFFBEC; border-radius: 16px; padding: 1.5rem;
-  box-shadow: 0 1px 4px rgba(53, 30, 9,0.06), 0 6px 20px rgba(53, 30, 9,0.04);
+  background: #F5F5F7; border-radius: 16px; padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(10, 10, 10,0.06), 0 6px 20px rgba(10, 10, 10,0.04);
 }
 .bd-page .bd-card h3 {
   font-size: 1rem; font-weight: 700; color: $txt;

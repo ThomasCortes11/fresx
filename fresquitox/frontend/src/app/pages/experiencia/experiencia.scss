@@ -1,19 +1,17 @@
 $pink: #FF4677;
 $pink-mid: #FF5299;
 $pink-light: #FF97BD;
-$dark: #1a0e04;
-$off: #FFFDF0;
-$gray: #996633;
-$brown: #996633;
+$dark: #0A0A0A;
+$off: #F5F5F7;
+$gray: #A8A9AD;
+$silver: #A8A9AD;
 $ease: cubic-bezier(.22, 1, .36, 1);
 
 // ── HERO ──
 .exp-hero {
   position: relative;
   background: 
-    linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-    url('/images/fondosectioncafe.png') center center / cover no-repeat,
-    $brown;
+    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
   color: #fff;
   padding: 6rem 1rem 4rem;
   text-align: center;
@@ -80,7 +78,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
   gap: 3rem;
   align-items: center;
   padding: 3rem 0;
-  border-bottom: 1px solid #E8D5C0;
+  border-bottom: 1px solid #D1D5DB;
 
   &--reverse { grid-template-columns: 1fr 320px; .exp-card__visual { order: 2; } .exp-card__content { order: 1; } }
 
@@ -91,9 +89,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
     justify-content: center;
     height: 280px;
     background: 
-      linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-      url('/images/fondosectioncafe.png') center center / cover no-repeat,
-      $brown;
+      linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
     border-radius: 24px;
     overflow: hidden;
   }
@@ -146,7 +142,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
   &__experience {
     margin-bottom: 1.5rem;
     h3 { font-size: .85rem; font-weight: 700; color: $dark; margin-bottom: .5rem; }
-    p { font-size: .92rem; line-height: 1.7; color: #996633; strong { color: $dark; } }
+    p { font-size: .92rem; line-height: 1.7; color: #A8A9AD; strong { color: $dark; } }
   }
 
   &__senses {
@@ -197,9 +193,7 @@ $ease: cubic-bezier(.22, 1, .36, 1);
 .exp-cta {
   position: relative;
   background: 
-    linear-gradient(rgba(153, 102, 51, 0.85), rgba(153, 102, 51, 0.85)),
-    url('/images/fondosectioncafe.png') center center / cover no-repeat,
-    $brown;
+    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
   color: #fff;
   padding: 5rem 1rem;
   text-align: center;

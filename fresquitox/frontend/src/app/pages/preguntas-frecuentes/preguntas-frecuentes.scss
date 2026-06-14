@@ -1,9 +1,9 @@
 $pink: #FF4677;
 $pink-mid: #FF5299;
 $pink-light: #FF97BD;
-$dark: #351E09;
-$off: #FFFDF0;
-$gray: #996633;
+$dark: #0A0A0A;
+$off: #F5F5F7;
+$gray: #A8A9AD;
 $ease: cubic-bezier(.22,1,.36,1);
 
 .faq-hero {
@@ -29,7 +29,7 @@ $ease: cubic-bezier(.22,1,.36,1);
 .faq-list { display: flex; flex-direction: column; gap: .5rem; }
 
 .faq-item {
-  background: #FFFBEC; border: 1px solid #E8D5C0; border-radius: 14px; overflow: hidden;
+  background: #F5F5F7; border: 1px solid #D1D5DB; border-radius: 14px; overflow: hidden;
   transition: border-color .25s;
   &--open { border-color: rgba($pink,.3); }
   &__trigger {
@@ -42,7 +42,7 @@ $ease: cubic-bezier(.22,1,.36,1);
   &--open &__icon { transform: rotate(45deg); }
   &__v { transition: opacity .2s; }
   &--open &__v { opacity: 0; }
-  &__body { padding: 0 1.25rem 1.25rem 3rem; p { font-size: .92rem; color: #996633; line-height: 1.7; } }
+  &__body { padding: 0 1.25rem 1.25rem 3rem; p { font-size: .92rem; color: #A8A9AD; line-height: 1.7; } }
 }
 
 .faq-sidebar {

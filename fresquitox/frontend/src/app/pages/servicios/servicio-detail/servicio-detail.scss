@@ -3,7 +3,7 @@
 // ══════════════════════════════════════════════════════════
 
 .pd-hero {
-  position: relative; background: #351E09; padding: 5rem 0 4rem; overflow: hidden;
+  position: relative; background: #0A0A0A; padding: 5rem 0 4rem; overflow: hidden;
 
   &__bg { position: absolute; inset: 0; pointer-events: none; }
   &__orb {
@@ -72,7 +72,7 @@
   }
 
   &__text p {
-    font-size: 0.95rem; color: #996633; line-height: 1.8;
+    font-size: 0.95rem; color: #A8A9AD; line-height: 1.8;
     margin-bottom: 1rem;
     &:last-child { margin-bottom: 0; }
   }
@@ -90,7 +90,7 @@
   &__sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
 
   &__card {
-    background: #351E09; border-radius: 20px; padding: 2rem;
+    background: #0A0A0A; border-radius: 20px; padding: 2rem;
     h3 { font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
     p { font-size: 0.9rem; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; line-height: 1.6; }
   }
