@@ -142,7 +142,7 @@ export default class AdminProductos {
     const existing = this.svc.productos().find((p) => p.id === id);
     const producto: ProductoAdmin = {
       id,
-      slug: this.svc.slugify(v.nombre ?? ''),
+      slug: existing?.slug ?? this.svc.slugify(v.nombre ?? '', id),
       nombre: v.nombre ?? '',
       descripcionCorta: v.descripcionCorta ?? '',
       precio: v.precio ?? '',

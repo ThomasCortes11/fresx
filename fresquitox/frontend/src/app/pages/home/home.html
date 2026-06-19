@@ -99,7 +99,7 @@
     </div>
 
     <div class="productos-home__grid">
-      @for (producto of productosDestacados; track producto.slug; let i = $index) {
+      @for (producto of productosDestacados(); track producto.slug; let i = $index) {
         <a [routerLink]="['/productos']" class="pcard" data-animate="fade-up" [attr.data-animate-delay]="i * 120">
           <div class="pcard__accent"></div>
           <span class="pcard__bg-num">0{{ i + 1 }}</span>

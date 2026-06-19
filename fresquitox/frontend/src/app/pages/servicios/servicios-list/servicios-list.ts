@@ -2,7 +2,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../../core/services/seo.service';
-import { SERVICIOS, CATEGORIAS, CategoriaProducto, Servicio } from '../../../shared/data/servicios.data';
+import { CATEGORIAS, CategoriaProducto } from '../../../shared/data/servicios.data';
 import { CONTACT_INFO } from '../../../shared/constants/contact-info';
 import { DeliveryOptions } from '../../../shared/components/delivery-options/delivery-options';
 import { ProductosService, ProductoAdmin } from '../../../core/services/productos.service';
@@ -36,18 +36,22 @@ export default class ServiciosList implements OnInit {
   readonly contact = CONTACT_INFO;
 
   readonly serviciosPorCategoria = computed<Record<CategoriaProducto, ProductoVista[]>>(() => {
-    const adminActivos = this.productosSvc.getActivos();
-    const mezclar = (cat: CategoriaProducto): ProductoVista[] => {
-      const estaticos: ProductoVista[] = SERVICIOS
-        .filter(s => s.categoria === cat)
-        .map(s => ({ ...s, etiquetas: [] }));
-      const admin: ProductoVista[] = adminActivos
-        .filter(p => p.categoria === cat)
-        .map(p => ({ ...p, esAdmin: true }));
-      return [...estaticos, ...admin];
+    const activos = this.productosSvc.productos().filter((p) => p.activo);
+    const porCat = (cat: CategoriaProducto): ProductoVista[] =>
+      activos
+        .filter((p) => p.categoria === cat)
+        .map((p) => this.toVista(p));
+    return {
+      clasicos: porCat('clasicos'),
+      naturales: porCat('naturales'),
+      premium: porCat('premium'),
     };
-    return { clasicos: mezclar('clasicos'), naturales: mezclar('naturales'), premium: mezclar('premium') };
   });
+
+  private toVista(p: ProductoAdmin): ProductoVista {
+    const esAdmin = p.slug.startsWith('admin-') || p.id.startsWith('fq-');
+    return { ...p, etiquetas: p.etiquetas, esAdmin };
+  }
 
   whatsappUrl(nombre: string): string {
     return `https://wa.me/573213728768?text=${encodeURIComponent(`Hola! Quiero pedir: ${nombre}`)}`;
@@ -59,11 +63,28 @@ export default class ServiciosList implements OnInit {
   }
 
   constructor() {
-    afterNextRender(() => {
-      if (isPlatformBrowser(this.platformId)) {
-        this.productosSvc.reload();
-      }
-      this.initScrollAnimations();
+    afterNextRender(() => this.initScrollAnimations());
+  }
+
+  private cargarProductos(): void {
+    this.productosSvc.loadActivos().subscribe(() => this.actualizarJsonLd());
+  }
+
+  private actualizarJsonLd(): void {
+    const activos = this.productosSvc.productos().filter((p) => p.activo);
+    if (!activos.length) return;
+    this.seo.setJsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Productos Fresquitox',
+      description: 'Menú de refrescos artesanales en Bogotá',
+      itemListElement: activos.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: s.nombre,
+        url: `https://www.fresquitox.com/productos/${s.slug}`,
+        description: s.descripcionCorta,
+      })),
     });
   }
 
@@ -85,6 +106,10 @@ export default class ServiciosList implements OnInit {
   }
 
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.cargarProductos();
+    }
+
     this.seo.updateSeo({
       title: 'Productos | Fresquitox \u2014 Granizados, Jugos y M\u00e1s',
       description: 'Descubre nuestro men\u00fa de refrescos artesanales: granizados, raspados, jugos naturales, limonadas, smoothies y m\u00e1s. Pide a domicilio en Bogot\u00e1. Fresquitox.',
@@ -92,18 +117,5 @@ export default class ServiciosList implements OnInit {
       canonicalUrl: '/productos'
     });
 
-    this.seo.setJsonLd({
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      'name': 'Productos Fresquitox',
-      'description': 'Men\u00fa de refrescos artesanales en Bogot\u00e1',
-      'itemListElement': SERVICIOS.map((s, i) => ({
-        '@type': 'ListItem',
-        'position': i + 1,
-        'name': s.nombre,
-        'url': `https://www.fresquitox.com/productos/${s.slug}`,
-        'description': s.descripcionCorta
-      }))
-    });
   }
 }

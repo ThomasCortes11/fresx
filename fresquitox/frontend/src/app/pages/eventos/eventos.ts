@@ -1,4 +1,5 @@
-﻿import { Component, OnInit, inject, afterNextRender, DestroyRef, ElementRef, signal, computed } from '@angular/core';
+﻿import { Component, OnInit, inject, afterNextRender, DestroyRef, ElementRef, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
@@ -18,6 +19,7 @@ export default class Eventos implements OnInit {
   private readonly el = inject(ElementRef);
   private readonly destroyRef = inject(DestroyRef);
   readonly eventosSvc = inject(EventosService);
+  private readonly platformId = inject(PLATFORM_ID);
   readonly contact = CONTACT_INFO;
 
   filtroActivo = 'todos';
@@ -53,7 +55,12 @@ export default class Eventos implements OnInit {
   }
 
   constructor() {
-    afterNextRender(() => this.initScrollAnimations());
+    afterNextRender(() => {
+      if (isPlatformBrowser(this.platformId)) {
+        this.eventosSvc.reload().subscribe();
+      }
+      this.initScrollAnimations();
+    });
   }
 
   setFiltro(key: string): void {

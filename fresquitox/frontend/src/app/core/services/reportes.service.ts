@@ -1,5 +1,9 @@
-import { Injectable, signal, computed, PLATFORM_ID, inject } from '@angular/core';
+import { Injectable, signal, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { API } from '../config/api-endpoints';
 
 export type TipoMovimiento = 'ingreso' | 'gasto';
 
@@ -32,41 +36,49 @@ export const CATEGORIAS_GASTO: { id: CategoriaGasto; label: string }[] = [
   { id: 'otro',         label: 'Otro' },
 ];
 
-const KEY = 'fq_reportes';
-
 @Injectable({ providedIn: 'root' })
 export class ReportesService {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly http = inject(HttpClient);
   private get isBrowser() { return isPlatformBrowser(this.platformId); }
 
-  readonly movimientos = signal<Movimiento[]>(this.load());
+  readonly movimientos = signal<Movimiento[]>([]);
+  readonly error = signal<string | null>(null);
 
-  private load(): Movimiento[] {
-    if (!this.isBrowser) return [];
-    try {
-      const raw = localStorage.getItem(KEY);
-      return raw ? (JSON.parse(raw) as Movimiento[]) : [];
-    } catch { return []; }
+  constructor() {
+    if (this.isBrowser) this.reload().subscribe();
   }
 
-  private save(list: Movimiento[]): void {
-    if (this.isBrowser) localStorage.setItem(KEY, JSON.stringify(list));
-    this.movimientos.set(list);
+  reload(): Observable<void> {
+    return this.http.get<Movimiento[]>(API.movimientos).pipe(
+      tap((list) => {
+        this.movimientos.set(list);
+        this.error.set(null);
+      }),
+      catchError((err) => {
+        console.error('[ReportesService]', err);
+        this.movimientos.set([]);
+        this.error.set('No se pudo cargar reportes');
+        return of([]);
+      }),
+      map(() => void 0)
+    );
   }
 
   agregar(m: Omit<Movimiento, 'id'>): void {
-    this.save([{ id: `r${Date.now()}`, ...m }, ...this.movimientos()]);
+    this.http.post<Movimiento>(API.movimientos, m).subscribe({
+      next: (mov) => this.movimientos.update((list) => [mov, ...list]),
+      error: (err) => console.error('[ReportesService] agregar', err),
+    });
   }
 
   eliminar(id: string): void {
-    this.save(this.movimientos().filter(m => m.id !== id));
+    this.http.delete(API.movimiento(id)).subscribe({
+      next: () => this.movimientos.update((list) => list.filter((x) => x.id !== id)),
+      error: (err) => console.error('[ReportesService] eliminar', err),
+    });
   }
 
-  reload(): void {
-    this.movimientos.set(this.load());
-  }
-
-  // ── Filtros ───────────────────────────────────────────────────────────────
   filtrarPorPeriodo(movs: Movimiento[], periodo: 'hoy' | 'semana' | 'todo'): Movimiento[] {
     if (periodo === 'todo') return movs;
     const ahora = Date.now();
@@ -84,14 +96,12 @@ export class ReportesService {
     });
   }
 
-  // Devuelve todos los meses que tienen al menos un movimiento
   mesesDisponibles(movs: Movimiento[]): { anio: number; mes: number; label: string }[] {
     const set = new Set<string>();
     for (const m of movs) {
       const d = new Date(m.fecha);
       set.add(`${d.getFullYear()}-${d.getMonth()}`);
     }
-    // Siempre incluir el mes actual y el anterior
     const now = new Date();
     set.add(`${now.getFullYear()}-${now.getMonth()}`);
     const prev = new Date(now.getFullYear(), now.getMonth() - 1);
@@ -115,7 +125,6 @@ export class ReportesService {
     return mes === 0 ? { anio: anio - 1, mes: 11 } : { anio, mes: mes - 1 };
   }
 
-  // ── Computed helpers ──────────────────────────────────────────────────────
   resumen(movs: Movimiento[]) {
     const ingresos = movs.filter(m => m.tipo === 'ingreso').reduce((s, m) => s + m.monto, 0);
     const gastos   = movs.filter(m => m.tipo === 'gasto').reduce((s, m) => s + m.monto, 0);

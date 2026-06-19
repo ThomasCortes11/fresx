@@ -13,6 +13,7 @@ import { ReportesService, CATEGORIAS_GASTO, TipoMovimiento, CategoriaGasto } fro
 import { ChatbotService, FaqItem } from '../../../core/services/chatbot.service';
 import { EventosService, Evento, TipoEvento } from '../../../core/services/eventos.service';
 import { CATEGORIAS, CategoriaProducto } from '../../../shared/data/servicios.data';
+import { forkJoin } from 'rxjs';
 
 type Tab = 'resumen' | 'pedidos' | 'reportes' | 'productos' | 'mesas' | 'chatbot' | 'eventos';
 type Periodo = 'hoy' | 'semana' | 'todo' | 'mes';
@@ -38,21 +39,28 @@ export default class AdminDashboard implements OnDestroy {
   readonly baseUrl  = signal('');
   readonly ahora    = signal(Date.now());
   private tickTimer: ReturnType<typeof setInterval> | null = null;
+  private pedidosPollTimer: ReturnType<typeof setInterval> | null = null;
 
   constructor() {
     afterNextRender(() => {
       if (isPlatformBrowser(this.platformId)) {
         this.baseUrl.set(window.location.origin);
-        this.mesasSvc.reload();
-        this.reportesSvc.reload();
+        forkJoin([
+          this.productosSvc.reload(),
+          this.mesasSvc.reload(),
+          this.eventosSvc.reload(),
+          this.reportesSvc.reload(),
+        ]).subscribe();
         this.chatbotSvc.reload();
         this.tickTimer = setInterval(() => this.ahora.set(Date.now()), 30_000);
+        this.pedidosPollTimer = setInterval(() => this.mesasSvc.reload().subscribe(), 15_000);
       }
     });
   }
 
   ngOnDestroy(): void {
     if (this.tickTimer) clearInterval(this.tickTimer);
+    if (this.pedidosPollTimer) clearInterval(this.pedidosPollTimer);
   }
 
   tiempoDesde(ts: number): string {
@@ -560,7 +568,7 @@ export default class AdminDashboard implements OnDestroy {
     const existing = this.productosSvc.productos().find((p) => p.id === id);
     const producto: ProductoAdmin = {
       id,
-      slug: this.productosSvc.slugify(v.nombre ?? ''),
+      slug: existing?.slug ?? this.productosSvc.slugify(v.nombre ?? '', id),
       nombre: v.nombre ?? '',
       descripcionCorta: v.descripcionCorta ?? '',
       precio: v.precio ?? '',

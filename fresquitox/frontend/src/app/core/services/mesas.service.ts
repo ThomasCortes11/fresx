@@ -1,5 +1,9 @@
 import { Injectable, signal, computed, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin, Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+import { API } from '../config/api-endpoints';
 
 export interface Mesa {
   id: string;
@@ -28,23 +32,15 @@ export interface PedidoMesa {
   fechaCreacion: number;
 }
 
-const MESAS_KEY   = 'fq_mesas';
-const PEDIDOS_KEY = 'fq_pedidos';
-
-const MESAS_DEFAULT: Mesa[] = [
-  { id: 'm1', numero: 1, nombre: 'Mesa 1', activa: true },
-  { id: 'm2', numero: 2, nombre: 'Mesa 2', activa: true },
-  { id: 'm3', numero: 3, nombre: 'Mesa 3', activa: true },
-  { id: 'm4', numero: 4, nombre: 'Barra',  activa: true },
-];
-
 @Injectable({ providedIn: 'root' })
 export class MesasService {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly http = inject(HttpClient);
   private get isBrowser() { return isPlatformBrowser(this.platformId); }
 
-  readonly mesas   = signal<Mesa[]>(this.loadMesas());
-  readonly pedidos = signal<PedidoMesa[]>(this.loadPedidos());
+  readonly mesas = signal<Mesa[]>([]);
+  readonly pedidos = signal<PedidoMesa[]>([]);
+  readonly error = signal<string | null>(null);
 
   readonly pedidosActivos = computed(() =>
     this.pedidos().filter(p => p.estado !== 'entregado')
@@ -57,88 +53,95 @@ export class MesasService {
     }))
   );
 
-  private loadMesas(): Mesa[] {
-    if (!this.isBrowser) return MESAS_DEFAULT;
-    try {
-      const raw = localStorage.getItem(MESAS_KEY);
-      return raw ? (JSON.parse(raw) as Mesa[]) : MESAS_DEFAULT;
-    } catch { return MESAS_DEFAULT; }
+  constructor() {
+    if (this.isBrowser) this.reload().subscribe();
   }
 
-  private loadPedidos(): PedidoMesa[] {
-    if (!this.isBrowser) return [];
-    try {
-      const raw = localStorage.getItem(PEDIDOS_KEY);
-      return raw ? (JSON.parse(raw) as PedidoMesa[]) : [];
-    } catch { return []; }
+  reload(): Observable<void> {
+    if (!this.isBrowser) return of(void 0);
+    return forkJoin({
+      mesas: this.http.get<Mesa[]>(API.mesas),
+      pedidos: this.http.get<PedidoMesa[]>(API.pedidos),
+    }).pipe(
+      tap(({ mesas, pedidos }) => {
+        this.mesas.set(mesas);
+        this.pedidos.set(pedidos);
+        this.error.set(null);
+      }),
+      catchError((err) => {
+        console.error('[MesasService]', err);
+        this.mesas.set([]);
+        this.pedidos.set([]);
+        this.error.set('No se pudo cargar mesas/pedidos');
+        return of({ mesas: [], pedidos: [] });
+      }),
+      map(() => void 0)
+    );
   }
 
-  private saveMesas(list: Mesa[]): void {
-    if (this.isBrowser) localStorage.setItem(MESAS_KEY, JSON.stringify(list));
-    this.mesas.set(list);
-  }
-
-  private savePedidos(list: PedidoMesa[]): void {
-    if (this.isBrowser) localStorage.setItem(PEDIDOS_KEY, JSON.stringify(list));
-    this.pedidos.set(list);
-  }
-
-  // ── Mesas CRUD ────────────────────────────────────────────────────────────
   agregarMesa(nombre: string): void {
-    const mesas = this.mesas();
-    const numero = mesas.length > 0 ? Math.max(...mesas.map(m => m.numero)) + 1 : 1;
-    this.saveMesas([...mesas, {
-      id: `m${Date.now()}`,
-      numero,
-      nombre: nombre || `Mesa ${numero}`,
-      activa: true,
-    }]);
+    this.http.post<Mesa>(API.mesas, { nombre }).subscribe({
+      next: () => this.reload().subscribe(),
+      error: (err) => console.error('[MesasService] agregarMesa', err),
+    });
   }
 
   eliminarMesa(id: string): void {
-    this.saveMesas(this.mesas().filter(m => m.id !== id));
+    this.http.delete(API.mesa(id)).subscribe({
+      next: () => this.reload().subscribe(),
+      error: (err) => console.error('[MesasService] eliminarMesa', err),
+    });
   }
 
   toggleMesa(id: string): void {
-    this.saveMesas(this.mesas().map(m => m.id === id ? { ...m, activa: !m.activa } : m));
+    this.http.patch<Mesa>(API.mesaToggle(id), {}).subscribe({
+      next: () => this.reload().subscribe(),
+      error: (err) => console.error('[MesasService] toggleMesa', err),
+    });
   }
 
   getMesaByNumero(numero: number): Mesa | undefined {
     return this.mesas().find(m => m.numero === numero);
   }
 
-  // ── Pedidos ───────────────────────────────────────────────────────────────
-  crearPedido(mesaId: string, items: ItemPedido[], notas = ''): PedidoMesa {
-    const mesa = this.mesas().find(m => m.id === mesaId)!;
-    const pedido: PedidoMesa = {
-      id: `p${Date.now()}`,
-      mesaId,
-      numeroMesa: mesa.numero,
-      nombreMesa: mesa.nombre,
-      items,
-      estado: 'pendiente',
-      notas,
-      fechaCreacion: Date.now(),
-    };
-    this.savePedidos([...this.pedidos(), pedido]);
-    return pedido;
+  crearPedido(
+    mesaId: string,
+    items: ItemPedido[],
+    notas = '',
+    onOk?: (p: PedidoMesa) => void,
+    onError?: () => void
+  ): void {
+    this.http.post<PedidoMesa>(API.pedidos, { mesaId, items, notas }).subscribe({
+      next: (pedido) => {
+        this.pedidos.update((list) => [...list, pedido]);
+        onOk?.(pedido);
+      },
+      error: (err) => {
+        console.error('[MesasService] crearPedido', err);
+        onError?.();
+      },
+    });
   }
 
   actualizarEstado(pedidoId: string, estado: EstadoPedido): void {
-    this.savePedidos(this.pedidos().map(p => p.id === pedidoId ? { ...p, estado } : p));
+    this.http.patch<PedidoMesa>(API.pedidoEstado(pedidoId), { estado }).subscribe({
+      next: (p) => this.pedidos.update((list) => list.map((x) => (x.id === p.id ? p : x))),
+      error: (err) => console.error('[MesasService] actualizarEstado', err),
+    });
   }
 
   eliminarPedido(pedidoId: string): void {
-    this.savePedidos(this.pedidos().filter(p => p.id !== pedidoId));
+    this.http.delete(API.pedido(pedidoId)).subscribe({
+      next: () => this.pedidos.update((list) => list.filter((p) => p.id !== pedidoId)),
+      error: (err) => console.error('[MesasService] eliminarPedido', err),
+    });
   }
 
   limpiarEntregados(): void {
-    this.savePedidos(this.pedidos().filter((p) => p.estado !== 'entregado'));
-  }
-
-  reload(): void {
-    this.mesas.set(this.loadMesas());
-    this.pedidos.set(this.loadPedidos());
+    this.http.delete(API.pedidos).subscribe({
+      next: () => this.reload().subscribe(),
+      error: (err) => console.error('[MesasService] limpiarEntregados', err),
+    });
   }
 
   totalItems(pedido: PedidoMesa): number {

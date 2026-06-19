@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { MesasService, ItemPedido, Mesa } from '../../core/services/mesas.service';
 import { ProductosService, ProductoAdmin } from '../../core/services/productos.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-mesa',
@@ -41,15 +42,12 @@ export default class MesaComponent {
   constructor() {
     afterNextRender(() => {
       if (!isPlatformBrowser(this.platformId)) return;
-      this.mesasSvc.reload();
-      this.productosSvc.reload();
       const num = Number(this.route.snapshot.paramMap.get('numero'));
-      const mesa = this.mesasSvc.getMesaByNumero(num);
-      if (mesa && mesa.activa) {
-        this.mesa.set(mesa);
-      } else {
-        this.mesaNoEncontrada.set(true);
-      }
+      forkJoin([this.mesasSvc.reload(), this.productosSvc.reload()]).subscribe(() => {
+        const mesa = this.mesasSvc.getMesaByNumero(num);
+        if (mesa?.activa) this.mesa.set(mesa);
+        else this.mesaNoEncontrada.set(true);
+      });
     });
   }
 
@@ -81,10 +79,11 @@ export default class MesaComponent {
     const mesa = this.mesa();
     if (!mesa || this.carrito().length === 0) return;
     this.enviando.set(true);
-    const pedido = this.mesasSvc.crearPedido(mesa.id, this.carrito(), this.notas());
-    this.pedidoId.set(pedido.id);
-    this.enviado.set(true);
-    this.enviando.set(false);
+    this.mesasSvc.crearPedido(mesa.id, this.carrito(), this.notas(), (pedido) => {
+      this.pedidoId.set(pedido.id);
+      this.enviado.set(true);
+      this.enviando.set(false);
+    });
   }
 
   nuevoPedido(): void {
