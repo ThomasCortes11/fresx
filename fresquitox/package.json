@@ -1,0 +1,11 @@
+{
+  "name": "fresquitox",
+  "private": true,
+  "scripts": {
+    "dev:api": "npm run dev:api --prefix frontend",
+    "start": "npm run start --prefix frontend",
+    "start:dev": "npm run start:dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "serve": "npm run serve:ssr:frontend --prefix frontend"
+  }
+}

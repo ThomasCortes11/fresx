@@ -1,15 +1,15 @@
-# Fresquitox — Base de datos PostgreSQL
+# Fresquitox — Base de datos
 
-Reemplaza el almacenamiento actual en `localStorage` por una base de datos compartida entre:
+## Recomendado para VPS (Digital Ocean): **SQLite**
 
-- Panel admin (`/admin/dashboard`)
-- Pedidos por QR de mesa (`/mesa/:numero`)
-- Catálogo público (`/productos`)
-- Eventos (`/eventos`)
+Sin instalar servidor de BD. Ver [`sqlite/README.md`](sqlite/README.md).
 
-## Requisitos
+La app crea `data/fresquitox.db` al iniciar Express.
 
-- PostgreSQL 14+ (compatible con Supabase, Neon, Railway, Docker local)
+---
+
+## Alternativa: PostgreSQL
+
 
 ## Instalación rápida
 
