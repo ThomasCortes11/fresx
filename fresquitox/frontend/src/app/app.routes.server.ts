@@ -1,18 +1,11 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
-import { SERVICIOS } from './shared/data/servicios.data';
 import { ZONAS } from './shared/data/zonas.data';
 import { BLOG_POSTS } from './shared/data/blog.data';
 
 export const serverRoutes: ServerRoute[] = [
   { path: '', renderMode: RenderMode.Prerender },
   { path: 'productos', renderMode: RenderMode.Client },
-  {
-    path: 'productos/:slug',
-    renderMode: RenderMode.Prerender,
-    async getPrerenderParams() {
-      return SERVICIOS.map(s => ({ slug: s.slug }));
-    }
-  },
+  { path: 'productos/:slug', renderMode: RenderMode.Client },
   { path: 'zonas', renderMode: RenderMode.Prerender },
   {
     path: 'zonas/:slug',

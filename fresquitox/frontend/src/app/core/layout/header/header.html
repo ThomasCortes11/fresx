@@ -1,99 +1,128 @@
-<header class="header" [class.header--scrolled]="scrolled">
-  <div class="header__container">
+<div class="header-root" [class.header-root--menu-open]="menuOpen">
+  <header class="header" [class.header--scrolled]="scrolled">
+    <div class="header__container">
 
-    <!-- Logo -->
-    <a routerLink="/" class="header__logo" (click)="closeMenu()" aria-label="Fresquitox - Inicio">
-      <img src="images/mascot-pink.webp" alt="" class="header__logo-img" width="36" height="36">
-      <img src="images/tipografia.webp" alt="Fresquitox" class="header__logo-wordmark" height="20">
-    </a>
-
-    <!-- Nav -->
-    <nav class="header__nav" [class.header__nav--open]="menuOpen" aria-label="Navegación principal">
-      <button class="header__nav-close" (click)="closeMenu()" aria-label="Cerrar menú">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-      </button>
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Inicio</a>
-      <a routerLink="/productos" routerLinkActive="active" (click)="closeMenu()">Productos</a>
-      <a routerLink="/nosotros" routerLinkActive="active" (click)="closeMenu()">Nosotros</a>
-      <a routerLink="/experiencia" routerLinkActive="active" (click)="closeMenu()">Experiencia</a>
-      <a routerLink="/eventos" routerLinkActive="active" (click)="closeMenu()">Eventos</a>
-    </nav>
-
-    <!-- Right actions -->
-    <div class="header__actions">
-
-      <!-- Botón Admin / Panel -->
-      @if (isAdminLoggedIn()) {
-        <a routerLink="/admin/dashboard" class="header__admin-btn" (click)="closeMenu()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          Panel
-        </a>
-      } @else {
-        <a routerLink="/admin/login" class="header__admin-btn" (click)="closeMenu()">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/></svg>
-          Admin
-        </a>
-      }
-
-      <!-- Instagram -->
-      <a [href]="contact.instagram" target="_blank" rel="noopener noreferrer" class="header__social" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <a routerLink="/" class="header__logo" (click)="closeMenu()" aria-label="Fresquitox - Inicio">
+        <img src="images/mascot-pink.webp" alt="" class="header__logo-img" width="36" height="36">
+        <img src="images/tipografia.webp" alt="Fresquitox" class="header__logo-wordmark" height="20">
       </a>
 
-      <!-- Pedir dropdown -->
-      <div class="header__order" (mouseenter)="orderOpen = true" (mouseleave)="orderOpen = false">
-        <button class="header__cta" (click)="orderOpen = !orderOpen" [attr.aria-expanded]="orderOpen" aria-haspopup="true">
-          <span class="header__cta-dot"></span>
-          Pedir ahora
-          <svg class="header__cta-chev" [class.header__cta-chev--open]="orderOpen" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        @if (orderOpen) {
-          <div class="header__dropdown" (click)="orderOpen = false">
-            <a [href]="contact.didiFood" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--didi">
-              <span class="header__drop-icon">🟠</span>
-              <div>
-                <span class="header__drop-name">Didi Food</span>
-                <span class="header__drop-desc">Delivery rápido</span>
-              </div>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-            <a [href]="contact.rappi" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--rappi">
-              <span class="header__drop-icon">🧡</span>
-              <div>
-                <span class="header__drop-name">Rappi</span>
-                <span class="header__drop-desc">Pide y recibe</span>
-              </div>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-            <div class="header__drop-divider"></div>
-            <a [href]="contact.googleMaps" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--store">
-              <span class="header__drop-icon">📍</span>
-              <div>
-                <span class="header__drop-name">Punto Físico</span>
-                <span class="header__drop-desc">Chapinero, Bogotá</span>
-              </div>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </div>
+      <nav class="header__nav header__nav--desktop" aria-label="Navegación principal">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        <a routerLink="/productos" routerLinkActive="active">Productos</a>
+        <a routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
+        <a routerLink="/experiencia" routerLinkActive="active">Experiencia</a>
+        <a routerLink="/eventos" routerLinkActive="active">Eventos</a>
+      </nav>
+
+      <div class="header__actions">
+
+        @if (isAdminLoggedIn()) {
+          <a routerLink="/admin/dashboard" class="header__admin-btn" (click)="closeMenu()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            Panel
+          </a>
+        } @else {
+          <a routerLink="/admin/login" class="header__admin-btn" (click)="closeMenu()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/></svg>
+            Admin
+          </a>
         }
+
+        <a [href]="contact.instagram" target="_blank" rel="noopener noreferrer" class="header__social" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+
+        <div class="header__order" (mouseenter)="orderOpen = true" (mouseleave)="orderOpen = false">
+          <button type="button" class="header__cta" (click)="orderOpen = !orderOpen" [attr.aria-expanded]="orderOpen" aria-haspopup="true">
+            <span class="header__cta-dot"></span>
+            <span class="header__cta-text">Pedir ahora</span>
+            <svg class="header__cta-chev" [class.header__cta-chev--open]="orderOpen" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          @if (orderOpen) {
+            <div class="header__dropdown" (click)="orderOpen = false">
+              <a [href]="contact.didiFood" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--didi">
+                <img src="images/logos/didi.svg" alt="" class="header__drop-logo" width="48" height="16">
+                <div>
+                  <span class="header__drop-name">Didi Food</span>
+                  <span class="header__drop-desc">Delivery rápido</span>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <a [href]="contact.rappi" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--rappi">
+                <img src="images/logos/rappi.svg" alt="" class="header__drop-logo" width="52" height="16">
+                <div>
+                  <span class="header__drop-name">Rappi</span>
+                  <span class="header__drop-desc">Pide y recibe</span>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <div class="header__drop-divider"></div>
+              <a [href]="contact.googleMaps" target="_blank" rel="noopener noreferrer" class="header__drop-item header__drop-item--store">
+                <span class="header__drop-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <div>
+                  <span class="header__drop-name">Punto Físico</span>
+                  <span class="header__drop-desc">Chapinero, Bogotá</span>
+                </div>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+          }
+        </div>
+
+        <button
+          type="button"
+          class="header__toggle"
+          [class.header__toggle--open]="menuOpen"
+          (click)="toggleMenu($event)"
+          [attr.aria-expanded]="menuOpen"
+          aria-controls="mobile-nav"
+          aria-label="Abrir menú de navegación">
+          <span class="header__toggle-bar"></span>
+          <span class="header__toggle-bar"></span>
+          <span class="header__toggle-bar"></span>
+        </button>
+
       </div>
-
-      <!-- Hamburger -->
-      <button
-        class="header__toggle"
-        [class.header__toggle--open]="menuOpen"
-        (click)="toggleMenu()"
-        [attr.aria-expanded]="menuOpen"
-        aria-label="Abrir menú de navegación">
-        <span class="header__toggle-bar"></span>
-        <span class="header__toggle-bar"></span>
-        <span class="header__toggle-bar"></span>
-      </button>
-
     </div>
-  </div>
+  </header>
 
-  @if (menuOpen) {
-    <div class="header__overlay" (click)="closeMenu()" (keydown.escape)="closeMenu()" aria-hidden="true"></div>
+  <div
+    class="header__overlay"
+    [class.header__overlay--visible]="menuOpen"
+    (click)="closeMenu()"
+    aria-hidden="true"></div>
+
+  <nav
+    id="mobile-nav"
+    class="header__nav header__nav--mobile"
+    [class.header__nav--open]="menuOpen"
+    [attr.aria-hidden]="!menuOpen"
+    aria-label="Menú móvil">
+    <button class="header__nav-close" type="button" (click)="closeMenu()" aria-label="Cerrar menú">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    @for (item of mobileNav; track trackNav($index, item)) {
+      <button
+        type="button"
+        class="header__nav-link"
+        [class.active]="isActive(item.path, item.exact)"
+        (click)="navigateTo(item.path)">
+        {{ item.label }}
+      </button>
+    }
+  </nav>
+
+  @if (navDebug) {
+    <div class="header__debug" aria-live="polite">
+      <strong>Nav debug</strong>
+      <span>menu: {{ menuOpen ? 'OPEN' : 'closed' }}</span>
+      <span>route: {{ currentRoute }}</span>
+      <span>body: {{ debugBodyState }}</span>
+      <span>{{ debugLog }}</span>
+      <button type="button" (click)="forceReset()">Reset nav</button>
+    </div>
   }
-</header>
+</div>

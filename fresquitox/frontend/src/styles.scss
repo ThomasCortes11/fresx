@@ -43,6 +43,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -52,6 +53,22 @@ body {
   background: var(--fq-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+html.fq-menu-open {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+
+  .cw-fab,
+  .cw {
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 img {

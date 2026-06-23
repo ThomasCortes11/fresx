@@ -52,9 +52,11 @@ $radius : 16px;
   animation: cwPop 0.28s cubic-bezier(0.34,1.56,0.64,1);
 
   @media (max-width: 420px) {
-    width: calc(100vw - 1.5rem);
-    bottom: 5rem;
+    left: 0.75rem;
     right: 0.75rem;
+    width: auto;
+    max-width: none;
+    bottom: 5rem;
   }
 }
 

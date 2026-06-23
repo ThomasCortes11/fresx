@@ -198,20 +198,14 @@ $ev-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     animation: evHeroIn 1s $ev-ease both; animation-delay: 0.3s;
   }
 
-  &__char-glow {
-    position: absolute; width: 90%; height: 90%;
-    background: radial-gradient(circle,
-      rgba($ev-pink, 0.06) 0%, rgba($ev-pink, 0.02) 40%, transparent 70%);
-    filter: blur(30px);
-    animation: evGlow 4s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  &__char {
-    display: block; width: 100%; max-width: 380px; height: auto;
-    position: relative; z-index: 2;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
-    animation: evFloat 5s ease-in-out infinite;
+  &__photo {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
 }
 
@@ -849,11 +843,13 @@ $ev-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     animation: evGlow 4s ease-in-out infinite;
   }
 
-  &__mascot {
-    display: block; width: 70%; max-width: 200px; height: auto;
-    position: relative; z-index: 1;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
-    animation: evFloat 5s ease-in-out infinite;
+  &__photo {
+    display: block;
+    width: min(100%, 320px);
+    height: auto;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -874,7 +870,7 @@ $ev-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
 @media (max-width: 1024px) {
   .ev-hero__layout { grid-template-columns: 1fr 1fr; gap: 2rem; }
   .ev-hero__visual { max-width: 380px; }
-  .ev-hero__char { max-width: 340px; }
+  .ev-hero__photo { max-width: 340px; }
   .ev-feat__grid { grid-template-columns: 1fr; }
   .ev-feat__visual { display: none; }
   .ev-cta__grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -886,7 +882,7 @@ $ev-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://ww
     padding: 5rem 0 0; min-height: auto;
     &__layout { grid-template-columns: 1fr; gap: 2.5rem; }
     &__visual { order: -1; max-width: 300px; margin: 0 auto; }
-    &__char { max-width: 280px; }
+    &__photo { max-width: 280px; }
     &__line { font-size: clamp(2rem, 8vw, 2.8rem); }
     &__stats { padding: 1rem 1.5rem; flex-wrap: wrap; gap: 0.75rem; }
     &__stat { padding: 0 1rem; }

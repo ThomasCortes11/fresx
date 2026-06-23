@@ -61,6 +61,9 @@ export default class AdminDashboard implements OnDestroy {
   ngOnDestroy(): void {
     if (this.tickTimer) clearInterval(this.tickTimer);
     if (this.pedidosPollTimer) clearInterval(this.pedidosPollTimer);
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = '';
+    }
   }
 
   tiempoDesde(ts: number): string {
@@ -467,6 +470,41 @@ export default class AdminDashboard implements OnDestroy {
 
   // ── Tabs
   readonly tabActiva = signal<Tab>('resumen');
+  readonly navMobileOpen = signal(false);
+
+  readonly tabLabel = computed(() => {
+    const labels: Record<Tab, string> = {
+      resumen: 'Resumen',
+      pedidos: 'Pedidos',
+      reportes: 'Reportes',
+      productos: 'Productos',
+      mesas: 'Mesas / QR',
+      chatbot: 'Chatbot',
+      eventos: 'Eventos',
+    };
+    return labels[this.tabActiva()];
+  });
+
+  selectTab(tab: Tab): void {
+    this.tabActiva.set(tab);
+    this.closeNavMobile();
+  }
+
+  toggleNavMobile(): void {
+    this.navMobileOpen.update((open) => !open);
+    this.syncNavScrollLock();
+  }
+
+  closeNavMobile(): void {
+    if (!this.navMobileOpen()) return;
+    this.navMobileOpen.set(false);
+    this.syncNavScrollLock();
+  }
+
+  private syncNavScrollLock(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    document.body.style.overflow = this.navMobileOpen() ? 'hidden' : '';
+  }
 
   // ── Stats computadas
   readonly totalActivos     = computed(() => this.productosSvc.getActivos().length);

@@ -1,830 +1,464 @@
-// ══════════════════════════════════════════════════════════
-// FRESQUITOX — Nosotros Page Premium Redesign
-// ══════════════════════════════════════════════════════════
+// FRESQUITOX — Nosotros (editorial, limpio)
 
 $nos-pink: #FF4677;
 $nos-pink-light: #FF5299;
 $nos-gold: #E08736;
-$nos-green: #22c55e;
-$nos-orange: #E08736;
-$nos-purple: #a855f7;
-$nos-silver: #A8A9AD;
 $nos-dark: #0A0A0A;
 $nos-light-bg: #F5F5F7;
-$nos-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
 
-// Staggered entry
-.nos-anim {
-  opacity: 0; transform: translateY(28px);
-  animation: nosSlideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: var(--d, 0s);
-}
-
-// ═══════════════════════════════════════════════════════
-// HERO
-// ═══════════════════════════════════════════════════════
 .nos-hero {
-  position: relative; 
+  position: relative;
   background: $nos-light-bg;
-  padding: 8rem 0 0; overflow: hidden;
-  min-height: 90vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 7rem 0 5rem;
+  overflow: hidden;
 
   &__bg { position: absolute; inset: 0; pointer-events: none; }
 
   &__orb {
-    position: absolute; border-radius: 50%; filter: blur(140px);
-    &--1 { width: 550px; height: 550px; background: rgba($nos-pink, 0.08); top: -22%; right: -8%; animation: nosOrbDrift 18s ease-in-out infinite alternate; }
-    &--2 { width: 400px; height: 400px; background: rgba($nos-pink-light, 0.05); bottom: -18%; left: -7%; animation: nosOrbDrift 24s ease-in-out infinite alternate-reverse; }
-    &--3 { width: 300px; height: 300px; background: rgba($nos-gold, 0.04); top: 40%; left: 25%; animation: nosOrbDrift 20s ease-in-out infinite alternate; animation-delay: -5s; }
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    &--1 { width: 420px; height: 420px; background: rgba($nos-pink, 0.08); top: -15%; right: -5%; }
+    &--2 { width: 320px; height: 320px; background: rgba($nos-gold, 0.06); bottom: -10%; left: -5%; }
   }
 
-  &__noise {
-    position: absolute; inset: 0; background-image: $nos-noise;
-    background-repeat: repeat; background-size: 200px 200px; opacity: 0.5;
-  }
-
-  &__scanlines {
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
-  }
-
-  &__particle {
-    position: absolute; border-radius: 50%; pointer-events: none;
-    &--1 { width: 4px; height: 4px; background: $nos-pink; top: 18%; left: 15%; animation: nosParticle 7s ease-in-out infinite; opacity: 0.5; }
-    &--2 { width: 3px; height: 3px; background: $nos-pink-light; top: 70%; right: 20%; animation: nosParticle 9s ease-in-out infinite; animation-delay: -2s; opacity: 0.35; }
-    &--3 { width: 5px; height: 5px; background: $nos-gold; top: 40%; right: 40%; animation: nosParticle 11s ease-in-out infinite; animation-delay: -4s; opacity: 0.25; }
-    &--4 { width: 2px; height: 2px; background: #F5F5F7; top: 55%; left: 30%; animation: nosParticle 8s ease-in-out infinite; animation-delay: -1s; opacity: 0.3; }
-  }
-
-  &__fade {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
-    background: linear-gradient(to top, $nos-light-bg 0%, transparent 100%);
-    pointer-events: none; z-index: 2;
-  }
-
-  .container {
-    position: relative; z-index: 1; flex: 1;
-    display: flex; flex-direction: column; justify-content: center;
-  }
+  .container { position: relative; z-index: 1; }
 
   &__breadcrumb {
-    margin-bottom: 3rem; font-family: 'Poppins', sans-serif;
-    font-size: 0.8rem; font-weight: 500;
-    display: flex; align-items: center; gap: 0.5rem;
-    animation: nosFadeIn 0.6s ease both;
-    a { color: rgba(10, 10, 10, 0.45); text-decoration: none; transition: color 0.3s; &:hover { color: $nos-pink; } }
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    a { color: rgba(10, 10, 10, 0.45); text-decoration: none; &:hover { color: $nos-pink; } }
     svg { color: rgba(10, 10, 10, 0.25); }
     span:last-child { color: rgba(10, 10, 10, 0.7); font-weight: 600; }
   }
 
   &__grid {
-    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem;
-    align-items: center; margin-bottom: 5rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
   }
 
   &__badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
-    color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.08);
-    border: 1px solid rgba($nos-pink, 0.15); border-radius: 50px; margin-bottom: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: $nos-pink;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    background: rgba($nos-pink, 0.08);
+    border: 1px solid rgba($nos-pink, 0.15);
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
   }
 
   &__badge-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: $nos-pink; animation: nosDot 2s ease-in-out infinite;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $nos-pink;
   }
 
-  h1 { margin-bottom: 1.5rem; }
+  h1 { margin-bottom: 1.25rem; }
 
   &__line {
-    display: block; font-family: 'Poppins', sans-serif;
-    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
-    font-weight: 900; line-height: 1.02; color: $nos-dark; letter-spacing: -0.04em;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: $nos-dark;
+    letter-spacing: -0.03em;
 
-    &--accent {
-      color: $nos-pink;
-    }
+    &--accent { color: $nos-pink; }
   }
 
   &__subtitle {
-    font-size: 1.05rem; color: rgba(10, 10, 10, 0.55);
-    line-height: 1.75; max-width: 440px; margin-bottom: 2.5rem;
+    font-size: 1.02rem;
+    color: rgba(10, 10, 10, 0.58);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 2rem;
   }
 
   &__metrics {
-    display: inline-flex; align-items: center; gap: 0;
-    padding: 1.5rem 2.5rem; border-radius: 20px;
-    background: #F5F5F7;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 1.25rem 1.75rem;
+    border-radius: 16px;
+    background: #fff;
     border: 1px solid rgba(10, 10, 10, 0.08);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(10, 10, 10, 0.06);
+    box-shadow: 0 4px 20px rgba(10, 10, 10, 0.05);
   }
 
   &__metric {
-    display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
-    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0 1.25rem;
 
     strong {
-      font-family: 'Poppins', sans-serif; font-size: 1.8rem;
-      font-weight: 900; color: $nos-dark; letter-spacing: -0.02em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: $nos-dark;
     }
+
     span {
-      font-size: 0.68rem; color: rgba(10, 10, 10, 0.45);
-      text-transform: uppercase; letter-spacing: 0.08em;
-      font-family: 'Poppins', sans-serif; font-weight: 600;
+      font-size: 0.68rem;
+      color: rgba(10, 10, 10, 0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
     }
   }
 
-  &__metric-sep { width: 1px; height: 36px; background: rgba(10, 10, 10, 0.12); }
-
-  // ── Visual with character
-  &__visual {
-    position: relative; display: flex; align-items: center; justify-content: center;
-    aspect-ratio: 1; max-width: 420px; margin: 0 auto;
-    animation: nosHeroIn 1s cubic-bezier(0.22,1,0.36,1) both; animation-delay: 0.3s;
+  &__metric-sep {
+    width: 1px;
+    height: 32px;
+    background: rgba(10, 10, 10, 0.1);
   }
 
-  &__ring {
-    position: absolute; border-radius: 50%;
-    &--1 { width: 85%; height: 85%; border: 1px solid rgba($nos-pink, 0.1); animation: nosRingSpin 35s linear infinite; }
-    &--2 { width: 68%; height: 68%; border: 1px solid rgba($nos-pink, 0.08); animation: nosRingSpin 25s linear infinite reverse; }
-    &--3 { width: 52%; height: 52%; border: 1px dotted rgba($nos-gold, 0.06); animation: nosRingSpin 18s linear infinite; }
-  }
+  &__visual { display: flex; justify-content: center; }
 
-  &__glow {
-    position: absolute; width: 90%; height: 90%; border-radius: 50%;
-    background: radial-gradient(circle,
-      rgba($nos-pink, 0.08) 0%,
-      rgba($nos-pink, 0.03) 40%,
-      transparent 70%);
-    animation: nosGlow 4s ease-in-out infinite;
-  }
-
-  &__mascot {
-    display: block; width: 62%; height: auto; position: relative; z-index: 1;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
-    animation: nosFloat 5s ease-in-out infinite;
+  &__photo {
+    width: min(100%, 420px);
+    height: auto;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 24px 60px rgba(10, 10, 10, 0.12);
   }
 }
 
-
-// ═══════════════════════════════════════════════════════
-// STORY — Character + Text (DARK)
-// ═══════════════════════════════════════════════════════
 .nos-story {
-  position: relative; 
-  background: 
-    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
-  padding: 8rem 0; overflow: hidden;
-
-  &__bg { position: absolute; inset: 0; pointer-events: none; }
-
-  &__orb {
-    position: absolute; border-radius: 50%; filter: blur(140px);
-    &--1 { width: 400px; height: 400px; background: rgba($nos-pink, 0.08); top: -10%; left: -5%; }
-    &--2 { width: 350px; height: 350px; background: rgba($nos-gold, 0.05); bottom: -10%; right: -5%; }
-  }
-
-  &__noise {
-    position: absolute; inset: 0; background-image: $nos-noise;
-    background-repeat: repeat; background-size: 200px 200px; opacity: 0.4;
-  }
-
-  &__scanlines {
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
-  }
-
-  .container { position: relative; z-index: 1; }
+  padding: 6rem 0;
+  background: $nos-dark;
+  color: #fff;
 
   &__grid {
-    display: grid; grid-template-columns: 0.85fr 1.15fr;
-    gap: 5rem; align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
   }
 
-  // ── Character showcase
-  &__character {
-    position: relative; display: flex; align-items: center; justify-content: center;
-    aspect-ratio: 1; max-width: 420px; margin: 0 auto;
+  &__photo-wrap {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
 
-  &__char-frame {
-    position: absolute; width: 80%; height: 80%; border-radius: 50%;
-    border: 1px solid rgba($nos-pink, 0.1);
-    animation: nosFramePulse 6s ease-in-out infinite;
+  &__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
   }
 
-  &__char-ring {
-    position: absolute; border-radius: 50%;
-    &--1 { width: 90%; height: 90%; border: 1px dashed rgba($nos-pink, 0.08); animation: nosRingSpin 30s linear infinite; }
-    &--2 { width: 70%; height: 70%; border: 1px solid rgba($nos-pink, 0.06); animation: nosRingSpin 22s linear infinite reverse; }
-  }
-
-  &__char-glow {
-    position: absolute; width: 90%; height: 90%; border-radius: 50%;
-    background: radial-gradient(circle,
-      rgba($nos-pink, 0.08) 0%,
-      rgba($nos-pink, 0.03) 40%,
-      transparent 70%);
-    animation: nosGlow 4s ease-in-out infinite;
-  }
-
-  &__char-img {
-    display: block; width: 62%; height: auto; position: relative; z-index: 2;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
-    animation: nosFloat 5s ease-in-out infinite;
-  }
-
-  // ── Floating tags around character
-  &__float-tag {
-    position: absolute; z-index: 3;
-    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
-    color: #fff; padding: 0.4rem 0.9rem; border-radius: 50px;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    white-space: nowrap;
-    animation: nosTagFloat 6s ease-in-out infinite;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-
-    &--1 { top: 12%; right: -10%; animation-delay: 0s; }
-    &--2 { bottom: 18%; left: -8%; animation-delay: -2s; }
-    &--3 { top: 55%; right: -15%; animation-delay: -4s; }
-  }
-
-  // ── Text side
   &__tag {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
-    color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.06);
-    border: 1px solid rgba($nos-pink, 0.12); border-radius: 50px; margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: $nos-pink-light;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
   }
 
   &__tag-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: $nos-pink; animation: nosDot 2s ease-in-out infinite;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $nos-pink;
+  }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.08;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+
+    span { color: $nos-pink; }
+  }
+
+  &__quote {
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid $nos-pink;
+
+    p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.9);
+      strong { color: #fff; }
+    }
+  }
+
+  &__body-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.8;
+    margin-bottom: 0.85rem;
+  }
+
+  &__signature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  &__sig-line {
+    width: 36px;
+    height: 2px;
+    background: linear-gradient(90deg, $nos-pink, transparent);
+  }
+
+  &__signature span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
+
+.nos-pilares {
+  padding: 6rem 0;
+  background: $nos-light-bg;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: $nos-pink;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $nos-pink;
   }
 
   &__headline {
     font-family: 'Poppins', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 900; line-height: 1.05; color: #fff;
-    letter-spacing: -0.03em; margin-bottom: 2rem;
-    text-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.4);
-
-    span {
-      color: $nos-pink;
-      text-shadow: 0 0 40px rgba($nos-pink, 0.6), 0 0 20px rgba($nos-pink, 0.4), 0 4px 24px rgba(0,0,0,0.6);
-    }
-  }
-
-  &__quote {
-    padding-left: 1.5rem; margin-bottom: 2rem; position: relative;
-
-    &::before {
-      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px; border-radius: 3px;
-      background: linear-gradient(180deg, $nos-pink, $nos-gold);
-    }
-
-    p {
-      font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      strong { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-    }
-  }
-
-  &__body-text {
-    font-size: 0.95rem; color: rgba(255,255,255,0.75);
-    line-height: 1.8; margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  }
-
-  &__signature {
-    display: flex; align-items: center; gap: 1rem; margin-top: 2.5rem;
-  }
-
-  &__sig-line {
-    width: 40px; height: 2px; border-radius: 2px;
-    background: linear-gradient(90deg, $nos-pink, transparent);
-  }
-
-  &__signature span {
-    font-family: 'Poppins', sans-serif; font-size: 0.82rem;
-    font-weight: 700; color: rgba(255,255,255,0.5);
-    letter-spacing: 0.04em; text-transform: uppercase;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  }
-}
-
-
-// ═══════════════════════════════════════════════════════
-// PILARES — Light Cards (matches home benefits)
-// ═══════════════════════════════════════════════════════
-.nos-pilares {
-  padding: 8rem 0; background: $nos-light-bg; position: relative; overflow: hidden;
-
-  .container { position: relative; z-index: 1; }
-
-  &__header { text-align: center; margin-bottom: 4rem; }
-
-  &__tag {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
-    color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.06);
-    border: 1px solid rgba($nos-pink, 0.12); border-radius: 50px; margin-bottom: 1.5rem;
-  }
-
-  &__tag-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: $nos-pink; animation: nosDot 2s ease-in-out infinite;
-  }
-
-  &__headline {
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    font-weight: 900; line-height: 1.05; color: #0A0A0A;
+    font-weight: 900;
+    line-height: 1.05;
+    color: $nos-dark;
     letter-spacing: -0.03em;
 
-    span {
-      background: linear-gradient(135deg, $nos-pink, $nos-pink-light, $nos-orange);
-      background-size: 200% 200%; animation: nosGradient 6s ease infinite;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
+    span { color: $nos-pink; }
   }
 
   &__grid {
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
-  }
-
-  // ── Card (mirror of home's bcard)
-  &__card {
-    position: relative; background: #F5F5F7;
-    border: 1px solid rgba(10, 10, 10,0.06); border-radius: 24px;
-    padding: 2rem 1.75rem; overflow: hidden;
-    display: flex; flex-direction: column;
-    box-shadow: 0 2px 16px rgba(10, 10, 10,0.04);
-    transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
-
-    &:nth-child(2) { transform: translateY(2rem); }
-    &:nth-child(4) { transform: translateY(2rem); }
-
-    &:hover {
-      transform: translateY(-8px);
-      border-color: rgba(10, 10, 10,0.08);
-      box-shadow: 0 20px 60px rgba(10, 10, 10,0.08), 0 0 0 1px rgba(10, 10, 10,0.03);
-      .nos-pilares__card-glow { opacity: 0.6; }
-      .nos-pilares__card-stripe { opacity: 1; }
-      .nos-pilares__card-icon-ring { transform: scale(1.1) rotate(-5deg); }
-    }
-    &:nth-child(2):hover { transform: translateY(calc(2rem - 8px)); }
-    &:nth-child(4):hover { transform: translateY(calc(2rem - 8px)); }
-
-    // Shine sweep
-    &::before {
-      content: ''; position: absolute; top: 0; left: -100%;
-      width: 80%; height: 100%;
-      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.7), transparent);
-      transition: left 0.7s ease; z-index: 1; pointer-events: none;
-    }
-    &:hover::before { left: 120%; }
-
-    &-glow {
-      position: absolute; top: -60%; right: -40%;
-      width: 200px; height: 200px; border-radius: 50%;
-      filter: blur(60px); opacity: 0; transition: opacity 0.5s ease;
-      pointer-events: none;
-    }
-
-    &-stripe {
-      position: absolute; top: 0; left: 0; width: 3px; height: 100%;
-      opacity: 0; transition: opacity 0.4s ease;
-    }
-
-    &-head {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      margin-bottom: 1.5rem; position: relative; z-index: 2;
-    }
-
-    &-num {
-      font-family: 'Poppins', sans-serif; font-size: 0.72rem;
-      font-weight: 800; letter-spacing: 0.12em; color: rgba(10, 10, 10,0.12);
-    }
-
-    &-icon-ring {
-      width: 52px; height: 52px; border-radius: 16px;
-      border: 1px solid rgba(10, 10, 10,0.06);
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
-      position: relative; z-index: 2;
-      span { font-size: 1.4rem; }
-    }
-
-    h3 {
-      font-family: 'Poppins', sans-serif; font-size: 1.2rem;
-      font-weight: 800; color: #0A0A0A; letter-spacing: -0.01em;
-      margin-bottom: 0.6rem; position: relative; z-index: 2;
-    }
-
-    p {
-      font-size: 0.85rem; color: rgba(#0A0A0A, 0.45); line-height: 1.7;
-      margin-bottom: 1.5rem; flex: 1; position: relative; z-index: 2;
-    }
-
-    &-foot { position: relative; z-index: 2; }
-
-    &-pill {
-      display: inline-block; font-family: 'Poppins', sans-serif;
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em;
-      padding: 0.3rem 0.85rem; border-radius: 50px;
-      color: rgba(#0A0A0A, 0.4);
-      background: rgba(10, 10, 10,0.02); border: 1px solid rgba(10, 10, 10,0.06);
-      transition: all 0.4s ease;
-    }
-
-    // Per-card accents
-    &--green {
-      .nos-pilares__card-glow { background: rgba($nos-green, 0.15); }
-      .nos-pilares__card-stripe { background: linear-gradient(180deg, $nos-green, transparent); }
-      .nos-pilares__card-icon-ring { border-color: rgba($nos-green, 0.15); background: rgba($nos-green, 0.06); }
-      .nos-pilares__card-num { color: $nos-green; }
-      .nos-pilares__card-pill { color: $nos-green; border-color: rgba($nos-green, 0.15); background: rgba($nos-green, 0.04); }
-      &:hover { border-color: rgba($nos-green, 0.15); box-shadow: 0 20px 60px rgba($nos-green, 0.08); }
-    }
-
-    &--orange {
-      .nos-pilares__card-glow { background: rgba($nos-orange, 0.15); }
-      .nos-pilares__card-stripe { background: linear-gradient(180deg, $nos-orange, transparent); }
-      .nos-pilares__card-icon-ring { border-color: rgba($nos-orange, 0.15); background: rgba($nos-orange, 0.06); }
-      .nos-pilares__card-num { color: $nos-orange; }
-      .nos-pilares__card-pill { color: $nos-orange; border-color: rgba($nos-orange, 0.15); background: rgba($nos-orange, 0.04); }
-      &:hover { border-color: rgba($nos-orange, 0.15); box-shadow: 0 20px 60px rgba($nos-orange, 0.08); }
-    }
-
-    &--pink {
-      .nos-pilares__card-glow { background: rgba($nos-pink, 0.15); }
-      .nos-pilares__card-stripe { background: linear-gradient(180deg, $nos-pink, transparent); }
-      .nos-pilares__card-icon-ring { border-color: rgba($nos-pink, 0.15); background: rgba($nos-pink, 0.06); }
-      .nos-pilares__card-num { color: $nos-pink; }
-      .nos-pilares__card-pill { color: $nos-pink; border-color: rgba($nos-pink, 0.15); background: rgba($nos-pink, 0.04); }
-      &:hover { border-color: rgba($nos-pink, 0.15); box-shadow: 0 20px 60px rgba($nos-pink, 0.08); }
-    }
-
-    &--purple {
-      .nos-pilares__card-glow { background: rgba($nos-purple, 0.15); }
-      .nos-pilares__card-stripe { background: linear-gradient(180deg, $nos-purple, transparent); }
-      .nos-pilares__card-icon-ring { border-color: rgba($nos-purple, 0.15); background: rgba($nos-purple, 0.06); }
-      .nos-pilares__card-num { color: $nos-purple; }
-      .nos-pilares__card-pill { color: $nos-purple; border-color: rgba($nos-purple, 0.15); background: rgba($nos-purple, 0.04); }
-      &:hover { border-color: rgba($nos-purple, 0.15); box-shadow: 0 20px 60px rgba($nos-purple, 0.08); }
-    }
-  }
-}
-
-
-// ═══════════════════════════════════════════════════════
-// MISIÓN Y VISIÓN (DARK)
-// ═══════════════════════════════════════════════════════
-.nos-mv {
-  padding: 8rem 0; 
-  background: 
-    linear-gradient(160deg, #0A0A0A 0%, #1C1C1C 30%, #6E7074 50%, #1C1C1C 70%, #0A0A0A 100%);
-  position: relative; overflow: hidden;
-
-  &__bg { position: absolute; inset: 0; pointer-events: none; }
-
-  &__orb {
-    position: absolute; border-radius: 50%; filter: blur(120px);
-    &--1 { width: 400px; height: 400px; background: rgba($nos-pink, 0.08); top: -10%; left: -5%; }
-    &--2 { width: 350px; height: 350px; background: rgba($nos-pink-light, 0.06); bottom: -10%; right: -5%; }
-  }
-
-  &__noise {
-    position: absolute; inset: 0; background-image: $nos-noise;
-    background-repeat: repeat; background-size: 200px 200px; opacity: 0.4;
-  }
-
-  &__grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
 
   &__card {
-    position: relative; overflow: hidden;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 24px; padding: 2.5rem 2rem;
-    transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+    background: #fff;
+    border: 1px solid rgba(10, 10, 10, 0.07);
+    border-radius: 18px;
+    padding: 1.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
-      transform: translateY(-6px);
-      border-color: rgba($nos-pink, 0.25);
-      box-shadow: 0 16px 48px rgba(10, 10, 10,0.3);
-    }
-
-    h3 {
-      font-family: 'Poppins', sans-serif; font-size: 1.35rem;
-      font-weight: 800; color: #fff; margin-bottom: 1rem; position: relative; z-index: 1;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
-
-    p {
-      font-size: 0.95rem; color: rgba(255,255,255,0.85);
-      line-height: 1.8; position: relative; z-index: 1;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(10, 10, 10, 0.08);
     }
   }
 
-  &__card-accent {
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-
-    &--mission { background: linear-gradient(90deg, $nos-pink, $nos-pink-light); }
-    &--vision { background: linear-gradient(90deg, $nos-gold, #E08736); }
+  &__card-num {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: rgba(10, 10, 10, 0.15);
+    margin-bottom: 1rem;
   }
 
   &__card-icon {
-    position: absolute; bottom: 1.5rem; right: 1.5rem;
-    font-size: 3rem; opacity: 0.08; line-height: 1;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($nos-pink, 0.08);
+    color: $nos-pink;
+    margin-bottom: 1rem;
   }
 
-  &__tag {
-    display: inline-block; font-family: 'Poppins', sans-serif;
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: $nos-pink;
-    background: rgba($nos-pink, 0.08); border: 1px solid rgba($nos-pink, 0.12);
-    padding: 0.3rem 0.85rem; border-radius: 50px; margin-bottom: 1.25rem;
-    position: relative; z-index: 1;
+  h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: $nos-dark;
+    margin-bottom: 0.5rem;
+  }
 
-    &--alt {
-      color: $nos-gold;
-      background: rgba($nos-gold, 0.08); border-color: rgba($nos-gold, 0.12);
-    }
+  p {
+    font-size: 0.88rem;
+    color: rgba(10, 10, 10, 0.55);
+    line-height: 1.65;
   }
 }
 
-
-// ═══════════════════════════════════════════════════════
-// CTA (DARK — 2 columns)
-// ═══════════════════════════════════════════════════════
-.nos-cta {
-  position: relative; 
-  background: $nos-light-bg;
-  padding: 8rem 0; overflow: hidden;
-
-  &__bg { position: absolute; inset: 0; pointer-events: none; }
-
-  &__orb {
-    position: absolute; border-radius: 50%; filter: blur(120px);
-    &--1 { width: 500px; height: 500px; background: rgba($nos-pink, 0.1); top: -20%; left: -5%; }
-    &--2 { width: 350px; height: 350px; background: rgba($nos-pink-light, 0.07); bottom: -15%; right: -5%; }
-  }
-
-  &__noise {
-    position: absolute; inset: 0; background-image: $nos-noise;
-    background-repeat: repeat; background-size: 200px 200px; opacity: 0.5;
-  }
-
-  &__scanlines {
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px);
-  }
-
-  .container { position: relative; z-index: 1; }
+.nos-mv {
+  padding: 5rem 0;
+  background: #fff;
 
   &__grid {
-    display: grid; grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem; align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  &__card {
+    padding: 2rem;
+    border-radius: 18px;
+    background: $nos-light-bg;
+    border: 1px solid rgba(10, 10, 10, 0.06);
+  }
+
+  &__tag {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $nos-pink;
+    margin-bottom: 0.75rem;
+
+    &--alt { color: $nos-gold; }
+  }
+
+  h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: $nos-dark;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 0.92rem;
+    color: rgba(10, 10, 10, 0.58);
+    line-height: 1.75;
+  }
+}
+
+.nos-cta {
+  padding: 5rem 0 6rem;
+  background: linear-gradient(160deg, #0A0A0A 0%, #1a1a1a 100%);
+
+  &__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   &__badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Poppins', sans-serif; font-size: 0.72rem; font-weight: 700;
-    color: $nos-pink; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 0.4rem 1.2rem; background: rgba($nos-pink, 0.08);
-    border: 1px solid rgba($nos-pink, 0.15); border-radius: 50px; margin-bottom: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: $nos-pink-light;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
   }
 
   &__badge-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: $nos-pink; animation: nosDot 2s ease-in-out infinite;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $nos-pink;
   }
 
   h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 900; line-height: 1.05; color: $nos-dark;
-    letter-spacing: -0.03em; margin-bottom: 1rem;
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1.08;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
 
-    span {
-      color: $nos-pink;
-    }
+    span { color: $nos-pink; }
   }
 
   p {
-    font-size: 1rem; color: rgba(10, 10, 10, 0.55);
-    line-height: 1.7; margin-bottom: 2.5rem; max-width: 420px;
-  }
-
-  &__visual {
-    position: relative; display: flex; align-items: center; justify-content: center;
-  }
-
-  &__ring {
-    position: absolute; border-radius: 50%;
-    &--1 { width: 240px; height: 240px; border: 1px dashed rgba($nos-pink, 0.15); animation: nosRingSpin 25s linear infinite; }
-    &--2 { width: 180px; height: 180px; border: 1px solid rgba($nos-pink, 0.12); animation: nosRingSpin 18s linear infinite reverse; }
-  }
-
-  &__glow {
-    position: absolute; width: 85%; height: 85%; border-radius: 50%;
-    background: radial-gradient(circle,
-      rgba($nos-pink, 0.08) 0%,
-      rgba($nos-pink, 0.03) 40%,
-      transparent 70%);
-    animation: nosGlow 4s ease-in-out infinite;
-  }
-
-  &__mascot {
-    display: block; width: 75%; max-width: 220px; height: auto;
-    position: relative; z-index: 1;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.3));
-    animation: nosFloat 5s ease-in-out infinite;
+    font-size: 0.98rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+    margin-bottom: 2rem;
   }
 }
 
-
-// ═══════════════════════════════════════════════════════
-// SECTION DIVIDER
-// ═══════════════════════════════════════════════════════
-.nos-divider {
-  position: relative; background: $nos-dark; padding: 0;
-  display: flex; align-items: center; justify-content: center;
-  height: 1px; overflow: visible;
-
-  &__line {
-    width: 100%; max-width: 900px; height: 1px; position: relative;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba($nos-pink, 0.06) 10%,
-      rgba($nos-pink, 0.35) 35%,
-      rgba($nos-pink, 0.6) 50%,
-      rgba($nos-pink, 0.35) 65%,
-      rgba($nos-pink, 0.06) 90%,
-      transparent 100%
-    );
-
-    &::before {
-      content: ''; position: absolute;
-      top: -6px; left: 50%; transform: translateX(-50%);
-      width: 200px; height: 14px;
-      background: radial-gradient(ellipse, rgba($nos-pink, 0.25) 0%, transparent 70%);
-      filter: blur(4px);
-    }
-  }
-}
-
-
-// ═══════════════════════════════════════════════════════
-// SCROLL ANIMATIONS
-// ═══════════════════════════════════════════════════════
-.animate-init {
-  opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  &[data-animate='fade-up'] { transform: translateY(30px); }
-  &.is-visible { opacity: 1; transform: translateY(0); }
-}
-
-
-// ═══════════════════════════════════════════════════════
-// RESPONSIVE
-// ═══════════════════════════════════════════════════════
-@media (max-width: 1024px) {
-  .nos-hero__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .nos-hero__visual { max-width: 350px; }
-  .nos-story__grid { grid-template-columns: 1fr; gap: 3rem; }
-  .nos-story__character { max-width: 340px; }
-  .nos-cta__grid { grid-template-columns: 1fr; gap: 3rem; }
-  .nos-cta__visual { order: -1; }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nos-hero {
-    padding: 5rem 0 0; min-height: auto;
-    &__grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    &__visual { order: -1; max-width: 280px; }
-    &__line { font-size: clamp(2.2rem, 8vw, 3rem); }
-    &__metrics { padding: 1.2rem 1.5rem; }
-    &__metric { padding: 0 1rem; }
-    &__fade { height: 80px; }
-  }
-  .nos-story {
-    padding: 5rem 0;
-    &__character { max-width: 280px; }
-    &__float-tag { font-size: 0.65rem; padding: 0.3rem 0.7rem; }
-    &__float-tag--1 { right: -5%; }
-    &__float-tag--3 { right: -5%; }
-  }
-  .nos-pilares {
-    padding: 5rem 0;
-    &__grid { grid-template-columns: 1fr; }
-    &__card:nth-child(2), &__card:nth-child(4) { transform: none; }
-    &__card:nth-child(2):hover, &__card:nth-child(4):hover { transform: translateY(-8px); }
-  }
-  .nos-mv {
-    padding: 5rem 0;
-    &__grid { grid-template-columns: 1fr; }
-  }
-  .nos-cta {
-    padding: 5rem 0;
-    &__grid { grid-template-columns: 1fr; text-align: center; }
-    p { margin-left: auto; margin-right: auto; }
+    padding-top: 5.5rem;
+
+    &__grid { grid-template-columns: 1fr; gap: 2rem; }
     &__visual { order: -1; }
+    &__metrics { width: 100%; justify-content: center; }
   }
+
+  .nos-story__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .nos-pilares__grid { grid-template-columns: 1fr; }
+  .nos-mv__grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
-  .nos-hero__line { font-size: 2rem; }
-  .nos-hero__metrics { flex-wrap: wrap; gap: 1rem; }
-  .nos-story__float-tag { display: none; }
-}
+  .nos-hero {
+    &__metric { padding: 0 0.85rem; }
+    &__metrics { padding: 1rem; }
+  }
 
-
-// ═══════════════════════════════════════════════════════
-// KEYFRAMES
-// ═══════════════════════════════════════════════════════
-@keyframes nosOrbDrift {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(25px, -15px) scale(1.1); }
-}
-
-@keyframes nosDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.35; transform: scale(0.65); }
-}
-
-@keyframes nosGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes nosSlideIn {
-  from { opacity: 0; transform: translateY(28px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes nosFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes nosHeroIn {
-  from { opacity: 0; transform: translateX(40px) scale(0.9); }
-  to { opacity: 1; transform: translateX(0) scale(1); }
-}
-
-@keyframes nosRingSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes nosGlow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.08); }
-}
-
-@keyframes nosFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes nosParticle {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.35; }
-  25% { transform: translate(15px, -20px) scale(1.2); opacity: 0.6; }
-  50% { transform: translate(-10px, -35px) scale(0.8); opacity: 0.2; }
-  75% { transform: translate(20px, -15px) scale(1.1); opacity: 0.5; }
-}
-
-@keyframes nosFramePulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.03); opacity: 0.7; }
-}
-
-@keyframes nosConicSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes nosTagFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes nosMascotFloat {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
+  .nos-story,
+  .nos-pilares,
+  .nos-mv,
+  .nos-cta {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
