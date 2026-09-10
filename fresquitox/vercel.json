@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm ci --prefix frontend",
+  "installCommand": "cp frontend/src/environments/environment.secrets.example.ts frontend/src/environments/environment.secrets.ts && npm ci --prefix frontend",
   "buildCommand": "npm run build",
   "outputDirectory": "frontend/dist/frontend/browser",
   "rewrites": [

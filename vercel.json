@@ -1,0 +1,11 @@
+{
+  "installCommand": "cp fresquitox/frontend/src/environments/environment.secrets.example.ts fresquitox/frontend/src/environments/environment.secrets.ts && npm ci --prefix fresquitox/frontend",
+  "buildCommand": "npm run build --prefix fresquitox",
+  "outputDirectory": "fresquitox/frontend/dist/frontend/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
